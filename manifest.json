@@ -1,12 +1,13 @@
 {
-  "name": "Minh & Linh Wedding Invitation",
-  "short_name": "M&L Wedding",
-  "description": "Wedding invitation for Minh & Linh — December 20, 2025",
+  "name": "Huy Hoàng & Thu Thảo — Thiệp Cưới",
+  "short_name": "Thiệp Cưới",
+  "description": "Thiệp mời đám cưới Huy Hoàng & Thu Thảo — 20 tháng 12, 2025",
   "start_url": ".",
   "id": "/",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
+  "lang": "vi",
   "background_color": "#FFFDFB",
   "theme_color": "#FFFDFB",
   "icons": [

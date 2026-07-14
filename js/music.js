@@ -50,7 +50,7 @@ const Music = (() => {
   }
 
   function updateUI() {
-    toggleBtn.setAttribute('aria-label', isPlaying ? 'Pause background music' : 'Play background music');
+    toggleBtn.setAttribute('aria-label', isPlaying ? 'Tạm dừng nhạc nền' : 'Phát nhạc nền');
     toggleBtn.setAttribute('aria-pressed', String(isPlaying));
     toggleBtn.classList.toggle('playing', isPlaying);
     toggleBtn.innerHTML = isPlaying

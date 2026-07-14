@@ -50,7 +50,7 @@ async function fetchData() {
    Render Content — Populates HTML from data.json
    ========================================================================== */
 function renderContent(data) {
-  const { couple, wedding, events, timeline, gallery, gift, wishes, social, hero, video } = data;
+  const { couple, wedding, events, timeline, gallery, gift, wishes, social, hero, video, sections, ui } = data;
 
   // Hero
   if (hero) {
@@ -59,10 +59,47 @@ function renderContent(data) {
   }
   if (wedding) {
     setText('.hero__subtitle', wedding.dateDisplay);
-    setText('[data-aos="fade-up"].section-label', wedding.heroLabel, document.getElementById('hero'));
-    // Update typing data attribute
+    const heroLabel = document.querySelector('#hero .section-label');
+    if (heroLabel) heroLabel.textContent = wedding.heroLabel;
     const typingEl = document.querySelector('[data-typing]');
     if (typingEl) typingEl.dataset.typing = `${couple.groom.name} & ${couple.bride.name}`;
+  }
+
+  // Section headers from sections config
+  if (sections) {
+    const sectionMap = {
+      couple: '#couple', timeline: '#story', gallery: '#gallery',
+      video: '#video', countdown: '#countdown', event: '#event',
+      gift: '#gift', wishes: '#wishes'
+    };
+    Object.entries(sections).forEach(([key, val]) => {
+      const section = document.querySelector(sectionMap[key]);
+      if (!section) return;
+      const label = section.querySelector('.section-label');
+      const title = section.querySelector('.section-title');
+      if (label) label.textContent = val.label;
+      if (title) title.textContent = val.title;
+    });
+  }
+
+  // UI labels
+  if (ui) {
+    const scrollText = document.querySelector('.scroll-indicator__text');
+    if (scrollText) scrollText.textContent = ui.scrollText;
+    // Countdown labels
+    if (ui.countdownLabels) {
+      const labels = document.querySelectorAll('.countdown__label');
+      const keys = ['days', 'hours', 'minutes', 'seconds'];
+      labels.forEach((el, i) => { if (ui.countdownLabels[keys[i]]) el.textContent = ui.countdownLabels[keys[i]]; });
+    }
+    // Map buttons
+    document.querySelectorAll('.map-btn').forEach(btn => {
+      if (ui.viewOnMaps) btn.textContent = ui.viewOnMaps;
+    });
+    // Copy buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      if (ui.copyButton) btn.textContent = ui.copyButton;
+    });
   }
 
   // Couple
@@ -259,7 +296,7 @@ function initCopyButtons() {
     btn.addEventListener('click', () => {
       navigator.clipboard.writeText(btn.dataset.copy).then(() => {
         btn.classList.add('copied');
-        btn.textContent = 'Copied!';
+        btn.textContent = btn.dataset.copiedText || 'Đã sao chép!';
         setTimeout(() => {
           btn.classList.remove('copied');
           btn.textContent = originalText;
