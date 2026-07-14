@@ -2,8 +2,8 @@
    Animations — Awwwards Quality Motion System
    
    PRINCIPLES:
-   • GPU-only: transform + opacity exclusively (no top/left/width/filter reflows)
-   • 60fps: will-change declared, composite layers promoted
+   • GPU-only: transform + opacity exclusively
+   • 60fps: no layout thrashing, no forced reflows
    • Cinematic easing: no linear motion, every curve is intentional
    • Stagger: cascading reveals create rhythm and hierarchy
    • Restraint: subtle > flashy, elegance > excess
@@ -25,43 +25,6 @@
   to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
 
-/* Soft horizontal reveals */
-@keyframes fadeLeft {
-  from { opacity: 0; transform: translate3d(80px, 0, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-@keyframes fadeRight {
-  from { opacity: 0; transform: translate3d(-80px, 0, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-/* Scale reveal — breathes into existence */
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale3d(0.92, 0.92, 1); }
-  to   { opacity: 1; transform: scale3d(1, 1, 1); }
-}
-
-/* Zoom — dramatic entrance for hero elements */
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale3d(0.6, 0.6, 1); }
-  to   { opacity: 1; transform: scale3d(1, 1, 1); }
-}
-
-/* Clip reveal — mask-based text entrance */
-@keyframes clipReveal {
-  from { opacity: 0; transform: translate3d(0, 100%, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-/* Float — organic breathing motion */
-@keyframes float {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  25%      { transform: translate3d(2px, -12px, 0) rotate(0.5deg); }
-  50%      { transform: translate3d(-1px, -18px, 0) rotate(-0.5deg); }
-  75%      { transform: translate3d(1px, -8px, 0) rotate(0.3deg); }
-}
-
 /* Gentle pulse — alive but not distracting */
 @keyframes pulse {
   0%, 100% { transform: scale3d(1, 1, 1); opacity: 1; }
@@ -75,13 +38,6 @@
   100% { transform: translate3d(0, 0, 0); opacity: 1; }
 }
 
-/* Background gradient — slow, hypnotic shift */
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* Petal fall — organic, wind-affected descent */
 @keyframes petalFall {
   0%   { transform: translate3d(0, -5vh, 0) rotate(0deg) scale(1); opacity: 0.8; }
@@ -89,18 +45,6 @@
   50%  { transform: translate3d(-10px, 55vh, 0) rotate(200deg) scale(0.9); opacity: 0.5; }
   75%  { transform: translate3d(20px, 80vh, 0) rotate(320deg) scale(0.85); opacity: 0.3; }
   100% { transform: translate3d(5px, 110vh, 0) rotate(420deg) scale(0.8); opacity: 0; }
-}
-
-/* Sparkle — twinkle in and out */
-@keyframes sparkle {
-  0%, 100% { transform: scale3d(0, 0, 1) rotate(0deg); opacity: 0; }
-  50%      { transform: scale3d(1, 1, 1) rotate(180deg); opacity: 1; }
-}
-
-/* Heart float — rises and fades */
-@keyframes heartFloat {
-  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
-  100% { transform: translate3d(0, -120px, 0) scale(0.4); opacity: 0; }
 }
 
 /* Cursor blink — typewriter */
@@ -122,23 +66,6 @@
   to   { opacity: 1; transform: scale3d(1, 1, 1); }
 }
 
-/* Card entrance — rise with subtle rotation */
-@keyframes cardReveal {
-  from { opacity: 0; transform: translate3d(0, 40px, 0) rotate(1deg); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
-}
-
-/* Loader fade out */
-@keyframes loaderExit {
-  to { opacity: 0; transform: scale3d(1.02, 1.02, 1); }
-}
-
-/* Section divider line grow */
-@keyframes lineGrow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
 /* Countdown digit flip feel */
 @keyframes digitPop {
   0%   { transform: scale3d(1, 1, 1); }
@@ -154,10 +81,9 @@
    Stagger delays create visual rhythm.
    ========================================================================== */
 
-/* Base state — hidden, promoted to own layer */
+/* Base state — hidden, GPU-promoted only during transition */
 [data-aos] {
   opacity: 0;
-  will-change: transform, opacity;
   transition-property: transform, opacity;
   transition-duration: var(--duration-normal);
   transition-timing-function: var(--ease-out-expo);
@@ -253,22 +179,8 @@
    UTILITY ANIMATIONS — Looping, Ambient Motion
    ========================================================================== */
 
-/* Organic float — for decorative elements */
-.anim-float {
-  animation: float 6s var(--ease-in-out) infinite;
-  will-change: transform;
-}
-
-/* Gentle pulse — for attention without urgency */
-.anim-pulse {
-  animation: pulse 3s var(--ease-in-out) infinite;
-  will-change: transform, opacity;
-}
-
-/* Scroll indicator — inviting downward */
 .scroll-indicator__dot {
   animation: scrollDown 2.2s var(--ease-in-out-circ) infinite;
-  will-change: transform, opacity;
 }
 
 /* ==========================================================================
@@ -283,7 +195,6 @@
 .timeline__card {
   transition: transform var(--duration-fast) var(--ease-out-expo),
               box-shadow var(--duration-fast) var(--ease-out);
-  will-change: transform;
 }
 
 .card:hover,
@@ -298,7 +209,6 @@
 .btn {
   transition: transform var(--duration-fast) var(--ease-spring),
               opacity var(--duration-fast) var(--ease-out);
-  will-change: transform;
 }
 
 .btn:hover {
@@ -313,7 +223,6 @@
 /* Gallery item — smooth zoom on hover */
 .gallery__item img {
   transition: transform var(--duration-slow) var(--ease-out-expo);
-  will-change: transform;
 }
 
 .gallery__item:hover img {
@@ -323,7 +232,6 @@
 /* Portrait hover — subtle scale */
 .couple__portrait {
   transition: transform var(--duration-normal) var(--ease-out-expo);
-  will-change: transform;
 }
 
 .couple__portrait:hover {
@@ -334,7 +242,6 @@
 .social-link {
   transition: transform var(--duration-fast) var(--ease-spring),
               opacity var(--duration-fast) var(--ease-out);
-  will-change: transform;
 }
 
 .social-link:hover {
@@ -345,7 +252,6 @@
 .copy-btn {
   transition: transform var(--duration-fast) var(--ease-spring),
               opacity var(--duration-fast) var(--ease-out);
-  will-change: transform;
 }
 
 .copy-btn:active {
@@ -357,8 +263,6 @@
    ========================================================================== */
 
 .countdown__number {
-  transition: transform 0.3s var(--ease-spring);
-  will-change: transform;
   display: inline-block;
 }
 
@@ -375,7 +279,6 @@
   transform-origin: top center;
   transform: scaleY(0);
   transition: transform var(--duration-cinematic) var(--ease-reveal);
-  will-change: transform;
 }
 
 .timeline__line.animate {
@@ -385,7 +288,6 @@
 .timeline__dot {
   transform: translate3d(0, -50%, 0) scale3d(0, 0, 1);
   transition: transform var(--duration-normal) var(--ease-spring);
-  will-change: transform;
 }
 
 .timeline__item.aos-animate .timeline__dot {
@@ -400,7 +302,6 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration-normal) var(--ease-out-expo);
-  will-change: opacity;
 }
 
 .lightbox.active {
@@ -411,7 +312,6 @@
 .lightbox__img {
   transform: scale3d(0.92, 0.92, 1);
   transition: transform var(--duration-normal) var(--ease-out-expo);
-  will-change: transform;
 }
 
 .lightbox.active .lightbox__img {
@@ -425,7 +325,6 @@
 .loader {
   transition: opacity var(--duration-slow) var(--ease-out-expo),
               transform var(--duration-slow) var(--ease-out-expo);
-  will-change: opacity, transform;
 }
 
 .loader.hidden {
@@ -437,24 +336,21 @@
 .loader__bar {
   transition: transform var(--duration-fast) var(--ease-out);
   transform-origin: left center;
-  will-change: transform;
 }
 
 /* ==========================================================================
    SPECIAL EFFECTS — Petals, Particles, Cursor
    ========================================================================== */
 
-/* Flower petals container — no pointer events, GPU layer */
-.flowers-canvas,
-.particles-canvas {
+/* Flower petals container */
+.flowers-canvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: var(--z-overlay);
-  will-change: auto;
 }
 
-/* Cursor glow — smooth follow via JS transform */
+/* Cursor glow — JS controls transform */
 .cursor-glow {
   position: fixed;
   width: 350px;
@@ -466,26 +362,10 @@
   z-index: var(--z-base);
   opacity: 0;
   transition: opacity var(--duration-slow) var(--ease-out);
-  will-change: transform;
 }
 
 .cursor-glow.visible {
   opacity: 1;
-}
-
-/* Background gradient — slow ambient motion */
-.bg-gradient-anim {
-  background: linear-gradient(270deg, var(--color-primary), var(--color-accent), var(--color-primary));
-  background-size: 400% 400%;
-  animation: gradientShift 12s var(--ease-in-out) infinite;
-}
-
-/* ==========================================================================
-   SECTION TRANSITIONS — Smooth entrance as sections come into view
-   ========================================================================== */
-
-.section {
-  will-change: auto;
 }
 
 /* Divider line animation */
@@ -493,7 +373,6 @@
   transform-origin: center;
   transform: scaleX(0);
   transition: transform var(--duration-normal) var(--ease-out-expo);
-  will-change: transform;
 }
 
 .section.in-view .divider__line,
@@ -508,7 +387,6 @@
 .music-toggle {
   transition: transform var(--duration-fast) var(--ease-spring),
               opacity var(--duration-fast) var(--ease-out);
-  will-change: transform;
 }
 
 .music-toggle:hover {

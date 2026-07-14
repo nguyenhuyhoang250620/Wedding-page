@@ -45,13 +45,6 @@
   border-color: var(--color-accent);
 }
 
-.btn--glass {
-  background: var(--color-glass);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--color-glass-border);
-  color: var(--color-text);
-}
-
 /* ===== CARDS ===== */
 
 .card {
@@ -63,13 +56,6 @@
 
 .card:hover {
   box-shadow: var(--shadow-md);
-}
-
-/* Glass card */
-.card--glass {
-  background: var(--color-glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--color-glass-border);
 }
 
 /* ===== DIVIDER — Elegant separator ===== */

@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "Minh & Linh — Wedding Invitation",
+    "description": "You are cordially invited to celebrate the wedding of Minh & Linh — December 20, 2025.",
+    "url": "https://minhandlinh.wedding",
+    "ogImage": "assets/images/og-image.jpg",
+    "themeColor": "#FFFDFB",
+    "lang": "vi"
+  },
+
+  "couple": {
+    "groom": {
+      "name": "Minh",
+      "role": "The Groom",
+      "description": "A dreamer who found his forever in her smile. Passionate about life, love, and building a beautiful future together.",
+      "image": "assets/images/groom.jpg"
+    },
+    "bride": {
+      "name": "Linh",
+      "role": "The Bride",
+      "description": "A gentle soul with a radiant heart. She believes in fairy tales — because she's living one.",
+      "image": "assets/images/bride.jpg"
+    },
+    "hashtag": "#MinhAndLinh"
+  },
+
+  "wedding": {
+    "date": "2025-12-20T10:00:00",
+    "dateDisplay": "Saturday, December 20, 2025",
+    "heroLabel": "We're Getting Married"
+  },
+
+  "events": {
+    "ceremony": {
+      "title": "The Ceremony",
+      "icon": "💒",
+      "date": "Saturday, December 20, 2025",
+      "time": "10:00 AM",
+      "venue": "Grand Palace Hall, Ho Chi Minh City",
+      "mapUrl": "https://maps.google.com"
+    },
+    "reception": {
+      "title": "The Reception",
+      "icon": "🥂",
+      "date": "Saturday, December 20, 2025",
+      "time": "6:00 PM",
+      "venue": "Riverside Garden, District 2",
+      "mapUrl": "https://maps.google.com"
+    }
+  },
+
+  "timeline": [
+    {
+      "date": "Spring 2020",
+      "title": "First Meeting",
+      "description": "A chance encounter at a quiet coffee shop turned into hours of conversation — and the beginning of forever."
+    },
+    {
+      "date": "Summer 2021",
+      "title": "First Date",
+      "description": "A sunset walk along the river, nervous laughter, and the quiet realization that this was something extraordinary."
+    },
+    {
+      "date": "Winter 2023",
+      "title": "The Proposal",
+      "description": "Under a sky full of stars, one knee touched the ground and two hearts became one promise."
+    },
+    {
+      "date": "December 2025",
+      "title": "Forever Begins",
+      "description": "The day we say \"I do\" — and begin our greatest adventure together."
+    }
+  ],
+
+  "gallery": [
+    { "src": "assets/images/gallery-1.jpg", "alt": "Together at the park", "width": 600, "height": 800 },
+    { "src": "assets/images/gallery-2.jpg", "alt": "Laughing together", "width": 600, "height": 400 },
+    { "src": "assets/images/gallery-3.jpg", "alt": "Sunset silhouette", "width": 600, "height": 600 },
+    { "src": "assets/images/gallery-4.jpg", "alt": "Coffee date", "width": 600, "height": 750 },
+    { "src": "assets/images/gallery-5.jpg", "alt": "Travel memories", "width": 600, "height": 900 },
+    { "src": "assets/images/gallery-6.jpg", "alt": "The proposal moment", "width": 600, "height": 500 }
+  ],
+
+  "gift": [
+    {
+      "title": "Groom's Account",
+      "bank": "Vietcombank",
+      "accountNumber": "1234567890",
+      "accountDisplay": "1234 5678 90",
+      "accountName": "NGUYEN VAN MINH"
+    },
+    {
+      "title": "Bride's Account",
+      "bank": "Techcombank",
+      "accountNumber": "0987654321",
+      "accountDisplay": "0987 6543 21",
+      "accountName": "TRAN THI LINH"
+    }
+  ],
+
+  "wishes": [
+    {
+      "author": "Thanh Nguyen",
+      "message": "Wishing you both a lifetime of love, laughter, and endless happiness. You two are perfect together."
+    },
+    {
+      "author": "Hoa Tran",
+      "message": "May your love grow stronger with each passing day. So incredibly happy for you both!"
+    },
+    {
+      "author": "Duc Le",
+      "message": "Two beautiful souls becoming one. Here's to your forever journey — cheers to love!"
+    }
+  ],
+
+  "social": [
+    { "platform": "Instagram", "url": "#", "icon": "📷" },
+    { "platform": "Facebook", "url": "#", "icon": "📘" },
+    { "platform": "Twitter", "url": "#", "icon": "🐦" }
+  ],
+
+  "music": {
+    "src": "assets/music/background.mp3",
+    "volume": 0.4
+  },
+
+  "video": {
+    "src": "assets/video/wedding.mp4",
+    "poster": "assets/images/video-poster.jpg"
+  },
+
+  "hero": {
+    "backgroundImage": "assets/images/hero-bg.jpg",
+    "backgroundAlt": "Romantic wedding venue bathed in golden light"
+  }
+}

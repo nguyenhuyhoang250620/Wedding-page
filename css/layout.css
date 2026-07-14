@@ -1,7 +1,6 @@
 /* ==========================================================================
    Layout
-   Premium page structure with generous whitespace.
-   Inspired by Apple's breathing room, Stripe's clarity, Airbnb's warmth.
+   Page structure with generous whitespace. No redundant declarations.
    ========================================================================== */
 
 html, body {
@@ -9,22 +8,18 @@ html, body {
   background-color: var(--color-bg);
 }
 
-/* Main container */
 .main {
   position: relative;
   width: 100%;
 }
 
-/* Section base — generous vertical padding creates premium feel */
+/* Section — generous vertical rhythm */
 .section {
   position: relative;
-  padding: var(--space-2xl) var(--space-md);
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding: 8rem var(--space-md);
   overflow: hidden;
 }
 
-/* Constrained content width — narrower for focus */
 .container {
   width: 100%;
   max-width: 1100px;
@@ -32,18 +27,13 @@ html, body {
   padding: 0 var(--space-lg);
 }
 
-.container--narrow {
-  max-width: 720px;
-}
-
-/* Section header — more space below for visual separation */
 .section-header {
   text-align: center;
   margin-bottom: 5rem;
 }
 
 /* ==========================================================================
-   HERO — Fullscreen cinematic opening
+   HERO
    ========================================================================== */
 .hero {
   position: relative;
@@ -55,6 +45,7 @@ html, body {
   justify-content: center;
   text-align: center;
   color: var(--color-white);
+  padding: 0;
 }
 
 .hero__bg {
@@ -68,10 +59,10 @@ html, body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, 
-    rgba(0,0,0,0.1) 0%, 
-    transparent 40%, 
-    transparent 60%, 
+  background: linear-gradient(to bottom,
+    rgba(0,0,0,0.1) 0%,
+    transparent 40%,
+    transparent 60%,
     rgba(0,0,0,0.3) 100%);
   z-index: 1;
 }
@@ -112,7 +103,7 @@ html, body {
 }
 
 /* ==========================================================================
-   COUPLE — Side by side portraits with generous spacing
+   COUPLE
    ========================================================================== */
 .couple {
   background: var(--color-secondary);
@@ -162,11 +153,10 @@ html, body {
 .couple__person > p:last-child {
   max-width: 300px;
   margin: 0 auto;
-  font-size: var(--fs-body);
 }
 
 /* ==========================================================================
-   TIMELINE — Alternating cards with vertical line
+   TIMELINE
    ========================================================================== */
 .timeline__wrapper {
   position: relative;
@@ -234,7 +224,7 @@ html, body {
 .timeline__item:nth-child(even) .timeline__dot { right: -6px; }
 
 /* ==========================================================================
-   GALLERY — Masonry grid with refined spacing
+   GALLERY
    ========================================================================== */
 .gallery__grid {
   columns: 3;
@@ -256,7 +246,7 @@ html, body {
 }
 
 /* ==========================================================================
-   VIDEO — Cinematic container
+   VIDEO
    ========================================================================== */
 .video__wrapper {
   position: relative;
@@ -275,7 +265,7 @@ html, body {
 }
 
 /* ==========================================================================
-   COUNTDOWN — Centered, spacious digit display
+   COUNTDOWN
    ========================================================================== */
 .countdown {
   background: var(--color-secondary);
@@ -316,7 +306,7 @@ html, body {
 }
 
 /* ==========================================================================
-   EVENT — Two elegant cards side by side
+   EVENT
    ========================================================================== */
 .event__grid {
   display: grid;
@@ -346,12 +336,8 @@ html, body {
   opacity: 0.8;
 }
 
-.event__card .text-sans strong {
-  opacity: 1;
-}
-
 /* ==========================================================================
-   GIFT — Clean bank info cards
+   GIFT
    ========================================================================== */
 .gift__grid {
   display: grid;
@@ -393,7 +379,7 @@ html, body {
 }
 
 /* ==========================================================================
-   WISHES — Testimonial-style cards
+   WISHES
    ========================================================================== */
 .wishes__grid {
   display: grid;
@@ -412,7 +398,7 @@ html, body {
 }
 
 /* ==========================================================================
-   FOOTER — Minimal, elegant closing
+   FOOTER
    ========================================================================== */
 .footer {
   background: var(--color-text);
@@ -432,8 +418,15 @@ html, body {
   color: var(--color-primary);
 }
 
+.footer__copy {
+  margin-top: var(--space-md);
+  opacity: 0.4;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
 /* ==========================================================================
-   LIGHTBOX — Fullscreen image viewer
+   LIGHTBOX
    ========================================================================== */
 .lightbox {
   position: fixed;
@@ -463,10 +456,7 @@ html, body {
   z-index: 2;
 }
 
-.lightbox__btn:hover {
-  opacity: 1;
-}
-
+.lightbox__btn:hover { opacity: 1; }
 .lightbox__btn--prev { left: var(--space-md); }
 .lightbox__btn--next { right: var(--space-md); }
 
@@ -479,12 +469,10 @@ html, body {
   opacity: 0.6;
 }
 
-.lightbox__close:hover {
-  opacity: 1;
-}
+.lightbox__close:hover { opacity: 1; }
 
 /* ==========================================================================
-   MUSIC TOGGLE — Fixed floating button
+   MUSIC TOGGLE
    ========================================================================== */
 .music-toggle {
   position: fixed;
@@ -506,7 +494,7 @@ html, body {
 }
 
 /* ==========================================================================
-   LOADER — Centered, minimal
+   LOADER
    ========================================================================== */
 .loader {
   position: fixed;

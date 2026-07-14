@@ -1,6 +1,7 @@
 /* ==========================================================================
-   App.js — Main Application Entry Point
-   Orchestrates all modules and handles countdown + copy functionality.
+   App.js — Main Entry Point
+   Fetches data.json and renders all dynamic content.
+   Orchestrates modules. Handles countdown, copy, and lazy loading.
    ========================================================================== */
 
 import Loader from './loader.js';
@@ -12,31 +13,200 @@ import Timeline from './timeline.js';
 import Typing from './typing.js';
 import Flowers from './flowers.js';
 
-/** Initialize application when DOM is ready */
-document.addEventListener('DOMContentLoaded', () => {
-  // Lock scroll during loading
+document.addEventListener('DOMContentLoaded', async () => {
   document.body.style.overflow = 'hidden';
-
   Loader.init();
+
+  // Fetch all wedding data from JSON
+  const data = await fetchData();
+  if (data) renderContent(data);
+
   AOS.init();
   Parallax.init();
   Timeline.init();
   Typing.init();
   Gallery.init();
-  Music.init();
+  Music.init(data?.music);
   Flowers.init();
-  initCountdown();
+  initCountdown(data?.wedding?.date);
   initCopyButtons();
   initLazyImages();
 });
 
 /* ==========================================================================
-   Countdown Timer
-   Counts down to the wedding date. Updates every second.
+   Fetch Data — Loads data.json
    ========================================================================== */
+async function fetchData() {
+  try {
+    const res = await fetch('data.json');
+    return await res.json();
+  } catch (e) {
+    console.warn('data.json not found, using HTML defaults.');
+    return null;
+  }
+}
 
-function initCountdown() {
-  const weddingDate = new Date('2025-12-20T10:00:00');
+/* ==========================================================================
+   Render Content — Populates HTML from data.json
+   ========================================================================== */
+function renderContent(data) {
+  const { couple, wedding, events, timeline, gallery, gift, wishes, social, hero, video } = data;
+
+  // Hero
+  if (hero) {
+    const heroImg = document.querySelector('.hero__bg img');
+    if (heroImg) { heroImg.src = hero.backgroundImage; heroImg.alt = hero.backgroundAlt; }
+  }
+  if (wedding) {
+    setText('.hero__subtitle', wedding.dateDisplay);
+    setText('[data-aos="fade-up"].section-label', wedding.heroLabel, document.getElementById('hero'));
+    // Update typing data attribute
+    const typingEl = document.querySelector('[data-typing]');
+    if (typingEl) typingEl.dataset.typing = `${couple.groom.name} & ${couple.bride.name}`;
+  }
+
+  // Couple
+  if (couple) {
+    const persons = document.querySelectorAll('.couple__person');
+    const people = [couple.groom, couple.bride];
+    persons.forEach((el, i) => {
+      const p = people[i];
+      if (!p) return;
+      const img = el.querySelector('.couple__portrait img');
+      if (img) { img.src = p.image; img.alt = `${p.name} — ${p.role.toLowerCase()}`; }
+      const h3 = el.querySelector('h3');
+      if (h3) h3.textContent = p.name;
+      const role = el.querySelector('.text-italic');
+      if (role) role.textContent = p.role;
+      const desc = el.querySelector('p');
+      if (desc) desc.textContent = p.description;
+    });
+  }
+
+  // Timeline
+  if (timeline) {
+    const items = document.querySelectorAll('.timeline__card');
+    timeline.forEach((item, i) => {
+      const card = items[i];
+      if (!card) return;
+      const badge = card.querySelector('.badge');
+      if (badge) badge.textContent = item.date;
+      const h3 = card.querySelector('h3');
+      if (h3) h3.textContent = item.title;
+      const p = card.querySelector('p');
+      if (p) p.textContent = item.description;
+    });
+  }
+
+  // Gallery
+  if (gallery) {
+    const galleryItems = document.querySelectorAll('.gallery__item img');
+    gallery.forEach((img, i) => {
+      const el = galleryItems[i];
+      if (!el) return;
+      el.dataset.src = img.src;
+      el.alt = img.alt;
+      el.width = img.width;
+      el.height = img.height;
+    });
+  }
+
+  // Video
+  if (video) {
+    const vid = document.querySelector('.video__wrapper video');
+    if (vid) {
+      vid.poster = video.poster;
+      const source = vid.querySelector('source');
+      if (source) source.src = video.src;
+    }
+  }
+
+  // Events
+  if (events) {
+    const cards = document.querySelectorAll('.event__card');
+    const eventList = [events.ceremony, events.reception];
+    cards.forEach((card, i) => {
+      const ev = eventList[i];
+      if (!ev) return;
+      const icon = card.querySelector('.event__icon');
+      if (icon) icon.textContent = ev.icon;
+      const h3 = card.querySelector('h3');
+      if (h3) h3.textContent = ev.title;
+      const texts = card.querySelectorAll('.text-sans');
+      if (texts[0]) texts[0].textContent = ev.date;
+      if (texts[1]) texts[1].textContent = ev.time;
+      if (texts[2]) texts[2].textContent = ev.venue;
+      const link = card.querySelector('.map-btn');
+      if (link) link.href = ev.mapUrl;
+    });
+  }
+
+  // Gift
+  if (gift) {
+    const cards = document.querySelectorAll('.gift__card');
+    gift.forEach((g, i) => {
+      const card = cards[i];
+      if (!card) return;
+      const h3 = card.querySelector('h3');
+      if (h3) h3.textContent = g.title;
+      const texts = card.querySelectorAll('.text-sans');
+      if (texts[0]) texts[0].textContent = g.bank;
+      if (texts[1]) texts[1].innerHTML = `<strong>${g.accountDisplay}</strong>`;
+      if (texts[2]) texts[2].textContent = g.accountName;
+      const btn = card.querySelector('.copy-btn');
+      if (btn) btn.dataset.copy = g.accountNumber;
+    });
+  }
+
+  // Wishes
+  if (wishes) {
+    const cards = document.querySelectorAll('.wishes__card');
+    wishes.forEach((w, i) => {
+      const card = cards[i];
+      if (!card) return;
+      const author = card.querySelector('.wishes__card-author');
+      if (author) author.textContent = w.author;
+      const text = card.querySelector('.wishes__card-text');
+      if (text) text.textContent = `"${w.message}"`;
+    });
+  }
+
+  // Social
+  if (social) {
+    const links = document.querySelectorAll('.footer__social .social-link');
+    social.forEach((s, i) => {
+      const link = links[i];
+      if (!link) return;
+      link.href = s.url;
+      link.setAttribute('aria-label', s.platform);
+      link.textContent = s.icon;
+    });
+  }
+
+  // Footer name
+  if (couple) {
+    const footerName = document.querySelector('.footer .text-script');
+    if (footerName) footerName.textContent = `${couple.groom.name} & ${couple.bride.name}`;
+  }
+
+  // Loader name
+  if (couple) {
+    const loaderName = document.querySelector('.loader .text-script');
+    if (loaderName) loaderName.textContent = `${couple.groom.name} & ${couple.bride.name}`;
+  }
+}
+
+/** Helper: set text content of first matching element */
+function setText(selector, text, parent = document) {
+  const el = parent?.querySelector(selector);
+  if (el) el.textContent = text;
+}
+
+/* ==========================================================================
+   Countdown — Updates every second with digit pop animation
+   ========================================================================== */
+function initCountdown(dateStr) {
+  const weddingDate = new Date(dateStr || '2025-12-20T10:00:00');
   const els = {
     days: document.getElementById('countdown-days'),
     hours: document.getElementById('countdown-hours'),
@@ -46,34 +216,31 @@ function initCountdown() {
 
   if (!els.days) return;
 
-  // Track previous values for pop animation
   const prev = { days: '', hours: '', minutes: '', seconds: '' };
 
   function update() {
-    const now = new Date();
-    const diff = weddingDate - now;
-
+    const diff = weddingDate - new Date();
     if (diff <= 0) {
-      Object.values(els).forEach(el => el.textContent = '0');
+      Object.values(els).forEach(el => { el.textContent = '0'; });
       return;
     }
 
     const values = {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-      minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-      seconds: Math.floor((diff % (1000 * 60)) / 1000)
+      days: Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      minutes: Math.floor((diff % 3600000) / 60000),
+      seconds: Math.floor((diff % 60000) / 1000)
     };
 
-    // Update with pop animation on change
     Object.entries(values).forEach(([key, val]) => {
       const str = String(val);
       if (prev[key] !== str) {
         els[key].textContent = str;
-        els[key].classList.remove('pop');
-        // Force reflow for re-triggering animation
-        void els[key].offsetWidth;
-        els[key].classList.add('pop');
+        els[key].style.animation = 'none';
+        requestAnimationFrame(() => {
+          els[key].style.animation = '';
+          els[key].classList.add('pop');
+        });
         prev[key] = str;
       }
     });
@@ -84,20 +251,18 @@ function initCountdown() {
 }
 
 /* ==========================================================================
-   Copy to Clipboard
-   Handles copy buttons for bank information.
+   Copy to Clipboard — Preserves original button text
    ========================================================================== */
-
 function initCopyButtons() {
   document.querySelectorAll('.copy-btn').forEach(btn => {
+    const originalText = btn.textContent;
     btn.addEventListener('click', () => {
-      const text = btn.dataset.copy;
-      navigator.clipboard.writeText(text).then(() => {
+      navigator.clipboard.writeText(btn.dataset.copy).then(() => {
         btn.classList.add('copied');
         btn.textContent = 'Copied!';
         setTimeout(() => {
           btn.classList.remove('copied');
-          btn.textContent = 'Copy';
+          btn.textContent = originalText;
         }, 2000);
       });
     });
@@ -105,10 +270,8 @@ function initCopyButtons() {
 }
 
 /* ==========================================================================
-   Lazy Loading Images
-   Uses IntersectionObserver to load images only when visible.
+   Lazy Loading — IntersectionObserver with decoding async
    ========================================================================== */
-
 function initLazyImages() {
   const images = document.querySelectorAll('img[data-src]');
   if (!images.length) return;
@@ -118,11 +281,12 @@ function initLazyImages() {
       if (entry.isIntersecting) {
         const img = entry.target;
         img.src = img.dataset.src;
+        img.decoding = 'async';
         img.removeAttribute('data-src');
         observer.unobserve(img);
       }
     });
-  }, { rootMargin: '200px' });
+  }, { rootMargin: '300px' });
 
   images.forEach(img => observer.observe(img));
 }
