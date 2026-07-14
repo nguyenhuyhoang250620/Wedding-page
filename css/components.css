@@ -1,0 +1,249 @@
+/* ==========================================================================
+   Components
+   Premium UI components with refined proportions.
+   Inspired by Stripe's clarity and Framer's polish.
+   ========================================================================== */
+
+/* ===== BUTTONS ===== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 1em 2.4em;
+  border-radius: 50px;
+  position: relative;
+  letter-spacing: 0.03em;
+}
+
+.btn:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  box-shadow: none;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn--outline {
+  border: 1px solid rgba(196, 143, 101, 0.4);
+  color: var(--color-accent);
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.btn--glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-glass-border);
+  color: var(--color-text);
+}
+
+/* ===== CARDS ===== */
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Glass card */
+.card--glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+}
+
+/* ===== DIVIDER — Elegant separator ===== */
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.divider__line {
+  width: 40px;
+  height: 1px;
+  background: var(--color-primary);
+  opacity: 0.6;
+}
+
+.divider__icon {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  opacity: 0.7;
+}
+
+/* ===== BADGE — Year/date pill ===== */
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.4em 1.2em;
+  border-radius: 50px;
+  background: var(--color-secondary);
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-white);
+  opacity: 0.6;
+}
+
+.scroll-indicator__mouse {
+  width: 22px;
+  height: 34px;
+  border: 1.5px solid currentColor;
+  border-radius: 11px;
+  position: relative;
+}
+
+.scroll-indicator__dot {
+  width: 3px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scroll-indicator__text {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+/* ===== COPY BUTTON ===== */
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.6em 1.6em;
+  border-radius: 50px;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  margin-top: var(--space-md);
+  letter-spacing: 0.03em;
+}
+
+.copy-btn:hover {
+  background: var(--color-primary);
+}
+
+.copy-btn.copied {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* ===== TYPEWRITER ===== */
+
+.typewriter {
+  display: inline;
+}
+
+.typewriter__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  background: currentColor;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+/* ===== EVENT ICON ===== */
+
+.event__icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--color-secondary);
+  font-size: 1.3rem;
+}
+
+/* ===== SOCIAL LINK ===== */
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.social-link:hover {
+  background: rgba(231, 200, 160, 0.2);
+  border-color: rgba(231, 200, 160, 0.4);
+}
+
+/* ===== WISH CARD ===== */
+
+.wishes__card-author {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-bottom: var(--space-sm);
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+}
+
+.wishes__card-text {
+  font-style: italic;
+  line-height: 1.8;
+  font-size: var(--fs-body);
+  opacity: 0.8;
+}
+
+/* ===== MAP BUTTON ===== */
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Minh & Linh Wedding",
+  "short_name": "Wedding",
+  "description": "Wedding invitation for Minh & Linh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFDFB",
+  "theme_color": "#FFFDFB",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

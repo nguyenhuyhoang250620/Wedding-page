@@ -1,0 +1,544 @@
+/* ==========================================================================
+   Animations — Awwwards Quality Motion System
+   
+   PRINCIPLES:
+   • GPU-only: transform + opacity exclusively (no top/left/width/filter reflows)
+   • 60fps: will-change declared, composite layers promoted
+   • Cinematic easing: no linear motion, every curve is intentional
+   • Stagger: cascading reveals create rhythm and hierarchy
+   • Restraint: subtle > flashy, elegance > excess
+   ========================================================================== */
+
+/* ==========================================================================
+   KEYFRAMES — Core Motion Vocabulary
+   ========================================================================== */
+
+/* Cinematic fade — slow opacity with slight vertical drift */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate3d(0, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Elegant rise — the signature entrance */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate3d(0, 60px, 0) scale(0.98); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* Soft horizontal reveals */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translate3d(80px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translate3d(-80px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Scale reveal — breathes into existence */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale3d(0.92, 0.92, 1); }
+  to   { opacity: 1; transform: scale3d(1, 1, 1); }
+}
+
+/* Zoom — dramatic entrance for hero elements */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale3d(0.6, 0.6, 1); }
+  to   { opacity: 1; transform: scale3d(1, 1, 1); }
+}
+
+/* Clip reveal — mask-based text entrance */
+@keyframes clipReveal {
+  from { opacity: 0; transform: translate3d(0, 100%, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Float — organic breathing motion */
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  25%      { transform: translate3d(2px, -12px, 0) rotate(0.5deg); }
+  50%      { transform: translate3d(-1px, -18px, 0) rotate(-0.5deg); }
+  75%      { transform: translate3d(1px, -8px, 0) rotate(0.3deg); }
+}
+
+/* Gentle pulse — alive but not distracting */
+@keyframes pulse {
+  0%, 100% { transform: scale3d(1, 1, 1); opacity: 1; }
+  50%      { transform: scale3d(1.03, 1.03, 1); opacity: 0.85; }
+}
+
+/* Scroll indicator — smooth bounce */
+@keyframes scrollDown {
+  0%   { transform: translate3d(0, 0, 0); opacity: 1; }
+  50%  { transform: translate3d(0, 10px, 0); opacity: 0.4; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+/* Background gradient — slow, hypnotic shift */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Petal fall — organic, wind-affected descent */
+@keyframes petalFall {
+  0%   { transform: translate3d(0, -5vh, 0) rotate(0deg) scale(1); opacity: 0.8; }
+  25%  { transform: translate3d(15px, 25vh, 0) rotate(90deg) scale(0.95); opacity: 0.7; }
+  50%  { transform: translate3d(-10px, 55vh, 0) rotate(200deg) scale(0.9); opacity: 0.5; }
+  75%  { transform: translate3d(20px, 80vh, 0) rotate(320deg) scale(0.85); opacity: 0.3; }
+  100% { transform: translate3d(5px, 110vh, 0) rotate(420deg) scale(0.8); opacity: 0; }
+}
+
+/* Sparkle — twinkle in and out */
+@keyframes sparkle {
+  0%, 100% { transform: scale3d(0, 0, 1) rotate(0deg); opacity: 0; }
+  50%      { transform: scale3d(1, 1, 1) rotate(180deg); opacity: 1; }
+}
+
+/* Heart float — rises and fades */
+@keyframes heartFloat {
+  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+  100% { transform: translate3d(0, -120px, 0) scale(0.4); opacity: 0; }
+}
+
+/* Cursor blink — typewriter */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* Hero title — cinematic entrance with scale + fade */
+@keyframes heroReveal {
+  0%   { opacity: 0; transform: translate3d(0, 30px, 0) scale(0.95); }
+  60%  { opacity: 1; transform: translate3d(0, -3px, 0) scale(1.01); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* Image reveal — scale from slightly zoomed */
+@keyframes imageReveal {
+  from { opacity: 0; transform: scale3d(1.08, 1.08, 1); }
+  to   { opacity: 1; transform: scale3d(1, 1, 1); }
+}
+
+/* Card entrance — rise with subtle rotation */
+@keyframes cardReveal {
+  from { opacity: 0; transform: translate3d(0, 40px, 0) rotate(1deg); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+/* Loader fade out */
+@keyframes loaderExit {
+  to { opacity: 0; transform: scale3d(1.02, 1.02, 1); }
+}
+
+/* Section divider line grow */
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Countdown digit flip feel */
+@keyframes digitPop {
+  0%   { transform: scale3d(1, 1, 1); }
+  50%  { transform: scale3d(1.15, 1.15, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+/* ==========================================================================
+   AOS (Animate On Scroll) — Premium Scroll Reveal System
+   
+   GPU-accelerated transforms only.
+   Cinematic easing on every transition.
+   Stagger delays create visual rhythm.
+   ========================================================================== */
+
+/* Base state — hidden, promoted to own layer */
+[data-aos] {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-duration: var(--duration-normal);
+  transition-timing-function: var(--ease-out-expo);
+}
+
+/* Revealed state */
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+/* ===== Fade Up — Primary entrance ===== */
+[data-aos="fade-up"] {
+  transform: translate3d(0, 60px, 0) scale3d(0.98, 0.98, 1);
+}
+
+/* ===== Fade Down ===== */
+[data-aos="fade-down"] {
+  transform: translate3d(0, -50px, 0);
+}
+
+/* ===== Fade Left — Slides from right ===== */
+[data-aos="fade-left"] {
+  transform: translate3d(80px, 0, 0);
+  transition-timing-function: var(--ease-cinematic);
+}
+
+/* ===== Fade Right — Slides from left ===== */
+[data-aos="fade-right"] {
+  transform: translate3d(-80px, 0, 0);
+  transition-timing-function: var(--ease-cinematic);
+}
+
+/* ===== Scale — Breathes in ===== */
+[data-aos="scale"] {
+  transform: scale3d(0.88, 0.88, 1);
+  transition-duration: var(--duration-slow);
+  transition-timing-function: var(--ease-smooth);
+}
+
+/* ===== Zoom — Dramatic ===== */
+[data-aos="zoom"] {
+  transform: scale3d(0.6, 0.6, 1);
+  transition-duration: var(--duration-slow);
+  transition-timing-function: var(--ease-spring);
+}
+
+/* ===== Blur Reveal — Soft focus to sharp ===== */
+/* Note: filter is not GPU-composited in all browsers,
+   so we pair it with transform for layer promotion */
+[data-aos="blur"] {
+  transform: translate3d(0, 20px, 0) scale3d(0.97, 0.97, 1);
+  transition-duration: var(--duration-slow);
+}
+
+/* ===== Stagger Delay System — Creates visual cascade ===== */
+[data-aos-delay="100"] { transition-delay: var(--stagger-2); }
+[data-aos-delay="200"] { transition-delay: var(--stagger-3); }
+[data-aos-delay="300"] { transition-delay: var(--stagger-4); }
+[data-aos-delay="400"] { transition-delay: var(--stagger-5); }
+[data-aos-delay="500"] { transition-delay: var(--stagger-6); }
+[data-aos-delay="600"] { transition-delay: var(--stagger-7); }
+[data-aos-delay="700"] { transition-delay: var(--stagger-8); }
+
+/* ==========================================================================
+   HERO — Cinematic Opening Sequence
+   ========================================================================== */
+
+.hero__content [data-aos] {
+  transition-duration: var(--duration-slower);
+  transition-timing-function: var(--ease-out-expo);
+}
+
+.hero__title {
+  animation: heroReveal var(--duration-cinematic) var(--ease-out-expo) 0.5s both;
+}
+
+.hero__subtitle {
+  animation: fadeUp var(--duration-slower) var(--ease-out-expo) 1.2s both;
+}
+
+.hero__scroll {
+  animation: fadeIn var(--duration-slow) var(--ease-out) 2s both;
+}
+
+/* Hero background — slow cinematic zoom */
+.hero__bg img {
+  animation: imageReveal var(--duration-cinematic) var(--ease-smooth) both;
+  transform-origin: center center;
+}
+
+/* ==========================================================================
+   UTILITY ANIMATIONS — Looping, Ambient Motion
+   ========================================================================== */
+
+/* Organic float — for decorative elements */
+.anim-float {
+  animation: float 6s var(--ease-in-out) infinite;
+  will-change: transform;
+}
+
+/* Gentle pulse — for attention without urgency */
+.anim-pulse {
+  animation: pulse 3s var(--ease-in-out) infinite;
+  will-change: transform, opacity;
+}
+
+/* Scroll indicator — inviting downward */
+.scroll-indicator__dot {
+  animation: scrollDown 2.2s var(--ease-in-out-circ) infinite;
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================
+   INTERACTIVE TRANSITIONS — Hover & Active States
+   ========================================================================== */
+
+/* Card hover — lift with depth */
+.card,
+.event__card,
+.gift__card,
+.wishes__card,
+.timeline__card {
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              box-shadow var(--duration-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.card:hover,
+.event__card:hover,
+.gift__card:hover,
+.wishes__card:hover,
+.timeline__card:hover {
+  transform: translate3d(0, -6px, 0);
+}
+
+/* Button hover — spring-like lift */
+.btn {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              opacity var(--duration-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translate3d(0, -3px, 0) scale3d(1.02, 1.02, 1);
+}
+
+.btn:active {
+  transform: translate3d(0, 0, 0) scale3d(0.98, 0.98, 1);
+  transition-duration: 0.1s;
+}
+
+/* Gallery item — smooth zoom on hover */
+.gallery__item img {
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+  will-change: transform;
+}
+
+.gallery__item:hover img {
+  transform: scale3d(1.06, 1.06, 1);
+}
+
+/* Portrait hover — subtle scale */
+.couple__portrait {
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+  will-change: transform;
+}
+
+.couple__portrait:hover {
+  transform: scale3d(1.04, 1.04, 1);
+}
+
+/* Social links — spring bounce */
+.social-link {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              opacity var(--duration-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.social-link:hover {
+  transform: translate3d(0, -4px, 0) scale3d(1.1, 1.1, 1);
+}
+
+/* Copy button feedback */
+.copy-btn {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              opacity var(--duration-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.copy-btn:active {
+  transform: scale3d(0.95, 0.95, 1);
+}
+
+/* ==========================================================================
+   COUNTDOWN — Digit Animation
+   ========================================================================== */
+
+.countdown__number {
+  transition: transform 0.3s var(--ease-spring);
+  will-change: transform;
+  display: inline-block;
+}
+
+/* Applied via JS when digit changes */
+.countdown__number.pop {
+  animation: digitPop 0.4s var(--ease-spring);
+}
+
+/* ==========================================================================
+   TIMELINE — Cinematic Line & Card Reveals
+   ========================================================================== */
+
+.timeline__line {
+  transform-origin: top center;
+  transform: scaleY(0);
+  transition: transform var(--duration-cinematic) var(--ease-reveal);
+  will-change: transform;
+}
+
+.timeline__line.animate {
+  transform: scaleY(1);
+}
+
+.timeline__dot {
+  transform: translate3d(0, -50%, 0) scale3d(0, 0, 1);
+  transition: transform var(--duration-normal) var(--ease-spring);
+  will-change: transform;
+}
+
+.timeline__item.aos-animate .timeline__dot {
+  transform: translate3d(0, -50%, 0) scale3d(1, 1, 1);
+}
+
+/* ==========================================================================
+   LIGHTBOX — Smooth Open/Close
+   ========================================================================== */
+
+.lightbox {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-out-expo);
+  will-change: opacity;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox__img {
+  transform: scale3d(0.92, 0.92, 1);
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+  will-change: transform;
+}
+
+.lightbox.active .lightbox__img {
+  transform: scale3d(1, 1, 1);
+}
+
+/* ==========================================================================
+   LOADER — Cinematic Exit
+   ========================================================================== */
+
+.loader {
+  transition: opacity var(--duration-slow) var(--ease-out-expo),
+              transform var(--duration-slow) var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.loader.hidden {
+  opacity: 0;
+  transform: scale3d(1.03, 1.03, 1);
+  pointer-events: none;
+}
+
+.loader__bar {
+  transition: transform var(--duration-fast) var(--ease-out);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   SPECIAL EFFECTS — Petals, Particles, Cursor
+   ========================================================================== */
+
+/* Flower petals container — no pointer events, GPU layer */
+.flowers-canvas,
+.particles-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  will-change: auto;
+}
+
+/* Cursor glow — smooth follow via JS transform */
+.cursor-glow {
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(231, 200, 160, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: var(--z-base);
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-out);
+  will-change: transform;
+}
+
+.cursor-glow.visible {
+  opacity: 1;
+}
+
+/* Background gradient — slow ambient motion */
+.bg-gradient-anim {
+  background: linear-gradient(270deg, var(--color-primary), var(--color-accent), var(--color-primary));
+  background-size: 400% 400%;
+  animation: gradientShift 12s var(--ease-in-out) infinite;
+}
+
+/* ==========================================================================
+   SECTION TRANSITIONS — Smooth entrance as sections come into view
+   ========================================================================== */
+
+.section {
+  will-change: auto;
+}
+
+/* Divider line animation */
+.divider__line {
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+  will-change: transform;
+}
+
+.section.in-view .divider__line,
+[data-aos].aos-animate .divider__line {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
+   MUSIC TOGGLE — Ambient breathing
+   ========================================================================== */
+
+.music-toggle {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              opacity var(--duration-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.music-toggle:hover {
+  transform: scale3d(1.12, 1.12, 1);
+}
+
+.music-toggle:active {
+  transform: scale3d(0.92, 0.92, 1);
+  transition-duration: 0.1s;
+}
+
+/* Playing state — subtle pulse to indicate active audio */
+.music-toggle.playing {
+  animation: pulse 3s var(--ease-in-out) infinite;
+}
+
+/* ==========================================================================
+   REDUCED MOTION — Respect user preferences
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.2s !important;
+    transition-delay: 0ms !important;
+  }
+
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

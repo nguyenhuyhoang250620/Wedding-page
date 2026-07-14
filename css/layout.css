@@ -1,0 +1,542 @@
+/* ==========================================================================
+   Layout
+   Premium page structure with generous whitespace.
+   Inspired by Apple's breathing room, Stripe's clarity, Airbnb's warmth.
+   ========================================================================== */
+
+html, body {
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+}
+
+/* Main container */
+.main {
+  position: relative;
+  width: 100%;
+}
+
+/* Section base — generous vertical padding creates premium feel */
+.section {
+  position: relative;
+  padding: var(--space-2xl) var(--space-md);
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  overflow: hidden;
+}
+
+/* Constrained content width — narrower for focus */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container--narrow {
+  max-width: 720px;
+}
+
+/* Section header — more space below for visual separation */
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+/* ==========================================================================
+   HERO — Fullscreen cinematic opening
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #2a2220 0%, #4a3a34 50%, #3A2E2A 100%);
+  z-index: -1;
+}
+
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(0,0,0,0.1) 0%, 
+    transparent 40%, 
+    transparent 60%, 
+    rgba(0,0,0,0.3) 100%);
+  z-index: 1;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.hero__content {
+  position: relative;
+  z-index: var(--z-base);
+  max-width: 600px;
+  padding: var(--space-lg);
+}
+
+.hero__title {
+  font-size: var(--fs-hero);
+  margin: var(--space-md) 0;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.hero__subtitle {
+  font-size: var(--fs-h3);
+  opacity: 0.8;
+  margin-top: var(--space-sm);
+  letter-spacing: 0.02em;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ==========================================================================
+   COUPLE — Side by side portraits with generous spacing
+   ========================================================================== */
+.couple {
+  background: var(--color-secondary);
+}
+
+.couple__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.couple__person {
+  text-align: center;
+  padding: var(--space-md) 0;
+}
+
+.couple__portrait {
+  width: 220px;
+  height: 220px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: 0 auto var(--space-lg);
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 20px 60px rgba(196, 143, 101, 0.15);
+}
+
+.couple__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.couple__person h3 {
+  font-size: var(--fs-h2);
+  margin-bottom: 0.3rem;
+}
+
+.couple__person .text-italic {
+  font-size: var(--fs-body);
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.couple__person > p:last-child {
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: var(--fs-body);
+}
+
+/* ==========================================================================
+   TIMELINE — Alternating cards with vertical line
+   ========================================================================== */
+.timeline__wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-md) 0;
+}
+
+.timeline__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-primary);
+  transform: translateX(-50%);
+  opacity: 0.6;
+}
+
+.timeline__item {
+  position: relative;
+  width: 50%;
+  padding: var(--space-lg) var(--space-xl);
+}
+
+.timeline__item:nth-child(odd) {
+  margin-left: auto;
+  text-align: left;
+}
+
+.timeline__item:nth-child(even) {
+  text-align: right;
+}
+
+.timeline__card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(231, 200, 160, 0.15);
+}
+
+.timeline__card h3 {
+  margin: var(--space-sm) 0 var(--space-xs);
+  font-size: 1.4rem;
+}
+
+.timeline__card p {
+  font-size: 0.95rem;
+}
+
+.timeline__dot {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent);
+  border: 3px solid var(--color-bg);
+  border-radius: var(--radius-full);
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 4px rgba(196, 143, 101, 0.15);
+}
+
+.timeline__item:nth-child(odd) .timeline__dot { left: -6px; }
+.timeline__item:nth-child(even) .timeline__dot { right: -6px; }
+
+/* ==========================================================================
+   GALLERY — Masonry grid with refined spacing
+   ========================================================================== */
+.gallery__grid {
+  columns: 3;
+  column-gap: var(--space-md);
+}
+
+.gallery__item {
+  break-inside: avoid;
+  margin-bottom: var(--space-md);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.gallery__item img {
+  width: 100%;
+  display: block;
+}
+
+/* ==========================================================================
+   VIDEO — Cinematic container
+   ========================================================================== */
+.video__wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  max-width: 960px;
+  margin: 0 auto;
+  box-shadow: 0 30px 80px rgba(58, 46, 42, 0.15);
+}
+
+.video__wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   COUNTDOWN — Centered, spacious digit display
+   ========================================================================== */
+.countdown {
+  background: var(--color-secondary);
+  text-align: center;
+}
+
+.countdown__grid {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+}
+
+.countdown__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.countdown__number {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 600;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.countdown__label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: var(--space-sm);
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   EVENT — Two elegant cards side by side
+   ========================================================================== */
+.event__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.event__card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(231, 200, 160, 0.12);
+}
+
+.event__card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0;
+}
+
+.event__card .text-sans {
+  margin-top: var(--space-xs);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.event__card .text-sans strong {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   GIFT — Clean bank info cards
+   ========================================================================== */
+.gift__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.gift__card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(231, 200, 160, 0.12);
+}
+
+.gift__card h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-xs);
+}
+
+.gift__card .text-sans {
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  opacity: 0.8;
+}
+
+.gift__qr {
+  width: 140px;
+  height: 140px;
+  margin: var(--space-lg) auto;
+  background: var(--color-secondary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   WISHES — Testimonial-style cards
+   ========================================================================== */
+.wishes__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.wishes__card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(231, 200, 160, 0.1);
+}
+
+/* ==========================================================================
+   FOOTER — Minimal, elegant closing
+   ========================================================================== */
+.footer {
+  background: var(--color-text);
+  color: var(--color-white);
+  text-align: center;
+  padding: 6rem var(--space-md);
+}
+
+.footer__social {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.footer .text-script {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   LIGHTBOX — Fullscreen image viewer
+   ========================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.96);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__img {
+  max-width: 85vw;
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
+
+.lightbox__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  padding: var(--space-md);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.lightbox__btn:hover {
+  opacity: 1;
+}
+
+.lightbox__btn--prev { left: var(--space-md); }
+.lightbox__btn--next { right: var(--space-md); }
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+.lightbox__close:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   MUSIC TOGGLE — Fixed floating button
+   ========================================================================== */
+.music-toggle {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: var(--color-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-overlay);
+  box-shadow: 0 8px 32px rgba(58, 46, 42, 0.1);
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   LOADER — Centered, minimal
+   ========================================================================== */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-loader);
+  gap: var(--space-lg);
+}
+
+.loader .text-script {
+  font-size: var(--fs-h3);
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.loader__progress {
+  width: 120px;
+  height: 1px;
+  background: rgba(58, 46, 42, 0.1);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loader__bar {
+  height: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}

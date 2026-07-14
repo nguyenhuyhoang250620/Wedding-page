@@ -1,0 +1,83 @@
+/* ==========================================================================
+   CSS Variables (Design Tokens)
+   Central source of truth for colors, fonts, spacing, and animation values.
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-primary: #E7C8A0;
+  --color-secondary: #F8F3EF;
+  --color-text: #3A2E2A;
+  --color-bg: #FFFDFB;
+  --color-accent: #C48F65;
+  --color-white: #FFFFFF;
+  --color-overlay: rgba(58, 46, 42, 0.6);
+  --color-glass: rgba(255, 253, 251, 0.75);
+  --color-glass-border: rgba(231, 200, 160, 0.3);
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-sans: 'Poppins', sans-serif;
+
+  /* Font Sizes — Fluid, generous scale */
+  --fs-hero: clamp(3.5rem, 9vw, 7.5rem);
+  --fs-h1: clamp(2.5rem, 5vw, 4.5rem);
+  --fs-h2: clamp(2.2rem, 4.5vw, 3.8rem);
+  --fs-h3: clamp(1.4rem, 2.5vw, 1.8rem);
+  --fs-body: clamp(1rem, 1.2vw, 1.15rem);
+  --fs-small: clamp(0.8rem, 0.9vw, 0.9rem);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 10rem;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(58, 46, 42, 0.06);
+  --shadow-md: 0 8px 32px rgba(58, 46, 42, 0.08);
+  --shadow-lg: 0 16px 64px rgba(58, 46, 42, 0.12);
+
+  /* Transitions — Cinematic Easing Curves */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.45, 0, 0.15, 1);
+  --ease-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-reveal: cubic-bezier(0.5, 0, 0, 1);
+
+  /* Duration — Intentional Timing */
+  --duration-fast: 0.4s;
+  --duration-normal: 0.8s;
+  --duration-slow: 1.2s;
+  --duration-slower: 1.8s;
+  --duration-cinematic: 2.4s;
+
+  /* Stagger — Cascade Delays */
+  --stagger-1: 0ms;
+  --stagger-2: 80ms;
+  --stagger-3: 160ms;
+  --stagger-4: 240ms;
+  --stagger-5: 320ms;
+  --stagger-6: 400ms;
+  --stagger-7: 480ms;
+  --stagger-8: 560ms;
+
+  /* Z-index layers */
+  --z-base: 1;
+  --z-overlay: 100;
+  --z-modal: 500;
+  --z-loader: 1000;
+  --z-cursor: 9999;
+}
