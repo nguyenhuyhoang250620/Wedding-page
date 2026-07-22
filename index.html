@@ -238,22 +238,69 @@
       <button class="lightbox__btn lightbox__btn--next" aria-label="Ảnh tiếp">&#10095;</button>
     </div>
 
-    <!-- 5. Video -->
-    <section class="section" id="video" aria-label="Phim cưới">
+    <!-- 5. Slideshow -->
+    <section class="section" id="slideshow" aria-label="Khoảnh khắc đôi mình">
       <div class="container">
         <header class="section-header" data-aos="fade-up-blur">
-          <p class="section-label">Phim Cưới</p>
-          <h2 class="section-title">Tình Yêu Qua Ống Kính</h2>
+          <p class="section-label">Khoảnh Khắc</p>
+          <h2 class="section-title">Đôi Mình Bên Nhau</h2>
           <div class="title-flourish" aria-hidden="true">
             <span class="title-flourish__line"></span>
             <span class="title-flourish__dot"></span>
             <span class="title-flourish__line"></span>
           </div>
         </header>
-        <div class="video__wrapper" data-aos="scale" data-aos-delay="200">
-          <video autoplay muted loop playsinline poster="assets/images/video-poster.jpg" width="1920" height="1080" aria-label="Video kỷ niệm ngày cưới">
-            <source src="assets/video/wedding.mp4" type="video/mp4">
-          </video>
+
+        <div class="slideshow" data-aos="fade-up" data-aos-delay="200" aria-label="Slideshow ảnh cưới">
+          <div class="slideshow__track">
+            <div class="slideshow__slide active">
+              <img src="assets/images/gallery-1.jpg" alt="Khoảnh khắc 1">
+              <div class="slideshow__caption">Ngày Đầu Gặp Gỡ</div>
+            </div>
+            <div class="slideshow__slide">
+              <img src="assets/images/gallery-2.jpg" alt="Khoảnh khắc 2">
+              <div class="slideshow__caption">Buổi Hẹn Đầu Tiên</div>
+            </div>
+            <div class="slideshow__slide">
+              <img src="assets/images/gallery-3.jpg" alt="Khoảnh khắc 3">
+              <div class="slideshow__caption">Cùng Nhau Dạo Bước</div>
+            </div>
+            <div class="slideshow__slide">
+              <img src="assets/images/gallery-4.jpg" alt="Khoảnh khắc 4">
+              <div class="slideshow__caption">Lời Cầu Hôn</div>
+            </div>
+            <div class="slideshow__slide">
+              <img src="assets/images/gallery-5.jpg" alt="Khoảnh khắc 5">
+              <div class="slideshow__caption">Hạnh Phúc Mãi Mãi</div>
+            </div>
+            <div class="slideshow__slide">
+              <img src="assets/images/gallery-6.jpg" alt="Khoảnh khắc 6">
+              <div class="slideshow__caption">Ngày Trọng Đại</div>
+            </div>
+          </div>
+
+          <!-- Dots -->
+          <div class="slideshow__dots" aria-hidden="true">
+            <button class="slideshow__dot active" data-index="0"></button>
+            <button class="slideshow__dot" data-index="1"></button>
+            <button class="slideshow__dot" data-index="2"></button>
+            <button class="slideshow__dot" data-index="3"></button>
+            <button class="slideshow__dot" data-index="4"></button>
+            <button class="slideshow__dot" data-index="5"></button>
+          </div>
+
+          <!-- Arrows -->
+          <button class="slideshow__arrow slideshow__arrow--prev" aria-label="Ảnh trước">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15,18 9,12 15,6"/></svg>
+          </button>
+          <button class="slideshow__arrow slideshow__arrow--next" aria-label="Ảnh tiếp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,18 15,12 9,6"/></svg>
+          </button>
+
+          <!-- Progress bar -->
+          <div class="slideshow__progress" aria-hidden="true">
+            <div class="slideshow__progress-bar"></div>
+          </div>
         </div>
       </div>
     </section>

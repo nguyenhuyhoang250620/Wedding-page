@@ -13,6 +13,7 @@ import Typing from './typing.js';
 import Flowers from './flowers.js';
 import SplitText from './splitText.js';
 import Magnetic from './magnetic.js';
+import Slideshow from './slideshow.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initEnvelopeCover();
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   Music.init(data?.music);
   Flowers.init();
   Magnetic.init();
+  Slideshow.init();
   initCountdown(data?.wedding?.date);
   initCopyButtons();
   initLazyImages();

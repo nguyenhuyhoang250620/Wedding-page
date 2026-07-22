@@ -575,3 +575,47 @@
   [data-aos] { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
   .split-text__char { opacity: 1 !important; transform: none !important; }
 }
+
+/* ==========================================================================
+   SLIDESHOW — per-slide enter animations
+   ========================================================================== */
+
+.slideshow__slide {
+  transition: opacity 0.15s ease;
+}
+
+.slideshow__slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+@keyframes slide-slide-from-right {
+  from { opacity: 0; transform: translate3d(60px, 0, 0) scale(1.04); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes slide-slide-from-left {
+  from { opacity: 0; transform: translate3d(-60px, 0, 0) scale(1.04); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes slide-zoom-in {
+  from { opacity: 0; transform: scale(1.12); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-zoom-out {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-fade-up {
+  from { opacity: 0; transform: translate3d(0, 40px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slide-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
