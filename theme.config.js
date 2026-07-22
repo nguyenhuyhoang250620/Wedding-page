@@ -6,7 +6,7 @@
    Hoặc copy thủ công phần CSS variables vào css/variables.css
    ========================================================================== */
 
-const ACTIVE_THEME = 'sageGarden'; // ← ĐỔI TÊN THEME Ở ĐÂY
+const ACTIVE_THEME = 'midnightNavy'; // ← ĐỔI TÊN THEME Ở ĐÂY
 
 // ==========================================================================
 // 5 THEMES
@@ -249,16 +249,16 @@ function hexToRgb(hex) {
 }
 
 // Node.js: tự ghi file
-if (typeof require !== 'undefined' && require.main === module) {
-  const fs = require('fs');
-  const path = require('path');
-  const theme = themes[ACTIVE_THEME];
-  if (!theme) { console.error(`Theme "${ACTIVE_THEME}" không tồn tại. Chọn: ${Object.keys(themes).join(', ')}`); process.exit(1); }
-  const css = generateCSS(theme);
-  const outPath = path.join(__dirname, 'css', 'variables.css');
-  fs.writeFileSync(outPath, css, 'utf8');
-  console.log(`✅ Đã áp dụng theme "${theme.name}" → css/variables.css`);
-  console.log(`   ${theme.description}`);
+const fs = require('fs');
+const path = require('path');
+const theme = themes[ACTIVE_THEME];
+if (!theme) {
+  console.error(`Theme "${ACTIVE_THEME}" không tồn tại. Chọn: ${Object.keys(themes).join(', ')}`);
+  process.exit(1);
 }
-
-export { themes, generateCSS, ACTIVE_THEME };
+const css = generateCSS(theme);
+const outPath = path.join(__dirname, 'css', 'variables.css');
+fs.writeFileSync(outPath, css, 'utf8');
+console.log(`✅ Đã áp dụng theme "${theme.name}" → css/variables.css`);
+console.log(`   ${theme.description}`);
+console.log(`\nCác theme khác: ${Object.keys(themes).filter(k => k !== ACTIVE_THEME).join(', ')}`);
