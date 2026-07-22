@@ -1,18 +1,18 @@
 /* ==========================================================================
-   Typing Module
-   Typewriter effect with blinking cursor.
-   Types text character by character. No delete animation.
+   Typing — Optional typewriter effect for [data-typing] elements
+   Kept for backward compat. New design uses SplitText for the hero.
    ========================================================================== */
 
 const Typing = (() => {
-  /** Initialize all typewriter elements */
   function init() {
-    document.querySelectorAll('[data-typing]').forEach(el => {
+    const els = document.querySelectorAll('[data-typing]');
+    if (!els.length) return;
+
+    els.forEach(el => {
       const text = el.dataset.typing;
       const speed = parseInt(el.dataset.typingSpeed) || 80;
       el.textContent = '';
 
-      // Observe to start typing when visible
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -26,18 +26,16 @@ const Typing = (() => {
     });
   }
 
-  /** Type text into element character by character */
   function type(el, text, speed) {
     let i = 0;
-    // Add cursor
     const cursor = document.createElement('span');
     cursor.className = 'typewriter__cursor';
     el.parentNode.insertBefore(cursor, el.nextSibling);
 
-    const interval = setInterval(() => {
+    const iv = setInterval(() => {
       el.textContent += text[i];
       i++;
-      if (i >= text.length) clearInterval(interval);
+      if (i >= text.length) clearInterval(iv);
     }, speed);
   }
 

@@ -1,53 +1,52 @@
 /* ==========================================================================
-   Loader Module
-   Beautiful loading screen with GPU-accelerated progress animation.
-   Uses scaleX transform (not width) for 60fps bar animation.
-   Fades out with cinematic exit after all assets are loaded.
+   Loader — Envelope + Wax Seal choreography
    ========================================================================== */
 
 const Loader = (() => {
   let loaderEl, barEl, progress = 0;
+  let intervalId;
 
-  /** Initialize loader references */
   function init() {
     loaderEl = document.querySelector('.loader');
     barEl = document.querySelector('.loader__bar');
     if (!loaderEl) return;
     simulateProgress();
     window.addEventListener('load', complete);
+    // Safety timeout
+    setTimeout(() => { if (!loaderEl.classList.contains('hidden')) complete(); }, 6000);
   }
 
-  /** Simulate loading progress — uses scaleX for GPU compositing */
   function simulateProgress() {
-    const interval = setInterval(() => {
+    intervalId = setInterval(() => {
       progress += Math.random() * 12;
-      if (progress >= 90) {
-        progress = 90;
-        clearInterval(interval);
-      }
+      if (progress >= 90) { progress = 90; clearInterval(intervalId); }
       updateBar();
-    }, 250);
+    }, 240);
   }
 
-  /** Update progress bar using transform scaleX (GPU-only) */
   function updateBar() {
-    if (barEl) {
-      barEl.style.transform = `scaleX(${Math.min(progress, 100) / 100})`;
-    }
+    if (barEl) barEl.style.transform = `scaleX(${Math.min(progress, 100) / 100})`;
   }
 
-  /** Complete loading — cinematic exit */
   function complete() {
+    if (loaderEl.classList.contains('hidden')) return;
+    clearInterval(intervalId);
     progress = 100;
     updateBar();
-    // Allow bar to finish, then exit
+
+    // Trigger envelope opening sequence
+    setTimeout(() => {
+      loaderEl.classList.add('opening');
+    }, 350);
+
+    // Fade out loader after choreography
     setTimeout(() => {
       loaderEl.classList.add('hidden');
-      // Restore scroll after transition completes
       setTimeout(() => {
         document.body.style.overflow = '';
-      }, 1200);
-    }, 400);
+        loaderEl.remove();
+      }, 900);
+    }, 1900);
   }
 
   return { init };

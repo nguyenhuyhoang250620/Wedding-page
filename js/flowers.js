@@ -1,19 +1,20 @@
 /* ==========================================================================
-   Flowers & Effects Module
-   Falling petals + cursor glow. Pauses when tab is hidden.
+   Ambient Effects — Falling petals + cursor glow
+   Ivory rose palette. Petals use CSS animation, spawned in bursts.
    ========================================================================== */
 
 const Flowers = (() => {
-  const MAX_PETALS = 10;
-  const SPAWN_INTERVAL = 4500;
-  const COLORS = ['#E7C8A0', '#F8F3EF', '#C48F65', '#f4dfc8', '#eddcc8'];
+  const MAX_PETALS = 35;
+  const SPAWN_INTERVAL = 1200;
+  const COLORS = ['#F0D0D0', '#E0A8A8', '#C0464A', '#F9EAEA', '#FDF6F6', '#8B2326', '#F5C0C0', '#D47070'];
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let container, intervalId, rafId;
 
   function init() {
+    if (reduced) return;
     createPetals();
     createCursorGlow();
 
-    // Pause effects when tab is hidden
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         clearInterval(intervalId);
@@ -30,22 +31,22 @@ const Flowers = (() => {
     container.setAttribute('aria-hidden', 'true');
     document.body.appendChild(container);
 
-    for (let i = 0; i < 8; i++) setTimeout(() => spawnPetal(), i * 700);
+    for (let i = 0; i < 14; i++) setTimeout(() => spawnPetal(), i * 400);
     intervalId = setInterval(() => spawnPetal(), SPAWN_INTERVAL);
   }
 
   function spawnPetal() {
-    // Limit DOM nodes
     if (container.children.length >= MAX_PETALS) return;
 
     const petal = document.createElement('div');
-    const size = 6 + Math.random() * 10;
-    const duration = 10 + Math.random() * 8;
-    const delay = Math.random() * 2;
+    const size = 7 + Math.random() * 11;
+    const duration = 12 + Math.random() * 9;
+    const delay = Math.random() * 1.5;
+    const opacity = 0.35 + Math.random() * 0.35;
 
     Object.assign(petal.style, {
       position: 'absolute',
-      top: '-20px',
+      top: '-24px',
       left: `${Math.random() * 100}%`,
       width: `${size}px`,
       height: `${size}px`,
@@ -53,8 +54,13 @@ const Flowers = (() => {
       borderRadius: '50% 0 50% 50%',
       opacity: '0',
       pointerEvents: 'none',
+      boxShadow: '0 2px 4px rgba(139, 111, 71, 0.15)',
+      willChange: 'transform, opacity',
       animation: `petalFall ${duration}s cubic-bezier(0.45, 0, 0.15, 1) ${delay}s forwards`
     });
+
+    // Randomize final opacity via CSS custom
+    petal.style.setProperty('--o', opacity);
 
     container.appendChild(petal);
     petal.addEventListener('animationend', () => petal.remove(), { once: true });
@@ -81,8 +87,8 @@ const Flowers = (() => {
     }, { passive: true });
 
     function update() {
-      glowX += (mouseX - glowX) * 0.06;
-      glowY += (mouseY - glowY) * 0.06;
+      glowX += (mouseX - glowX) * 0.08;
+      glowY += (mouseY - glowY) * 0.08;
       glow.style.transform = `translate3d(${glowX - 175}px, ${glowY - 175}px, 0)`;
       rafId = requestAnimationFrame(update);
     }

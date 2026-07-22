@@ -1,145 +1,221 @@
 /* ==========================================================================
-   Animations — Awwwards Quality Motion System
+   MASTER ANIMATIONS — Cinema-grade motion system
    
-   PRINCIPLES:
-   • GPU-only: transform + opacity exclusively
-   • 60fps: no layout thrashing, no forced reflows
-   • Cinematic easing: no linear motion, every curve is intentional
-   • Stagger: cascading reveals create rhythm and hierarchy
-   • Restraint: subtle > flashy, elegance > excess
+   Principles:
+   • GPU-only: transform, opacity, clip-path, filter
+   • Silky easing — no linear motion
+   • Layered cascades — parent reveal → child stagger
+   • Ambient life — subtle idle motion for warmth
    ========================================================================== */
 
 /* ==========================================================================
-   KEYFRAMES — Core Motion Vocabulary
+   KEYFRAMES
    ========================================================================== */
 
-/* Cinematic fade — slow opacity with slight vertical drift */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translate3d(0, 0, 0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate3d(0, 60px, 0); }
   to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
-/* Elegant rise — the signature entrance */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translate3d(0, 60px, 0) scale(0.98); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+@keyframes fadeUpBlur {
+  from { opacity: 0; transform: translate3d(0, 40px, 0); filter: blur(10px); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
 }
 
-/* Gentle pulse — alive but not distracting */
-@keyframes pulse {
-  0%, 100% { transform: scale3d(1, 1, 1); opacity: 1; }
-  50%      { transform: scale3d(1.03, 1.03, 1); opacity: 0.85; }
-}
-
-/* Scroll indicator — smooth bounce */
-@keyframes scrollDown {
-  0%   { transform: translate3d(0, 0, 0); opacity: 1; }
-  50%  { transform: translate3d(0, 10px, 0); opacity: 0.4; }
-  100% { transform: translate3d(0, 0, 0); opacity: 1; }
-}
-
-/* Petal fall — organic, wind-affected descent */
-@keyframes petalFall {
-  0%   { transform: translate3d(0, -5vh, 0) rotate(0deg) scale(1); opacity: 0.8; }
-  25%  { transform: translate3d(15px, 25vh, 0) rotate(90deg) scale(0.95); opacity: 0.7; }
-  50%  { transform: translate3d(-10px, 55vh, 0) rotate(200deg) scale(0.9); opacity: 0.5; }
-  75%  { transform: translate3d(20px, 80vh, 0) rotate(320deg) scale(0.85); opacity: 0.3; }
-  100% { transform: translate3d(5px, 110vh, 0) rotate(420deg) scale(0.8); opacity: 0; }
-}
-
-/* Cursor blink — typewriter */
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50%      { opacity: 0; }
 }
 
-/* Hero title — cinematic entrance with scale + fade */
+/* Hero title cinematic reveal */
 @keyframes heroReveal {
-  0%   { opacity: 0; transform: translate3d(0, 30px, 0) scale(0.95); }
-  60%  { opacity: 1; transform: translate3d(0, -3px, 0) scale(1.01); }
-  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  0%   { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.94); filter: blur(12px); }
+  60%  { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.01); filter: blur(0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
 }
 
-/* Image reveal — scale from slightly zoomed */
-@keyframes imageReveal {
-  from { opacity: 0; transform: scale3d(1.08, 1.08, 1); }
-  to   { opacity: 1; transform: scale3d(1, 1, 1); }
+/* Hero background — slow ken burns */
+@keyframes kenBurns {
+  0%   { transform: scale(1.12) translate3d(0, 0, 0); }
+  100% { transform: scale(1) translate3d(0, 0, 0); }
 }
 
-/* Countdown digit flip feel */
+/* Gentle floating for monogram / seal */
+@keyframes floatY {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -6px, 0); }
+}
+
+/* Slow rotate for accent rings */
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Digit pop for countdown */
 @keyframes digitPop {
-  0%   { transform: scale3d(1, 1, 1); }
-  50%  { transform: scale3d(1.15, 1.15, 1); }
-  100% { transform: scale3d(1, 1, 1); }
+  0%   { transform: translate3d(0, 8px, 0); opacity: 0.4; }
+  60%  { transform: translate3d(0, -3px, 0); opacity: 1; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+/* Petal fall */
+@keyframes petalFall {
+  0%   { transform: translate3d(0, -5vh, 0) rotate(0deg) scale(1); opacity: 0; }
+  10%  { opacity: 0.8; }
+  50%  { transform: translate3d(-10px, 55vh, 0) rotate(200deg) scale(0.9); opacity: 0.5; }
+  100% { transform: translate3d(20px, 110vh, 0) rotate(420deg) scale(0.8); opacity: 0; }
+}
+
+/* Shimmer for wax seal */
+@keyframes sealShine {
+  0%, 100% { box-shadow: 0 10px 24px rgba(184, 147, 92, 0.5), inset 0 0 0 3px rgba(255,255,255,0.3), inset 0 -4px 10px rgba(139, 111, 71, 0.5); }
+  50%      { box-shadow: 0 14px 32px rgba(184, 147, 92, 0.7), inset 0 0 0 3px rgba(255,255,255,0.5), inset 0 -4px 10px rgba(139, 111, 71, 0.5); }
+}
+
+/* Character reveal for split-text */
+@keyframes charIn {
+  from { opacity: 0; transform: translate3d(0, 60%, 0) rotate(-6deg); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+/* Word reveal */
+@keyframes wordIn {
+  from { opacity: 0; transform: translate3d(0, 100%, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Clip reveal — mask sliding from left */
+@keyframes clipReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+/* Image reveal — clip + zoom */
+@keyframes imageReveal {
+  from { clip-path: inset(0 0 100% 0); transform: scale(1.15); }
+  to   { clip-path: inset(0 0 0 0); transform: scale(1); }
+}
+
+/* Gold shimmer sweep */
+@keyframes goldSweep {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+/* Scroll dot bounce */
+@keyframes scrollDown {
+  0%   { transform: translate3d(-50%, 0, 0); opacity: 1; }
+  50%  { transform: translate3d(-50%, 10px, 0); opacity: 0.3; }
+  100% { transform: translate3d(-50%, 0, 0); opacity: 1; }
+}
+
+/* Loader envelope choreography */
+@keyframes envFlapOpen {
+  0%   { transform: rotateX(0deg); }
+  30%  { transform: rotateX(0deg); }
+  100% { transform: rotateX(180deg); }
+}
+
+@keyframes envSealPop {
+  0%   { transform: translate(-50%, -50%) scale(0) rotate(-30deg); opacity: 0; }
+  40%  { transform: translate(-50%, -50%) scale(0) rotate(-30deg); opacity: 0; }
+  70%  { transform: translate(-50%, -50%) scale(1.15) rotate(6deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(0); opacity: 1; }
+}
+
+@keyframes envLift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+  100% { transform: translate3d(0, -40px, 0) scale(1.06); opacity: 0; }
+}
+
+/* Underline draw */
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
 /* ==========================================================================
-   AOS (Animate On Scroll) — Premium Scroll Reveal System
-   
-   GPU-accelerated transforms only.
-   Cinematic easing on every transition.
-   Stagger delays create visual rhythm.
+   AOS — SCROLL REVEAL
    ========================================================================== */
 
-/* Base state — hidden, GPU-promoted only during transition */
 [data-aos] {
   opacity: 0;
-  transition-property: transform, opacity;
+  transition-property: transform, opacity, filter, clip-path;
   transition-duration: var(--duration-normal);
   transition-timing-function: var(--ease-out-expo);
+  will-change: transform, opacity;
 }
 
-/* Revealed state */
 [data-aos].aos-animate {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  filter: blur(0);
+  clip-path: inset(0 0 0 0);
 }
 
-/* ===== Fade Up — Primary entrance ===== */
+/* Fade Up — primary entrance */
 [data-aos="fade-up"] {
-  transform: translate3d(0, 60px, 0) scale3d(0.98, 0.98, 1);
+  transform: translate3d(0, 60px, 0);
 }
 
-/* ===== Fade Down ===== */
-[data-aos="fade-down"] {
-  transform: translate3d(0, -50px, 0);
+/* Fade Up with soft blur — silky */
+[data-aos="fade-up-blur"] {
+  transform: translate3d(0, 50px, 0);
+  filter: blur(10px);
+  transition-duration: var(--duration-slow);
 }
 
-/* ===== Fade Left — Slides from right ===== */
-[data-aos="fade-left"] {
-  transform: translate3d(80px, 0, 0);
-  transition-timing-function: var(--ease-cinematic);
-}
+[data-aos="fade-down"] { transform: translate3d(0, -50px, 0); }
 
-/* ===== Fade Right — Slides from left ===== */
-[data-aos="fade-right"] {
-  transform: translate3d(-80px, 0, 0);
-  transition-timing-function: var(--ease-cinematic);
-}
+[data-aos="fade-left"]  { transform: translate3d(80px, 0, 0); transition-timing-function: var(--ease-cinematic); }
+[data-aos="fade-right"] { transform: translate3d(-80px, 0, 0); transition-timing-function: var(--ease-cinematic); }
 
-/* ===== Scale — Breathes in ===== */
 [data-aos="scale"] {
-  transform: scale3d(0.88, 0.88, 1);
+  transform: scale3d(0.86, 0.86, 1);
   transition-duration: var(--duration-slow);
   transition-timing-function: var(--ease-smooth);
 }
 
-/* ===== Zoom — Dramatic ===== */
 [data-aos="zoom"] {
   transform: scale3d(0.6, 0.6, 1);
   transition-duration: var(--duration-slow);
   transition-timing-function: var(--ease-spring);
 }
 
-/* ===== Blur Reveal — Soft focus to sharp ===== */
-/* Note: filter is not GPU-composited in all browsers,
-   so we pair it with transform for layer promotion */
-[data-aos="blur"] {
-  transform: translate3d(0, 20px, 0) scale3d(0.97, 0.97, 1);
+/* Clip-mask reveal — image or block */
+[data-aos="clip-up"] {
+  clip-path: inset(0 0 100% 0);
+  transform: translate3d(0, 20px, 0);
   transition-duration: var(--duration-slow);
+  transition-timing-function: var(--ease-reveal);
+}
+[data-aos="clip-up"].aos-animate {
+  clip-path: inset(0 0 0 0);
 }
 
-/* ===== Stagger Delay System — Creates visual cascade ===== */
+[data-aos="clip-right"] {
+  clip-path: inset(0 100% 0 0);
+  transition-duration: var(--duration-slow);
+  transition-timing-function: var(--ease-reveal);
+}
+[data-aos="clip-right"].aos-animate {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Rise (like fade-up but softer) */
+[data-aos="rise"] {
+  transform: translate3d(0, 30px, 0) scale(0.98);
+  transition-duration: var(--duration-slow);
+  transition-timing-function: var(--ease-silk);
+}
+
+/* Stagger delays */
 [data-aos-delay="100"] { transition-delay: var(--stagger-2); }
 [data-aos-delay="200"] { transition-delay: var(--stagger-3); }
 [data-aos-delay="300"] { transition-delay: var(--stagger-4); }
@@ -149,130 +225,197 @@
 [data-aos-delay="700"] { transition-delay: var(--stagger-8); }
 
 /* ==========================================================================
-   HERO — Cinematic Opening Sequence
+   SPLIT-TEXT — per-character / per-word reveal
    ========================================================================== */
 
-.hero__content [data-aos] {
-  transition-duration: var(--duration-slower);
-  transition-timing-function: var(--ease-out-expo);
+.split-text {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.split-text__word {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.split-text__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 105%, 0);
+  transition:
+    opacity 0.6s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+  will-change: transform, opacity;
+}
+
+.split-text.reveal .split-text__char {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ==========================================================================
+   HERO ANIMATIONS
+   ========================================================================== */
+
+.hero__monogram {
+  animation: fadeUpBlur var(--duration-slower) var(--ease-out-expo) 0.4s both,
+             floatY 6s var(--ease-in-out) 2.5s infinite;
+}
+
+.hero__eyebrow {
+  animation: fadeUp var(--duration-slow) var(--ease-out-expo) 0.8s both;
+}
+
+.hero__script {
+  animation: fadeUpBlur var(--duration-slower) var(--ease-out-expo) 1s both;
 }
 
 .hero__title {
-  animation: heroReveal var(--duration-cinematic) var(--ease-out-expo) 0.5s both;
+  animation: heroReveal var(--duration-cinematic) var(--ease-out-expo) 1.2s both;
+}
+
+.hero__meta {
+  animation: fadeUp var(--duration-slower) var(--ease-out-expo) 1.6s both;
 }
 
 .hero__subtitle {
-  animation: fadeUp var(--duration-slower) var(--ease-out-expo) 1.2s both;
+  animation: fadeUp var(--duration-slower) var(--ease-out-expo) 1.9s both;
 }
 
 .hero__scroll {
-  animation: fadeIn var(--duration-slow) var(--ease-out) 2s both;
+  animation: fadeIn var(--duration-slow) var(--ease-out) 2.3s both;
 }
 
-/* Hero background — slow cinematic zoom */
 .hero__bg img {
-  animation: imageReveal var(--duration-cinematic) var(--ease-smooth) both;
+  animation: kenBurns 30s var(--ease-out) infinite alternate;
   transform-origin: center center;
 }
 
 /* ==========================================================================
-   UTILITY ANIMATIONS — Looping, Ambient Motion
+   AMBIENT MOTION
    ========================================================================== */
 
 .scroll-indicator__dot {
   animation: scrollDown 2.2s var(--ease-in-out-circ) infinite;
 }
 
+.hero__monogram::before {
+  animation: rotateSlow 40s linear infinite;
+}
+
+.event__icon {
+  animation: floatY 5s var(--ease-in-out) infinite;
+}
+
+.event__card:nth-child(2) .event__icon { animation-delay: 1.5s; }
+
+.gift__qr {
+  animation: floatY 6s var(--ease-in-out) infinite;
+  animation-delay: 0.8s;
+}
+
 /* ==========================================================================
-   INTERACTIVE TRANSITIONS — Hover & Active States
+   INTERACTIVE — Hover & Active states
    ========================================================================== */
 
-/* Card hover — lift with depth */
+/* Card lift on hover */
 .card,
 .event__card,
 .gift__card,
 .wishes__card,
-.timeline__card {
-  transition: transform var(--duration-fast) var(--ease-out-expo),
-              box-shadow var(--duration-fast) var(--ease-out);
+.timeline__card,
+.countdown__item,
+.couple__person {
+  transition:
+    transform 0.6s var(--ease-out-expo),
+    box-shadow 0.6s var(--ease-out-expo);
+  will-change: transform;
 }
 
 .card:hover,
 .event__card:hover,
 .gift__card:hover,
 .wishes__card:hover,
-.timeline__card:hover {
-  transform: translate3d(0, -6px, 0);
+.timeline__card:hover,
+.couple__person:hover {
+  transform: translate3d(0, -8px, 0);
+  box-shadow: 0 32px 90px -12px rgba(74, 54, 40, 0.22), 0 8px 20px rgba(74, 54, 40, 0.08);
 }
 
-/* Button hover — spring-like lift */
+/* Tilt-enabled cards use JS-controlled --tx/--ty for parallax */
+[data-tilt] {
+  transition: transform 0.6s var(--ease-out-expo);
+  transform-style: preserve-3d;
+}
+
+[data-tilt].tilting {
+  transition: transform 0.15s var(--ease-out);
+  transform:
+    perspective(900px)
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    translate3d(0, -6px, 0);
+}
+
+/* Magnetic button — JS moves the label via --mx/--my */
 .btn {
-  transition: transform var(--duration-fast) var(--ease-spring),
-              opacity var(--duration-fast) var(--ease-out);
+  transition: transform 0.5s var(--ease-spring);
 }
 
-.btn:hover {
-  transform: translate3d(0, -3px, 0) scale3d(1.02, 1.02, 1);
+.btn[data-magnetic].magnetic-active {
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0);
+  transition: transform 0.2s var(--ease-out);
 }
 
-.btn:active {
-  transform: translate3d(0, 0, 0) scale3d(0.98, 0.98, 1);
-  transition-duration: 0.1s;
-}
+.btn:active { transform: scale3d(0.97, 0.97, 1); }
 
-/* Gallery item — smooth zoom on hover */
+/* Gallery zoom */
 .gallery__item img {
-  transition: transform var(--duration-slow) var(--ease-out-expo);
+  transition: transform 1.2s var(--ease-out-expo);
 }
-
 .gallery__item:hover img {
-  transform: scale3d(1.06, 1.06, 1);
+  transform: scale3d(1.08, 1.08, 1);
 }
 
-/* Portrait hover — subtle scale */
+/* Portrait */
 .couple__portrait {
-  transition: transform var(--duration-normal) var(--ease-out-expo);
+  transition: transform 0.8s var(--ease-out-expo);
+}
+.couple__person:hover .couple__portrait {
+  transform: scale3d(1.03, 1.03, 1);
 }
 
-.couple__portrait:hover {
-  transform: scale3d(1.04, 1.04, 1);
-}
-
-/* Social links — spring bounce */
+/* Social */
 .social-link {
-  transition: transform var(--duration-fast) var(--ease-spring),
-              opacity var(--duration-fast) var(--ease-out);
+  transition: transform 0.5s var(--ease-spring), background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
-
 .social-link:hover {
-  transform: translate3d(0, -4px, 0) scale3d(1.1, 1.1, 1);
+  transform: translate3d(0, -5px, 0) scale3d(1.1, 1.1, 1);
 }
 
-/* Copy button feedback */
+/* Copy button */
 .copy-btn {
-  transition: transform var(--duration-fast) var(--ease-spring),
-              opacity var(--duration-fast) var(--ease-out);
+  transition: transform 0.4s var(--ease-spring), background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
-
-.copy-btn:active {
-  transform: scale3d(0.95, 0.95, 1);
-}
+.copy-btn:active { transform: scale3d(0.95, 0.95, 1); }
 
 /* ==========================================================================
-   COUNTDOWN — Digit Animation
+   COUNTDOWN
    ========================================================================== */
 
 .countdown__number {
   display: inline-block;
+  will-change: transform, opacity;
 }
 
-/* Applied via JS when digit changes */
 .countdown__number.pop {
-  animation: digitPop 0.4s var(--ease-spring);
+  animation: digitPop 0.5s var(--ease-out-expo);
 }
 
 /* ==========================================================================
-   TIMELINE — Cinematic Line & Card Reveals
+   TIMELINE
    ========================================================================== */
 
 .timeline__line {
@@ -287,7 +430,7 @@
 
 .timeline__dot {
   transform: translate3d(0, -50%, 0) scale3d(0, 0, 1);
-  transition: transform var(--duration-normal) var(--ease-spring);
+  transition: transform 0.7s var(--ease-spring) 0.3s;
 }
 
 .timeline__item.aos-animate .timeline__dot {
@@ -295,13 +438,13 @@
 }
 
 /* ==========================================================================
-   LIGHTBOX — Smooth Open/Close
+   LIGHTBOX
    ========================================================================== */
 
 .lightbox {
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--duration-normal) var(--ease-out-expo);
+  transition: opacity 0.6s var(--ease-out-expo);
 }
 
 .lightbox.active {
@@ -310,8 +453,8 @@
 }
 
 .lightbox__img {
-  transform: scale3d(0.92, 0.92, 1);
-  transition: transform var(--duration-normal) var(--ease-out-expo);
+  transform: scale3d(0.9, 0.9, 1);
+  transition: transform 0.7s var(--ease-out-expo);
 }
 
 .lightbox.active .lightbox__img {
@@ -319,30 +462,47 @@
 }
 
 /* ==========================================================================
-   LOADER — Cinematic Exit
+   LOADER — Envelope choreography
    ========================================================================== */
 
 .loader {
-  transition: opacity var(--duration-slow) var(--ease-out-expo),
-              transform var(--duration-slow) var(--ease-out-expo);
+  transition: opacity 0.9s var(--ease-out-expo), visibility 0s linear 0.9s;
 }
 
 .loader.hidden {
   opacity: 0;
-  transform: scale3d(1.03, 1.03, 1);
+  visibility: hidden;
   pointer-events: none;
 }
 
+.loader__seal {
+  animation: envSealPop 1.2s var(--ease-spring) 0.4s both,
+             sealShine 3s ease-in-out 1.6s infinite;
+}
+
+.loader__stage {
+  transition: transform 0.9s var(--ease-out-expo), opacity 0.9s var(--ease-out-expo);
+}
+
+.loader.opening .loader__flap {
+  animation: envFlapOpen 1.1s var(--ease-out-expo) forwards;
+}
+
+.loader.opening .loader__stage {
+  transform: translate3d(0, -30px, 0) scale(1.04);
+  opacity: 0;
+  transition-delay: 0.7s;
+}
+
 .loader__bar {
-  transition: transform var(--duration-fast) var(--ease-out);
+  transition: transform 0.4s var(--ease-out);
   transform-origin: left center;
 }
 
 /* ==========================================================================
-   SPECIAL EFFECTS — Petals, Particles, Cursor
+   SPECIAL EFFECTS
    ========================================================================== */
 
-/* Flower petals container */
 .flowers-canvas {
   position: fixed;
   inset: 0;
@@ -350,61 +510,59 @@
   z-index: var(--z-overlay);
 }
 
-/* Cursor glow — JS controls transform */
 .cursor-glow {
   position: fixed;
   width: 350px;
   height: 350px;
-  border-radius: var(--radius-full);
-  background: radial-gradient(circle, rgba(231, 200, 160, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 184, 150, 0.16) 0%, transparent 70%);
   pointer-events: none;
   transform: translate3d(-50%, -50%, 0);
   z-index: var(--z-base);
   opacity: 0;
-  transition: opacity var(--duration-slow) var(--ease-out);
+  transition: opacity 1.2s var(--ease-out);
+  mix-blend-mode: multiply;
 }
 
-.cursor-glow.visible {
-  opacity: 1;
-}
+.cursor-glow.visible { opacity: 1; }
 
-/* Divider line animation */
-.divider__line {
+/* Divider line draw */
+.divider__line,
+.title-flourish__line {
   transform-origin: center;
   transform: scaleX(0);
-  transition: transform var(--duration-normal) var(--ease-out-expo);
+  transition: transform 1s var(--ease-out-expo) 0.2s;
 }
 
-.section.in-view .divider__line,
-[data-aos].aos-animate .divider__line {
+[data-aos].aos-animate .divider__line,
+[data-aos].aos-animate .title-flourish__line,
+.aos-animate .divider__line,
+.aos-animate .title-flourish__line,
+.section-header.aos-animate .title-flourish__line {
   transform: scaleX(1);
 }
 
 /* ==========================================================================
-   MUSIC TOGGLE — Ambient breathing
+   MUSIC TOGGLE
    ========================================================================== */
 
 .music-toggle {
-  transition: transform var(--duration-fast) var(--ease-spring),
-              opacity var(--duration-fast) var(--ease-out);
+  transition: transform 0.4s var(--ease-spring);
+}
+.music-toggle:hover { transform: scale3d(1.12, 1.12, 1); }
+.music-toggle:active { transform: scale3d(0.92, 0.92, 1); }
+
+@keyframes musicPulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(184, 147, 92, 0.35), inset 0 0 0 2px rgba(255,255,255,0.35), 0 0 0 0 rgba(184,147,92,0.5); }
+  70%      { box-shadow: 0 12px 30px rgba(184, 147, 92, 0.35), inset 0 0 0 2px rgba(255,255,255,0.35), 0 0 0 22px rgba(184,147,92,0); }
 }
 
-.music-toggle:hover {
-  transform: scale3d(1.12, 1.12, 1);
-}
-
-.music-toggle:active {
-  transform: scale3d(0.92, 0.92, 1);
-  transition-duration: 0.1s;
-}
-
-/* Playing state — subtle pulse to indicate active audio */
 .music-toggle.playing {
-  animation: pulse 3s var(--ease-in-out) infinite;
+  animation: musicPulse 2.2s ease-out infinite;
 }
 
 /* ==========================================================================
-   REDUCED MOTION — Respect user preferences
+   REDUCED MOTION
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -414,9 +572,6 @@
     transition-duration: 0.2s !important;
     transition-delay: 0ms !important;
   }
-
-  [data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  [data-aos] { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
+  .split-text__char { opacity: 1 !important; transform: none !important; }
 }

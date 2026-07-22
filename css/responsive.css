@@ -1,96 +1,46 @@
 /* ==========================================================================
-   Responsive
-   Graceful degradation maintaining premium feel at every breakpoint.
+   Responsive — Graceful degradation
    ========================================================================== */
 
-/* ===== LAPTOP (max-width: 1200px) ===== */
 @media (max-width: 1200px) {
-  .container {
-    padding: 0 var(--space-md);
-  }
-
-  .couple__grid {
-    gap: 4rem;
-  }
+  .container { padding: 0 var(--space-md); }
+  .couple__grid { gap: 2rem; }
 }
 
-/* ===== TABLET (max-width: 1024px) ===== */
 @media (max-width: 1024px) {
-  .section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-
-  .section-header {
-    margin-bottom: 4rem;
-  }
-
-  .gallery__grid {
-    columns: 2;
-    column-gap: var(--space-sm);
-  }
-
-  .gallery__item {
-    margin-bottom: var(--space-sm);
-  }
-
-  .countdown__grid {
-    gap: 3rem;
-  }
-
-  .timeline__item {
-    padding: var(--space-md) var(--space-lg);
-  }
-
-  .wishes__grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .section { padding-top: 6rem; padding-bottom: 6rem; }
+  .section-header { margin-bottom: 3.5rem; }
+  .gallery__grid { columns: 2; column-gap: var(--space-sm); }
+  .gallery__item { margin-bottom: var(--space-sm); }
+  .countdown__grid { gap: 1.4rem; }
+  .countdown__item { min-width: 100px; padding: 1.4rem 1.1rem; }
+  .timeline__item { padding: var(--space-md) 2rem; }
+  .wishes__grid { grid-template-columns: 1fr 1fr; }
+  .hero__meta { gap: 1rem; }
+  .hero__meta-num { font-size: 2rem; }
 }
 
-/* ===== MOBILE (max-width: 768px) ===== */
 @media (max-width: 768px) {
-  .section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
+  .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .container { padding: 0 var(--space-sm); }
+  .section-header { margin-bottom: 3rem; }
 
-  .container {
-    padding: 0 var(--space-sm);
-  }
+  /* Hero */
+  .hero { min-height: 100vh; min-height: 100dvh; padding: 5rem var(--space-sm); }
+  .hero__content { padding: var(--space-md) var(--space-sm); }
+  .hero__monogram { width: 78px; height: 78px; font-size: 1.15rem; }
+  .hero__script { font-size: clamp(2.4rem, 9vw, 3.8rem); }
+  .hero__title { font-size: clamp(2.4rem, 10vw, 4rem); }
+  .hero__meta { flex-direction: column; gap: 0.6rem; }
+  .hero__meta-sep { display: none; }
 
-  .section-header {
-    margin-bottom: 3rem;
-  }
+  /* Couple stacks */
+  .couple__grid { grid-template-columns: 1fr; gap: 2.4rem; }
+  .couple__portrait { width: 180px; height: 180px; }
+  .couple__amp { position: static; transform: none; margin: -12px auto; }
 
-  /* Hero adjustments */
-  .hero__content {
-    padding: var(--space-md);
-  }
-
-  .hero__title {
-    font-size: clamp(2.5rem, 10vw, 4rem);
-  }
-
-  /* Couple stacks vertically */
-  .couple__grid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-
-  .couple__portrait {
-    width: 180px;
-    height: 180px;
-  }
-
-  .couple__person h3 {
-    font-size: var(--fs-h3);
-  }
-
-  /* Timeline becomes single column */
-  .timeline__line {
-    left: 16px;
-  }
-
+  /* Timeline single column */
+  .timeline__line { left: 16px; }
   .timeline__item,
   .timeline__item:nth-child(odd),
   .timeline__item:nth-child(even) {
@@ -99,11 +49,7 @@
     padding-right: 0;
     text-align: left;
   }
-
-  .timeline__item:nth-child(odd) {
-    margin-left: 0;
-  }
-
+  .timeline__item:nth-child(odd) { margin-left: 0; }
   .timeline__item .timeline__dot,
   .timeline__item:nth-child(odd) .timeline__dot,
   .timeline__item:nth-child(even) .timeline__dot {
@@ -111,110 +57,39 @@
     right: auto;
   }
 
-  /* Gallery single column */
-  .gallery__grid {
-    columns: 1;
-  }
+  .gallery__grid { columns: 1; }
 
-  /* Event stacks */
-  .event__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-  }
+  .event__grid,
+  .gift__grid { grid-template-columns: 1fr; gap: var(--space-md); }
 
-  /* Gift stacks */
-  .gift__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-  }
+  .countdown__grid { gap: 0.8rem; }
+  .countdown__item { min-width: calc(50% - 0.4rem); padding: 1.2rem 0.6rem; }
+  .countdown__number { font-size: clamp(2.2rem, 10vw, 3.2rem); }
 
-  /* Countdown */
-  .countdown__grid {
-    gap: var(--space-lg);
-  }
+  .wishes__grid { grid-template-columns: 1fr; }
 
-  .countdown__number {
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
-  }
+  .video__wrapper { border-radius: var(--radius-md); }
 
-  /* Wishes single column */
-  .wishes__grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Video */
-  .video__wrapper {
-    border-radius: var(--radius-md);
-  }
-
-  /* Lightbox */
-  .lightbox__img {
-    max-width: 95vw;
-    max-height: 80vh;
-    border-radius: var(--radius-sm);
-  }
-
-  .lightbox__btn {
-    font-size: 1.2rem;
-    padding: var(--space-sm);
-  }
-
+  .lightbox__img { max-width: 95vw; max-height: 80vh; border-radius: var(--radius-sm); }
+  .lightbox__btn { font-size: 1.2rem; padding: var(--space-sm); }
   .lightbox__btn--prev { left: var(--space-xs); }
   .lightbox__btn--next { right: var(--space-xs); }
+  .lightbox__close { top: var(--space-md); right: var(--space-md); }
 
-  .lightbox__close {
-    top: var(--space-md);
-    right: var(--space-md);
-  }
+  .music-toggle { bottom: var(--space-md); right: var(--space-md); width: 48px; height: 48px; }
 
-  /* Music toggle */
-  .music-toggle {
-    bottom: var(--space-md);
-    right: var(--space-md);
-    width: 46px;
-    height: 46px;
-  }
+  .footer { padding: 4rem var(--space-md); }
 
-  /* Footer */
-  .footer {
-    padding: 4rem var(--space-md);
-  }
+  .invite-card { padding: 2rem 1.4rem; }
+  .invite-card__corner { width: 32px; height: 32px; }
 }
 
-/* ===== SMALL MOBILE (max-width: 480px) ===== */
 @media (max-width: 480px) {
-  .section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-
-  .couple__portrait {
-    width: 150px;
-    height: 150px;
-  }
-
-  .event__card {
-    padding: 2rem 1.5rem;
-  }
-
-  .gift__card {
-    padding: 2rem 1.5rem;
-  }
-
-  .gift__qr {
-    width: 110px;
-    height: 110px;
-  }
-
-  .countdown__grid {
-    gap: var(--space-md);
-  }
-
-  .timeline__card {
-    padding: var(--space-md);
-  }
-
-  .wishes__card {
-    padding: var(--space-md);
-  }
+  .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .couple__portrait { width: 150px; height: 150px; }
+  .event__card, .gift__card { padding: 2rem 1.4rem; }
+  .gift__qr { width: 110px; height: 110px; }
+  .timeline__card { padding: var(--space-md) 1.2rem; }
+  .wishes__card { padding: var(--space-md) 1.2rem; }
+  .loader__stage { transform: scale(0.85); }
 }

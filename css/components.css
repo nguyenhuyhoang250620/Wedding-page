@@ -1,65 +1,65 @@
 /* ==========================================================================
-   Components
-   Premium UI components with refined proportions.
-   Inspired by Stripe's clarity and Framer's polish.
+   Components — Buttons, badges, dividers, misc
    ========================================================================== */
 
 /* ===== BUTTONS ===== */
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  padding: 1em 2.4em;
+  padding: 1em 2.6em;
   border-radius: 50px;
   position: relative;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+  will-change: transform;
 }
 
-.btn:hover {
-  box-shadow: var(--shadow-md);
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-gold-shine);
+  transform: translateX(-100%);
+  transition: transform 0.9s var(--ease-out-expo);
+  pointer-events: none;
 }
 
-.btn:active {
-  box-shadow: none;
-}
+.btn:hover::before { transform: translateX(100%); }
 
 .btn--primary {
-  background: var(--color-accent);
+  background: var(--grad-gold);
   color: var(--color-white);
+  box-shadow: 0 10px 24px rgba(184, 147, 92, 0.3);
 }
 
 .btn--outline {
-  border: 1px solid rgba(196, 143, 101, 0.4);
-  color: var(--color-accent);
+  border: 1px solid rgba(184, 147, 92, 0.5);
+  color: var(--color-gold);
   background: transparent;
 }
 
 .btn--outline:hover {
-  background: var(--color-accent);
+  background: var(--color-gold);
   color: var(--color-white);
-  border-color: var(--color-accent);
+  border-color: var(--color-gold);
 }
 
 /* ===== CARDS ===== */
-
 .card {
-  background: var(--color-white);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDF9F1 100%);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  box-shadow: var(--shadow-sm);
-}
-
-.card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
 }
 
 /* ===== DIVIDER — Elegant separator ===== */
-
 .divider {
   display: flex;
   align-items: center;
@@ -69,42 +69,63 @@
 }
 
 .divider__line {
-  width: 40px;
+  width: 46px;
   height: 1px;
-  background: var(--color-primary);
-  opacity: 0.6;
-}
-
-.divider__icon {
-  font-size: 0.8rem;
-  color: var(--color-accent);
+  background: var(--color-champagne);
   opacity: 0.7;
 }
 
-/* ===== BADGE — Year/date pill ===== */
+.divider__icon {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  opacity: 0.8;
+}
 
+/* Ornate title divider (used inside section headers) */
+.title-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 1rem;
+}
+.title-flourish__line {
+  width: 60px;
+  height: 1px;
+  background: var(--color-champagne);
+  opacity: 0.65;
+}
+.title-flourish__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  opacity: 0.75;
+}
+
+/* ===== BADGE ===== */
 .badge {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  padding: 0.4em 1.2em;
+  padding: 0.45em 1.3em;
   border-radius: 50px;
-  background: var(--color-secondary);
-  color: var(--color-accent);
-  letter-spacing: 0.08em;
+  background: var(--color-cream);
+  color: var(--color-gold);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  border: 1px solid rgba(184, 147, 92, 0.25);
 }
 
 /* ===== SCROLL INDICATOR ===== */
-
 .scroll-indicator {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  color: var(--color-white);
-  opacity: 0.6;
+  color: var(--color-gold);
+  opacity: 0.75;
 }
 
 .scroll-indicator__mouse {
@@ -128,42 +149,43 @@
 
 .scroll-indicator__text {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.32em;
 }
 
 /* ===== COPY BUTTON ===== */
-
 .copy-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 0.6em 1.6em;
+  padding: 0.7em 1.8em;
   border-radius: 50px;
-  background: var(--color-secondary);
-  color: var(--color-text);
+  background: var(--color-cream);
+  color: var(--color-gold-deep);
   margin-top: var(--space-md);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid rgba(184, 147, 92, 0.28);
+  cursor: pointer;
 }
 
 .copy-btn:hover {
-  background: var(--color-primary);
-}
-
-.copy-btn.copied {
-  background: var(--color-accent);
+  background: var(--color-champagne);
   color: var(--color-white);
 }
 
-/* ===== TYPEWRITER ===== */
-
-.typewriter {
-  display: inline;
+.copy-btn.copied {
+  background: var(--color-gold);
+  color: var(--color-white);
+  border-color: var(--color-gold);
 }
+
+/* ===== TYPEWRITER ===== */
+.typewriter { display: inline; }
 
 .typewriter__cursor {
   display: inline-block;
@@ -176,57 +198,57 @@
 }
 
 /* ===== EVENT ICON ===== */
-
 .event__icon {
-  width: 56px;
-  height: 56px;
+  width: 66px;
+  height: 66px;
   margin: 0 auto var(--space-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  background: var(--color-secondary);
-  font-size: 1.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--grad-gold);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  box-shadow: 0 10px 24px rgba(184, 147, 92, 0.3), inset 0 0 0 3px rgba(255,255,255,0.3);
 }
 
 /* ===== SOCIAL LINK ===== */
-
 .social-link {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 184, 150, 0.4);
+  display: grid;
+  place-items: center;
   font-size: 1rem;
+  color: var(--color-champagne);
 }
 
 .social-link:hover {
-  background: rgba(231, 200, 160, 0.2);
-  border-color: rgba(231, 200, 160, 0.4);
+  background: rgba(212, 184, 150, 0.15);
+  border-color: var(--color-champagne);
+  color: var(--color-white);
 }
 
 /* ===== WISH CARD ===== */
-
 .wishes__card-author {
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   margin-bottom: var(--space-sm);
-  color: var(--color-accent);
-  letter-spacing: 0.02em;
+  color: var(--color-gold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 .wishes__card-text {
   font-style: italic;
-  line-height: 1.8;
-  font-size: var(--fs-body);
-  opacity: 0.8;
+  line-height: 1.85;
+  font-size: 1.05rem;
+  opacity: 0.85;
+  color: var(--color-sepia);
 }
 
 /* ===== MAP BUTTON ===== */
-
 .map-btn {
   display: inline-flex;
   align-items: center;

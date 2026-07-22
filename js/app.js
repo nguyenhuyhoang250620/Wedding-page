@@ -1,7 +1,6 @@
 /* ==========================================================================
    App.js — Main Entry Point
-   Fetches data.json and renders all dynamic content.
-   Orchestrates modules. Handles countdown, copy, and lazy loading.
+   Boots modules, hydrates from data.json.
    ========================================================================== */
 
 import Loader from './loader.js';
@@ -12,15 +11,20 @@ import Parallax from './parallax.js';
 import Timeline from './timeline.js';
 import Typing from './typing.js';
 import Flowers from './flowers.js';
+import SplitText from './splitText.js';
+import Magnetic from './magnetic.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  initEnvelopeCover();
+
   document.body.style.overflow = 'hidden';
   Loader.init();
 
-  // Fetch all wedding data from JSON
   const data = await fetchData();
   if (data) renderContent(data);
 
+  // Order matters: SplitText prepares DOM before AOS observes
+  SplitText.init();
   AOS.init();
   Parallax.init();
   Timeline.init();
@@ -28,52 +32,82 @@ document.addEventListener('DOMContentLoaded', async () => {
   Gallery.init();
   Music.init(data?.music);
   Flowers.init();
+  Magnetic.init();
   initCountdown(data?.wedding?.date);
   initCopyButtons();
   initLazyImages();
 });
 
-/* ==========================================================================
-   Fetch Data — Loads data.json
-   ========================================================================== */
+/* ---------- Envelope Cover ---------- */
+function initEnvelopeCover() {
+  const cover = document.getElementById('envelope-cover');
+  if (!cover) return;
+
+  function openCover() {
+    cover.classList.add('opening');
+    setTimeout(() => cover.classList.add('gone'), 900);
+  }
+
+  cover.addEventListener('click', openCover);
+  cover.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openCover(); });
+}
+
+/* ---------- data.json ---------- */
 async function fetchData() {
   try {
     const res = await fetch('data.json');
     return await res.json();
   } catch (e) {
-    console.warn('data.json not found, using HTML defaults.');
+    console.warn('data.json missing, using HTML defaults.');
     return null;
   }
 }
 
-/* ==========================================================================
-   Render Content — Populates HTML from data.json
-   ========================================================================== */
+/* ---------- Hydrate DOM from data.json ---------- */
 function renderContent(data) {
   const { couple, wedding, events, timeline, gallery, gift, wishes, social, hero, video, sections, ui } = data;
 
-  // Hero
+  // Hero background image
   if (hero) {
     const heroImg = document.querySelector('.hero__bg img');
     if (heroImg) { heroImg.src = hero.backgroundImage; heroImg.alt = hero.backgroundAlt; }
   }
+
+  // Hero content
   if (wedding) {
-    setText('.hero__subtitle', wedding.dateDisplay);
-    const heroLabel = document.querySelector('#hero .section-label');
-    if (heroLabel) heroLabel.textContent = wedding.heroLabel;
-    const typingEl = document.querySelector('[data-typing]');
-    if (typingEl) typingEl.dataset.typing = `${couple.groom.name} & ${couple.bride.name}`;
+    // Only replace subtitle if data provides it (keep design language)
+    // (design uses hero__subtitle for venue line — keep as is)
+  }
+
+  // Update monogram from couple names
+  if (couple) {
+    const initials = `${(couple.groom?.name || 'H')[0]}|${(couple.bride?.name || 'T')[0]}`.toUpperCase();
+    document.querySelectorAll('[data-monogram]').forEach(el => el.textContent = initials);
+
+    // Hero title
+    const heroTitle = document.querySelector('.hero__title [data-split-text]');
+    if (heroTitle) {
+      heroTitle.innerHTML = `${couple.groom.name} <span class="amp">&amp;</span> ${couple.bride.name}`;
+    }
+
+    // Footer name
+    const footerName = document.querySelector('.footer .text-script');
+    if (footerName) footerName.innerHTML = `${couple.groom.name} <span class="amp">&amp;</span> ${couple.bride.name}`;
+
+    // Loader title
+    const loaderName = document.querySelector('.loader__title');
+    if (loaderName) loaderName.textContent = `${couple.groom.name} & ${couple.bride.name}`;
   }
 
   // Section headers from sections config
   if (sections) {
-    const sectionMap = {
+    const map = {
       couple: '#couple', timeline: '#story', gallery: '#gallery',
       video: '#video', countdown: '#countdown', event: '#event',
       gift: '#gift', wishes: '#wishes'
     };
     Object.entries(sections).forEach(([key, val]) => {
-      const section = document.querySelector(sectionMap[key]);
+      const section = document.querySelector(map[key]);
       if (!section) return;
       const label = section.querySelector('.section-label');
       const title = section.querySelector('.section-title');
@@ -86,23 +120,16 @@ function renderContent(data) {
   if (ui) {
     const scrollText = document.querySelector('.scroll-indicator__text');
     if (scrollText) scrollText.textContent = ui.scrollText;
-    // Countdown labels
     if (ui.countdownLabels) {
       const labels = document.querySelectorAll('.countdown__label');
       const keys = ['days', 'hours', 'minutes', 'seconds'];
       labels.forEach((el, i) => { if (ui.countdownLabels[keys[i]]) el.textContent = ui.countdownLabels[keys[i]]; });
     }
-    // Map buttons
-    document.querySelectorAll('.map-btn').forEach(btn => {
-      if (ui.viewOnMaps) btn.textContent = ui.viewOnMaps;
-    });
-    // Copy buttons
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      if (ui.copyButton) btn.textContent = ui.copyButton;
-    });
+    document.querySelectorAll('.map-btn').forEach(btn => { if (ui.viewOnMaps) btn.textContent = ui.viewOnMaps; });
+    document.querySelectorAll('.copy-btn').forEach(btn => { if (ui.copyButton) btn.textContent = ui.copyButton; });
   }
 
-  // Couple
+  // Couple portraits + text
   if (couple) {
     const persons = document.querySelectorAll('.couple__person');
     const people = [couple.groom, couple.bride];
@@ -137,9 +164,9 @@ function renderContent(data) {
 
   // Gallery
   if (gallery) {
-    const galleryItems = document.querySelectorAll('.gallery__item img');
+    const items = document.querySelectorAll('.gallery__item img');
     gallery.forEach((img, i) => {
-      const el = galleryItems[i];
+      const el = items[i];
       if (!el) return;
       el.dataset.src = img.src;
       el.alt = img.alt;
@@ -161,9 +188,9 @@ function renderContent(data) {
   // Events
   if (events) {
     const cards = document.querySelectorAll('.event__card');
-    const eventList = [events.ceremony, events.reception];
+    const list = [events.ceremony, events.reception];
     cards.forEach((card, i) => {
-      const ev = eventList[i];
+      const ev = list[i];
       if (!ev) return;
       const icon = card.querySelector('.event__icon');
       if (icon) icon.textContent = ev.icon;
@@ -219,38 +246,17 @@ function renderContent(data) {
       link.textContent = s.icon;
     });
   }
-
-  // Footer name
-  if (couple) {
-    const footerName = document.querySelector('.footer .text-script');
-    if (footerName) footerName.textContent = `${couple.groom.name} & ${couple.bride.name}`;
-  }
-
-  // Loader name
-  if (couple) {
-    const loaderName = document.querySelector('.loader .text-script');
-    if (loaderName) loaderName.textContent = `${couple.groom.name} & ${couple.bride.name}`;
-  }
 }
 
-/** Helper: set text content of first matching element */
-function setText(selector, text, parent = document) {
-  const el = parent?.querySelector(selector);
-  if (el) el.textContent = text;
-}
-
-/* ==========================================================================
-   Countdown — Updates every second with digit pop animation
-   ========================================================================== */
+/* ---------- Countdown ---------- */
 function initCountdown(dateStr) {
-  const weddingDate = new Date(dateStr || '2025-12-20T10:00:00');
+  const weddingDate = new Date(dateStr || '2026-11-28T15:00:00');
   const els = {
     days: document.getElementById('countdown-days'),
     hours: document.getElementById('countdown-hours'),
     minutes: document.getElementById('countdown-minutes'),
     seconds: document.getElementById('countdown-seconds')
   };
-
   if (!els.days) return;
 
   const prev = { days: '', hours: '', minutes: '', seconds: '' };
@@ -261,23 +267,19 @@ function initCountdown(dateStr) {
       Object.values(els).forEach(el => { el.textContent = '0'; });
       return;
     }
-
     const values = {
       days: Math.floor(diff / 86400000),
       hours: Math.floor((diff % 86400000) / 3600000),
       minutes: Math.floor((diff % 3600000) / 60000),
       seconds: Math.floor((diff % 60000) / 1000)
     };
-
     Object.entries(values).forEach(([key, val]) => {
       const str = String(val);
       if (prev[key] !== str) {
         els[key].textContent = str;
-        els[key].style.animation = 'none';
-        requestAnimationFrame(() => {
-          els[key].style.animation = '';
-          els[key].classList.add('pop');
-        });
+        els[key].classList.remove('pop');
+        void els[key].offsetWidth; // reflow to restart animation
+        els[key].classList.add('pop');
         prev[key] = str;
       }
     });
@@ -287,43 +289,37 @@ function initCountdown(dateStr) {
   setInterval(update, 1000);
 }
 
-/* ==========================================================================
-   Copy to Clipboard — Preserves original button text
-   ========================================================================== */
+/* ---------- Copy to clipboard ---------- */
 function initCopyButtons() {
   document.querySelectorAll('.copy-btn').forEach(btn => {
-    const originalText = btn.textContent;
+    const original = btn.textContent;
     btn.addEventListener('click', () => {
       navigator.clipboard.writeText(btn.dataset.copy).then(() => {
         btn.classList.add('copied');
         btn.textContent = btn.dataset.copiedText || 'Đã sao chép!';
         setTimeout(() => {
           btn.classList.remove('copied');
-          btn.textContent = originalText;
+          btn.textContent = original;
         }, 2000);
       });
     });
   });
 }
 
-/* ==========================================================================
-   Lazy Loading — IntersectionObserver with decoding async
-   ========================================================================== */
+/* ---------- Lazy images ---------- */
 function initLazyImages() {
-  const images = document.querySelectorAll('img[data-src]');
-  if (!images.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
+  const imgs = document.querySelectorAll('img[data-src]');
+  if (!imgs.length) return;
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
         img.src = img.dataset.src;
         img.decoding = 'async';
         img.removeAttribute('data-src');
-        observer.unobserve(img);
+        obs.unobserve(img);
       }
     });
   }, { rootMargin: '300px' });
-
-  images.forEach(img => observer.observe(img));
+  imgs.forEach(img => obs.observe(img));
 }
