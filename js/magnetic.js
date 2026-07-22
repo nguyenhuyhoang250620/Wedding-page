@@ -39,6 +39,8 @@ const Magnetic = (() => {
       };
 
       const onLeave = () => {
+        cancelAnimationFrame(rafId);
+        rafId = null;
         state.mx = 0;
         state.my = 0;
         el.classList.remove('magnetic-active');
@@ -53,7 +55,7 @@ const Magnetic = (() => {
         rafId = null;
       };
 
-      window.addEventListener('mousemove', onMove, { passive: true });
+      el.addEventListener('mousemove', onMove, { passive: true });
       el.addEventListener('mouseleave', onLeave);
     });
   }
