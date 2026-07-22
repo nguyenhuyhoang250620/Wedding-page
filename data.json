@@ -124,11 +124,6 @@
     "volume": 0.4
   },
 
-  "video": {
-    "src": "assets/video/wedding.mp4",
-    "poster": "assets/images/video-poster.jpg"
-  },
-
   "hero": {
     "backgroundImage": "assets/images/hero-bg.jpg",
     "backgroundAlt": "Không gian tiệc cưới lãng mạn tràn ngập ánh vàng"
