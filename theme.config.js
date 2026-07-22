@@ -6,7 +6,7 @@
    Hoặc copy thủ công phần CSS variables vào css/variables.css
    ========================================================================== */
 
-const ACTIVE_THEME = 'emeraldForest'; // ← ĐỔI TÊN THEME Ở ĐÂY
+const ACTIVE_THEME = 'forestNight'; // ← ĐỔI TÊN THEME Ở ĐÂY
 
 // ==========================================================================
 // 5 THEMES
