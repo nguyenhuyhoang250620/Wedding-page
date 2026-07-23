@@ -1,95 +1,76 @@
 /* ==========================================================================
-   Responsive — Graceful degradation
+   Responsive — full-screen thiệp on every device
    ========================================================================== */
 
-@media (max-width: 1200px) {
-  .container { padding: 0 var(--space-md); }
-  .couple__grid { gap: 2rem; }
+/* Tablet & smaller */
+@media (max-width: 900px) {
+  .page { padding: 5vh 6vw; }
+  .page__inner { gap: 1rem; }
+
+  .book-cover { padding: 5vh 6vw; }
+  .book-cover__monogram { width: 82px; height: 82px; font-size: 1.15rem; }
+  .book-cover__title { font-size: clamp(2.6rem, 12vw, 4.6rem); }
+  .book-cover__names { font-size: clamp(1.1rem, 4vw, 1.6rem); letter-spacing: 0.2em; padding: 0.7rem 1.2rem; }
+  .book-cover__date { font-size: 0.78rem; letter-spacing: 0.32em; }
+
+  .welcome__monogram { width: 88px; height: 88px; font-size: 1.15rem; }
+
+  .couple { gap: 0.5rem; }
+  .couple__amp { margin-top: -1.4rem; }
+
+  .book-nav { gap: 0.5rem; padding: 0.4rem 0.6rem; }
+  .book-nav__arrow { width: 36px; height: 36px; }
+
+  .swipe-hint { bottom: 92px; font-size: 0.66rem; padding: 0.5rem 1rem; }
 }
 
-@media (max-width: 1024px) {
-  .section { padding-top: 6rem; padding-bottom: 6rem; }
-  .section-header { margin-bottom: 3.5rem; }
-  .gallery__grid { columns: 2; column-gap: var(--space-sm); }
-  .gallery__item { margin-bottom: var(--space-sm); }
-  .countdown__grid { gap: 1.4rem; }
-  .countdown__item { min-width: 100px; padding: 1.4rem 1.1rem; }
-  .timeline__item { padding: var(--space-md) 2rem; }
-  .wishes__grid { grid-template-columns: 1fr 1fr; }
-  .hero__meta { gap: 1rem; }
-  .hero__meta-num { font-size: 2rem; }
+/* Mobile */
+@media (max-width: 560px) {
+  .page { padding: 4vh 5vw; }
+  .page__inner { gap: 0.8rem; max-width: 100%; }
+
+  .page__label { font-size: 0.62rem; letter-spacing: 0.36em; }
+
+  .book-cover__monogram { width: 72px; height: 72px; font-size: 1rem; }
+  .book-cover__title { font-size: clamp(2.4rem, 13vw, 3.8rem); }
+  .book-cover__names { font-size: clamp(0.95rem, 4.4vw, 1.3rem); letter-spacing: 0.16em; padding: 0.6rem 1rem; }
+  .book-cover__cta { margin-top: 1.6rem; }
+
+  .welcome__monogram { width: 78px; height: 78px; font-size: 1.05rem; }
+  .welcome__names { font-size: clamp(1.4rem, 6.5vw, 2rem); }
+
+  .couple__portrait { width: clamp(100px, 24vw, 130px); height: clamp(100px, 24vw, 130px); }
+  .couple__amp { font-size: 2.4rem; margin-top: -1.2rem; }
+
+  .date-hero__num { font-size: clamp(3.2rem, 16vw, 4.4rem); }
+
+  .countdown { gap: 0.5rem; }
+  .countdown__item { padding: 0.9rem 0.4rem; }
+  .countdown__number { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  .countdown__label { font-size: 0.54rem; letter-spacing: 0.2em; }
+
+  .invite__body,
+  .thanks__body { font-size: 1.05rem; line-height: 1.8; }
+  .rsvp__text { font-size: 0.95rem; line-height: 1.75; }
+  .event-line__value { font-size: 0.95rem; }
 }
 
-@media (max-width: 768px) {
-  .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
-  .container { padding: 0 var(--space-sm); }
-  .section-header { margin-bottom: 3rem; }
-
-  /* Hero */
-  .hero { min-height: 100vh; min-height: 100dvh; padding: 5rem var(--space-sm); }
-  .hero__content { padding: var(--space-md) var(--space-sm); }
-  .hero__monogram { width: 78px; height: 78px; font-size: 1.15rem; }
-  .hero__script { font-size: clamp(2.4rem, 9vw, 3.8rem); }
-  .hero__title { font-size: clamp(2.4rem, 10vw, 4rem); }
-  .hero__meta { flex-direction: column; gap: 0.6rem; }
-  .hero__meta-sep { display: none; }
-
-  /* Couple stacks */
-  .couple__grid { grid-template-columns: 1fr; gap: 2.4rem; }
-  .couple__portrait { width: 180px; height: 180px; }
-  .couple__amp { position: static; transform: none; margin: -12px auto; }
-
-  /* Timeline single column */
-  .timeline__line { left: 16px; }
-  .timeline__item,
-  .timeline__item:nth-child(odd),
-  .timeline__item:nth-child(even) {
-    width: 100%;
-    padding-left: 48px;
-    padding-right: 0;
-    text-align: left;
-  }
-  .timeline__item:nth-child(odd) { margin-left: 0; }
-  .timeline__item .timeline__dot,
-  .timeline__item:nth-child(odd) .timeline__dot,
-  .timeline__item:nth-child(even) .timeline__dot {
-    left: 10px;
-    right: auto;
-  }
-
-  .gallery__grid { columns: 1; }
-
-  .event__grid,
-  .gift__grid { grid-template-columns: 1fr; gap: var(--space-md); }
-
-  .countdown__grid { gap: 0.8rem; }
-  .countdown__item { min-width: calc(50% - 0.4rem); padding: 1.2rem 0.6rem; }
-  .countdown__number { font-size: clamp(2.2rem, 10vw, 3.2rem); }
-
-  .wishes__grid { grid-template-columns: 1fr; }
-
-  .video__wrapper { border-radius: var(--radius-md); }
-
-  .lightbox__img { max-width: 95vw; max-height: 80vh; border-radius: var(--radius-sm); }
-  .lightbox__btn { font-size: 1.2rem; padding: var(--space-sm); }
-  .lightbox__btn--prev { left: var(--space-xs); }
-  .lightbox__btn--next { right: var(--space-xs); }
-  .lightbox__close { top: var(--space-md); right: var(--space-md); }
-
-  .music-toggle { bottom: var(--space-md); right: var(--space-md); width: 48px; height: 48px; }
-
-  .footer { padding: 4rem var(--space-md); }
-
-  .invite-card { padding: 2rem 1.4rem; }
-  .invite-card__corner { width: 32px; height: 32px; }
+/* Very short viewports (landscape phones) */
+@media (max-height: 640px) {
+  .page { padding: 3vh 5vw; }
+  .page__inner { gap: 0.6rem; }
+  .welcome__monogram { width: 64px; height: 64px; font-size: 1rem; margin-bottom: 0; }
+  .welcome__names { font-size: clamp(1.3rem, 5vh, 1.8rem); }
+  .couple__portrait { width: 96px; height: 96px; }
+  .couple__amp { font-size: 2rem; margin-top: -1rem; }
+  .date-hero__num { font-size: clamp(2.6rem, 10vh, 3.8rem); }
+  .book-cover__title { font-size: clamp(2rem, 10vh, 3.4rem); }
+  .book-cover__monogram { width: 64px; height: 64px; font-size: 1rem; }
 }
 
-@media (max-width: 480px) {
-  .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
-  .couple__portrait { width: 150px; height: 150px; }
-  .event__card, .gift__card { padding: 2rem 1.4rem; }
-  .gift__qr { width: 110px; height: 110px; }
-  .timeline__card { padding: var(--space-md) 1.2rem; }
-  .wishes__card { padding: var(--space-md) 1.2rem; }
-  .loader__stage { transform: scale(0.85); }
+/* Small phone */
+@media (max-width: 380px) {
+  .page__label { font-size: 0.58rem; letter-spacing: 0.28em; }
+  .rsvp__mark { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+  .book-cover__eyebrow { font-size: 0.62rem; letter-spacing: 0.42em; }
 }

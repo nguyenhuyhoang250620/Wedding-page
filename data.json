@@ -1,179 +1,60 @@
 {
   "meta": {
-    "title": "Văn A & Thu Thảo — Thiệp Cưới",
-    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Huy Hoàng & Thu Thảo — 20 tháng 12, 2025.",
-    "url": "https://huyhoangthuthao.wedding",
-    "ogImage": "assets/images/og-image.jpg",
-    "themeColor": "#FFFDFB",
+    "title": "Huy Hoàng & Thu Thảo — Thiệp Cưới",
+    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Huy Hoàng & Thu Thảo — 28 tháng 11, 2026.",
+    "themeColor": "#0E1A12",
     "lang": "vi"
   },
 
   "couple": {
     "groom": {
-      "name": "Văn A",
+      "name": "Huy Hoàng",
       "role": "Chú Rể",
-      "description": "Một chàng trai luôn tin vào tình yêu đích thực. Anh tìm thấy cả thế giới trong nụ cười của cô ấy.",
       "image": "assets/images/groom.jpg"
     },
     "bride": {
-      "name": "Văn B",
+      "name": "Thu Thảo",
       "role": "Cô Dâu",
-      "description": "Một tâm hồn dịu dàng với trái tim ấm áp. Cô tin vào cổ tích — vì cô đang sống trong đó.",
       "image": "assets/images/bride.jpg"
-    },
-    "hashtag": "#HuyHoangThuThao"
+    }
   },
 
   "wedding": {
-    "date": "2025-12-20T10:00:00",
-    "dateDisplay": "Thứ Bảy, 20 tháng 12, 2025",
-    "heroLabel": "Chúng Mình Sắp Cưới"
+    "date": "2026-11-28T15:00:00"
   },
 
   "events": {
     "ceremony": {
       "title": "Lễ Cưới",
-      "icon": "💒",
-      "date": "Thứ Bảy, 20 tháng 12, 2025",
-      "time": "10:00 Sáng",
-      "venue": "Trung tâm Hội nghị Grand Palace, TP. Hồ Chí Minh",
+      "time": "10:00",
+      "venue": "Nhà thờ St. Mary",
       "mapUrl": "https://maps.google.com"
     },
     "reception": {
       "title": "Tiệc Cưới",
-      "icon": "🥂",
-      "date": "Thứ Bảy, 20 tháng 12, 2025",
       "time": "18:00",
-      "venue": "Nhà hàng Riverside Garden, Quận 2",
+      "venue": "Riverside Garden, Q.2",
       "mapUrl": "https://maps.google.com"
     }
   },
 
-  "timeline": [
-    {
-      "date": "Xuân 2025",
-      "title": "Lần Đầu Gặp Gỡ",
-      "description": "Một cuộc gặp tình cờ tại quán cà phê nhỏ đã trở thành hàng giờ trò chuyện — và khởi đầu của mãi mãi."
-    },
-    {
-      "date": "Hè 2025",
-      "title": "Buổi Hẹn Đầu Tiên",
-      "description": "Một buổi chiều đi dạo bên sông, tiếng cười bối rối, và nhận ra rằng đây là điều gì đó thật đặc biệt."
-    },
-    {
-      "date": "Đông 2026",
-      "title": "Lời Cầu Hôn",
-      "description": "Dưới bầu trời đầy sao, một đầu gối chạm đất và hai trái tim hòa thành một lời hứa."
-    },
-    {
-      "date": "Tháng 11, 2026",
-      "title": "Mãi Mãi Bắt Đầu",
-      "description": "Ngày chúng mình nói \"Anh đồng ý\" — và bắt đầu cuộc hành trình đẹp nhất bên nhau."
-    }
-  ],
-
-  "gallery": [
-    { "src": "assets/images/gallery-1.jpg", "alt": "Cùng nhau dạo công viên", "width": 600, "height": 800 },
-    { "src": "assets/images/gallery-2.jpg", "alt": "Cười bên nhau", "width": 600, "height": 400 },
-    { "src": "assets/images/gallery-3.jpg", "alt": "Hoàng hôn bên nhau", "width": 600, "height": 600 },
-    { "src": "assets/images/gallery-4.jpg", "alt": "Hẹn hò cà phê", "width": 600, "height": 750 },
-    { "src": "assets/images/gallery-5.jpg", "alt": "Kỷ niệm du lịch", "width": 600, "height": 900 },
-    { "src": "assets/images/gallery-6.jpg", "alt": "Khoảnh khắc cầu hôn", "width": 600, "height": 500 }
-  ],
-
-  "gift": [
-    {
-      "title": "Tài Khoản Chú Rể",
+  "gift": {
+    "groom": {
+      "title": "Chú Rể — Huy Hoàng",
       "bank": "Vietcombank",
-      "accountNumber": "1234567890",
-      "accountDisplay": "1234 5678 90",
-      "accountName": "NGUYEN HUY HOANG"
+      "name": "NGUYEN HUY HOANG",
+      "number": "1234567890"
     },
-    {
-      "title": "Tài Khoản Cô Dâu",
+    "bride": {
+      "title": "Cô Dâu — Thu Thảo",
       "bank": "Techcombank",
-      "accountNumber": "0987654321",
-      "accountDisplay": "0987 6543 21",
-      "accountName": "NGUYEN THU THAO"
+      "name": "LE THU THAO",
+      "number": "0987654321"
     }
-  ],
-
-  "wishes": [
-    {
-      "author": "Minh Tuấn",
-      "message": "Chúc hai bạn trăm năm hạnh phúc, mãi yêu thương và bên nhau trọn đời nhé!"
-    },
-    {
-      "author": "Thanh Hà",
-      "message": "Chúc anh chị sớm có tin vui, cuộc sống luôn tràn ngập tiếng cười và niềm vui."
-    },
-    {
-      "author": "Đức Anh",
-      "message": "Hai tâm hồn đẹp nay về một nhà. Chúc mừng hạnh phúc, mãi bên nhau nhé!"
-    }
-  ],
-
-  "social": [
-    { "platform": "Instagram", "url": "#", "icon": "📷" },
-    { "platform": "Facebook", "url": "#", "icon": "📘" },
-    { "platform": "Zalo", "url": "#", "icon": "💬" }
-  ],
+  },
 
   "music": {
     "src": "assets/music/background.mp3",
-    "volume": 0.4
-  },
-
-  "hero": {
-    "backgroundImage": "assets/images/hero-bg.jpg",
-    "backgroundAlt": "Không gian tiệc cưới lãng mạn tràn ngập ánh vàng"
-  },
-
-  "sections": {
-    "couple": {
-      "label": "Cô Dâu & Chú Rể",
-      "title": "Hai Trái Tim, Một Câu Chuyện"
-    },
-    "timeline": {
-      "label": "Hành Trình Yêu",
-      "title": "Chuyện Tình Của Chúng Mình"
-    },
-    "gallery": {
-      "label": "Kỷ Niệm",
-      "title": "Khoảnh Khắc Đáng Nhớ"
-    },
-    "video": {
-      "label": "Phim Cưới",
-      "title": "Tình Yêu Qua Ống Kính"
-    },
-    "countdown": {
-      "label": "Đếm Ngược",
-      "title": "Đến Ngày Trọng Đại"
-    },
-    "event": {
-      "label": "Sự Kiện",
-      "title": "Kính Mời Tham Dự"
-    },
-    "gift": {
-      "label": "Mừng Cưới",
-      "title": "Hộp Mừng"
-    },
-    "wishes": {
-      "label": "Sổ Lưu Bút",
-      "title": "Lời Chúc"
-    }
-  },
-
-  "ui": {
-    "scrollText": "Cuộn",
-    "viewOnMaps": "Xem bản đồ",
-    "copyButton": "Sao chép",
-    "copiedButton": "Đã sao chép!",
-    "countdownLabels": {
-      "days": "Ngày",
-      "hours": "Giờ",
-      "minutes": "Phút",
-      "seconds": "Giây"
-    }
+    "volume": 0.35
   }
 }

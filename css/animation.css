@@ -1,121 +1,71 @@
 /* ==========================================================================
-   MASTER ANIMATIONS — Cinema-grade motion system
-   
-   Principles:
-   • GPU-only: transform, opacity, clip-path, filter
-   • Silky easing — no linear motion
-   • Layered cascades — parent reveal → child stagger
-   • Ambient life — subtle idle motion for warmth
+   ANIMATIONS — Master motion system
+   Book cover opens (rotateX -180°) → pages flip like real book (rotateY).
    ========================================================================== */
 
 /* ==========================================================================
    KEYFRAMES
    ========================================================================== */
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translate3d(0, 60px, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-@keyframes fadeUpBlur {
-  from { opacity: 0; transform: translate3d(0, 40px, 0); filter: blur(10px); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0; }
-}
-
-/* Hero title cinematic reveal */
-@keyframes heroReveal {
-  0%   { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.94); filter: blur(12px); }
-  60%  { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.01); filter: blur(0); }
-  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
-}
-
-/* Hero background — slow ken burns */
-@keyframes kenBurns {
-  0%   { transform: scale(1.12) translate3d(0, 0, 0); }
-  100% { transform: scale(1) translate3d(0, 0, 0); }
-}
-
-/* Gentle floating for monogram / seal */
 @keyframes floatY {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50%      { transform: translate3d(0, -6px, 0); }
 }
 
-/* Slow rotate for accent rings */
-@keyframes rotateSlow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* Digit pop for countdown */
 @keyframes digitPop {
-  0%   { transform: translate3d(0, 8px, 0); opacity: 0.4; }
-  60%  { transform: translate3d(0, -3px, 0); opacity: 1; }
+  0%   { transform: translate3d(0, 6px, 0); opacity: 0.4; }
+  60%  { transform: translate3d(0, -2px, 0); opacity: 1; }
   100% { transform: translate3d(0, 0, 0); opacity: 1; }
 }
 
-/* Petal fall */
+@keyframes sealShine {
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.15); }
+}
+
 @keyframes petalFall {
   0%   { transform: translate3d(0, -5vh, 0) rotate(0deg) scale(1); opacity: 0; }
-  10%  { opacity: 0.8; }
+  10%  { opacity: 0.7; }
   50%  { transform: translate3d(-10px, 55vh, 0) rotate(200deg) scale(0.9); opacity: 0.5; }
   100% { transform: translate3d(20px, 110vh, 0) rotate(420deg) scale(0.8); opacity: 0; }
 }
 
-/* Shimmer for wax seal */
-@keyframes sealShine {
-  0%, 100% { box-shadow: 0 10px 24px rgba(184, 147, 92, 0.5), inset 0 0 0 3px rgba(255,255,255,0.3), inset 0 -4px 10px rgba(139, 111, 71, 0.5); }
-  50%      { box-shadow: 0 14px 32px rgba(184, 147, 92, 0.7), inset 0 0 0 3px rgba(255,255,255,0.5), inset 0 -4px 10px rgba(139, 111, 71, 0.5); }
+/* Page content entrance */
+@keyframes pageContentIn {
+  from { opacity: 0; transform: translate3d(0, 30px, 0); filter: blur(10px); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
 }
 
-/* Character reveal for split-text */
-@keyframes charIn {
-  from { opacity: 0; transform: translate3d(0, 60%, 0) rotate(-6deg); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+/* Welcome names — dramatic */
+@keyframes namesReveal {
+  0%   { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.94); filter: blur(14px); }
+  60%  { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.01); filter: blur(0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
 }
 
-/* Word reveal */
-@keyframes wordIn {
-  from { opacity: 0; transform: translate3d(0, 100%, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+/* Card slide in */
+@keyframes cardSlide {
+  from { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.96); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
 
-/* Clip reveal — mask sliding from left */
-@keyframes clipReveal {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0 0 0); }
+/* Portrait clip reveal */
+@keyframes portraitReveal {
+  from { clip-path: circle(0% at 50% 50%); transform: scale(1.12); }
+  to   { clip-path: circle(60% at 50% 50%); transform: scale(1); }
 }
 
-/* Image reveal — clip + zoom */
-@keyframes imageReveal {
-  from { clip-path: inset(0 0 100% 0); transform: scale(1.15); }
-  to   { clip-path: inset(0 0 0 0); transform: scale(1); }
+/* Cover breathe */
+@keyframes coverBreathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
 }
 
-/* Gold shimmer sweep */
-@keyframes goldSweep {
-  0%   { transform: translateX(-100%) skewX(-15deg); }
-  100% { transform: translateX(200%) skewX(-15deg); }
-}
-
-/* Scroll dot bounce */
-@keyframes scrollDown {
-  0%   { transform: translate3d(-50%, 0, 0); opacity: 1; }
-  50%  { transform: translate3d(-50%, 10px, 0); opacity: 0.3; }
-  100% { transform: translate3d(-50%, 0, 0); opacity: 1; }
-}
-
-/* Loader envelope choreography */
+/* Envelope loader */
 @keyframes envFlapOpen {
   0%   { transform: rotateX(0deg); }
   30%  { transform: rotateX(0deg); }
@@ -129,442 +79,211 @@
   100% { transform: translate(-50%, -50%) scale(1) rotate(0); opacity: 1; }
 }
 
-@keyframes envLift {
-  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
-  100% { transform: translate3d(0, -40px, 0) scale(1.06); opacity: 0; }
-}
-
-/* Underline draw */
-@keyframes drawLine {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
 /* ==========================================================================
-   AOS — SCROLL REVEAL
+   BOOK PAGES — Real page-flip
+   Active page in view. Prev pages "flipped" to left (rotateY -180).
+   Next pages waiting on right.
    ========================================================================== */
 
-[data-aos] {
+.page {
   opacity: 0;
-  transition-property: transform, opacity, filter, clip-path;
-  transition-duration: var(--duration-normal);
-  transition-timing-function: var(--ease-out-expo);
-  will-change: transform, opacity;
-}
-
-[data-aos].aos-animate {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-  filter: blur(0);
-  clip-path: inset(0 0 0 0);
-}
-
-/* Fade Up — primary entrance */
-[data-aos="fade-up"] {
-  transform: translate3d(0, 60px, 0);
-}
-
-/* Fade Up with soft blur — silky */
-[data-aos="fade-up-blur"] {
-  transform: translate3d(0, 50px, 0);
-  filter: blur(10px);
-  transition-duration: var(--duration-slow);
-}
-
-[data-aos="fade-down"] { transform: translate3d(0, -50px, 0); }
-
-[data-aos="fade-left"]  { transform: translate3d(80px, 0, 0); transition-timing-function: var(--ease-cinematic); }
-[data-aos="fade-right"] { transform: translate3d(-80px, 0, 0); transition-timing-function: var(--ease-cinematic); }
-
-[data-aos="scale"] {
-  transform: scale3d(0.86, 0.86, 1);
-  transition-duration: var(--duration-slow);
-  transition-timing-function: var(--ease-smooth);
-}
-
-[data-aos="zoom"] {
-  transform: scale3d(0.6, 0.6, 1);
-  transition-duration: var(--duration-slow);
-  transition-timing-function: var(--ease-spring);
-}
-
-/* Clip-mask reveal — image or block */
-[data-aos="clip-up"] {
-  clip-path: inset(0 0 100% 0);
-  transform: translate3d(0, 20px, 0);
-  transition-duration: var(--duration-slow);
-  transition-timing-function: var(--ease-reveal);
-}
-[data-aos="clip-up"].aos-animate {
-  clip-path: inset(0 0 0 0);
-}
-
-[data-aos="clip-right"] {
-  clip-path: inset(0 100% 0 0);
-  transition-duration: var(--duration-slow);
-  transition-timing-function: var(--ease-reveal);
-}
-[data-aos="clip-right"].aos-animate {
-  clip-path: inset(0 0 0 0);
-}
-
-/* Rise (like fade-up but softer) */
-[data-aos="rise"] {
-  transform: translate3d(0, 30px, 0) scale(0.98);
-  transition-duration: var(--duration-slow);
-  transition-timing-function: var(--ease-silk);
-}
-
-/* Stagger delays */
-[data-aos-delay="100"] { transition-delay: var(--stagger-2); }
-[data-aos-delay="200"] { transition-delay: var(--stagger-3); }
-[data-aos-delay="300"] { transition-delay: var(--stagger-4); }
-[data-aos-delay="400"] { transition-delay: var(--stagger-5); }
-[data-aos-delay="500"] { transition-delay: var(--stagger-6); }
-[data-aos-delay="600"] { transition-delay: var(--stagger-7); }
-[data-aos-delay="700"] { transition-delay: var(--stagger-8); }
-
-/* ==========================================================================
-   SPLIT-TEXT — per-character / per-word reveal
-   ========================================================================== */
-
-.split-text {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-.split-text__word {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-.split-text__char {
-  display: inline-block;
-  opacity: 0;
-  transform: translate3d(0, 105%, 0);
+  transform: translate3d(0, 0, 0) rotateY(0deg);
+  transform-origin: left center;
+  pointer-events: none;
+  visibility: hidden;
   transition:
+    transform 1.1s var(--ease-cinematic),
     opacity 0.6s var(--ease-out-expo),
-    transform 0.9s var(--ease-out-expo);
-  will-change: transform, opacity;
+    visibility 0s linear 1.1s;
+  z-index: 5;
 }
 
-.split-text.reveal .split-text__char {
+/* Active page: fully visible */
+.page.is-active {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-/* ==========================================================================
-   HERO ANIMATIONS
-   ========================================================================== */
-
-.hero__monogram {
-  animation: fadeUpBlur var(--duration-slower) var(--ease-out-expo) 0.4s both,
-             floatY 6s var(--ease-in-out) 2.5s infinite;
-}
-
-.hero__eyebrow {
-  animation: fadeUp var(--duration-slow) var(--ease-out-expo) 0.8s both;
-}
-
-.hero__script {
-  animation: fadeUpBlur var(--duration-slower) var(--ease-out-expo) 1s both;
-}
-
-.hero__title {
-  animation: heroReveal var(--duration-cinematic) var(--ease-out-expo) 1.2s both;
-}
-
-.hero__meta {
-  animation: fadeUp var(--duration-slower) var(--ease-out-expo) 1.6s both;
-}
-
-.hero__subtitle {
-  animation: fadeUp var(--duration-slower) var(--ease-out-expo) 1.9s both;
-}
-
-.hero__scroll {
-  animation: fadeIn var(--duration-slow) var(--ease-out) 2.3s both;
-}
-
-.hero__bg img {
-  animation: kenBurns 30s var(--ease-out) infinite alternate;
-  transform-origin: center center;
-}
-
-/* ==========================================================================
-   AMBIENT MOTION
-   ========================================================================== */
-
-.scroll-indicator__dot {
-  animation: scrollDown 2.2s var(--ease-in-out-circ) infinite;
-}
-
-.hero__monogram::before {
-  animation: rotateSlow 40s linear infinite;
-}
-
-.event__icon {
-  animation: floatY 5s var(--ease-in-out) infinite;
-}
-
-.event__card:nth-child(2) .event__icon { animation-delay: 1.5s; }
-
-.gift__qr {
-  animation: floatY 6s var(--ease-in-out) infinite;
-  animation-delay: 0.8s;
-}
-
-/* ==========================================================================
-   INTERACTIVE — Hover & Active states
-   ========================================================================== */
-
-/* Card lift on hover */
-.card,
-.event__card,
-.gift__card,
-.wishes__card,
-.timeline__card,
-.countdown__item,
-.couple__person {
+  transform: translate3d(0, 0, 0) rotateY(0deg);
+  pointer-events: auto;
+  visibility: visible;
   transition:
-    transform 0.6s var(--ease-out-expo),
-    box-shadow 0.6s var(--ease-out-expo);
-  will-change: transform;
+    transform 1.1s var(--ease-cinematic),
+    opacity 0.5s var(--ease-out-expo) 0.4s,
+    visibility 0s;
+  z-index: 10;
 }
 
-.card:hover,
-.event__card:hover,
-.gift__card:hover,
-.wishes__card:hover,
-.timeline__card:hover,
-.couple__person:hover {
-  transform: translate3d(0, -8px, 0);
-  box-shadow: 0 32px 90px -12px rgba(74, 54, 40, 0.22), 0 8px 20px rgba(74, 54, 40, 0.08);
+/* Prev pages (already read): flipped to the left, showing "back" */
+.page.is-prev {
+  opacity: 0;
+  transform: translate3d(0, 0, 0) rotateY(-180deg);
+  pointer-events: none;
+  visibility: hidden;
+  transform-origin: left center;
+  transition:
+    transform 1.1s var(--ease-cinematic),
+    opacity 0.4s ease 0.5s,
+    visibility 0s linear 1.1s;
+  z-index: 3;
 }
 
-/* Tilt-enabled cards use JS-controlled --tx/--ty for parallax */
-[data-tilt] {
-  transition: transform 0.6s var(--ease-out-expo);
-  transform-style: preserve-3d;
+/* Next pages: waiting off to the right, hinged on the right edge */
+.page.is-next {
+  opacity: 0;
+  transform: translate3d(0, 0, 0) rotateY(0deg);
+  transform-origin: right center;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 4;
 }
 
-[data-tilt].tilting {
-  transition: transform 0.15s var(--ease-out);
-  transform:
-    perspective(900px)
-    rotateX(var(--rx, 0deg))
-    rotateY(var(--ry, 0deg))
-    translate3d(0, -6px, 0);
+/* Page shadow / spine effect while flipping */
+.page.is-active::after,
+.page.is-prev::after,
+.page.is-next::after {
+  transition: opacity 0.5s ease;
 }
 
-/* Magnetic button — JS moves the label via --mx/--my */
+/* ==========================================================================
+   BOOK COVER — subtle idle breath before opening
+   ========================================================================== */
+.book-cover:not(.opened *) {
+  animation: coverBreathe 6s ease-in-out infinite;
+}
+
+.book.opened .book-cover {
+  animation: none;
+}
+
+.book-cover__cta-icon {
+  animation: floatY 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   PAGE CONTENT REVEAL — cascade after page becomes active
+   ========================================================================== */
+.page.is-active .page__label,
+.page.is-active .page__flourish,
+.page.is-active .page__inner > *:not(.page__label):not(.page__flourish) {
+  animation: pageContentIn 0.9s var(--ease-out-expo) both;
+}
+
+.page.is-active .page__label            { animation-delay: 0.7s; }
+.page.is-active .page__flourish         { animation-delay: 0.8s; }
+.page.is-active .page__inner > *:nth-child(3) { animation-delay: 0.9s; }
+.page.is-active .page__inner > *:nth-child(4) { animation-delay: 1.0s; }
+.page.is-active .page__inner > *:nth-child(5) { animation-delay: 1.1s; }
+.page.is-active .page__inner > *:nth-child(6) { animation-delay: 1.2s; }
+.page.is-active .page__inner > *:nth-child(7) { animation-delay: 1.3s; }
+
+/* Welcome page — names get dramatic reveal */
+.page--welcome.is-active .welcome__names {
+  animation: namesReveal 1.6s var(--ease-out-expo) 1s both;
+}
+
+.page--welcome.is-active .welcome__monogram {
+  animation:
+    pageContentIn 0.9s var(--ease-out-expo) 0.6s both,
+    floatY 6s var(--ease-in-out) 2s infinite;
+}
+
+/* Couple portraits */
+.page--couple.is-active .couple__portrait {
+  animation: portraitReveal 1.1s var(--ease-out-expo) both;
+}
+.page--couple.is-active .couple__person:nth-child(1) .couple__portrait { animation-delay: 1s; }
+.page--couple.is-active .couple__person:nth-child(3) .couple__portrait { animation-delay: 1.3s; }
+
+.page--couple.is-active .couple__amp {
+  animation:
+    pageContentIn 0.9s var(--ease-out-expo) 1.2s both,
+    floatY 4s var(--ease-in-out) 2.4s infinite;
+}
+
+/* Gift page — icon breathes, cards slide in stagger */
+.page--gift.is-active .gift__icon {
+  animation:
+    pageContentIn 0.9s var(--ease-out-expo) 0.9s both,
+    floatY 4s var(--ease-in-out) 2s infinite;
+}
+
+.page--gift.is-active .gift-card {
+  opacity: 0;
+  animation: cardSlide 0.8s var(--ease-out-expo) both;
+}
+.page--gift.is-active .gift-card:nth-child(1) { animation-delay: 1.3s; }
+.page--gift.is-active .gift-card:nth-child(2) { animation-delay: 1.45s; }
+
+/* Countdown stagger */
+.page--countdown.is-active .countdown__item {
+  opacity: 0;
+  animation: pageContentIn 0.7s var(--ease-out-expo) both;
+}
+.page--countdown.is-active .countdown__item:nth-child(1) { animation-delay: 1s; }
+.page--countdown.is-active .countdown__item:nth-child(2) { animation-delay: 1.1s; }
+.page--countdown.is-active .countdown__item:nth-child(3) { animation-delay: 1.2s; }
+.page--countdown.is-active .countdown__item:nth-child(4) { animation-delay: 1.3s; }
+
+/* ==========================================================================
+   COUNTDOWN — digit pop
+   ========================================================================== */
+.countdown__number { display: inline-block; will-change: transform, opacity; }
+.countdown__number.pop { animation: digitPop 0.5s var(--ease-out-expo); }
+
+/* ==========================================================================
+   BUTTONS — magnetic + shine
+   ========================================================================== */
 .btn {
-  transition: transform 0.5s var(--ease-spring);
+  transition: transform 0.5s var(--ease-spring), background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
-
 .btn[data-magnetic].magnetic-active {
   transform: translate3d(var(--mx, 0), var(--my, 0), 0);
   transition: transform 0.2s var(--ease-out);
 }
-
 .btn:active { transform: scale3d(0.97, 0.97, 1); }
 
-/* Gallery zoom */
-.gallery__item img {
-  transition: transform 1.2s var(--ease-out-expo);
-}
-.gallery__item:hover img {
-  transform: scale3d(1.08, 1.08, 1);
-}
-
-/* Portrait */
-.couple__portrait {
-  transition: transform 0.8s var(--ease-out-expo);
-}
-.couple__person:hover .couple__portrait {
-  transform: scale3d(1.03, 1.03, 1);
-}
-
-/* Social */
-.social-link {
-  transition: transform 0.5s var(--ease-spring), background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
-}
-.social-link:hover {
-  transform: translate3d(0, -5px, 0) scale3d(1.1, 1.1, 1);
-}
-
-/* Copy button */
-.copy-btn {
-  transition: transform 0.4s var(--ease-spring), background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-}
-.copy-btn:active { transform: scale3d(0.95, 0.95, 1); }
-
 /* ==========================================================================
-   COUNTDOWN
+   LOADER
    ========================================================================== */
-
-.countdown__number {
-  display: inline-block;
-  will-change: transform, opacity;
-}
-
-.countdown__number.pop {
-  animation: digitPop 0.5s var(--ease-out-expo);
-}
-
-/* ==========================================================================
-   TIMELINE
-   ========================================================================== */
-
-.timeline__line {
-  transform-origin: top center;
-  transform: scaleY(0);
-  transition: transform var(--duration-cinematic) var(--ease-reveal);
-}
-
-.timeline__line.animate {
-  transform: scaleY(1);
-}
-
-.timeline__dot {
-  transform: translate3d(0, -50%, 0) scale3d(0, 0, 1);
-  transition: transform 0.7s var(--ease-spring) 0.3s;
-}
-
-.timeline__item.aos-animate .timeline__dot {
-  transform: translate3d(0, -50%, 0) scale3d(1, 1, 1);
-}
-
-/* ==========================================================================
-   LIGHTBOX
-   ========================================================================== */
-
-.lightbox {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s var(--ease-out-expo);
-}
-
-.lightbox.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.lightbox__img {
-  transform: scale3d(0.9, 0.9, 1);
-  transition: transform 0.7s var(--ease-out-expo);
-}
-
-.lightbox.active .lightbox__img {
-  transform: scale3d(1, 1, 1);
-}
-
-/* ==========================================================================
-   LOADER — Envelope choreography
-   ========================================================================== */
-
 .loader {
   transition: opacity 0.9s var(--ease-out-expo), visibility 0s linear 0.9s;
 }
-
 .loader.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
-
 .loader__seal {
   animation: envSealPop 1.2s var(--ease-spring) 0.4s both,
              sealShine 3s ease-in-out 1.6s infinite;
 }
-
 .loader__stage {
   transition: transform 0.9s var(--ease-out-expo), opacity 0.9s var(--ease-out-expo);
 }
-
 .loader.opening .loader__flap {
   animation: envFlapOpen 1.1s var(--ease-out-expo) forwards;
 }
-
 .loader.opening .loader__stage {
   transform: translate3d(0, -30px, 0) scale(1.04);
   opacity: 0;
   transition-delay: 0.7s;
 }
-
 .loader__bar {
   transition: transform 0.4s var(--ease-out);
   transform-origin: left center;
 }
 
 /* ==========================================================================
-   SPECIAL EFFECTS
+   PETALS
    ========================================================================== */
-
 .flowers-canvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: var(--z-overlay);
-}
-
-.cursor-glow {
-  position: fixed;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 184, 150, 0.16) 0%, transparent 70%);
-  pointer-events: none;
-  transform: translate3d(-50%, -50%, 0);
-  z-index: var(--z-base);
-  opacity: 0;
-  transition: opacity 1.2s var(--ease-out);
-  mix-blend-mode: multiply;
-}
-
-.cursor-glow.visible { opacity: 1; }
-
-/* Divider line draw */
-.divider__line,
-.title-flourish__line {
-  transform-origin: center;
-  transform: scaleX(0);
-  transition: transform 1s var(--ease-out-expo) 0.2s;
-}
-
-[data-aos].aos-animate .divider__line,
-[data-aos].aos-animate .title-flourish__line,
-.aos-animate .divider__line,
-.aos-animate .title-flourish__line,
-.section-header.aos-animate .title-flourish__line {
-  transform: scaleX(1);
-}
-
-/* ==========================================================================
-   MUSIC TOGGLE
-   ========================================================================== */
-
-.music-toggle {
-  transition: transform 0.4s var(--ease-spring);
-}
-.music-toggle:hover { transform: scale3d(1.12, 1.12, 1); }
-.music-toggle:active { transform: scale3d(0.92, 0.92, 1); }
-
-@keyframes musicPulse {
-  0%, 100% { box-shadow: 0 12px 30px rgba(184, 147, 92, 0.35), inset 0 0 0 2px rgba(255,255,255,0.35), 0 0 0 0 rgba(184,147,92,0.5); }
-  70%      { box-shadow: 0 12px 30px rgba(184, 147, 92, 0.35), inset 0 0 0 2px rgba(255,255,255,0.35), 0 0 0 22px rgba(184,147,92,0); }
-}
-
-.music-toggle.playing {
-  animation: musicPulse 2.2s ease-out infinite;
+  z-index: 40;
 }
 
 /* ==========================================================================
    REDUCED MOTION
    ========================================================================== */
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -572,50 +291,8 @@
     transition-duration: 0.2s !important;
     transition-delay: 0ms !important;
   }
-  [data-aos] { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
-  .split-text__char { opacity: 1 !important; transform: none !important; }
-}
-
-/* ==========================================================================
-   SLIDESHOW — per-slide enter animations
-   ========================================================================== */
-
-.slideshow__slide {
-  transition: opacity 0.15s ease;
-}
-
-.slideshow__slide.active {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 2;
-}
-
-@keyframes slide-slide-from-right {
-  from { opacity: 0; transform: translate3d(60px, 0, 0) scale(1.04); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
-}
-
-@keyframes slide-slide-from-left {
-  from { opacity: 0; transform: translate3d(-60px, 0, 0) scale(1.04); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
-}
-
-@keyframes slide-zoom-in {
-  from { opacity: 0; transform: scale(1.12); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes slide-zoom-out {
-  from { opacity: 0; transform: scale(0.9); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes slide-fade-up {
-  from { opacity: 0; transform: translate3d(0, 40px, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-@keyframes slide-fade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  .page { opacity: 0; transform: none; visibility: hidden; }
+  .page.is-active { opacity: 1; transform: none; visibility: visible; }
+  .book-cover { transform: none !important; }
+  .book.opened .book-cover { opacity: 0; visibility: hidden; }
 }

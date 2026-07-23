@@ -23,6 +23,10 @@
   --color-glass-border: rgba(144, 192, 80, 0.28);
   --color-veil:         rgba(0, 0, 0, 0.06);
 
+  --accent-rgb:  144, 192, 80;
+  --gold-rgb:    144, 192, 80;
+  --shadow-rgb:  0, 0, 0;
+
   --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
   --font-script:  'Cormorant Garamond', 'Playfair Display', serif;
   --font-serif:   'Playfair Display', 'Cormorant Garamond', serif;

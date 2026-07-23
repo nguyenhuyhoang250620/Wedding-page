@@ -1,62 +1,59 @@
 /* ==========================================================================
-   Music Module
-   Background audio with localStorage persistence.
-   Accepts config from data.json via init(config).
+   Music — silent background player
+   No visible UI. Plays after the first user gesture (opening the cover).
+   Fades in gently. Respects browser autoplay policies.
    ========================================================================== */
 
 const Music = (() => {
-  let audio, toggleBtn, isPlaying = false;
-  const STORAGE_KEY = 'wedding_music_state';
+  let audio;
+  let unlocked = false;
 
   function init(config) {
     audio = document.getElementById('bg-music');
-    toggleBtn = document.querySelector('.music-toggle');
-    if (!audio || !toggleBtn) return;
+    if (!audio) return;
 
-    // Apply config from data.json
-    if (config) {
-      audio.volume = config.volume ?? 0.4;
+    const targetVolume = (config?.volume ?? 0.35);
+    audio.volume = 0;
+    if (config?.src) {
       const source = audio.querySelector('source');
-      if (source && config.src) source.src = config.src;
-    } else {
-      audio.volume = 0.4;
+      if (source && source.src.indexOf(config.src) === -1) {
+        source.src = config.src;
+        audio.load();
+      }
     }
 
-    toggleBtn.addEventListener('click', toggle);
-    document.addEventListener('click', autoplay, { once: true });
-    document.addEventListener('touchstart', autoplay, { once: true });
+    // Unlock on first meaningful user gesture (cover open, click, key, touch)
+    const unlock = () => {
+      if (unlocked) return;
+      unlocked = true;
+      audio.play().then(() => fadeTo(targetVolume, 1600)).catch(() => {
+        // If autoplay blocked, retry on next interaction
+        unlocked = false;
+      });
+    };
+
+    document.addEventListener('book:open', unlock, { once: true });
+    document.addEventListener('click', unlock, { once: true });
+    document.addEventListener('touchstart', unlock, { once: true, passive: true });
+    document.addEventListener('keydown', unlock, { once: true });
+
+    // Pause when tab hidden, resume when visible
+    document.addEventListener('visibilitychange', () => {
+      if (!unlocked) return;
+      if (document.hidden) audio.pause();
+      else audio.play().catch(() => {});
+    });
   }
 
-  function autoplay() {
-    audio.load();
-    if (localStorage.getItem(STORAGE_KEY) !== 'paused') play();
-  }
-
-  function play() {
-    audio.play().then(() => {
-      isPlaying = true;
-      updateUI();
-    }).catch(() => {});
-  }
-
-  function pause() {
-    audio.pause();
-    isPlaying = false;
-    updateUI();
-  }
-
-  function toggle() {
-    isPlaying ? pause() : play();
-  }
-
-  function updateUI() {
-    toggleBtn.setAttribute('aria-label', isPlaying ? 'Tạm dừng nhạc nền' : 'Phát nhạc nền');
-    toggleBtn.setAttribute('aria-pressed', String(isPlaying));
-    toggleBtn.classList.toggle('playing', isPlaying);
-    toggleBtn.innerHTML = isPlaying
-      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>'
-      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>';
-    localStorage.setItem(STORAGE_KEY, isPlaying ? 'playing' : 'paused');
+  function fadeTo(target, ms) {
+    const start = audio.volume;
+    const startTime = performance.now();
+    function tick(now) {
+      const t = Math.min((now - startTime) / ms, 1);
+      audio.volume = start + (target - start) * t;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   }
 
   return { init };

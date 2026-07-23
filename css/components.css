@@ -1,24 +1,26 @@
 /* ==========================================================================
-   Components — Buttons, badges, dividers, misc
+   Components — Buttons
    ========================================================================== */
 
-/* ===== BUTTONS ===== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
+  gap: 0.55em;
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 500;
-  padding: 1em 2.6em;
+  padding: 0.95em 2.4em;
   border-radius: 50px;
   position: relative;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   overflow: hidden;
   cursor: pointer;
+  border: none;
+  white-space: nowrap;
   will-change: transform;
+  color: var(--color-ivory);
 }
 
 .btn::before {
@@ -36,12 +38,12 @@
 .btn--primary {
   background: var(--grad-gold);
   color: var(--color-white);
-  box-shadow: 0 10px 24px rgba(184, 147, 92, 0.3);
+  box-shadow: 0 10px 22px rgba(var(--shadow-rgb, 0, 0, 0), 0.22);
 }
 
 .btn--outline {
-  border: 1px solid rgba(184, 147, 92, 0.5);
-  color: var(--color-gold);
+  border: 1px solid rgba(var(--accent-rgb, 144, 192, 80), 0.5);
+  color: var(--color-gold-deep);
   background: transparent;
 }
 
@@ -49,209 +51,4 @@
   background: var(--color-gold);
   color: var(--color-white);
   border-color: var(--color-gold);
-}
-
-/* ===== CARDS ===== */
-.card {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FDF9F1 100%);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-card);
-}
-
-/* ===== DIVIDER — Elegant separator ===== */
-.divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  margin: var(--space-md) 0 var(--space-lg);
-}
-
-.divider__line {
-  width: 46px;
-  height: 1px;
-  background: var(--color-champagne);
-  opacity: 0.7;
-}
-
-.divider__icon {
-  font-size: 0.75rem;
-  color: var(--color-gold);
-  opacity: 0.8;
-}
-
-/* Ornate title divider (used inside section headers) */
-.title-flourish {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 1rem;
-}
-.title-flourish__line {
-  width: 60px;
-  height: 1px;
-  background: var(--color-champagne);
-  opacity: 0.65;
-}
-.title-flourish__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  opacity: 0.75;
-}
-
-/* ===== BADGE ===== */
-.badge {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.62rem;
-  font-weight: 500;
-  padding: 0.45em 1.3em;
-  border-radius: 50px;
-  background: var(--color-cream);
-  color: var(--color-gold);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  border: 1px solid rgba(184, 147, 92, 0.25);
-}
-
-/* ===== SCROLL INDICATOR ===== */
-.scroll-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--color-gold);
-  opacity: 0.75;
-}
-
-.scroll-indicator__mouse {
-  width: 22px;
-  height: 34px;
-  border: 1.5px solid currentColor;
-  border-radius: 11px;
-  position: relative;
-}
-
-.scroll-indicator__dot {
-  width: 3px;
-  height: 6px;
-  background: currentColor;
-  border-radius: 2px;
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.scroll-indicator__text {
-  font-family: var(--font-sans);
-  font-size: 0.58rem;
-  text-transform: uppercase;
-  letter-spacing: 0.32em;
-}
-
-/* ===== COPY BUTTON ===== */
-.copy-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 500;
-  padding: 0.7em 1.8em;
-  border-radius: 50px;
-  background: var(--color-cream);
-  color: var(--color-gold-deep);
-  margin-top: var(--space-md);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border: 1px solid rgba(184, 147, 92, 0.28);
-  cursor: pointer;
-}
-
-.copy-btn:hover {
-  background: var(--color-champagne);
-  color: var(--color-white);
-}
-
-.copy-btn.copied {
-  background: var(--color-gold);
-  color: var(--color-white);
-  border-color: var(--color-gold);
-}
-
-/* ===== TYPEWRITER ===== */
-.typewriter { display: inline; }
-
-.typewriter__cursor {
-  display: inline-block;
-  width: 2px;
-  height: 0.85em;
-  background: currentColor;
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  animation: blink 1s step-end infinite;
-}
-
-/* ===== EVENT ICON ===== */
-.event__icon {
-  width: 66px;
-  height: 66px;
-  margin: 0 auto var(--space-md);
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--grad-gold);
-  color: var(--color-white);
-  font-size: 1.5rem;
-  box-shadow: 0 10px 24px rgba(184, 147, 92, 0.3), inset 0 0 0 3px rgba(255,255,255,0.3);
-}
-
-/* ===== SOCIAL LINK ===== */
-.social-link {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1px solid rgba(212, 184, 150, 0.4);
-  display: grid;
-  place-items: center;
-  font-size: 1rem;
-  color: var(--color-champagne);
-}
-
-.social-link:hover {
-  background: rgba(212, 184, 150, 0.15);
-  border-color: var(--color-champagne);
-  color: var(--color-white);
-}
-
-/* ===== WISH CARD ===== */
-.wishes__card-author {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.72rem;
-  margin-bottom: var(--space-sm);
-  color: var(--color-gold);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.wishes__card-text {
-  font-style: italic;
-  line-height: 1.85;
-  font-size: 1.05rem;
-  opacity: 0.85;
-  color: var(--color-sepia);
-}
-
-/* ===== MAP BUTTON ===== */
-.map-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  margin-top: var(--space-lg);
 }

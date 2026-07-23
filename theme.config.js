@@ -553,6 +553,10 @@ function generateCSS(theme) {
   --color-glass-border: rgba(${a}, 0.28);
   --color-veil:         rgba(${s}, 0.06);
 
+  --accent-rgb:  ${a};
+  --gold-rgb:    ${a};
+  --shadow-rgb:  ${s};
+
   --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
   --font-script:  'Cormorant Garamond', 'Playfair Display', serif;
   --font-serif:   'Playfair Display', 'Cormorant Garamond', serif;
