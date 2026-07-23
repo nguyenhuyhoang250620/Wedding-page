@@ -10,12 +10,12 @@
     "groom": {
       "name": "Huy Hoàng",
       "role": "Chú Rể",
-      "image": "assets/images/groom.jpg"
+      "image": "assets/images/chure.jpeg"
     },
     "bride": {
       "name": "Thu Thảo",
       "role": "Cô Dâu",
-      "image": "assets/images/bride.jpg"
+      "image": "assets/images/codau.jpeg"
     }
   },
 
