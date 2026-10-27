@@ -17,8 +17,12 @@ const Book = (() => {
   function init() {
     bookEl = document.getElementById('book');
     coverEl = document.getElementById('book-cover');
-    pages = Array.from(document.querySelectorAll('.page'));
+    pages = Array.from(document.querySelectorAll('.page:not(.page--cover)'));
     if (!bookEl || !pages.length) return;
+
+    document.body.classList.add('scroll-layout');
+    bookEl.classList.add('scroll-layout');
+    if (coverEl) coverEl.classList.add('scroll-layout');
 
     dotsEl = document.querySelector('.book-nav__dots');
     prevBtn = document.querySelector('.book-nav__arrow--prev');
@@ -28,7 +32,6 @@ const Book = (() => {
     buildDots();
     bindEvents();
 
-    // Initialize page states — page 0 will fully activate after cover opens
     pages.forEach((p, i) => {
       p.classList.remove('is-active', 'is-prev', 'is-next');
       if (i === 0) p.classList.add('is-active');
@@ -56,7 +59,7 @@ const Book = (() => {
   }
 
   function bindEvents() {
-    // Cover open
+    // Scroll mode: no page-lip transitions, preserve accessibility but allow scrolling naturally
     coverEl?.addEventListener('click', openCover);
     coverEl?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCover(); }
@@ -65,7 +68,6 @@ const Book = (() => {
     prevBtn?.addEventListener('click', prev);
     nextBtn?.addEventListener('click', next);
 
-    // Keyboard
     document.addEventListener('keydown', (e) => {
       if (!opened && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) {
         e.preventDefault(); openCover(); return;
@@ -77,7 +79,7 @@ const Book = (() => {
       else if (e.key === 'End') { e.preventDefault(); goTo(pages.length - 1); }
     });
 
-    // Tap the active page → advance (but not on interactive elements)
+    // Scroll layout uses native scroll so page navigation is disabled
     document.addEventListener('click', (e) => {
       if (!opened) return;
       const page = e.target.closest('.page.is-active');
@@ -86,10 +88,8 @@ const Book = (() => {
       next();
     });
 
-    // Swipe
     attachSwipe(bookEl);
 
-    // Wheel — throttled
     let wheelLock = false;
     bookEl?.addEventListener('wheel', (e) => {
       if (!opened || wheelLock) return;
@@ -99,7 +99,6 @@ const Book = (() => {
       setTimeout(() => (wheelLock = false), FLIP_MS + 80);
     }, { passive: true });
 
-    // Restart
     document.getElementById('restart-btn')?.addEventListener('click', () => goTo(0));
   }
 
@@ -128,9 +127,7 @@ const Book = (() => {
     if (opened) return;
     opened = true;
     bookEl.classList.add('opened');
-    // Signal music can start (audio unlocked by user gesture already)
     document.dispatchEvent(new CustomEvent('book:open'));
-    // Show swipe hint briefly after cover opens
     setTimeout(() => hintEl?.classList.remove('hidden'), OPEN_MS + 200);
     setTimeout(() => hintEl?.classList.add('hidden'), OPEN_MS + 9000);
   }

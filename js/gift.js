@@ -36,7 +36,7 @@ const Gift = (() => {
     copyBtn = modal.querySelector('[data-copy]');
 
     // Open triggers
-    document.querySelectorAll('.gift-card').forEach(btn => {
+    document.querySelectorAll('[data-gift]').forEach(btn => {
       btn.addEventListener('click', () => open(btn.dataset.gift));
     });
 

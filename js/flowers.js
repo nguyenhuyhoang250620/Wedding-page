@@ -25,12 +25,13 @@ const Flowers = (() => {
   function readThemeColors() {
     const cs = getComputedStyle(document.documentElement);
     return [
-      cs.getPropertyValue('--color-champagne').trim(),
-      cs.getPropertyValue('--color-beige').trim(),
-      cs.getPropertyValue('--color-cream').trim(),
-      cs.getPropertyValue('--color-gold').trim(),
-      cs.getPropertyValue('--color-ivory').trim()
-    ].filter(Boolean);
+      '#f4b6b6',
+      '#f7d7d7',
+      '#e8a4a8',
+      '#d98a96',
+      '#f6c7d0',
+      '#f2a8a9'
+    ];
   }
 
   function createContainer() {

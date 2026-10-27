@@ -2,16 +2,16 @@
 /* Xanh rừng đêm, vàng ánh trăng — huyền bí lãng mạn */
 
 :root {
-  --color-ivory:      #0E1A12;
-  --color-cream:      #162010;
-  --color-beige:      #243018;
-  --color-champagne:  #486030;
-  --color-gold:       #90C050;
-  --color-gold-deep:  #B8E070;
-  --color-sepia:      #D8F0A0;
-  --color-charcoal:   #F0FAD8;
+  --color-ivory:      #f8f3f1;
+  --color-cream:      #f3e4e1;
+  --color-beige:      #ebd0cb;
+  --color-champagne:  #d9a7a0;
+  --color-gold:       #c88d87;
+  --color-gold-deep:  #b96f6d;
+  --color-sepia:      #463434;
+  --color-charcoal:   #fffaf8;
   --color-white:      #FFFFFF;
-  --color-black:      #0F0B08;
+  --color-black:      #1a1212;
 
   --color-primary:    var(--color-champagne);
   --color-secondary:  var(--color-cream);
@@ -19,13 +19,13 @@
   --color-bg:         var(--color-ivory);
   --color-accent:     var(--color-gold);
 
-  --color-glass:        rgba(14, 26, 18, 0.72);
-  --color-glass-border: rgba(144, 192, 80, 0.28);
-  --color-veil:         rgba(0, 0, 0, 0.06);
+  --color-glass:        rgba(255, 255, 255, 0.68);
+  --color-glass-border: rgba(186, 118, 112, 0.18);
+  --color-veil:         rgba(140, 84, 78, 0.06);
 
-  --accent-rgb:  144, 192, 80;
-  --gold-rgb:    144, 192, 80;
-  --shadow-rgb:  0, 0, 0;
+  --accent-rgb:  201, 141, 135;
+  --gold-rgb:    201, 141, 135;
+  --shadow-rgb:  82, 56, 55;
 
   --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
   --font-script:  'Cormorant Garamond', 'Playfair Display', serif;
@@ -54,11 +54,11 @@
   --radius-xl:   40px;
   --radius-full: 50%;
 
-  --shadow-sm:   0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-md:   0 16px 50px rgba(0, 0, 0, 0.10);
-  --shadow-lg:   0 32px 90px rgba(0, 0, 0, 0.14);
-  --shadow-card: 0 20px 60px -12px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.05);
-  --shadow-inset: inset 0 0 0 1px rgba(144, 192, 80, 0.15);
+  --shadow-sm:   0 4px 20px rgba(90, 58, 58, 0.06);
+  --shadow-md:   0 16px 50px rgba(90, 58, 58, 0.10);
+  --shadow-lg:   0 32px 90px rgba(90, 58, 58, 0.14);
+  --shadow-card: 0 20px 60px -12px rgba(90, 58, 58, 0.18), 0 4px 12px rgba(90, 58, 58, 0.05);
+  --shadow-inset: inset 0 0 0 1px rgba(201, 141, 135, 0.15);
 
   --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-expo:    cubic-bezier(0.19, 1, 0.22, 1);
@@ -91,9 +91,9 @@
   --z-loader:  1000;
   --z-cursor:  9999;
 
-  --grad-cream:     linear-gradient(180deg, #0E1A12 0%, #162010 100%);
-  --grad-rose-veil: radial-gradient(ellipse at 30% 20%, rgba(72,96,48,0.4) 0%, transparent 60%),
-                   radial-gradient(ellipse at 70% 80%, rgba(144,192,80,0.2) 0%, transparent 55%);
-  --grad-gold:      linear-gradient(135deg, #486030 0%, #90C050 50%, #B8E070 100%);
-  --grad-gold-shine: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.55) 50%, transparent 80%);
+  --grad-cream:     linear-gradient(180deg, #f8f3f1 0%, #f0e1de 100%);
+  --grad-rose-veil: radial-gradient(ellipse at 30% 20%, rgba(214, 143, 140, 0.22) 0%, transparent 60%),
+                   radial-gradient(ellipse at 70% 80%, rgba(188, 127, 122, 0.12) 0%, transparent 55%);
+  --grad-gold:      linear-gradient(135deg, #d9a7a0 0%, #c88d87 50%, #b96f6d 100%);
+  --grad-gold-shine: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.6) 50%, transparent 80%);
 }

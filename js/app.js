@@ -11,7 +11,9 @@ import Flowers from './flowers.js';
 import Gift from './gift.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'auto';
+  document.body.classList.add('scroll-layout');
+  document.querySelector('.book')?.classList.add('scroll-layout');
   Loader.init();
 
   const data = await fetchData();
@@ -23,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   Music.init(data?.music);
   Gift.init(data?.gift);
   initCountdown(data?.wedding?.date);
+  initRevealOnScroll();
 });
 
 /* ---------- data.json ---------- */
@@ -162,3 +165,44 @@ function initCountdown(dateStr) {
   update();
   setInterval(update, 1000);
 }
+
+/* ---------- Reveal on Scroll ---------- */
+function initRevealOnScroll() {
+  const items = document.querySelectorAll('.reveal-on-scroll');
+  if (!items.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -20px 0px'
+  });
+
+  items.forEach((item) => observer.observe(item));
+}
+
+/* ---------- Unlock Invitation ---------- */
+const entryVeil = document.getElementById('entry-veil');
+const bookEl = document.getElementById('book');
+
+function unlockInvitation() {
+  if (!entryVeil || !bookEl) return;
+  entryVeil.classList.add('hidden');
+  bookEl.classList.add('visible');
+  document.body.classList.add('scroll-layout');
+}
+
+entryVeil?.addEventListener('click', unlockInvitation);
+entryVeil?.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    unlockInvitation();
+  }
+});
+
+entryVeil?.focus();

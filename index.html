@@ -42,226 +42,240 @@
     </div>
   </div>
 
+  <div class="entry-veil" id="entry-veil" role="button" tabindex="0" aria-label="Mở thiệp cưới">
+    <div class="entry-veil__content">
+      <p class="entry-veil__eyebrow">Save the Date</p>
+      <h2>Huy Hoàng &amp; Thu Thảo</h2>
+      <button type="button" class="entry-veil__button">Nhấn để mở thiệp</button>
+    </div>
+  </div>
+
   <!-- The Book -->
   <main class="book" id="book" role="main" aria-roledescription="Thiệp cưới">
 
-    <!-- ===== BOOK COVER — lifts open like a book ===== -->
-    <div class="book-cover" id="book-cover" role="button" tabindex="0" aria-label="Mở thiệp cưới">
-      <div class="book-cover__inner">
-        <div class="book-cover__monogram" data-monogram>H|T</div>
-        <p class="book-cover__eyebrow">Save The Date</p>
-        <h1 class="book-cover__title">Wedding Invitation</h1>
-        <p class="book-cover__names">Huy Hoàng &amp; Thu Thảo</p>
-        <p class="book-cover__date">28 · 11 · 2026</p>
-
-        <div class="book-cover__cta">
-          <div class="book-cover__cta-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-          </div>
-          <span class="book-cover__cta-text">Chạm để mở thiệp</span>
-        </div>
+    <section class="page page--cover" id="book-cover" role="button" tabindex="0" aria-label="Mở thiệp cưới">
+      <div class="cover-topline">
+        <span>Save the Date</span>
+        <span class="cover-topline__meta">16:00 29-05-2026</span>
       </div>
-    </div>
 
-    <!-- ===== PAGES ===== -->
+      <div class="cover-header">
+        <h1>Huy Hoàng <span>&amp;</span> Thu Thảo</h1>
+      </div>
 
-    <!-- Page 1 — Welcome -->
-    <section class="page page--welcome" data-page="1" aria-label="Trang bìa trong">
-      <div class="page__inner">
-        <div class="welcome__monogram" data-monogram>H|T</div>
-        <p class="page__label">Trân Trọng Kính Mời</p>
-        <div class="page__flourish" aria-hidden="true">
-          <span></span><i>❦</i><span></span>
+      <div class="cover-image">
+        <img src="assets/images/hero-bg.jpg" alt="Cặp đôi" loading="eager">
+      </div>
+
+      <div class="cover-footer">
+        <div class="cover-date">
+          <span>16:00</span>
+          <span>29-05-2026</span>
         </div>
-        <h2 class="welcome__names">
-          Huy Hoàng <span class="amp">&amp;</span> Thu Thảo
-        </h2>
-        <p class="welcome__meta">28 · 11 · 2026</p>
+        <p>Our Wedding</p>
       </div>
     </section>
 
-    <!-- Page 2 — Invitation -->
-    <section class="page page--invite" data-page="2" aria-label="Lời mời">
-      <div class="page__inner">
-        <p class="page__label">Lời Mời</p>
-        <div class="page__flourish" aria-hidden="true">
-          <span></span><i>❦</i><span></span>
-        </div>
-        <p class="invite__body">
-          Với niềm hạnh phúc trong tim,<br>
-          chúng mình kính mời bạn đến chung vui<br>
-          trong <em>ngày trọng đại</em> của cuộc đời.
+    <section class="page page--story">
+      <div class="story-block">
+        <p class="section-kicker">Lời mở đầu</p>
+        <h2>Chúng mình đã tìm thấy nhau</h2>
+        <p>
+          Từ những ngày đầu chưa ai biết, đến giờ đây chúng mình đã cùng đi qua rất nhiều bước đường.
+          Tình yêu lớn lên qua từng ngày, từng khoảnh khắc, và giờ đây chúng mình muốn chia sẻ niềm vui này với bạn.
         </p>
-        <p class="invite__sign">— Huy Hoàng &amp; Thu Thảo</p>
+      </div>
+
+      <div class="story-quote">
+        <div class="story-quote__line">I Love You</div>
       </div>
     </section>
 
-    <!-- Page 3 — Couple -->
-    <section class="page page--couple" data-page="3" aria-label="Cô dâu và chú rể">
-      <div class="page__inner">
-        <p class="page__label">Cô Dâu &amp; Chú Rể</p>
-        <div class="page__flourish" aria-hidden="true">
-          <span></span><i>❦</i><span></span>
-        </div>
+    <section class="page page--intro photo-panel">
+      <img src="assets/images/gallery-1.jpg" alt="Cặp đôi chụp ảnh" loading="lazy">
+      <div class="photo-panel__caption">
+        <p>Hì - bạn thân mến,<br>khi bạn đọc những dòng này, hãy biết rằng chúng mình đang rất hạnh phúc và cảm ơn bạn đã ở đây.</p>
+      </div>
+    </section>
 
-        <div class="couple">
-          <article class="couple__person">
-            <div class="couple__portrait">
-              <img src="assets/images/chure.jpeg" alt="Huy Hoàng" width="240" height="240" loading="lazy">
+    <section class="page page--couple">
+      <div class="section-heading">
+        <p class="section-kicker">Cô dâu &amp; Chú rể</p>
+        <h2>Chúng mình</h2>
+      </div>
+
+      <div class="couple-grid">
+        <article class="person-card">
+          <div class="person-card__image">
+            <img src="assets/images/groom.jpg" alt="Chú rể" loading="lazy">
+          </div>
+          <h3>THE GROOM</h3>
+          <p>Chú rể | Huy Hoàng</p>
+        </article>
+
+        <article class="person-card">
+          <div class="person-card__image">
+            <img src="assets/images/bride.jpg" alt="Cô dâu" loading="lazy">
+          </div>
+          <h3>THE BRIDE</h3>
+          <p>Cô dâu | Thu Thảo</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page page--details">
+      <div class="section-heading">
+        <p class="section-kicker">Thời gian &amp; địa điểm</p>
+        <h2>Save our date</h2>
+      </div>
+
+      <div class="date-card">
+        <div class="date-card__headline">29.05.2026</div>
+        <div class="date-card__row">
+          <span>Thứ Bảy</span>
+          <span>16:00</span>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>Địa điểm</h3>
+        <p>Khách sạn Zenlove<br>Toà A, tầng 9, Sảnh tiệc Hạnh Phúc</p>
+      </div>
+
+      <div class="map-box">
+        <img src="assets/images/gallery-2.jpg" alt="Địa điểm tiệc cưới" loading="lazy">
+        <button class="cta-map" type="button">Open in Maps</button>
+      </div>
+    </section>
+
+    <section class="page page--gallery">
+      <div class="section-heading small">
+        <p class="section-kicker">Moment</p>
+      </div>
+
+      <div class="gallery-grid">
+        <img class="reveal-on-scroll" src="assets/images/gallery-3.jpg" alt="Ảnh cặp đôi 1" loading="lazy">
+        <img class="reveal-on-scroll" src="assets/images/gallery-4.jpg" alt="Ảnh cặp đôi 2" loading="lazy">
+        <img class="reveal-on-scroll" src="assets/images/gallery-5.jpg" alt="Ảnh cặp đôi 3" loading="lazy">
+        <img class="reveal-on-scroll" src="assets/images/gallery-6.jpg" alt="Ảnh cặp đôi 4" loading="lazy">
+      </div>
+    </section>
+
+    <section class="page page--gift-scan">
+      <div class="section-heading small">
+        <p class="section-kicker">Lời chúc &amp; quà mừng</p>
+      </div>
+
+      <div class="gift-qr reveal-on-scroll">
+        <div class="gift-qr__content">
+          <div class="gift-qr__code" aria-label="Mã QR mừng cưới" role="img">
+            <span class="dot d1"></span>
+            <span class="dot d2"></span>
+            <span class="dot d3"></span>
+            <span class="dot d4"></span>
+            <span class="dot d5"></span>
+            <span class="dot d6"></span>
+            <span class="dot d7"></span>
+            <span class="dot d8"></span>
+            <span class="dot d9"></span>
+            <span class="dot d10"></span>
+            <span class="dot d11"></span>
+            <span class="dot d12"></span>
+            <span class="dot d13"></span>
+            <span class="dot d14"></span>
+            <span class="dot d15"></span>
+            <span class="dot d16"></span>
+            <span class="dot d17"></span>
+            <span class="dot d18"></span>
+            <span class="dot d19"></span>
+            <span class="dot d20"></span>
+            <span class="dot d21"></span>
+            <span class="dot d22"></span>
+            <span class="dot d23"></span>
+            <span class="dot d24"></span>
+            <span class="dot d25"></span>
+            <span class="dot d26"></span>
+            <span class="dot d27"></span>
+            <span class="dot d28"></span>
+            <span class="dot d29"></span>
+            <span class="dot d30"></span>
+            <span class="dot d31"></span>
+            <span class="dot d32"></span>
+          </div>
+
+          <div class="gift-qr__info">
+            <p class="gift-qr__label">Mừng cưới</p>
+            <p class="gift-qr__title">Huy Hoàng &amp; Thu Thảo</p>
+            <p class="gift-qr__note">Nếu bạn muốn gửi một món quà hoặc lời chúc, sự hiện diện của bạn cũng là niềm hạnh phúc lớn với chúng mình.</p>
+            <div class="gift-qr__actions">
+              <button type="button" class="gift-qr__button" data-gift="groom">Chú rể</button>
+              <button type="button" class="gift-qr__button gift-qr__button--secondary" data-gift="bride">Cô dâu</button>
             </div>
-            <h3>Huy Hoàng</h3>
-            <p class="text-italic">Chú Rể</p>
-          </article>
-
-          <div class="couple__amp" aria-hidden="true">&amp;</div>
-
-          <article class="couple__person">
-            <div class="couple__portrait">
-              <img src="assets/images/codau.jpeg" alt="Thu Thảo" width="240" height="240" loading="lazy">
-            </div>
-            <h3>Thu Thảo</h3>
-            <p class="text-italic">Cô Dâu</p>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Page 4 — When & Where -->
-    <section class="page page--event" data-page="4" aria-label="Thời gian và địa điểm">
-      <div class="page__inner">
-        <p class="page__label">Khi &amp; Nơi</p>
-        <div class="page__flourish" aria-hidden="true">
-          <span></span><i>❦</i><span></span>
-        </div>
+    <section class="page page--countdown">
+      <div class="section-heading small">
+        <p class="section-kicker">Đếm ngược</p>
+      </div>
 
-        <div class="date-hero">
-          <span class="date-hero__day">Thứ Bảy</span>
-          <div class="date-hero__row">
-            <span class="date-hero__mo">Nov</span>
-            <span class="date-hero__num">28</span>
-            <span class="date-hero__yr">2026</span>
-          </div>
-          <span class="date-hero__time">Ba giờ chiều</span>
-        </div>
-
-        <div class="event-list">
-          <div class="event-line">
-            <span class="event-line__label">Lễ Cưới</span>
-            <span class="event-line__value">10:00 · Nhà thờ St. Mary</span>
-          </div>
-          <div class="event-line">
-            <span class="event-line__label">Tiệc Cưới</span>
-            <span class="event-line__value">18:00 · Riverside Garden, Q.2</span>
-          </div>
-        </div>
-
-        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary" data-magnetic>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Xem chỉ đường
-        </a>
+      <div class="countdown" role="timer" aria-live="off">
+        <div class="countdown__item"><span id="cd-days">0</span><small>ngày</small></div>
+        <div class="countdown__item"><span id="cd-hours">0</span><small>giờ</small></div>
+        <div class="countdown__item"><span id="cd-minutes">0</span><small>phút</small></div>
+        <div class="countdown__item"><span id="cd-seconds">0</span><small>giây</small></div>
       </div>
     </section>
 
-    <!-- Page 5 — Countdown -->
-    <section class="page page--countdown" data-page="5" aria-label="Đếm ngược">
-      <div class="page__inner">
-        <p class="page__label">Đếm Ngược</p>
-        <div class="page__flourish" aria-hidden="true">
-          <span></span><i>❦</i><span></span>
-        </div>
-
-        <div class="countdown" role="timer" aria-live="off">
-          <div class="countdown__item">
-            <span class="countdown__number" id="cd-days">0</span>
-            <span class="countdown__label">Ngày</span>
-          </div>
-          <div class="countdown__item">
-            <span class="countdown__number" id="cd-hours">0</span>
-            <span class="countdown__label">Giờ</span>
-          </div>
-          <div class="countdown__item">
-            <span class="countdown__number" id="cd-minutes">0</span>
-            <span class="countdown__label">Phút</span>
-          </div>
-          <div class="countdown__item">
-            <span class="countdown__number" id="cd-seconds">0</span>
-            <span class="countdown__label">Giây</span>
-          </div>
-        </div>
-
-        <p class="countdown__note text-italic">Đến ngày chúng mình chính thức về chung một nhà</p>
+    <section class="page page--rsvp">
+      <div class="section-heading small">
+        <p class="section-kicker">Xác nhận</p>
       </div>
+
+      <form class="rsvp-form">
+        <label>
+          <span>Họ và tên</span>
+          <input type="text" placeholder="Nhập tên của bạn">
+        </label>
+        <label>
+          <span>Bạn sẽ tham dự chứ?</span>
+          <div class="radio-row">
+            <label><input type="radio" name="attendance" checked> Có, tôi sẽ tham dự</label>
+            <label><input type="radio" name="attendance"> Tôi rất tiếc, tôi không thể tham dự</label>
+          </div>
+        </label>
+        <label>
+          <span>Số người tham dự</span>
+          <select>
+            <option>1 người</option>
+            <option>2 người</option>
+            <option>3 người</option>
+          </select>
+        </label>
+        <button type="submit" class="submit-btn">Gửi xác nhận</button>
+      </form>
     </section>
 
-    <!-- Page 6 — Wedding Gift -->
-    <section class="page page--gift" data-page="6" aria-label="Hộp mừng cưới">
-      <div class="page__inner">
-        <p class="page__label">Hộp Mừng Cưới</p>
-        <div class="page__flourish" aria-hidden="true">
-          <span></span><i>❦</i><span></span>
-        </div>
-
-        <div class="gift__icon" aria-hidden="true">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-            <rect x="3" y="8" width="18" height="13" rx="1"/>
-            <path d="M3 12h18"/>
-            <path d="M12 8v13"/>
-            <path d="M8 8s-1-4 2-4 2 4 2 4"/>
-            <path d="M16 8s1-4-2-4-2 4-2 4"/>
-          </svg>
-        </div>
-
-        <p class="gift__text">
-          Sự hiện diện của bạn là <em>món quà</em> quý giá nhất.<br>
-          Với những người ở xa không thể đến chung vui,<br>
-          chúng mình xin gửi lời cảm ơn chân thành.
-        </p>
-
-        <div class="gift__cards">
-          <button class="gift-card" type="button" data-gift="groom" data-magnetic>
-            <span class="gift-card__role">Chú Rể</span>
-            <span class="gift-card__name">Huy Hoàng</span>
-            <span class="gift-card__hint">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
-              Xem thông tin
-            </span>
-          </button>
-          <button class="gift-card" type="button" data-gift="bride" data-magnetic>
-            <span class="gift-card__role">Cô Dâu</span>
-            <span class="gift-card__name">Thu Thảo</span>
-            <span class="gift-card__hint">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
-              Xem thông tin
-            </span>
-          </button>
-        </div>
+    <section class="page page--thanks">
+      <div class="thank-you">
+        <p class="section-kicker">Cảm ơn</p>
+        <h2>We’ll see you at the wedding</h2>
+        <p>Thật tuyệt vời khi bạn ở đây cùng chúng mình trong ngày trọng đại này.</p>
       </div>
     </section>
-
-
-
-    <!-- Page 7 — Thank You -->
-    <section class="page page--thanks" data-page="7" aria-label="Lời cảm ơn">
-      <div class="page__inner">
-        <p class="page__label">Cảm Ơn Bạn</p>
-        <div class="page__flourish" aria-hidden="true">
-          <span></span><i>❦</i><span></span>
-        </div>
-
-        <p class="thanks__body">
-          Cảm ơn vì đã đọc đến trang cuối.<br>
-          Hẹn gặp bạn trong ngày <em>đặc biệt</em> của chúng mình.
-        </p>
-
-        <p class="thanks__signature">Huy Hoàng &amp; Thu Thảo</p>
-
-        <button class="btn btn--outline" type="button" data-magnetic id="restart-btn">Đọc lại từ đầu</button>
-      </div>
-    </section>
-
   </main>
 
-  <!-- Navigation dots + arrows -->
+  <div class="floating-tools" aria-label="Tùy chọn">
+    <button class="floating-tools__button music-toggle-button" type="button" aria-label="Bật/tắt nhạc nền">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l10-2v13M9 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm10-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="floating-tools__button menu-button" type="button" aria-label="Menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
   <div class="book-nav" aria-hidden="false">
     <button class="book-nav__arrow book-nav__arrow--prev" type="button" aria-label="Trang trước" disabled>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
@@ -274,15 +288,13 @@
     </button>
   </div>
 
-  <!-- Swipe hint -->
   <div class="swipe-hint" aria-hidden="true">
     <div class="swipe-hint__icon">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16"/><polyline points="14 6 20 12 14 18"/></svg>
     </div>
-    <p style="color: brown;">Vuốt hoặc nhấn để lật trang</p>
+    <p>Vuốt hoặc nhấn để lật trang</p>
   </div>
 
-  <!-- Gift Modal — outside the book to escape 3D perspective -->
   <div class="gift-modal" id="gift-modal" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title" aria-hidden="true">
     <div class="gift-modal__backdrop" data-close></div>
     <div class="gift-modal__card">
@@ -318,7 +330,6 @@
     </div>
   </div>
 
-  <!-- Hidden music toggle (for a11y only) + background audio -->
   <button class="music-toggle" type="button" aria-label="Bật/tắt nhạc nền" aria-pressed="false" tabindex="-1">Music</button>
   <audio id="bg-music" loop preload="auto">
     <source src="assets/music/background.mp3" type="audio/mpeg">

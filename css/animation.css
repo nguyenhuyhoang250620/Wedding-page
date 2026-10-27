@@ -296,3 +296,50 @@
   .book-cover { transform: none !important; }
   .book.opened .book-cover { opacity: 0; visibility: hidden; }
 }
+
+/* ==========================================================================
+   SCROLL LAYOUT
+   ========================================================================== */
+.scroll-layout {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scroll-layout .book {
+  position: relative;
+  inset: auto;
+  height: auto;
+  overflow: visible;
+}
+
+.scroll-layout .page,
+.scroll-layout .page.is-active,
+.scroll-layout .page.is-prev,
+.scroll-layout .page.is-next {
+  position: relative;
+  inset: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+  overflow: visible;
+  min-height: 100vh;
+}
+
+.scroll-layout .book-cover {
+  position: relative;
+  inset: auto;
+  min-height: 100vh;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.scroll-layout .book-nav,
+.scroll-layout .swipe-hint {
+  display: none !important;
+}
+
+.scroll-layout .page--cover {
+  min-height: 100vh;
+}
