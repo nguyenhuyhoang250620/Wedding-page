@@ -1,183 +1,201 @@
-/* ==========================================================================
-   Book — Cover-open + full-screen page flip
-   • Cover lifts open on click / tap / Enter / space
-   • Pages flip like a book (rotateY)
-   • Arrows, dots, keyboard, swipe, wheel
-   ========================================================================== */
-
 const Book = (() => {
-  let bookEl, coverEl, pages = [];
-  let dotsEl, prevBtn, nextBtn, hintEl;
-  let current = 0;
-  let opened = false;
-  let animating = false;
-  const FLIP_MS = 1200;
-  const OPEN_MS = 1700;
+  const state = {
+    pages: [],
+    current: 0,
+    frame: 0,
+    opening: false,
+    autoScrollEnabled: false,
+    autoScrollTimer: 0,
+    autoScrollFrame: 0,
+    autoScrollStart: 0,
+    autoScrollFrom: 0,
+    autoScrollTo: 0,
+    autoScrollDuration: 0,
+    previousScrollBehavior: ''
+  };
 
-  function init() {
-    bookEl = document.getElementById('book');
-    coverEl = document.getElementById('book-cover');
-    pages = Array.from(document.querySelectorAll('.page:not(.page--cover)'));
-    if (!bookEl || !pages.length) return;
+  function getPageIndexAtViewport() {
+    const focusY = window.innerHeight * 0.35;
+    let nearestIndex = 0;
+    let nearestDistance = Infinity;
 
-    document.body.classList.add('scroll-layout');
-    bookEl.classList.add('scroll-layout');
-    if (coverEl) coverEl.classList.add('scroll-layout');
-
-    dotsEl = document.querySelector('.book-nav__dots');
-    prevBtn = document.querySelector('.book-nav__arrow--prev');
-    nextBtn = document.querySelector('.book-nav__arrow--next');
-    hintEl = document.querySelector('.swipe-hint');
-
-    buildDots();
-    bindEvents();
-
-    pages.forEach((p, i) => {
-      p.classList.remove('is-active', 'is-prev', 'is-next');
-      if (i === 0) p.classList.add('is-active');
-      else p.classList.add('is-next');
-    });
-    updateNav();
-  }
-
-  function buildDots() {
-    if (!dotsEl) return;
-    pages.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'book-nav__dot';
-      dot.type = 'button';
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', `Trang ${i + 1}`);
-      dot.addEventListener('click', () => {
-        if (!opened) openCover();
-        goTo(i);
-      });
-      dotsEl.appendChild(dot);
-    });
-    // Mark first dot active by default
-    dotsEl.firstChild?.classList.add('is-active');
-  }
-
-  function bindEvents() {
-    // Scroll mode: no page-lip transitions, preserve accessibility but allow scrolling naturally
-    coverEl?.addEventListener('click', openCover);
-    coverEl?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCover(); }
-    });
-
-    prevBtn?.addEventListener('click', prev);
-    nextBtn?.addEventListener('click', next);
-
-    document.addEventListener('keydown', (e) => {
-      if (!opened && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) {
-        e.preventDefault(); openCover(); return;
+    state.pages.forEach((page, index) => {
+      const rect = page.getBoundingClientRect();
+      if (rect.top <= focusY && rect.bottom >= focusY) {
+        nearestIndex = index;
+        nearestDistance = 0;
+        return;
       }
-      if (!opened) return;
-      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
-      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
-      else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
-      else if (e.key === 'End') { e.preventDefault(); goTo(pages.length - 1); }
-    });
 
-    // Scroll layout uses native scroll so page navigation is disabled
-    document.addEventListener('click', (e) => {
-      if (!opened) return;
-      const page = e.target.closest('.page.is-active');
-      if (!page) return;
-      if (e.target.closest('a, button, input, textarea, select')) return;
-      next();
-    });
-
-    attachSwipe(bookEl);
-
-    let wheelLock = false;
-    bookEl?.addEventListener('wheel', (e) => {
-      if (!opened || wheelLock) return;
-      if (Math.abs(e.deltaY) < 20 && Math.abs(e.deltaX) < 20) return;
-      wheelLock = true;
-      (e.deltaY > 0 || e.deltaX > 0) ? next() : prev();
-      setTimeout(() => (wheelLock = false), FLIP_MS + 80);
-    }, { passive: true });
-
-    document.getElementById('restart-btn')?.addEventListener('click', () => goTo(0));
-  }
-
-  function attachSwipe(el) {
-    if (!el) return;
-    let startX = 0, startY = 0, moved = false;
-    el.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      moved = false;
-    }, { passive: true });
-    el.addEventListener('touchmove', () => { moved = true; }, { passive: true });
-    el.addEventListener('touchend', (e) => {
-      if (!opened || !moved) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      const dy = e.changedTouches[0].clientY - startY;
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-        dx < 0 ? next() : prev();
-      } else if (Math.abs(dy) > 60) {
-        dy < 0 ? next() : prev();
+      const distance = Math.min(Math.abs(rect.top - focusY), Math.abs(rect.bottom - focusY));
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
       }
-    }, { passive: true });
-  }
-
-  function openCover() {
-    if (opened) return;
-    opened = true;
-    bookEl.classList.add('opened');
-    document.dispatchEvent(new CustomEvent('book:open'));
-    setTimeout(() => hintEl?.classList.remove('hidden'), OPEN_MS + 200);
-    setTimeout(() => hintEl?.classList.add('hidden'), OPEN_MS + 9000);
-  }
-
-  function next() {
-    if (animating || current >= pages.length - 1) return;
-    goTo(current + 1);
-  }
-
-  function prev() {
-    if (animating || current <= 0) return;
-    goTo(current - 1);
-  }
-
-  function goTo(index) {
-    if (index < 0 || index >= pages.length) return;
-    if (index === current) return;
-
-    animating = true;
-    hintEl?.classList.add('hidden');
-
-    pages.forEach((p, i) => {
-      p.classList.remove('is-active', 'is-prev', 'is-next');
-      if (i === index) p.classList.add('is-active');
-      else if (i < index) p.classList.add('is-prev');
-      else p.classList.add('is-next');
     });
 
-    current = index;
-    updateNav();
-
-    document.dispatchEvent(new CustomEvent('page:change', {
-      detail: { index, page: pages[index], name: pages[index].dataset.page }
-    }));
-
-    setTimeout(() => { animating = false; }, FLIP_MS);
+    return nearestIndex;
   }
 
-  function updateNav() {
-    if (prevBtn) prevBtn.disabled = current === 0;
-    if (nextBtn) nextBtn.disabled = current === pages.length - 1;
-    if (dotsEl) {
-      dotsEl.querySelectorAll('.book-nav__dot').forEach((d, i) => {
-        d.classList.toggle('is-active', i === current);
-        d.setAttribute('aria-selected', String(i === current));
-      });
+  function updateNavigation() {
+    state.current = getPageIndexAtViewport();
+    const dots = document.querySelectorAll('.book-nav__dot');
+
+    dots.forEach((dot, index) => {
+      const active = index === state.current;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-current', active ? 'location' : 'false');
+    });
+
+    const previous = document.querySelector('.book-nav__arrow--prev');
+    const next = document.querySelector('.book-nav__arrow--next');
+    if (previous) previous.disabled = state.current === 0;
+    if (next) next.disabled = state.current >= state.pages.length - 1;
+  }
+
+  function scheduleNavigationUpdate() {
+    if (state.frame) return;
+    state.frame = window.requestAnimationFrame(() => {
+      state.frame = 0;
+      updateNavigation();
+    });
+  }
+
+  function scrollToPage(index) {
+    const page = state.pages[index];
+    if (!page) return;
+
+    page.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+  }
+
+  function stopAutoScroll() {
+    state.autoScrollEnabled = false;
+    window.clearTimeout(state.autoScrollTimer);
+    window.cancelAnimationFrame(state.autoScrollFrame);
+    state.autoScrollTimer = 0;
+    state.autoScrollFrame = 0;
+
+    document.documentElement.style.scrollBehavior = state.previousScrollBehavior;
+    state.previousScrollBehavior = '';
+  }
+
+  function onUserInteraction() {
+    if (state.autoScrollEnabled) stopAutoScroll();
+  }
+
+  function animateAutoScroll(timestamp) {
+    if (!state.autoScrollEnabled) return;
+
+    const progress = Math.min((timestamp - state.autoScrollStart) / state.autoScrollDuration, 1);
+    document.documentElement.scrollTop =
+      state.autoScrollFrom + (state.autoScrollTo - state.autoScrollFrom) * progress;
+
+    if (progress < 1) {
+      state.autoScrollFrame = window.requestAnimationFrame(animateAutoScroll);
+    } else {
+      stopAutoScroll();
     }
   }
 
-  return { init, next, prev, goTo, get current() { return current; }, get opened() { return opened; } };
+  function startAutoScroll() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    state.autoScrollEnabled = true;
+    state.previousScrollBehavior = document.documentElement.style.scrollBehavior;
+    state.autoScrollTimer = window.setTimeout(() => {
+      state.autoScrollFrom = window.scrollY;
+      state.autoScrollTo = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        0
+      );
+      const distance = state.autoScrollTo - state.autoScrollFrom;
+      if (distance <= 0) {
+        stopAutoScroll();
+        return;
+      }
+
+      document.documentElement.style.scrollBehavior = 'auto';
+      state.autoScrollStart = performance.now();
+      state.autoScrollDuration = Math.min(Math.max(distance * 18, 45000), 90000);
+      state.autoScrollFrame = window.requestAnimationFrame(animateAutoScroll);
+    }, 0);
+  }
+
+  function buildDots() {
+    const container = document.querySelector('.book-nav__dots');
+    if (!container) return;
+
+    container.innerHTML = '';
+    state.pages.forEach((page, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'book-nav__dot';
+      const titleElement = page.querySelector('h1, h2') || page.querySelector('.section-kicker');
+      const title = titleElement?.textContent.trim();
+      dot.setAttribute('aria-label', title ? `Đi đến phần: ${title}` : `Đi đến phần ${index + 1}`);
+      dot.addEventListener('click', () => scrollToPage(index));
+      container.appendChild(dot);
+    });
+  }
+
+  function openInvitation() {
+    const book = document.querySelector('.book');
+    const coverScreen = document.querySelector('.cover-screen');
+    if (!book || !coverScreen || state.opening || book.classList.contains('opened')) return;
+
+    state.opening = true;
+    book.classList.add('is-opening');
+    coverScreen.classList.add('is-opening');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = reducedMotion ? 0 : 1250;
+
+    window.setTimeout(() => {
+      book.classList.remove('is-opening');
+      book.classList.add('opened');
+      coverScreen.classList.remove('is-opening');
+      coverScreen.classList.add('is-hidden');
+      document.documentElement.classList.remove('cover-locked');
+      document.body.classList.add('invitation-open');
+      state.opening = false;
+      scrollToPage(0);
+      updateNavigation();
+      startAutoScroll();
+    }, delay);
+  }
+
+  function init() {
+    const book = document.querySelector('.book');
+    if (!book) return;
+
+    state.pages = Array.from(book.querySelectorAll('.page:not(.page--cover)'));
+    window.scrollTo(0, 0);
+    document.documentElement.classList.add('cover-locked');
+    buildDots();
+
+    const coverScreen = document.querySelector('.cover-screen');
+    if (coverScreen) coverScreen.addEventListener('click', openInvitation);
+
+    const previous = document.querySelector('.book-nav__arrow--prev');
+    const next = document.querySelector('.book-nav__arrow--next');
+    if (previous) previous.addEventListener('click', () => scrollToPage(state.current - 1));
+    if (next) next.addEventListener('click', () => scrollToPage(state.current + 1));
+
+    window.addEventListener('scroll', scheduleNavigationUpdate, { passive: true });
+    window.addEventListener('resize', scheduleNavigationUpdate);
+    window.addEventListener('pointerdown', onUserInteraction, { passive: true });
+    window.addEventListener('wheel', onUserInteraction, { passive: true });
+    window.addEventListener('touchstart', onUserInteraction, { passive: true });
+    window.addEventListener('keydown', onUserInteraction, true);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) onUserInteraction();
+    });
+    updateNavigation();
+  }
+
+  return { init };
 })();
 
 export default Book;

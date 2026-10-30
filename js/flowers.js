@@ -1,11 +1,10 @@
 /* ==========================================================================
-   Ambient Effects — Falling petals
-   Colors are pulled from CSS variables so they follow the active theme.
+   Ambient Effects — Falling flower petals
    ========================================================================== */
 
 const Flowers = (() => {
-  const MAX_PETALS = 10;
-  const SPAWN_INTERVAL = 3800;
+  const MAX_PETALS = 20;
+  const SPAWN_INTERVAL = 700;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let container, intervalId, colors;
 
@@ -13,25 +12,34 @@ const Flowers = (() => {
     if (reduced) return;
     colors = readThemeColors();
     createContainer();
-    for (let i = 0; i < 5; i++) setTimeout(spawn, i * 1000);
-    intervalId = setInterval(spawn, SPAWN_INTERVAL);
+    startSpawning();
 
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) clearInterval(intervalId);
-      else intervalId = setInterval(spawn, SPAWN_INTERVAL);
+      if (document.hidden) {
+        clearInterval(intervalId);
+        intervalId = null;
+      } else {
+        startSpawning();
+      }
     });
   }
 
   function readThemeColors() {
-    const cs = getComputedStyle(document.documentElement);
     return [
-      '#f4b6b6',
-      '#f7d7d7',
-      '#e8a4a8',
-      '#d98a96',
-      '#f6c7d0',
-      '#f2a8a9'
+      '#e7a5a8',
+      '#f2c5c2',
+      '#d88b93',
+      '#ead2c8',
+      '#d6ad70'
     ];
+  }
+
+  function startSpawning() {
+    if (intervalId) return;
+    for (let i = 0; i < 8; i++) {
+      window.setTimeout(spawn, i * 350);
+    }
+    intervalId = window.setInterval(spawn, SPAWN_INTERVAL);
   }
 
   function createContainer() {
@@ -45,25 +53,22 @@ const Flowers = (() => {
     if (!container || container.children.length >= MAX_PETALS) return;
 
     const petal = document.createElement('div');
-    const size = 7 + Math.random() * 10;
-    const duration = 13 + Math.random() * 9;
+    petal.className = 'flower-petal';
+    const width = 9 + Math.random() * 7;
+    const height = width * (1.35 + Math.random() * 0.35);
+    const duration = 13 + Math.random() * 8;
     const delay = Math.random() * 1.2;
     const color = colors[Math.floor(Math.random() * colors.length)] || '#E8DCC7';
+    const drift = `${Math.round((Math.random() - 0.5) * 130)}px`;
 
     Object.assign(petal.style, {
-      position: 'absolute',
-      top: '-24px',
       left: `${Math.random() * 100}%`,
-      width: `${size}px`,
-      height: `${size}px`,
-      background: color,
-      borderRadius: '50% 0 50% 50%',
-      opacity: '0',
-      pointerEvents: 'none',
-      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.12)',
-      willChange: 'transform, opacity',
+      width: `${width}px`,
+      height: `${height}px`,
       animation: `petalFall ${duration}s cubic-bezier(0.45, 0, 0.15, 1) ${delay}s forwards`
     });
+    petal.style.setProperty('--petal-color', color);
+    petal.style.setProperty('--petal-drift', drift);
 
     container.appendChild(petal);
     petal.addEventListener('animationend', () => petal.remove(), { once: true });

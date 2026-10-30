@@ -1,60 +1,71 @@
 {
   "meta": {
-    "title": "Huy Hoàng & Thu Thảo — Thiệp Cưới",
-    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Huy Hoàng & Thu Thảo — 28 tháng 11, 2026.",
-    "themeColor": "#0E1A12",
+    "title": "Nguyễn Huy Hoàng & Nguyễn Thu Thảo — Thiệp Cưới",
+    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Uông Bí, Quảng Ninh.",
+    "themeColor": "#4d0f12",
     "lang": "vi"
   },
 
   "couple": {
     "groom": {
-      "name": "Huy Hoàng",
+      "name": "Nguyễn Huy Hoàng",
       "role": "Chú Rể",
       "image": "assets/images/chure.jpeg"
     },
     "bride": {
-      "name": "Thu Thảo",
+      "name": "Nguyễn Thu Thảo",
       "role": "Cô Dâu",
       "image": "assets/images/codau.jpeg"
     }
   },
 
+  "families": {
+    "groom": {
+      "parents": "Nguyễn Thắng & Vũ Thanh"
+    },
+    "bride": {
+      "parents": "Nguyễn Lâm & Nguyễn Thu"
+    }
+  },
+
   "wedding": {
-    "date": "2026-11-28T15:00:00"
+    "date": "2026-11-28T11:00:00"
   },
 
   "events": {
     "ceremony": {
       "title": "Lễ Cưới",
-      "time": "10:00",
-      "venue": "Nhà thờ St. Mary",
-      "mapUrl": "https://maps.google.com"
+      "time": "11:00",
+      "venue": "Uông Bí, Quảng Ninh",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh"
     },
     "reception": {
       "title": "Tiệc Cưới",
-      "time": "18:00",
-      "venue": "Riverside Garden, Q.2",
-      "mapUrl": "https://maps.google.com"
+      "time": "11:00",
+      "venue": "Uông Bí, Quảng Ninh",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh"
     }
   },
 
   "gift": {
     "groom": {
-      "title": "Chú Rể — Huy Hoàng",
+      "title": "Chú Rể — Nguyễn Huy Hoàng",
       "bank": "Vietcombank",
       "name": "NGUYEN HUY HOANG",
-      "number": "1234567890"
+      "number": "05341131321321",
+      "qrImage": "assets/images/qr-groom.png"
     },
     "bride": {
-      "title": "Cô Dâu — Thu Thảo",
+      "title": "Cô Dâu — Nguyễn Thu Thảo",
       "bank": "Techcombank",
-      "name": "LE THU THAO",
-      "number": "0987654321"
+      "name": "NGUYEN THU THAO",
+      "number": "03132113213",
+      "qrImage": "assets/images/qr-bride.png"
     }
   },
 
   "music": {
-    "src": "assets/music/background.mp3",
+    "src": "assets/music/wedding-instrumental.wav",
     "volume": 0.35
   }
 }

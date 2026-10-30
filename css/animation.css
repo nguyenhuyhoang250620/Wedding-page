@@ -28,10 +28,11 @@
 }
 
 @keyframes petalFall {
-  0%   { transform: translate3d(0, -5vh, 0) rotate(0deg) scale(1); opacity: 0; }
-  10%  { opacity: 0.7; }
-  50%  { transform: translate3d(-10px, 55vh, 0) rotate(200deg) scale(0.9); opacity: 0.5; }
-  100% { transform: translate3d(20px, 110vh, 0) rotate(420deg) scale(0.8); opacity: 0; }
+  0%   { transform: translate3d(0, -8vh, 0) rotate(-45deg) scale(0.8); opacity: 0; }
+  10%  { opacity: 0.82; }
+  35%  { transform: translate3d(calc(var(--petal-drift) * -0.45), 34vh, 0) rotate(150deg) scale(1); opacity: 0.8; }
+  68%  { transform: translate3d(calc(var(--petal-drift) * 0.55), 70vh, 0) rotate(340deg) scale(0.9); opacity: 0.7; }
+  100% { transform: translate3d(var(--petal-drift), 110vh, 0) rotate(560deg) scale(0.75); opacity: 0; }
 }
 
 /* Page content entrance */
@@ -65,6 +66,19 @@
   50%      { transform: scale(1.03); }
 }
 
+@keyframes coverMirrorSweep {
+  0%   { left: -65%; opacity: 0; }
+  12%  { opacity: 1; }
+  72%  { opacity: 0.82; }
+  100% { left: 125%; opacity: 0; }
+}
+
+@keyframes coverOpenReveal {
+  0%   { transform: perspective(1200px) scale(1); filter: brightness(1); opacity: 1; }
+  38%  { transform: perspective(1200px) scale(1.025); filter: brightness(1.3); opacity: 1; }
+  100% { transform: perspective(1200px) scale(0.94) translateY(-3vh); filter: brightness(1.08); opacity: 0; }
+}
+
 /* Envelope loader */
 @keyframes envFlapOpen {
   0%   { transform: rotateX(0deg); }
@@ -86,53 +100,38 @@
    ========================================================================== */
 
 .page {
-  opacity: 0;
-  transform: translate3d(0, 0, 0) rotateY(0deg);
-  transform-origin: left center;
-  pointer-events: none;
-  visibility: hidden;
-  transition:
-    transform 1.1s var(--ease-cinematic),
-    opacity 0.6s var(--ease-out-expo),
-    visibility 0s linear 1.1s;
-  z-index: 5;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
 }
 
 /* Active page: fully visible */
 .page.is-active {
   opacity: 1;
-  transform: translate3d(0, 0, 0) rotateY(0deg);
-  pointer-events: auto;
+  transform: none;
   visibility: visible;
-  transition:
-    transform 1.1s var(--ease-cinematic),
-    opacity 0.5s var(--ease-out-expo) 0.4s,
-    visibility 0s;
-  z-index: 10;
+  pointer-events: auto;
+  transition: none;
 }
 
 /* Prev pages (already read): flipped to the left, showing "back" */
 .page.is-prev {
-  opacity: 0;
-  transform: translate3d(0, 0, 0) rotateY(-180deg);
-  pointer-events: none;
-  visibility: hidden;
-  transform-origin: left center;
-  transition:
-    transform 1.1s var(--ease-cinematic),
-    opacity 0.4s ease 0.5s,
-    visibility 0s linear 1.1s;
-  z-index: 3;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
 }
 
 /* Next pages: waiting off to the right, hinged on the right edge */
 .page.is-next {
-  opacity: 0;
-  transform: translate3d(0, 0, 0) rotateY(0deg);
-  transform-origin: right center;
-  pointer-events: none;
-  visibility: hidden;
-  z-index: 4;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
 }
 
 /* Page shadow / spine effect while flipping */
@@ -150,7 +149,9 @@
 }
 
 .book.opened .book-cover {
-  animation: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: none;
 }
 
 .book-cover__cta-icon {
@@ -278,7 +279,37 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 40;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.flower-petal {
+  position: absolute;
+  top: -30px;
+  border: 1px solid rgba(255, 248, 239, 0.5);
+  border-radius: 78% 0 78% 0;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    var(--petal-color) 42%,
+    rgba(168, 102, 91, 0.76) 100%
+  );
+  box-shadow: 0 2px 9px rgba(83, 49, 42, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.flower-petal::after {
+  position: absolute;
+  top: 13%;
+  bottom: 13%;
+  left: 50%;
+  width: 1px;
+  border-radius: 50%;
+  background: rgba(255, 250, 239, 0.72);
+  content: "";
+  transform: translateX(-50%);
 }
 
 /* ==========================================================================
@@ -288,58 +319,7 @@
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.2s !important;
-    transition-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  .page { opacity: 0; transform: none; visibility: hidden; }
-  .page.is-active { opacity: 1; transform: none; visibility: visible; }
-  .book-cover { transform: none !important; }
-  .book.opened .book-cover { opacity: 0; visibility: hidden; }
-}
-
-/* ==========================================================================
-   SCROLL LAYOUT
-   ========================================================================== */
-.scroll-layout {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.scroll-layout .book {
-  position: relative;
-  inset: auto;
-  height: auto;
-  overflow: visible;
-}
-
-.scroll-layout .page,
-.scroll-layout .page.is-active,
-.scroll-layout .page.is-prev,
-.scroll-layout .page.is-next {
-  position: relative;
-  inset: auto;
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  pointer-events: auto;
-  overflow: visible;
-  min-height: 100vh;
-}
-
-.scroll-layout .book-cover {
-  position: relative;
-  inset: auto;
-  min-height: 100vh;
-  transform: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.scroll-layout .book-nav,
-.scroll-layout .swipe-hint {
-  display: none !important;
-}
-
-.scroll-layout .page--cover {
-  min-height: 100vh;
 }

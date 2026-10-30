@@ -1,104 +1,118 @@
-/* ==========================================================================
-   Gift — opens a modal with bank transfer info for groom / bride
-   Data source: data.json → gift.groom / gift.bride
-   Fallback defaults if data.json missing.
-   ========================================================================== */
-
 const Gift = (() => {
-  let modal, titleEl, fields, copyBtn, giftData;
-
-  const defaults = {
-    groom: {
-      title: 'Chú Rể — Huy Hoàng',
-      bank: 'Vietcombank',
-      name: 'NGUYEN HUY HOANG',
-      number: '1234567890'
-    },
-    bride: {
-      title: 'Cô Dâu — Thu Thảo',
-      bank: 'Techcombank',
-      name: 'LE THU THAO',
-      number: '0987654321'
-    }
-  };
+  let modal;
+  let accountList;
+  let closeButton;
+  let previousOverflow = '';
+  let returnFocus = null;
+  let giftData = {};
 
   function init(data) {
-    giftData = data || defaults;
+    giftData = data || {};
     modal = document.getElementById('gift-modal');
     if (!modal) return;
 
-    titleEl = modal.querySelector('.gift-modal__title');
-    fields = {
-      bank: modal.querySelector('[data-field="bank"]'),
-      name: modal.querySelector('[data-field="name"]'),
-      number: modal.querySelector('[data-field="number"]')
-    };
-    copyBtn = modal.querySelector('[data-copy]');
-
-    // Open triggers
-    document.querySelectorAll('[data-gift]').forEach(btn => {
-      btn.addEventListener('click', () => open(btn.dataset.gift));
+    accountList = modal.querySelector('[data-gift-accounts]');
+    closeButton = modal.querySelector('.gift-modal__close');
+    document.querySelectorAll('[data-gift-open]').forEach(button => {
+      button.addEventListener('click', () => open(button));
     });
 
-    // Close triggers
-    modal.querySelectorAll('[data-close]').forEach(el => {
-      el.addEventListener('click', close);
+    modal.querySelectorAll('[data-close]').forEach(element => {
+      element.addEventListener('click', close);
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) close();
     });
-
-    // Copy
-    copyBtn?.addEventListener('click', copyNumber);
   }
 
-  function open(key) {
-    const info = giftData?.[key] || defaults[key];
-    if (!info || !modal) return;
-    titleEl.textContent = info.title;
-    fields.bank.textContent = info.bank;
-    fields.name.textContent = info.name;
-    fields.number.textContent = formatNumber(info.number);
-    copyBtn.dataset.number = info.number;
-    copyBtn.classList.remove('is-copied');
+  function open(trigger) {
+    const accounts = ['groom', 'bride']
+      .map(key => ({ key, ...giftData[key] }))
+      .filter(account => account.bank && account.name && account.number);
 
+    if (!accounts.length) {
+      console.error('Cannot open wedding gift envelope: account details are missing.');
+      return;
+    }
+
+    returnFocus = trigger;
+    accountList.replaceChildren(...accounts.map(createAccountCard));
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
+    previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  }
+
+  function createAccountCard(account) {
+    const card = document.createElement('article');
+    card.className = 'gift-account';
+
+    const qr = document.createElement('img');
+    qr.className = 'gift-account__qr';
+    qr.src = account.qrImage;
+    qr.alt = `Mã QR chuyển khoản ${account.key === 'groom' ? 'chú rể' : 'cô dâu'}`;
+    qr.loading = 'lazy';
+
+    const info = document.createElement('div');
+    info.className = 'gift-account__info';
+
+    const label = document.createElement('span');
+    label.className = 'gift-account__label';
+    label.textContent = account.key === 'groom' ? 'Chú rể' : 'Cô dâu';
+
+    const name = document.createElement('strong');
+    name.className = 'gift-account__name';
+    name.textContent = account.name;
+
+    const bank = document.createElement('span');
+    bank.className = 'gift-account__bank';
+    bank.textContent = account.bank;
+
+    const number = document.createElement('button');
+    number.className = 'gift-account__number';
+    number.type = 'button';
+    number.textContent = formatNumber(account.number);
+    number.setAttribute('aria-label', `Sao chép số tài khoản ${formatNumber(account.number)}`);
+    number.addEventListener('click', () => copyNumber(account.number, number));
+
+    info.append(label, name, bank, number);
+
+    const download = document.createElement('a');
+    download.className = 'gift-account__download';
+    download.href = account.qrImage;
+    download.download = `${account.key}-wedding-qr.png`;
+    download.textContent = 'Tải QR';
+
+    card.append(qr, info, download);
+    return card;
   }
 
   function close() {
+    if (!modal?.classList.contains('is-open')) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    copyBtn.classList.remove('is-copied');
+    document.body.style.overflow = previousOverflow;
+    returnFocus?.focus();
+    returnFocus = null;
   }
 
-  function copyNumber() {
-    const number = copyBtn.dataset.number;
-    if (!number) return;
-    navigator.clipboard?.writeText(number).then(() => {
-      copyBtn.classList.add('is-copied');
-      setTimeout(() => copyBtn.classList.remove('is-copied'), 1800);
-    }).catch(() => {
-      // Fallback for older browsers
-      const ta = document.createElement('textarea');
-      ta.value = number;
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); copyBtn.classList.add('is-copied'); } catch {}
-      document.body.removeChild(ta);
-      setTimeout(() => copyBtn.classList.remove('is-copied'), 1800);
-    });
+  async function copyNumber(value, button) {
+    try {
+      await navigator.clipboard.writeText(value);
+      button.classList.add('is-copied');
+      window.setTimeout(() => button.classList.remove('is-copied'), 1800);
+    } catch (error) {
+      console.error('Unable to copy the wedding account number.', error);
+    }
   }
 
-  function formatNumber(n) {
-    // Group by 4 for readability
-    return String(n).replace(/(\d{4})(?=\d)/g, '$1 ');
+  function formatNumber(value) {
+    return String(value).replace(/\B(?=(\d{4})+(?!\d))/g, ' ');
   }
 
-  return { init, open, close };
+  return { init, close };
 })();
 
 export default Gift;

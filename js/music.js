@@ -1,48 +1,96 @@
 /* ==========================================================================
-   Music — silent background player
-   No visible UI. Plays after the first user gesture (opening the cover).
+   Music — wedding instrumental player
+   Plays after the first user gesture (opening the cover).
    Fades in gently. Respects browser autoplay policies.
    ========================================================================== */
 
 const Music = (() => {
   let audio;
   let unlocked = false;
+  let playPending = false;
+  let targetVolume = 0.35;
 
   function init(config) {
     audio = document.getElementById('bg-music');
     if (!audio) return;
 
-    const targetVolume = (config?.volume ?? 0.35);
+    targetVolume = config?.volume ?? 0.35;
     audio.volume = 0;
     if (config?.src) {
       const source = audio.querySelector('source');
-      if (source && source.src.indexOf(config.src) === -1) {
+      if (source && source.getAttribute('src') !== config.src) {
         source.src = config.src;
         audio.load();
       }
     }
 
-    // Unlock on first meaningful user gesture (cover open, click, key, touch)
-    const unlock = () => {
-      if (unlocked) return;
-      unlocked = true;
-      audio.play().then(() => fadeTo(targetVolume, 1600)).catch(() => {
-        // If autoplay blocked, retry on next interaction
-        unlocked = false;
+    const controls = document.querySelectorAll('.music-toggle-button, .music-toggle');
+    const updateControls = () => {
+      const playing = !audio.paused;
+      controls.forEach(control => {
+        control.setAttribute('aria-pressed', String(playing));
+        control.setAttribute('aria-label', playing ? 'Tắt nhạc nền' : 'Bật nhạc nền');
       });
     };
 
-    document.addEventListener('book:open', unlock, { once: true });
-    document.addEventListener('click', unlock, { once: true });
-    document.addEventListener('touchstart', unlock, { once: true, passive: true });
-    document.addEventListener('keydown', unlock, { once: true });
+    const play = () => {
+      if (!audio.paused || playPending) return;
+      playPending = true;
+      audio.play().then(() => {
+        playPending = false;
+        unlocked = true;
+        fadeTo(targetVolume, 1600);
+        updateControls();
+        document.removeEventListener('pointerdown', unlock);
+        document.removeEventListener('click', unlock);
+        document.removeEventListener('keydown', unlock);
+      }).catch(error => {
+        playPending = false;
+        updateControls();
+        if (error.name !== 'NotAllowedError') {
+          console.error('Unable to play the wedding background music.', error);
+        }
+      });
+    };
+
+    function unlock(event) {
+      if (event?.target?.closest?.('.music-toggle-button, .music-toggle')) return;
+      if (!unlocked) play();
+    }
+
+    document.addEventListener('pointerdown', unlock, { passive: true });
+    document.addEventListener('click', unlock);
+    document.addEventListener('keydown', unlock);
+
+    controls.forEach(control => {
+      control.addEventListener('click', () => {
+        if (audio.paused) {
+          play();
+        } else {
+          audio.pause();
+          audio.volume = targetVolume;
+          updateControls();
+        }
+      });
+    });
+
+    audio.addEventListener('play', updateControls);
+    audio.addEventListener('pause', updateControls);
+    audio.addEventListener('error', () => {
+      console.error('Unable to load the wedding background music.', audio.error);
+    });
 
     // Pause when tab hidden, resume when visible
     document.addEventListener('visibilitychange', () => {
       if (!unlocked) return;
       if (document.hidden) audio.pause();
-      else audio.play().catch(() => {});
+      else audio.play().catch(error => {
+        if (error.name !== 'NotAllowedError') {
+          console.error('Unable to resume the wedding background music.', error);
+        }
+      });
     });
+    updateControls();
   }
 
   function fadeTo(target, ms) {
