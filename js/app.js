@@ -9,6 +9,7 @@ import Book from './book.js';
 import Magnetic from './magnetic.js';
 import Flowers from './flowers.js';
 import Gift from './gift.js?v=20261031';
+import Gallery from './gallery.js?v=20261104';
 
 document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.add('scroll-layout');
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   Flowers.init();
   Music.init(data?.music);
   Gift.init(data?.gift);
+  Gallery.init();
   initCountdown(data?.wedding?.date);
   initRevealOnScroll();
 
