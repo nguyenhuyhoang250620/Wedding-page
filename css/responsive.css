@@ -10,7 +10,7 @@
   .book-cover { padding: 5vh 6vw; }
   .book-cover__monogram { width: 82px; height: 82px; font-size: 1.15rem; }
   .book-cover__title { font-size: clamp(2.6rem, 12vw, 4.6rem); }
-  .book-cover__names { font-size: clamp(1.1rem, 4vw, 1.6rem); letter-spacing: 0.2em; padding: 0.7rem 1.2rem; }
+  .book-cover__names { font-size: clamp(1.1rem, 4vw, 1.6rem); letter-spacing: 0.2em; padding: 0.7rem 0; }
   .book-cover__date { font-size: 0.78rem; letter-spacing: 0.32em; }
 
   .welcome__monogram { width: 88px; height: 88px; font-size: 1.15rem; }
@@ -33,7 +33,7 @@
 
   .book-cover__monogram { width: 72px; height: 72px; font-size: 1rem; }
   .book-cover__title { font-size: clamp(2.4rem, 13vw, 3.8rem); }
-  .book-cover__names { font-size: clamp(0.95rem, 4.4vw, 1.3rem); letter-spacing: 0.16em; padding: 0.6rem 1rem; }
+  .book-cover__names { font-size: clamp(0.95rem, 4.4vw, 1.3rem); letter-spacing: 0.16em; padding: 0.6rem 0; }
   .book-cover__cta { margin-top: 1.6rem; }
 
   .welcome__monogram { width: 78px; height: 78px; font-size: 1.05rem; }

@@ -824,7 +824,7 @@ html.cover-locked {
 
 /* Scrollable invitation interior */
 #book {
-  width: min(calc(100% - 36px), 540px);
+  width: min(100%, 540px);
 }
 
 .scroll-layout .book {
@@ -883,7 +883,7 @@ body.invitation-open {
   position: relative;
   display: grid;
   min-height: 0;
-  aspect-ratio: 1.08 / 1;
+  aspect-ratio: 1/1.2;
   place-items: center;
   overflow: hidden;
   background: #34251d;
@@ -1662,7 +1662,35 @@ html.gallery-open body {
 
 .scroll-reveal-ready .page.reveal-on-scroll,
 .scroll-reveal-ready .reveal-on-scroll {
-  transition: opacity 650ms ease, transform 650ms ease;
+  transition:
+    opacity 1250ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal-ready .person-card:nth-child(2),
+.scroll-reveal-ready .family-card:nth-child(2),
+.scroll-reveal-ready .event-card:nth-child(2) {
+  transition-delay: 140ms;
+}
+
+.scroll-reveal-ready .person-card.reveal-on-scroll:not(.is-visible):nth-child(odd),
+.scroll-reveal-ready .family-card.reveal-on-scroll:not(.is-visible):nth-child(odd),
+.scroll-reveal-ready .event-card.reveal-on-scroll:not(.is-visible):nth-child(odd) {
+  transform: translate3d(-28px, 0, 0);
+}
+
+.scroll-reveal-ready .person-card.reveal-on-scroll:not(.is-visible):nth-child(even),
+.scroll-reveal-ready .family-card.reveal-on-scroll:not(.is-visible):nth-child(even),
+.scroll-reveal-ready .event-card.reveal-on-scroll:not(.is-visible):nth-child(even) {
+  transform: translate3d(28px, 0, 0);
+}
+
+.scroll-reveal-ready .reveal-on-scroll.reveal-from-left:not(.is-visible) {
+  transform: translate3d(-28px, 0, 0);
+}
+
+.scroll-reveal-ready .reveal-on-scroll.reveal-from-right:not(.is-visible) {
+  transform: translate3d(28px, 0, 0);
 }
 
 .scroll-reveal-ready .page--story.reveal-on-scroll:not(.is-visible) {
@@ -2012,6 +2040,15 @@ html.gallery-open body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-ready .page.reveal-on-scroll,
+  .scroll-reveal-ready .reveal-on-scroll,
+  .scroll-reveal-ready .reveal-on-scroll.reveal-from-left,
+  .scroll-reveal-ready .reveal-on-scroll.reveal-from-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .cover-card {
     animation: none;
   }
@@ -2030,7 +2067,7 @@ body.invitation-open {
 .scroll-layout .page:not(.page--cover) {
   position: relative;
   z-index: 1;
-  padding: 44px 24px;
+  /* padding: 44px 24px; */
   background: #fff;
   color: #2c1810;
   font-family: "Be Vietnam Pro", Inter, system-ui, sans-serif;
@@ -2593,5 +2630,213 @@ body.invitation-open {
 
   .gift-account__qr {
     width: 70px;
+  }
+}
+
+/* Wedding invitation typography and sunset palette */
+body.scroll-layout :is(
+  p, span, label, button, input, select, legend, strong, small, a, time,
+  .section-kicker
+) {
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif !important;
+}
+
+body.scroll-layout :is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif !important;
+}
+
+.scroll-layout .page p {
+  color: #70544a;
+  font-size: clamp(1rem, 3.8vw, 1.15rem);
+  line-height: 1.7;
+}
+
+.scroll-layout .page .section-kicker {
+  color: #9a6337;
+  font-size: clamp(0.82rem, 3vw, 0.95rem);
+  letter-spacing: 0.16em;
+}
+
+.scroll-layout .page--intro {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 216, 151, 0.3), transparent 58%),
+    linear-gradient(155deg, #c8783e 0%, #a95432 54%, #793b2d 100%) !important;
+}
+
+.scroll-layout .page--intro .section-kicker,
+.scroll-layout .page--intro h2,
+.scroll-layout .page--intro .announcement__subtitle,
+.scroll-layout .page--intro .announcement__names {
+  color: #fff5e8;
+}
+
+.scroll-layout .page--intro .section-kicker {
+  font-size: clamp(0.88rem, 3.2vw, 1rem);
+}
+
+.scroll-layout .page--intro .announcement h2 {
+  font-size: clamp(2.15rem, 8vw, 2.8rem);
+  text-shadow: 0 2px 12px rgba(67, 31, 22, 0.24);
+}
+
+.scroll-layout .page--intro .announcement__subtitle {
+  font-size: clamp(1rem, 3.8vw, 1.15rem);
+}
+
+.scroll-layout .page--intro .announcement__names {
+  font-size: clamp(1.05rem, 4vw, 1.25rem);
+}
+
+.scroll-layout .page--intro .announcement__names span:nth-child(2),
+.scroll-layout .page--intro .announcement__ornament,
+.scroll-layout .page--intro .announcement__rule {
+  color: #ffe0a6;
+}
+
+.scroll-layout .page--intro .announcement__rule::before,
+.scroll-layout .page--intro .announcement__rule::after {
+  background: rgba(255, 229, 188, 0.72);
+}
+
+.scroll-layout .page--intro .announcement__names,
+.scroll-layout .page--intro .announcement__names span {
+  color: #fffaf1 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 5px rgba(67, 31, 22, 0.45);
+}
+
+.scroll-layout .page--intro .announcement__names span:nth-child(2) {
+  color: #ffe0a6 !important;
+}
+
+.scroll-layout .page--intro .announcement__subtitle {
+  color: #fff4e3 !important;
+  text-shadow: 0 1px 4px rgba(67, 31, 22, 0.38);
+}
+
+/* Deep rose wedding palette and photo interludes */
+html,
+body,
+body.scroll-layout {
+  background: #4b1821;
+}
+
+.scroll-layout .page--intro {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(245, 184, 142, 0.2), transparent 58%),
+    linear-gradient(155deg, #9b3440 0%, #7c202e 54%, #521720 100%) !important;
+}
+
+.scroll-layout .page--couple,
+.scroll-layout .page--family,
+.scroll-layout .page--details,
+.scroll-layout .page--dress,
+.scroll-layout .page--gift-scan,
+.scroll-layout .page--countdown,
+.scroll-layout .page--rsvp,
+.scroll-layout .page--thanks {
+  background: #fbf1ed !important;
+}
+
+.scroll-layout .page--family {
+  background: #f7e9e5 !important;
+}
+
+.scroll-layout .page--closing {
+  background: linear-gradient(155deg, #832633, #541720) !important;
+}
+
+.scroll-layout .page--closing .closing-card,
+.scroll-layout .page--closing .closing-card p,
+.scroll-layout .page--closing .closing-card h2 {
+  color: #fff5eb !important;
+}
+
+.scroll-layout .page--closing .closing-card > span,
+.scroll-layout .page--closing .closing-card h2 em {
+  color: #e8bd82 !important;
+}
+
+.scroll-layout .page .section-heading h2,
+.scroll-layout .page .family-card__name,
+.scroll-layout .page--details .date-card__headline,
+.scroll-layout .page--details .event-card h3 {
+  color: #762431 !important;
+}
+
+.scroll-layout .page .section-kicker,
+.scroll-layout .page .family-card__side,
+.scroll-layout .page--details .event-card__eyebrow {
+  color: #a64c55 !important;
+}
+
+.scroll-layout .page .family-card,
+.scroll-layout .page--details .event-card,
+.scroll-layout .page--details .date-card,
+.scroll-layout .page--rsvp .rsvp-form,
+.scroll-layout .page--thanks .thank-you {
+  border-color: #e7c9c2;
+  background-color: #fff9f6;
+}
+
+.scroll-layout .page .family-card {
+  border-left-color: #a43a49;
+}
+
+.scroll-layout .page--photo-moment {
+  padding: 18px 18px 22px !important;
+  background: #f3e1dc !important;
+}
+
+.photo-moment {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(126, 40, 51, 0.26);
+  background: #fff8f4;
+  box-shadow: 0 8px 22px rgba(77, 24, 33, 0.13);
+}
+
+.photo-moment img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.12 / 1;
+  object-fit: cover;
+}
+
+.photo-moment figcaption,
+.photo-moment__caption {
+  margin: 0;
+  padding: 11px 8px 12px;
+  color: #7c3039 !important;
+  font: italic 500 1.05rem/1.4 "Cormorant Garamond", "Playfair Display", Georgia, serif !important;
+  text-align: center;
+}
+
+.photo-moment__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.photo-moment__pair .photo-moment img {
+  aspect-ratio: 0.78 / 1;
+}
+
+.photo-moment__caption {
+  padding-bottom: 0;
+}
+
+@media (min-width: 600px) {
+  .scroll-layout .page--photo-moment {
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+  }
+
+  .photo-moment img {
+    aspect-ratio: 1.5 / 1;
+  }
+
+  .photo-moment__pair .photo-moment img {
+    aspect-ratio: 0.9 / 1;
   }
 }

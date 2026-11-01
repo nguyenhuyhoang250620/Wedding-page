@@ -3,14 +3,13 @@
    ========================================================================== */
 
 const Flowers = (() => {
-  const MAX_PETALS = 20;
-  const SPAWN_INTERVAL = 700;
+  const MAX_PETALS = 12;
+  const SPAWN_INTERVAL = 1100;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let container, intervalId, colors;
+  let container, intervalId;
 
   function init() {
     if (reduced) return;
-    colors = readThemeColors();
     createContainer();
     startSpawning();
 
@@ -24,20 +23,10 @@ const Flowers = (() => {
     });
   }
 
-  function readThemeColors() {
-    return [
-      '#e7a5a8',
-      '#f2c5c2',
-      '#d88b93',
-      '#ead2c8',
-      '#d6ad70'
-    ];
-  }
-
   function startSpawning() {
     if (intervalId) return;
-    for (let i = 0; i < 8; i++) {
-      window.setTimeout(spawn, i * 350);
+    for (let i = 0; i < 4; i++) {
+      window.setTimeout(spawn, i * 500);
     }
     intervalId = window.setInterval(spawn, SPAWN_INTERVAL);
   }
@@ -54,21 +43,25 @@ const Flowers = (() => {
 
     const petal = document.createElement('div');
     petal.className = 'flower-petal';
-    const width = 9 + Math.random() * 7;
-    const height = width * (1.35 + Math.random() * 0.35);
-    const duration = 13 + Math.random() * 8;
-    const delay = Math.random() * 1.2;
-    const color = colors[Math.floor(Math.random() * colors.length)] || '#E8DCC7';
-    const drift = `${Math.round((Math.random() - 0.5) * 130)}px`;
+    const isPink = Math.random() < 0.4;
+    const width = 14 + Math.random() * 8;
+    const height = width * (1.15 + Math.random() * 0.2);
+    const duration = 11 + Math.random() * 4;
+    const delay = Math.random() * 0.5;
+    const drift = `${Math.round((Math.random() - 0.5) * 100)}px`;
+    const rotation = `${Math.round((Math.random() - 0.5) * 70)}deg`;
+    const hue = `${Math.round((Math.random() - 0.5) * 8)}deg`;
 
     Object.assign(petal.style, {
       left: `${Math.random() * 100}%`,
       width: `${width}px`,
       height: `${height}px`,
-      animation: `petalFall ${duration}s cubic-bezier(0.45, 0, 0.15, 1) ${delay}s forwards`
+      animation: `petalFall ${duration}s linear ${delay}s forwards`
     });
-    petal.style.setProperty('--petal-color', color);
+    if (isPink) petal.classList.add('flower-petal--pink');
     petal.style.setProperty('--petal-drift', drift);
+    petal.style.setProperty('--petal-rotation', rotation);
+    petal.style.setProperty('--petal-hue', hue);
 
     container.appendChild(petal);
     petal.addEventListener('animationend', () => petal.remove(), { once: true });

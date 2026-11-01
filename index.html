@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/typography.css">
-  <link rel="stylesheet" href="css/layout.css?v=20261107-tc07-album">
+  <link rel="stylesheet" href="css/layout.css?v=20261102-wine-photo-layout">
   <link rel="stylesheet" href="css/animation.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -98,7 +98,7 @@
   <main class="book" id="book" role="main" aria-roledescription="Thiệp cưới">
     <section class="page page--story">
       <div class="interior-hero">
-        <img src="assets/images/gallery-4.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
+        <img src="assets/images/anh-top-2.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
         <div class="interior-hero__shade" aria-hidden="true"></div>
         <div class="interior-hero__content">
           <p class="interior-hero__eyebrow">Trân trọng kính mời</p>
@@ -139,7 +139,7 @@
       </div>
 
       <div class="couple-grid">
-        <article class="person-card">
+        <article class="person-card reveal-on-scroll">
           <div class="person-card__image">
             <img src="assets/images/chure.JPG" alt="Chú rể Nguyễn Huy Hoàng" loading="lazy">
           </div>
@@ -147,7 +147,7 @@
           <p data-person-name="groom">Nguyễn Huy Hoàng</p>
         </article>
 
-        <article class="person-card">
+        <article class="person-card reveal-on-scroll">
           <div class="person-card__image">
             <img src="assets/images/codau.JPG" alt="Cô dâu Nguyễn Thu Thảo" loading="lazy">
           </div>
@@ -164,17 +164,24 @@
       </div>
 
       <div class="family-grid">
-        <article class="family-card">
+        <article class="family-card reveal-on-scroll">
           <p class="family-card__side">Nhà trai</p>
           <h2 class="family-card__name" data-couple-name="groom">Nguyễn Huy Hoàng</h2>
           <p class="family-card__parents"><strong>Song thân:</strong> <span data-family-parents="groom">Nguyễn Thắng &amp; Vũ Thanh</span></p>
         </article>
-        <article class="family-card">
+        <article class="family-card reveal-on-scroll">
           <p class="family-card__side">Nhà gái</p>
           <h2 class="family-card__name" data-couple-name="bride">Nguyễn Thu Thảo</h2>
           <p class="family-card__parents"><strong>Song thân:</strong> <span data-family-parents="bride">Nguyễn Lâm &amp; Nguyễn Thu</span></p>
         </article>
       </div>
+    </section>
+
+    <section class="page page--photo-moment reveal-on-scroll" aria-label="Khoảnh khắc bên nhau">
+      <figure class="photo-moment">
+        <img src="assets/images/anh1.JPG" alt="Cặp đôi lưu giữ khoảnh khắc trong ngày cưới" loading="lazy">
+        <figcaption>Khoảnh khắc dịu dàng bên nhau</figcaption>
+      </figure>
     </section>
 
     <section class="page page--details">
@@ -183,7 +190,7 @@
         <h2>Thông tin hôn lễ</h2>
       </div>
 
-      <div class="date-card">
+      <div class="date-card reveal-on-scroll">
         <div class="date-card__headline" data-wedding-date>28.11.2026</div>
         <div class="date-card__row">
           <span data-wedding-weekday>Chủ Nhật</span>
@@ -192,14 +199,14 @@
       </div>
 
       <div class="event-cards">
-        <article class="event-card" data-event-card="ceremony">
+        <article class="event-card reveal-on-scroll" data-event-card="ceremony">
           <span class="event-card__eyebrow">Lễ thành hôn</span>
           <h3 data-event-title>Lễ Cưới</h3>
           <p class="event-card__time" data-event-time>11:00</p>
           <p class="event-card__venue" data-event-venue>Uông Bí, Quảng Ninh</p>
           <a class="event-card__map" data-event-map href="https://www.google.com/maps/search/?api=1&amp;query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh" target="_blank" rel="noreferrer">Xem bản đồ</a>
         </article>
-        <article class="event-card" data-event-card="reception">
+        <article class="event-card reveal-on-scroll" data-event-card="reception">
           <span class="event-card__eyebrow">Tiệc mừng</span>
           <h3 data-event-title>Tiệc Cưới</h3>
           <p class="event-card__time" data-event-time>11:00</p>
@@ -208,7 +215,7 @@
         </article>
       </div>
 
-      <div class="event-schedule">
+      <div class="event-schedule reveal-on-scroll">
         <p class="section-kicker">Lịch trình ngày cưới</p>
         <div class="event-schedule__rows">
           <div class="event-schedule__row">
@@ -222,14 +229,14 @@
         </div>
       </div>
 
-      <div class="countdown countdown--details" role="timer" aria-live="off">
+      <div class="countdown countdown--details reveal-on-scroll" role="timer" aria-live="off">
         <div class="countdown__item"><span id="cd-days">0</span><small>Ngày</small></div>
         <div class="countdown__item"><span id="cd-hours">0</span><small>Giờ</small></div>
         <div class="countdown__item"><span id="cd-minutes">0</span><small>Phút</small></div>
         <div class="countdown__item"><span id="cd-seconds">0</span><small>Giây</small></div>
       </div>
 
-      <div class="wedding-calendar">
+      <div class="wedding-calendar reveal-on-scroll">
         <div class="wedding-calendar__header">
           <strong data-calendar-month>Tháng 11</strong>
           <strong data-calendar-year>2026</strong>
@@ -240,7 +247,7 @@
         <div class="wedding-calendar__days" data-calendar-days role="grid" aria-label="Lịch ngày cưới"></div>
       </div>
 
-      <div class="wedding-venue">
+      <div class="wedding-venue reveal-on-scroll">
         <h3 data-venue-title>Uông Bí, Quảng Ninh</h3>
         <p data-venue-address>Uông Bí, Quảng Ninh</p>
         <div class="wedding-map">
@@ -257,8 +264,20 @@
       </div>
     </section>
 
+    <section class="page page--photo-moment reveal-on-scroll" aria-label="Những khoảnh khắc ngày vui">
+      <div class="photo-moment__pair">
+        <figure class="photo-moment">
+          <img src="assets/images/anh2.JPG" alt="Cô dâu và chú rể trong khung cảnh ngoài trời" loading="lazy">
+        </figure>
+        <figure class="photo-moment">
+          <img src="assets/images/anh3.jpg" alt="Cặp đôi trong trang phục cưới" loading="lazy">
+        </figure>
+      </div>
+      <p class="photo-moment__caption">Từng khoảnh khắc đều là điều đáng nhớ</p>
+    </section>
+
     <section class="page page--dress">
-      <div class="dress-card">
+      <div class="dress-card reveal-on-scroll">
         <p class="section-kicker">Dress code</p>
         <h2>Trang phục</h2>
         <p>Gia đình rất vui được đón tiếp bạn trong trang phục lịch sự, trang nhã.</p>
@@ -268,41 +287,22 @@
       </div>
     </section>
 
-    <section class="page page--gallery">
-      <div class="section-heading small">
-        <p class="section-kicker">Album ảnh cưới</p>
-        <h2>
-          <span data-couple-name="groom">Nguyễn Huy Hoàng</span>
-          <span aria-hidden="true">&amp;</span>
-          <span data-couple-name="bride">Nguyễn Thu Thảo</span>
-        </h2>
-      </div>
+    <section class="page page--photo-moment reveal-on-scroll" aria-label="Cô dâu và chú rể">
+      <figure class="photo-moment">
+        <img src="assets/images/anh4.jpg" alt="Cô dâu và chú rể trong ngày trọng đại" loading="lazy">
+        <figcaption>Một ngày ngập tràn yêu thương</figcaption>
+      </figure>
+    </section>
 
-      <div class="gallery-grid">
-        <button class="gallery-photo reveal-on-scroll" type="button" data-gallery-index="0" aria-label="Mở ảnh 1 trong album">
-          <img src="assets/images/anh1.JPG" alt="Cặp đôi trong lễ cưới" loading="lazy">
-        </button>
-        <button class="gallery-photo reveal-on-scroll" type="button" data-gallery-index="1" aria-label="Mở ảnh 2 trong album">
-          <img src="assets/images/anh2.JPG" alt="Cặp đôi trong lễ cưới" loading="lazy">
-        </button>
-        <button class="gallery-photo reveal-on-scroll" type="button" data-gallery-index="2" aria-label="Mở ảnh 3 trong album">
-          <img src="assets/images/anh3.jpg" alt="Cặp đôi trong lễ phục truyền thống" loading="lazy">
-        </button>
-        <button class="gallery-photo reveal-on-scroll" type="button" data-gallery-index="3" aria-label="Mở ảnh 4 trong album">
-          <img src="assets/images/anh4.jpg" alt="Cặp đôi trong ngày cưới" loading="lazy">
-        </button>
-        <button class="gallery-photo reveal-on-scroll" type="button" data-gallery-index="4" aria-label="Mở ảnh 5 trong album">
-          <img src="assets/images/anh-bia.jpg" alt="Cô dâu và chú rể bên nhau" loading="lazy">
-        </button>
-        <button class="gallery-photo reveal-on-scroll" type="button" data-gallery-index="5" aria-label="Mở ảnh 6 trong album">
-          <img src="assets/images/LVT04927.JPG" alt="Cặp đôi trong ánh hoàng hôn" loading="lazy">
-        </button>
-      </div>
-      <p class="gallery-caption">Những khoảnh khắc yêu thương</p>
+    <section class="page page--photo-moment reveal-on-scroll" aria-label="Kỷ niệm ngày cưới">
+      <figure class="photo-moment">
+        <img src="assets/images/LVT04927.JPG" alt="Cặp đôi trong ánh hoàng hôn" loading="lazy">
+        <figcaption>Cùng nhau viết tiếp hành trình hạnh phúc</figcaption>
+      </figure>
     </section>
 
     <section class="page page--closing">
-      <div class="closing-card">
+      <div class="closing-card reveal-on-scroll">
         <span aria-hidden="true">✦</span>
         <p>Trân trọng báo tin</p>
         <h2><span data-couple-name="groom">Nguyễn Huy Hoàng</span> <em>&amp;</em> <span data-couple-name="bride">Nguyễn Thu Thảo</span></h2>
@@ -329,7 +329,7 @@
         <p class="section-kicker">Xác nhận</p>
       </div>
 
-      <form class="rsvp-form">
+      <form class="rsvp-form reveal-on-scroll">
         <div class="rsvp-field">
           <label for="rsvp-name">Họ và tên</label>
           <input id="rsvp-name" name="name" type="text" placeholder="Nhập tên của bạn" maxlength="120" required>
@@ -355,7 +355,7 @@
     </section>
 
     <section class="page page--thanks">
-      <div class="thank-you">
+      <div class="thank-you reveal-on-scroll">
         <p class="section-kicker">Cảm ơn</p>
         <h2>Hẹn gặp bạn trong ngày vui</h2>
         <p>Thật tuyệt vời khi bạn ở đây cùng chúng mình trong ngày trọng đại này.</p>
@@ -401,17 +401,6 @@
     </div>
   </div>
 
-  <div class="gallery-lightbox" data-gallery-lightbox role="dialog" aria-modal="true" aria-label="Album ảnh cưới" aria-hidden="true">
-    <div class="gallery-lightbox__backdrop" data-gallery-close aria-hidden="true"></div>
-    <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Đóng ảnh">×</button>
-    <button class="gallery-lightbox__arrow gallery-lightbox__arrow--prev" type="button" data-gallery-prev aria-label="Ảnh trước">‹</button>
-    <figure class="gallery-lightbox__figure">
-      <img class="gallery-lightbox__image" data-gallery-image alt="">
-      <figcaption class="gallery-lightbox__counter" data-gallery-counter aria-live="polite"></figcaption>
-    </figure>
-    <button class="gallery-lightbox__arrow gallery-lightbox__arrow--next" type="button" data-gallery-next aria-label="Ảnh tiếp theo">›</button>
-  </div>
-
   <button class="music-toggle" type="button" aria-label="Bật/tắt nhạc nền" aria-pressed="false" tabindex="-1">Music</button>
   <audio id="bg-music" loop preload="auto">
     <source src="assets/music/wedding-instrumental.wav" type="audio/wav">
@@ -426,6 +415,6 @@
     </style>
   </noscript>
 
-  <script type="module" src="js/app.js?v=20261102-rsvp-fix"></script>
+  <script type="module" src="js/app.js?v=20261102-wine-photo-layout"></script>
 </body>
 </html>

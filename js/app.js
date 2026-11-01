@@ -9,7 +9,6 @@ import Book from './book.js';
 import Magnetic from './magnetic.js';
 import Flowers from './flowers.js';
 import Gift from './gift.js?v=20261031';
-import Gallery from './gallery.js?v=20261104';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initRsvpForm();
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   Flowers.init();
   Music.init(data?.music);
   Gift.init(data?.gift);
-  Gallery.init();
   initCountdown(data?.wedding?.date);
   initRevealOnScroll();
 
@@ -336,6 +334,14 @@ function initRevealOnScroll() {
   const sections = Array.from(document.querySelectorAll('.page:not(.page--cover)'));
   const items = [...sections, ...document.querySelectorAll('.reveal-on-scroll')];
   items.forEach(item => item.classList.add('reveal-on-scroll'));
+
+  const sideRevealItems = document.querySelectorAll(
+    '.reveal-on-scroll:not(.page):not(.gallery-photo):not(.person-card):not(.family-card):not(.event-card)'
+  );
+  sideRevealItems.forEach((item, index) => {
+    item.classList.add(index % 2 === 0 ? 'reveal-from-left' : 'reveal-from-right');
+  });
+
   document.body.classList.add('scroll-reveal-ready');
 
   if (!('IntersectionObserver' in window)) {
@@ -351,7 +357,7 @@ function initRevealOnScroll() {
     });
   }, {
     threshold: 0.15,
-    rootMargin: '0px 0px -20px 0px'
+    rootMargin: '0px 0px -70px 0px'
   });
 
   items.forEach(item => observer.observe(item));

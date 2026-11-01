@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" fill="none">
+  <defs>
+    <linearGradient id="petal" x1="18" y1="8" x2="78" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff5364"/>
+      <stop offset=".18" stop-color="#d90f2d"/>
+      <stop offset=".53" stop-color="#a80725"/>
+      <stop offset=".82" stop-color="#e8243e"/>
+      <stop offset="1" stop-color="#650819"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(45 62 -43 31 26 39)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff8790" stop-opacity=".85"/>
+      <stop offset=".58" stop-color="#ef1937" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#810b20" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="11" y1="28" x2="89" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffb0ae" stop-opacity=".78"/>
+      <stop offset=".28" stop-color="#ff6372" stop-opacity=".15"/>
+      <stop offset=".7" stop-color="#4f0616" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#ff7d87" stop-opacity=".7"/>
+    </linearGradient>
+    <linearGradient id="fold" x1="34" y1="36" x2="71" y2="119" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffb1ae" stop-opacity=".62"/>
+      <stop offset=".45" stop-color="#ff5268" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#430510" stop-opacity=".48"/>
+    </linearGradient>
+  </defs>
+  <path d="M50 136C40 124 17 111 9 91-1 67 11 46 7 34c13 3 19-9 29-20C46 6 55 17 65 15c9-2 14-13 22-10-4 14 9 24 6 42 13 14 8 36 0 50-10 18-31 28-43 39Z" fill="#650819" opacity=".45"/>
+  <path d="M50 132C40 119 18 108 11 89 2 67 14 47 10 36c12 2 18-9 27-19 10-10 17 2 27 0 8-2 14-12 21-9-3 13 9 23 7 40 11 14 7 34-1 48-10 17-29 27-41 36Z" fill="url(#petal)"/>
+  <path d="M50 132C40 119 18 108 11 89 2 67 14 47 10 36c12 2 18-9 27-19 10-10 17 2 27 0 8-2 14-12 21-9-3 13 9 23 7 40 11 14 7 34-1 48-10 17-29 27-41 36Z" fill="url(#glow)"/>
+  <path d="M10 36c11 9 14 20 18 32 6 19 14 39 22 64M37 17c4 12 4 25 6 39 3 25 4 49 7 76M85 8c-8 12-10 28-14 43-7 26-13 51-21 81M92 48c-12 8-20 19-26 31-7 14-12 29-16 53" stroke="url(#fold)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M10 36c12 2 18-9 27-19 10-10 17 2 27 0 8-2 14-12 21-9M11 89c-9-22 3-42-1-53m82 82c-10 17-29 27-42 36" stroke="url(#edge)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M17 49c8 2 14 10 18 19m38-28c-7 8-10 17-13 26M24 96c8 3 15 10 21 18m37-15c-6 7-13 12-21 17" stroke="#ffd0cc" stroke-opacity=".4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
