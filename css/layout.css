@@ -313,7 +313,7 @@ html.cover-locked {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 48%;
+  object-position: 39% 48%;
   transform: none;
 }
 
@@ -352,7 +352,7 @@ html.cover-locked {
 .cover-copy {
   position: absolute;
   z-index: 4;
-  inset: 38px 20px 20px;
+  inset: 20px 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -376,12 +376,13 @@ html.cover-locked {
 }
 
 .book-cover__names {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: clamp(24px, 7vw, 48px);
   align-items: center;
   width: 100%;
-  margin-top: 23px;
+  margin-top: 1px;
   color: #fff9f0;
   font: 600 clamp(1.45rem, 6vw, 2.45rem)/0.98 var(--font-display);
   letter-spacing: -0.035em;
@@ -389,24 +390,34 @@ html.cover-locked {
 }
 
 .book-cover__groom {
-  width: min-content;
+  /* width: min-content; */
   justify-self: end;
   text-align: right;
 }
 
 .book-cover__bride {
-  width: min-content;
+  /* width: min-content; */
   justify-self: start;
   text-align: left;
 }
 
 .cover-names__amp {
-  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font: 400 1.4rem/1 Arial, sans-serif;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
+}
+
+.cover-names__amp::before {
+  content: "♡";
 }
 
 .book-cover__date {
-  margin-top: 13px;
-  color: #f5e8d7;
+  margin-top: 1px;
+  color: #ffe083 !important;
   font: 600 0.9rem/1.3 var(--font-sans);
   letter-spacing: 0.18em;
 }

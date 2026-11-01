@@ -8,13 +8,13 @@
 
   "couple": {
     "groom": {
-      "name": "Nguyễn Huy Hoàng",
-      "role": "Chú Rể",
+      "name": "Thu Thảo",
+      "role": "Cô Dâu",
       "image": "assets/images/chure.jpeg"
     },
     "bride": {
-      "name": "Nguyễn Thu Thảo",
-      "role": "Cô Dâu",
+      "name": "Huy Hoàng",
+      "role": "Chú Rể",
       "image": "assets/images/codau.jpeg"
     }
   },
