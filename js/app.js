@@ -12,6 +12,7 @@ import Gift from './gift.js?v=20261031';
 import Gallery from './gallery.js?v=20261104';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  initRsvpForm();
   document.body.classList.add('scroll-layout');
   document.querySelector('.book')?.classList.add('scroll-layout');
   Loader.init();
@@ -32,6 +33,65 @@ document.addEventListener('DOMContentLoaded', async () => {
     unlockInvitation();
   }, 1100);
 });
+
+/* ---------- RSVP submission ---------- */
+function initRsvpForm() {
+  const form = document.querySelector('.rsvp-form');
+  if (!form) return;
+
+  const status = form.querySelector('.rsvp-status');
+  const submitButton = form.querySelector('.submit-btn');
+  if (!status || !submitButton) return;
+
+  let submitted = false;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (submitted || submitButton.disabled) return;
+
+    const formData = new FormData(form);
+    const attendance = formData.get('attendance');
+    const payload = {
+      name: formData.get('name'),
+      attendance,
+      guests: attendance === 'yes' ? Number(formData.get('guests')) : 0,
+    };
+
+    status.textContent = 'Đang gửi xác nhận…';
+    status.dataset.state = 'pending';
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error('Phản hồi từ máy chủ không hợp lệ.');
+      }
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Không thể lưu xác nhận lúc này. Vui lòng thử lại.');
+      }
+
+      submitted = true;
+      status.textContent = 'Xác nhận của bạn đã được ghi nhận. Cảm ơn bạn!';
+      status.dataset.state = 'success';
+    } catch (error) {
+      console.error('Unable to submit RSVP.', error);
+      status.textContent = error instanceof TypeError
+        ? 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra mạng và thử lại.'
+        : error.message;
+      status.dataset.state = 'error';
+      submitButton.disabled = false;
+    }
+  });
+}
 
 /* ---------- data.json ---------- */
 async function fetchData() {
