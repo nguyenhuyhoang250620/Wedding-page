@@ -81,10 +81,10 @@
       { "src": "assets/images/LVT04927.JPG", "caption": "Cùng nhau viết tiếp hành trình hạnh phúc" }
     ],
     "milestones": [
-      { "src": "assets/images/anh1.JPG", "date": "2022", "title": "Lần đầu gặp nhau", "desc": "Câu chuyện bắt đầu từ đây" },
-      { "src": "assets/images/anh2.JPG", "date": "2023", "title": "Hẹn hò đầu tiên", "desc": "Những kỷ niệm khó quên" },
-      { "src": "assets/images/anh3.jpg", "date": "2024", "title": "Cầu hôn", "desc": "Một câu hỏi thay đổi tất cả" },
-      { "src": "assets/images/LVT04927.JPG", "date": "2026", "title": "Ngày cưới", "desc": "Mãi mãi bên nhau" }
+      { "src": "assets/images/anh1.JPG", "title": "Hai đứa mình", "desc": "Giữa muôn vàn người, chúng mình đã chọn nhau." },
+      { "src": "assets/images/anh2.JPG", "title": "Bên nhau mỗi ngày", "desc": "Những buổi sáng bình yên, những buổi tối đầy tiếng cười." },
+      { "src": "assets/images/anh3.jpg", "title": "Có nhau là đủ", "desc": "Không cần đi đâu xa, chỉ cần có nhau là đủ ấm." },
+      { "src": "assets/images/LVT04927.JPG", "title": "Mãi mãi từ hôm nay", "desc": "Một lời hứa, một đời bên nhau." }
     ]
   }
 }

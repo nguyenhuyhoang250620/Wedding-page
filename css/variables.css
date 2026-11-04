@@ -1,20 +1,20 @@
 /* Theme: Golden Hour — Hoàng hôn ấm áp */
-/* Đỏ tím đêm · Cam vàng hoàng hôn · Kem amber */
+/* Cam rực · Hồng sunset · Tím đêm · Kem ấm */
 
 :root {
   /* Nền sáng — card, section trắng */
-  --color-ivory:      #fdf5ec;
-  --color-cream:      #faeadb;
-  --color-beige:      #f0d9c4;
-  --color-champagne:  #e8b98a;
-  /* Accent vàng cam hoàng hôn */
-  --color-gold:       #d4883a;
-  --color-gold-deep:  #b86a28;
+  --color-ivory:      #fff8f0;
+  --color-cream:      #fdeede;
+  --color-beige:      #f8dfc4;
+  --color-champagne:  #f0b87a;
+  /* Accent cam hoàng hôn */
+  --color-gold:       #f0823a;
+  --color-gold-deep:  #d4622a;
   /* Chữ tối */
-  --color-sepia:      #3d1a14;
-  --color-charcoal:   #fdf5ec;
+  --color-sepia:      #2e1208;
+  --color-charcoal:   #fff8f0;
   --color-white:      #FFFFFF;
-  --color-black:      #180a08;
+  --color-black:      #120608;
 
   --color-primary:    var(--color-champagne);
   --color-secondary:  var(--color-cream);
@@ -22,19 +22,19 @@
   --color-bg:         var(--color-ivory);
   --color-accent:     var(--color-gold);
 
-  --color-glass:        rgba(255, 248, 235, 0.68);
-  --color-glass-border: rgba(212, 136, 58, 0.22);
-  --color-veil:         rgba(180, 80, 40, 0.06);
+  --color-glass:        rgba(255, 248, 240, 0.72);
+  --color-glass-border: rgba(240, 130, 58, 0.2);
+  --color-veil:         rgba(200, 80, 40, 0.05);
 
-  --accent-rgb:  212, 136, 58;
-  --gold-rgb:    212, 136, 58;
-  --shadow-rgb:  80, 30, 18;
+  --accent-rgb:  240, 130, 58;
+  --gold-rgb:    240, 130, 58;
+  --shadow-rgb:  80, 28, 12;
 
-  --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
-  --font-script:  'Cormorant Garamond', 'Playfair Display', serif;
-  --font-serif:   'Playfair Display', 'Cormorant Garamond', serif;
-  --font-body:    'Cormorant Garamond', serif;
-  --font-sans:    'Poppins', sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-script:  'Great Vibes', cursive;
+  --font-serif:   Georgia, 'Times New Roman', serif;
+  --font-body:    'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --font-sans:    'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
 
   --fs-hero:  clamp(3.2rem, 8.5vw, 7rem);
   --fs-h1:    clamp(2.6rem, 5.6vw, 4.8rem);
@@ -57,11 +57,11 @@
   --radius-xl:   40px;
   --radius-full: 50%;
 
-  --shadow-sm:   0 4px 20px rgba(90, 58, 58, 0.06);
-  --shadow-md:   0 16px 50px rgba(90, 58, 58, 0.10);
-  --shadow-lg:   0 32px 90px rgba(90, 58, 58, 0.14);
-  --shadow-card: 0 20px 60px -12px rgba(90, 58, 58, 0.18), 0 4px 12px rgba(90, 58, 58, 0.05);
-  --shadow-inset: inset 0 0 0 1px rgba(201, 141, 135, 0.15);
+  --shadow-sm:   0 4px 20px rgba(80, 28, 12, 0.07);
+  --shadow-md:   0 16px 50px rgba(80, 28, 12, 0.12);
+  --shadow-lg:   0 32px 90px rgba(80, 28, 12, 0.16);
+  --shadow-card: 0 20px 60px -12px rgba(80, 28, 12, 0.2), 0 4px 12px rgba(80, 28, 12, 0.06);
+  --shadow-inset: inset 0 0 0 1px rgba(240, 130, 58, 0.14);
 
   --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-expo:    cubic-bezier(0.19, 1, 0.22, 1);
@@ -94,9 +94,11 @@
   --z-loader:  1000;
   --z-cursor:  9999;
 
-  --grad-cream:     linear-gradient(180deg, #fdf5ec 0%, #f5e0c8 100%);
-  --grad-rose-veil: radial-gradient(ellipse at 30% 20%, rgba(212, 136, 58, 0.18) 0%, transparent 60%),
-                   radial-gradient(ellipse at 70% 80%, rgba(180, 80, 40, 0.12) 0%, transparent 55%);
-  --grad-gold:      linear-gradient(135deg, #e8b98a 0%, #d4883a 50%, #b86a28 100%);
-  --grad-gold-shine: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.6) 50%, transparent 80%);
+  /* Gradient bầu trời hoàng hôn: cam → hồng → tím đêm */
+  --grad-sunset:    linear-gradient(180deg, #f0823a 0%, #e8456a 45%, #6b2d6e 80%, #1c0d1a 100%);
+  --grad-cream:     linear-gradient(180deg, #fff8f0 0%, #fdeede 100%);
+  --grad-rose-veil: radial-gradient(ellipse at 30% 20%, rgba(240, 130, 58, 0.2) 0%, transparent 60%),
+                   radial-gradient(ellipse at 70% 80%, rgba(232, 69, 106, 0.12) 0%, transparent 55%);
+  --grad-gold:      linear-gradient(135deg, #f0b87a 0%, #f0823a 50%, #d4622a 100%);
+  --grad-gold-shine: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.55) 50%, transparent 80%);
 }

@@ -309,13 +309,12 @@ function renderMilestones(milestones) {
   if (!container) return;
   container.replaceChildren(...milestones.map((m, i) => {
     const article = document.createElement('article');
-    article.className = 'milestone-card reveal-on-scroll';
+    article.className = 'milestone-card reveal-on-scroll' + (i % 2 === 1 ? ' milestone-card--reverse' : '');
     article.innerHTML = `
       <div class="milestone-card__img">
         <img src="${m.src}" alt="${m.title}" loading="lazy">
       </div>
       <div class="milestone-card__body">
-        <span class="milestone-card__date">${m.date}</span>
         <strong class="milestone-card__title">${m.title}</strong>
         <p class="milestone-card__desc">${m.desc}</p>
       </div>`;

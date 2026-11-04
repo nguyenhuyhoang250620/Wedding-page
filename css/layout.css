@@ -1,17 +1,17 @@
-/* ==========================================================================
-   Layout — The Book, full-screen edition
-   Toàn màn hình là tấm thiệp. Có bìa 3D lật lên để "mở sách".
+ï»¿/* ==========================================================================
+   Layout Ã¢â¬â The Book, full-screen edition
+   ToÃÂ n mÃÂ n hÃÂ¬nh lÃÂ  tÃ¡ÂºÂ¥m thiÃ¡Â»â¡p. CÃÂ³ bÃÂ¬a 3D lÃ¡ÂºÂ­t lÃÂªn ÃâÃ¡Â»Æ "mÃ¡Â»Å¸ sÃÂ¡ch".
    ========================================================================== */
 
 html, body {
   overflow-x: clip;
-  background: #294247;
+  background: #1a0c10;
   color: var(--color-sepia);
   min-height: 100%;
 }
 
 body {
-  background: #294247;
+  background: #1a0c10;
   min-height: 100dvh;
   display: block;
 }
@@ -66,7 +66,7 @@ body {
   margin: 0;
   font-size: clamp(2rem, 7vw, 3.2rem);
   line-height: 1.1;
-  font-family: "Segoe Print", "Palatino Linotype", cursive;
+  font-family: 'Noto Serif', Georgia, serif;
   color: #f3d7d1;
 }
 
@@ -84,7 +84,7 @@ body {
 }
 
 /* ==========================================================================
-   BOOK — full-screen stage
+   BOOK Ã¢â¬â full-screen stage
    ========================================================================== */
 .book {
   position: relative;
@@ -335,7 +335,7 @@ html.cover-locked {
 .cover-glints span {
   position: absolute;
   color: #fff3ce;
-  font: 500 15px/1 Georgia, serif;
+  font: 500 15px/1 'Noto Serif', Georgia, serif;
   text-shadow: 0 0 8px rgba(255, 242, 194, 0.95), 0 0 18px rgba(255, 228, 147, 0.72);
   animation: coverGlint 1.9s ease-in-out infinite;
 }
@@ -356,59 +356,62 @@ html.cover-locked {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   color: #fff7eb;
+  gap: 0;
 }
 
 .cover-eyebrow {
   color: #f1d27c !important;
   opacity: 1;
-  font: 700 0.7rem/1.2 var(--font-sans);
+  font: 700 0.75rem/1.2 var(--font-sans);
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  text-shadow: 0 1px 9px rgba(32, 15, 11, 0.8);
+  text-shadow: 0 1px 9px rgba(32, 15, 11, 0.9);
+  margin-bottom: 6px;
 }
 
 .cover-flourish {
-  margin-top: 18px;
+  margin-top: 0;
+  margin-bottom: 6px;
   color: #d3a33c;
-  font: 2rem/1 var(--font-display);
+  font: 1.6rem/1 var(--font-display);
 }
 
 .book-cover__names {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: clamp(24px, 7vw, 48px);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 0;
   width: 100%;
-  margin-top: 1px;
+  margin-top: 0;
   color: #fff9f0;
-  font: 600 clamp(1.45rem, 6vw, 2.45rem)/0.98 var(--font-display);
-  letter-spacing: -0.035em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+  font: 700 clamp(2.4rem, 10vw, 3.8rem)/1.05 var(--font-display);
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
 }
 
 .book-cover__groom {
-  /* width: min-content; */
-  justify-self: end;
-  text-align: right;
+  justify-self: unset;
+  text-align: center;
 }
 
 .book-cover__bride {
-  /* width: min-content; */
-  justify-self: start;
-  text-align: left;
+  justify-self: unset;
+  text-align: center;
 }
 
 .cover-names__amp {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font: 400 1.4rem/1 Arial, sans-serif;
+  position: static;
+  top: unset;
+  left: unset;
+  transform: none;
+  color: #ffd97a;
+  font: 400 clamp(1.8rem, 7vw, 2.8rem)/1 'Noto Serif', Georgia, serif;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
+  margin: 2px 0;
 }
 
 .cover-names__amp::before {
@@ -416,10 +419,11 @@ html.cover-locked {
 }
 
 .book-cover__date {
-  margin-top: 1px;
+  margin-top: 12px;
   color: #ffe083 !important;
-  font: 600 0.9rem/1.3 var(--font-sans);
-  letter-spacing: 0.18em;
+  font: 600 1rem/1.3 var(--font-sans);
+  letter-spacing: 0.2em;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 
 .cover-note,
@@ -427,48 +431,50 @@ html.cover-locked {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(100%, 340px);
-  border: 1px solid rgba(219, 180, 112, 0.28);
-  border-radius: 5px;
-  background: rgba(36, 24, 21, 0.43);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(5px);
+  width: min(100%, 320px);
+  border: 1px solid rgba(219, 180, 112, 0.32);
+  border-radius: 6px;
+  background: rgba(36, 24, 21, 0.5);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
 }
 
 .cover-note {
-  gap: 5px;
-  margin-top: auto;
-  padding: 12px 10px 11px;
+  gap: 4px;
+  margin-top: 16px;
+  padding: 14px 16px 12px;
 }
 
 .cover-note span {
   color: #e2c47f;
-  font: 600 0.65rem/1.2 var(--font-sans);
+  font: 600 0.7rem/1.2 var(--font-sans);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .cover-note strong {
   color: #fff6eb;
-  font: 600 1.1rem/1.2 var(--font-display);
+  font: 600 1.4rem/1.2 var(--font-display);
   letter-spacing: 0.01em;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }
 
 .cover-event {
   gap: 4px;
-  margin-top: 12px;
-  padding: 10px;
+  margin-top: 10px;
+  padding: 10px 16px;
 }
 
 .cover-event__time {
   color: #e7c56e;
-  font: 700 1.15rem/1.1 var(--font-sans);
+  font: 700 1.2rem/1.1 var(--font-sans);
   letter-spacing: 0.16em;
 }
 
 .cover-event__venue {
-  color: rgba(255, 246, 232, 0.9);
-  font: italic 0.92rem/1.3 var(--font-display);
+  color: rgba(255, 246, 232, 0.95);
+  font: italic 1rem/1.3 var(--font-display);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
 
 .book-cover__cta {
@@ -527,7 +533,7 @@ html.cover-locked {
   font-size: clamp(2.2rem, 5vw, 3.1rem);
   margin: 8px 0 10px;
   line-height: 1.1;
-  font-family: "Segoe Print", "Palatino Linotype", cursive;
+  font-family: 'Noto Serif', Georgia, serif;
   letter-spacing: 0.02em;
 }
 
@@ -549,7 +555,7 @@ html.cover-locked {
 
 .page--couple .section-heading h2 {
   font-size: clamp(1.9rem, 5vw, 2.7rem);
-  font-family: "Segoe Print", "Palatino Linotype", cursive;
+  font-family: 'Noto Serif', Georgia, serif;
   color: #4e302e;
 }
 
@@ -594,7 +600,7 @@ html.cover-locked {
 .page--details .section-heading h2 {
   color: #511e20;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-family: "Segoe Print", "Palatino Linotype", cursive;
+  font-family: 'Noto Serif', Georgia, serif;
 }
 
 .page--details .date-card,
@@ -701,7 +707,7 @@ html.cover-locked {
 .page--thanks .thank-you h2 {
   font-size: clamp(1.65rem, 4vw, 2.1rem);
   color: #4a2326;
-  font-family: "Segoe Print", "Palatino Linotype", cursive;
+  font-family: 'Noto Serif', Georgia, serif;
 }
 
 @media (max-width: 420px) {
@@ -811,8 +817,8 @@ html.cover-locked {
   min-height: 44px;
   padding: 10px 16px;
   border-radius: 8px;
-  background: linear-gradient(110deg, #a96732, #d6aa52);
-  color: #fffaf1;
+  background: linear-gradient(110deg, #e8623a, #c8385a);
+  color: #fff0d8;
   font: 600 0.72rem/1.2 var(--font-sans);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -846,7 +852,7 @@ body.invitation-open {
 .scroll-layout .page h2,
 .scroll-layout .page h3 {
   color: #503c32;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Playfair Display", 'Noto Serif', Georgia, serif;
   font-weight: 500;
 }
 
@@ -901,7 +907,7 @@ body.invitation-open {
 .interior-hero__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(28, 19, 16, 0.2), rgba(30, 20, 15, 0.35) 38%, rgba(28, 18, 14, 0.82));
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35%, rgba(10,5,4,0.45) 60%, rgba(10,5,4,0.78) 100%);
 }
 
 .interior-hero__content {
@@ -913,60 +919,71 @@ body.invitation-open {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding: 30px 20px 34px;
+  padding: 30px 20px 40px;
   color: #fffaf0;
   text-align: center;
+  gap: 0;
 }
 
 .interior-hero__eyebrow {
-  margin: 0 0 10px;
-  color: #f3dfb8 !important;
-  font: 400 0.62rem/1.5 "Be Vietnam Pro", sans-serif !important;
-  letter-spacing: 0.2em;
+  margin: 0 0 12px;
+  color: #fff5cc !important;
+  font: 700 0.78rem/1.5 "Be Vietnam Pro", sans-serif !important;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(0,0,0,1), 0 2px 16px rgba(0,0,0,0.95), 1px 1px 0 rgba(0,0,0,0.8);
 }
 
 .interior-hero__names {
   display: grid;
   justify-items: center;
-  gap: 1px;
+  gap: 2px;
   margin: 0;
   color: #fffaf0 !important;
-  font: 500 clamp(2rem, 9vw, 3.2rem)/1.08 "Playfair Display", Georgia, serif;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.32);
+  font: 700 clamp(1.9rem, 8vw, 3rem)/1.05 "Playfair Display", 'Noto Serif', Georgia, serif;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 50px rgba(0,0,0,0.6);
 }
 
 .interior-hero__amp {
-  color: #e6ca8c;
-  font-size: 0.65em;
+  color: #e8c97a;
+  font-size: 0.6em;
   font-style: italic;
 }
 
 .interior-hero__invite {
   display: grid;
-  gap: 3px;
-  margin-top: 20px;
+  gap: 4px;
+  margin-top: 22px;
+  padding: 0;
   color: #fffaf0;
-  font: 400 0.65rem/1.5 "Be Vietnam Pro", sans-serif;
+  font: 400 0.78rem/1.5 "Be Vietnam Pro", sans-serif;
+  background: none;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  width: min(100%, 300px);
 }
 
 .interior-hero__invite strong {
   color: #fffaf0;
-  font: 500 1rem/1.4 "Playfair Display", Georgia, serif;
+  font: 600 1.35rem/1.3 "Playfair Display", 'Noto Serif', Georgia, serif;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.8), 0 2px 20px rgba(0,0,0,0.6);
 }
 
 .interior-hero__invite em {
-  margin-top: 3px;
-  color: rgba(255, 250, 240, 0.85);
-  font-size: 0.58rem;
-  font-style: normal;
+  margin-top: 2px;
+  color: rgba(255, 250, 240, 0.95);
+  font: italic 0.78rem/1.5 "Be Vietnam Pro", sans-serif;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
 }
 
 .interior-hero__date {
-  margin: 14px 0 0;
-  color: #f3dfb8 !important;
-  font: 500 0.66rem/1.5 "Be Vietnam Pro", sans-serif !important;
-  letter-spacing: 0.22em;
+  margin: 16px 0 0;
+  color: #e8c97a !important;
+  font: 600 0.9rem/1.5 "Be Vietnam Pro", sans-serif !important;
+  letter-spacing: 0.28em;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.8);
 }
 
 .page--intro {
@@ -995,7 +1012,7 @@ body.invitation-open {
 
 .announcement__subtitle {
   margin: 2px 0 0;
-  font-family: "Playfair Display", Georgia, serif !important;
+  font-family: "Playfair Display", 'Noto Serif', Georgia, serif !important;
   font-size: 0.84rem;
   font-style: italic;
 }
@@ -1024,7 +1041,7 @@ body.invitation-open {
   gap: 9px;
   margin: 0;
   color: #503c32 !important;
-  font: 500 0.85rem/1.5 "Playfair Display", Georgia, serif !important;
+  font: 500 0.85rem/1.5 "Playfair Display", 'Noto Serif', Georgia, serif !important;
 }
 
 .announcement__names span:nth-child(2) {
@@ -1076,7 +1093,7 @@ body.invitation-open {
 .page--couple .person-card p {
   margin: 0;
   color: #503c32;
-  font: 500 0.96rem/1.5 "Playfair Display", Georgia, serif;
+  font: 500 0.96rem/1.5 "Playfair Display", 'Noto Serif', Georgia, serif;
 }
 
 .page--details {
@@ -1095,7 +1112,7 @@ body.invitation-open {
 
 .page--details .date-card__headline {
   color: #7a5543;
-  font: 500 clamp(1.8rem, 7vw, 2.5rem)/1.2 "Playfair Display", Georgia, serif;
+  font: 500 clamp(1.8rem, 7vw, 2.5rem)/1.2 "Playfair Display", 'Noto Serif', Georgia, serif;
   letter-spacing: 0.06em;
 }
 
@@ -1136,7 +1153,7 @@ body.invitation-open {
 .event-card__time {
   margin: 0;
   color: #8c6448 !important;
-  font: 500 1.05rem/1.5 "Playfair Display", Georgia, serif !important;
+  font: 500 1.05rem/1.5 "Playfair Display", 'Noto Serif', Georgia, serif !important;
 }
 
 .event-card__venue {
@@ -1200,7 +1217,7 @@ body.invitation-open {
 
 .timeline__item strong {
   color: #503c32;
-  font: 500 0.9rem/1.4 "Playfair Display", Georgia, serif;
+  font: 500 0.9rem/1.4 "Playfair Display", 'Noto Serif', Georgia, serif;
 }
 
 .timeline__item span {
@@ -1325,7 +1342,7 @@ body.invitation-open {
 }
 
 .scroll-layout .page--gift-scan .gift-qr__title {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Playfair Display", 'Noto Serif', Georgia, serif;
 }
 
 .scroll-layout .page--countdown .countdown {
@@ -1344,7 +1361,7 @@ body.invitation-open {
 
 .scroll-layout .page--thanks .thank-you h2 {
   color: #503c32;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Playfair Display", 'Noto Serif', Georgia, serif;
 }
 
 .page--gallery {
@@ -1362,11 +1379,11 @@ body.invitation-open {
 }
 
 .scroll-layout .page.page--gallery .section-heading h2 {
-  color: #9d1f1f;
+  color: #c03828;
 }
 
 .scroll-layout .page.page--gallery .section-kicker {
-  color: #a17d51;
+  color: #d4622a;
 }
 
 .page--gallery .gallery-grid {
@@ -2076,16 +2093,16 @@ body.invitation-open {
 .scroll-layout .page h2,
 .scroll-layout .page h3 {
   color: #2c1810;
-  font-family: "Playfair Display", "Noto Serif", Georgia, serif;
+  font-family: "Playfair Display", "Noto Serif", 'Noto Serif', Georgia, serif;
 }
 
 .scroll-layout .page p {
-  color: #8e6c5e;
+  color: #6a3820;
   font-family: "Be Vietnam Pro", Inter, system-ui, sans-serif;
 }
 
 .scroll-layout .page .section-kicker {
-  color: #c9993e;
+  color: #d4622a;
   font: 700 0.6875rem/1.6 "Be Vietnam Pro", Inter, system-ui, sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2096,40 +2113,19 @@ body.invitation-open {
 }
 
 .scroll-layout .page .section-heading h2 {
-  color: #9d1f1f;
-  font: 600 clamp(1.7rem, 5vw, 2.2rem)/1.2 "Playfair Display", "Noto Serif", Georgia, serif;
+  color: #c03828;
+  font: 600 clamp(1.7rem, 5vw, 2.2rem)/1.2 "Playfair Display", "Noto Serif", 'Noto Serif', Georgia, serif;
 }
 
 .scroll-layout .page--intro {
   min-height: 340px;
-  background: linear-gradient(155deg, #9d1f1f, #671719) !important;
-}
-
-.scroll-layout .page--intro .section-kicker,
-.scroll-layout .page--intro h2,
-.scroll-layout .page--intro .announcement__subtitle,
-.scroll-layout .page--intro .announcement__names {
-  color: #fff8f0;
-}
-
-.scroll-layout .page--intro .announcement__names span:nth-child(2),
-.scroll-layout .page--intro .announcement__ornament,
-.scroll-layout .page--intro .announcement__rule {
-  color: #e2bd78;
 }
 
 .scroll-layout .page--couple,
 .scroll-layout .page--details,
-.scroll-layout .page--dress,
 .scroll-layout .page--gift-scan,
-.scroll-layout .page--countdown,
 .scroll-layout .page--rsvp {
   background: #fff8f0 !important;
-}
-
-.scroll-layout .page--family {
-  padding: 48px 24px !important;
-  background: #fff !important;
 }
 
 .family-heading {
@@ -2187,7 +2183,7 @@ body.invitation-open {
 .scroll-layout .page .family-card__name {
   margin: 0 0 10px;
   color: #9d1f1f;
-  font: 700 1.25rem/1.35 "Playfair Display", "Noto Serif", Georgia, serif;
+  font: 700 1.25rem/1.35 "Playfair Display", "Noto Serif", 'Noto Serif', Georgia, serif;
 }
 
 .scroll-layout .page .family-card__parents {
@@ -2213,12 +2209,12 @@ body.invitation-open {
 .scroll-layout .page--details .date-card__headline,
 .scroll-layout .page--details .event-card__time,
 .scroll-layout .page--countdown .countdown__item span {
-  color: #9d1f1f !important;
+  color: #c03828 !important;
 }
 
 .scroll-layout .page--details .event-card__eyebrow,
 .scroll-layout .page--timeline .timeline__item time {
-  color: #c9993e;
+  color: #d4622a;
 }
 
 .scroll-layout .page--timeline {
@@ -2229,19 +2225,7 @@ body.invitation-open {
   min-height: 320px;
 }
 
-.scroll-layout .page--closing {
-  background: #70191b !important;
-}
 
-.scroll-layout .page--closing .closing-card,
-.scroll-layout .page--closing .closing-card p,
-.scroll-layout .page--closing .closing-card h2 {
-  color: #fff8f0;
-}
-
-.scroll-layout .page--closing .closing-card > span {
-  color: #e2bd78;
-}
 
 @media (max-width: 420px) {
   .scroll-layout .page--family {
@@ -2308,7 +2292,7 @@ body.invitation-open {
 }
 
 .scroll-layout .page--details .countdown--details .countdown__item span {
-  font: 700 clamp(1.25rem, 5vw, 1.8rem)/1.15 "Playfair Display", Georgia, serif;
+  font: 700 clamp(1.25rem, 5vw, 1.8rem)/1.15 "Playfair Display", 'Noto Serif', Georgia, serif;
 }
 
 .scroll-layout .page--details .countdown--details .countdown__item small {
@@ -2328,8 +2312,8 @@ body.invitation-open {
   display: flex;
   justify-content: space-between;
   padding: 10px 14px;
-  background: #9d1f1f;
-  color: #fff8f0;
+  background: linear-gradient(90deg, #c8385a, #6b2060);
+  color: #fff0d8;
   font: 600 0.82rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
 }
 
@@ -2366,8 +2350,8 @@ body.invitation-open {
 }
 
 .wedding-calendar__day.is-wedding-day {
-  background: #9d1f1f;
-  color: #fff;
+  background: linear-gradient(135deg, #e8623a, #c8385a);
+  color: #fff0d8;
   font-weight: 700;
 }
 
@@ -2380,7 +2364,7 @@ body.invitation-open {
 .scroll-layout .page .wedding-venue h3 {
   margin: 0 0 4px;
   color: #c9993e;
-  font: 700 1rem/1.45 "Playfair Display", Georgia, serif;
+  font: 700 1rem/1.45 "Playfair Display", 'Noto Serif', Georgia, serif;
 }
 
 .scroll-layout .page .wedding-venue p {
@@ -2410,9 +2394,9 @@ body.invitation-open {
   bottom: 20px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: #9d1f1f;
-  box-shadow: 0 4px 12px rgba(44, 24, 16, 0.2);
-  color: #fff;
+  background: linear-gradient(110deg, #e8623a, #c8385a);
+  box-shadow: 0 4px 14px rgba(200, 56, 90, 0.35);
+  color: #fff0d8;
   font: 600 0.72rem/1.3 "Be Vietnam Pro", Inter, system-ui, sans-serif;
   text-decoration: none;
 }
@@ -2424,20 +2408,21 @@ body.invitation-open {
 .gift-envelope {
   position: relative;
   display: flex;
-  min-height: 530px;
+  min-height: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 34px 26px;
-  border: 1px solid rgba(201, 153, 62, 0.42);
+  padding: 22px 20px;
+  border: 1px solid rgba(240, 184, 122, 0.2);
   border-radius: 12px;
   background:
-    radial-gradient(ellipse at 82% 18%, rgba(201, 153, 62, 0.2), transparent 42%),
-    linear-gradient(145deg, #541319, #9d2922 55%, #57121d);
-  box-shadow: 0 18px 46px rgba(75, 22, 24, 0.2);
+    radial-gradient(ellipse at 82% 18%, rgba(201, 153, 62, 0.12), transparent 42%),
+    linear-gradient(145deg, #2a1018, #3a1820 55%, #2a1018);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
   color: #fff8f0;
   text-align: center;
+  gap: 10px;
 }
 
 .gift-envelope__ornament {
@@ -2445,7 +2430,6 @@ body.invitation-open {
   width: 76%;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
   color: #e2bd78;
   font-size: 0.55rem;
 }
@@ -2458,57 +2442,54 @@ body.invitation-open {
 
 .gift-envelope__art {
   position: relative;
-  width: 104px;
-  height: 76px;
-  margin-bottom: 16px;
+  width: 72px;
+  height: 52px;
   border: 1px solid rgba(226, 189, 120, 0.5);
-  background: rgba(255, 248, 240, 0.12);
+  background: rgba(255, 248, 240, 0.08);
 }
 
 .gift-envelope__flap {
   position: absolute;
   inset: -1px -1px auto;
-  height: 48px;
-  background: #c9993e;
+  height: 32px;
+  background: rgba(201, 153, 62, 0.7);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
 .gift-envelope__heart {
   position: absolute;
   right: 0;
-  bottom: 12px;
+  bottom: 8px;
   left: 0;
   color: #e2bd78;
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .scroll-layout .page .gift-envelope h2 {
-  margin: 0 0 10px;
+  margin: 0;
   color: #fff8f0;
-  font: 700 clamp(1.45rem, 5vw, 1.85rem)/1.25 "Playfair Display", Georgia, serif;
+  font: 600 clamp(1.2rem, 4vw, 1.5rem)/1.25 "Playfair Display", 'Noto Serif', Georgia, serif;
 }
 
 .scroll-layout .page .gift-envelope > p {
-  max-width: 360px;
+  max-width: 320px;
   margin: 0;
-  color: rgba(255, 248, 240, 0.88);
-  font: italic 400 0.82rem/1.6 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  color: rgba(255, 248, 240, 0.75);
+  font: italic 400 0.78rem/1.55 "Be Vietnam Pro", Inter, system-ui, sans-serif;
 }
 
 .gift-envelope__hint {
-  margin-top: 16px;
-  color: rgba(255, 248, 240, 0.82);
-  font: 400 0.7rem/1.5 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  color: rgba(255, 248, 240, 0.65);
+  font: 400 0.65rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
 }
 
 .gift-envelope__button {
-  margin-top: 24px;
-  padding: 10px 22px;
-  border: 1px solid rgba(226, 189, 120, 0.75);
+  padding: 8px 18px;
+  border: 1px solid rgba(226, 189, 120, 0.55);
   border-radius: 999px;
   color: #f1d17f;
-  font: 700 0.68rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
-  letter-spacing: 0.08em;
+  font: 600 0.65rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  letter-spacing: 0.06em;
 }
 
 .gift-modal__card {
@@ -2535,8 +2516,8 @@ body.invitation-open {
 
 .gift-modal__title {
   margin: 0 0 6px;
-  color: #9d1f1f;
-  font: 700 1.4rem/1.3 "Playfair Display", Georgia, serif;
+  color: #c03828;
+  font: 700 1.4rem/1.3 "Playfair Display", 'Noto Serif', Georgia, serif;
   text-align: center;
 }
 
@@ -2604,7 +2585,7 @@ body.invitation-open {
 
 .gift-account__number.is-copied::after {
   color: #38745b;
-  content: "Đã sao chép";
+  content: "ÃÂÃÂ£ sao chÃÂ©p";
 }
 
 .gift-account__download {
@@ -2614,8 +2595,8 @@ body.invitation-open {
   padding: 5px;
   border-radius: 999px;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(44, 24, 16, 0.1);
-  color: #9d1f1f;
+  box-shadow: 0 4px 12px rgba(200, 56, 90, 0.14);
+  color: #c03828;
   font: 600 0.68rem/1.25 "Be Vietnam Pro", Inter, system-ui, sans-serif;
   text-align: center;
   text-decoration: none;
@@ -2638,162 +2619,191 @@ body.scroll-layout :is(
   p, span, label, button, input, select, legend, strong, small, a, time,
   .section-kicker
 ) {
-  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif !important;
+  font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
 }
 
 body.scroll-layout :is(h1, h2, h3, h4, h5, h6) {
-  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif !important;
+  font-family: 'Noto Serif', Georgia, 'Times New Roman', serif !important;
 }
 
-.scroll-layout .page p {
-  color: #70544a;
-  font-size: clamp(1rem, 3.8vw, 1.15rem);
-  line-height: 1.7;
+/* ==========================================================================
+   SUNSET PALETTE Ã¢â¬â 1 bÃ¡Â»â¢ mÃÂ u duy nhÃ¡ÂºÂ¥t, ÃÂ¡p dÃ¡Â»Â¥ng toÃÂ n trang
+   TÃ¡Â»âi: #1a0c10 | SÃÂ¡ng: #fff8f0
+   Cam: #e8723a | HÃ¡Â»âng: #c8385a | VÃÂ ng: #f0b87a
+   ========================================================================== */
+
+html, body, body.scroll-layout {
+  background: #1a0c10;
 }
 
-.scroll-layout .page .section-kicker {
-  color: #9a6337;
-  font-size: clamp(0.82rem, 3vw, 0.95rem);
-  letter-spacing: 0.16em;
+/* TÃ¡ÂºÂ¥t cÃ¡ÂºÂ£ page mÃ¡ÂºÂ·c ÃâÃ¡Â»â¹nh nÃ¡Â»Ân trÃ¡ÂºÂ¯ng kem */
+.scroll-layout .page:not(.page--cover) {
+  background: #fff8f0;
+  color: #2c1408;
 }
 
-.scroll-layout .page--intro {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 216, 151, 0.3), transparent 58%),
-    linear-gradient(155deg, #c8783e 0%, #a95432 54%, #793b2d 100%) !important;
-}
-
-.scroll-layout .page--intro .section-kicker,
-.scroll-layout .page--intro h2,
-.scroll-layout .page--intro .announcement__subtitle,
-.scroll-layout .page--intro .announcement__names {
-  color: #fff5e8;
-}
-
-.scroll-layout .page--intro .section-kicker {
-  font-size: clamp(0.88rem, 3.2vw, 1rem);
-}
-
-.scroll-layout .page--intro .announcement h2 {
-  font-size: clamp(2.15rem, 8vw, 2.8rem);
-  text-shadow: 0 2px 12px rgba(67, 31, 22, 0.24);
-}
-
-.scroll-layout .page--intro .announcement__subtitle {
-  font-size: clamp(1rem, 3.8vw, 1.15rem);
-}
-
-.scroll-layout .page--intro .announcement__names {
-  font-size: clamp(1.05rem, 4vw, 1.25rem);
-}
-
-.scroll-layout .page--intro .announcement__names span:nth-child(2),
-.scroll-layout .page--intro .announcement__ornament,
-.scroll-layout .page--intro .announcement__rule {
-  color: #ffe0a6;
-}
-
-.scroll-layout .page--intro .announcement__rule::before,
-.scroll-layout .page--intro .announcement__rule::after {
-  background: rgba(255, 229, 188, 0.72);
-}
-
-.scroll-layout .page--intro .announcement__names,
-.scroll-layout .page--intro .announcement__names span {
-  color: #fffaf1 !important;
-  font-weight: 600 !important;
-  text-shadow: 0 1px 5px rgba(67, 31, 22, 0.45);
-}
-
-.scroll-layout .page--intro .announcement__names span:nth-child(2) {
-  color: #ffe0a6 !important;
-}
-
-.scroll-layout .page--intro .announcement__subtitle {
-  color: #fff4e3 !important;
-  text-shadow: 0 1px 4px rgba(67, 31, 22, 0.38);
-}
-
-/* Deep rose wedding palette and photo interludes */
-html,
-body,
-body.scroll-layout {
-  background: #4b1821;
-}
-
-.scroll-layout .page--intro {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(245, 184, 142, 0.2), transparent 58%),
-    linear-gradient(155deg, #9b3440 0%, #7c202e 54%, #521720 100%) !important;
-}
-
+/* CÃÂ¡c section nÃ¡Â»Ân tÃ¡Â»âi Ã¢â¬â ÃâÃ¡Â»âng mÃÂ u #1a0c10 */
+.scroll-layout .page--story,
 .scroll-layout .page--couple,
-.scroll-layout .page--family,
 .scroll-layout .page--details,
-.scroll-layout .page--dress,
+.scroll-layout .page--milestones,
+.scroll-layout .page--photo-moment,
 .scroll-layout .page--gift-scan,
-.scroll-layout .page--countdown,
 .scroll-layout .page--rsvp,
-.scroll-layout .page--thanks {
-  background: #fbf1ed !important;
-}
-
-.scroll-layout .page--family {
-  background: #f7e9e5 !important;
-}
-
+.scroll-layout .page--thanks,
 .scroll-layout .page--closing {
-  background: linear-gradient(155deg, #832633, #541720) !important;
+  background: #1a0c10 !important;
+}
+
+/* Intro Ã¢â¬â cÃÂ³ Ã¡ÂºÂ£nh nÃ¡Â»Ân, overlay cÃÂ¹ng tone */
+.scroll-layout .page--intro {
+  position: relative;
+  overflow: hidden;
+  background: #1a0c10 !important;
+  min-height: 340px;
+}
+
+/* Closing Ã¢â¬â gradient tÃ¡Â»Â« tÃ¡Â»âi ra cam nhÃ¡ÂºÂ¹ */
+.scroll-layout .page--closing {
+  background: linear-gradient(180deg, #1a0c10 0%, #2e1018 60%, #1a0c10 100%) !important;
 }
 
 .scroll-layout .page--closing .closing-card,
 .scroll-layout .page--closing .closing-card p,
-.scroll-layout .page--closing .closing-card h2 {
-  color: #fff5eb !important;
-}
-
+.scroll-layout .page--closing .closing-card h2 { color: #fff0d8 !important; }
 .scroll-layout .page--closing .closing-card > span,
-.scroll-layout .page--closing .closing-card h2 em {
-  color: #e8bd82 !important;
+.scroll-layout .page--closing .closing-card h2 em { color: #f0b87a !important; }
+
+/* ChÃ¡Â»Â¯ trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
+.scroll-layout .page--milestones .section-kicker,
+.scroll-layout .page--photo-moment .photo-moment figcaption,
+.scroll-layout .page--photo-moment .photo-moment__caption { color: #f0b87a !important; }
+
+.scroll-layout .page--milestones .section-heading h2 {
+  color: #fff0d8 !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
 }
 
+/* Couple section Ã¢â¬â chÃ¡Â»Â¯ trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
+.scroll-layout .page--couple .section-kicker { color: #f0b87a !important; }
+.scroll-layout .page--couple .section-heading h2 { color: #fff0d8 !important; }
+.scroll-layout .page--couple .person-card h3 { color: #f0b87a !important; }
+.scroll-layout .page--couple .person-card p { color: #fff0d8 !important; }
+.scroll-layout .page--couple .person-card__image {
+  border-color: rgba(240, 184, 122, 0.25);
+  background: #2a1410;
+}
+
+/* Headings trÃÂªn nÃ¡Â»Ân sÃÂ¡ng */
 .scroll-layout .page .section-heading h2,
-.scroll-layout .page .family-card__name,
 .scroll-layout .page--details .date-card__headline,
-.scroll-layout .page--details .event-card h3 {
-  color: #762431 !important;
-}
+.scroll-layout .page--details .event-card h3 { color: #b83020 !important; }
 
+/* Kicker trÃÂªn nÃ¡Â»Ân sÃÂ¡ng */
 .scroll-layout .page .section-kicker,
-.scroll-layout .page .family-card__side,
-.scroll-layout .page--details .event-card__eyebrow {
-  color: #a64c55 !important;
-}
+.scroll-layout .page--details .event-card__eyebrow { color: #c85830 !important; }
 
-.scroll-layout .page .family-card,
-.scroll-layout .page--details .event-card,
+/* Body text trÃÂªn nÃ¡Â»Ân sÃÂ¡ng */
+.scroll-layout .page p { color: #5a2c18; font-size: clamp(1rem, 3.8vw, 1.15rem); line-height: 1.7; }
+
+/* Headings / kicker / text trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
+.scroll-layout .page--details .section-heading h2,
+.scroll-layout .page--gift-scan .section-heading h2,
+.scroll-layout .page--rsvp .section-heading h2,
+.scroll-layout .page--thanks .section-heading h2 { color: #fff0d8 !important; }
+
+.scroll-layout .page--details .section-kicker,
+.scroll-layout .page--gift-scan .section-kicker,
+.scroll-layout .page--rsvp .section-kicker,
+.scroll-layout .page--thanks .section-kicker { color: #f0b87a !important; }
+
+.scroll-layout .page--details p,
+.scroll-layout .page--gift-scan p,
+.scroll-layout .page--rsvp p,
+.scroll-layout .page--thanks p { color: rgba(255, 240, 216, 0.8) !important; }
+
+/* Details Ã¢â¬â cards trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
 .scroll-layout .page--details .date-card,
-.scroll-layout .page--rsvp .rsvp-form,
+.scroll-layout .page--details .event-card,
+.scroll-layout .page--details .event-schedule__rows,
+.scroll-layout .page--details .countdown__item,
+.scroll-layout .page--details .wedding-calendar,
+.scroll-layout .page--details .wedding-map,
+.scroll-layout .page--details .event-schedule__row {
+  background: rgba(255, 248, 240, 0.06) !important;
+  border-color: rgba(240, 184, 122, 0.18) !important;
+  color: #fff0d8;
+}
+
+.scroll-layout .page--details .date-card__headline { color: #f0b87a !important; }
+.scroll-layout .page--details .event-card h3 { color: #fff0d8 !important; }
+.scroll-layout .page--details .event-card__eyebrow { color: #f0b87a !important; }
+.scroll-layout .page--details .event-card__time { color: #f0b87a !important; }
+.scroll-layout .page--details .event-card__venue,
+.scroll-layout .page--details .event-card__map { color: rgba(255, 240, 216, 0.7) !important; }
+.scroll-layout .page--details .date-card__row { color: rgba(255, 240, 216, 0.7) !important; }
+.scroll-layout .page--details .event-schedule__row { color: rgba(255, 240, 216, 0.8) !important; }
+.scroll-layout .page--details .event-schedule__row strong { color: #fff0d8 !important; }
+.scroll-layout .page--details .countdown__item span { color: #f0b87a !important; }
+.scroll-layout .page--details .countdown__item small { color: rgba(255, 240, 216, 0.6) !important; }
+.scroll-layout .page--details .wedding-calendar__header { background: rgba(240, 184, 122, 0.15) !important; color: #f0b87a !important; }
+.scroll-layout .page--details .wedding-calendar__weekdays { color: rgba(255, 240, 216, 0.5) !important; }
+.scroll-layout .page--details .wedding-calendar__day { color: rgba(255, 240, 216, 0.8) !important; }
+.scroll-layout .page--details .wedding-venue h3 { color: #f0b87a !important; }
+.scroll-layout .page--details .wedding-venue p { color: rgba(255, 240, 216, 0.7) !important; }
+
+/* RSVP Ã¢â¬â form trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
+.scroll-layout .page--rsvp .rsvp-form {
+  background: rgba(255, 248, 240, 0.05) !important;
+  border-color: rgba(240, 184, 122, 0.18) !important;
+}
+
+.rsvp-field > label, .rsvp-field legend { color: #f0b87a !important; }
+.rsvp-field input[type="text"], .rsvp-field select {
+  background: rgba(255, 248, 240, 0.08) !important;
+  border-color: rgba(240, 184, 122, 0.25) !important;
+  color: #fff0d8 !important;
+}
+.radio-row label { color: rgba(255, 240, 216, 0.85) !important; }
+
+/* Thanks */
 .scroll-layout .page--thanks .thank-you {
-  border-color: #e7c9c2;
-  background-color: #fff9f6;
+  background: transparent !important;
+  border: none !important;
+}
+.scroll-layout .page--thanks h2 { color: #fff0d8 !important; }
+
+/* Intro text Ã¢â¬â trÃ¡ÂºÂ¯ng kem nÃ¡Â»â¢i trÃÂªn Ã¡ÂºÂ£nh */
+.scroll-layout .page--intro .section-kicker,
+.scroll-layout .page--intro h2,
+.scroll-layout .page--intro .announcement__subtitle,
+.scroll-layout .page--intro .announcement__names,
+.scroll-layout .page--intro .announcement__names span { color: #fff0d8 !important; }
+
+.scroll-layout .page--intro .announcement h2 {
+  font-size: clamp(2.15rem, 8vw, 2.8rem);
+  text-shadow: 0 2px 18px rgba(0,0,0,0.5);
 }
 
-.scroll-layout .page .family-card {
-  border-left-color: #a43a49;
+.scroll-layout .page--intro .announcement__names span:nth-child(2),
+.scroll-layout .page--intro .announcement__ornament,
+.scroll-layout .page--intro .announcement__rule { color: #f0b87a !important; }
+
+.scroll-layout .page--intro .announcement {
+  position: relative;
+  z-index: 1;
 }
 
+/* Photo moment */
 .scroll-layout .page--photo-moment {
   padding: 18px 18px 22px !important;
-  background: #f3e1dc !important;
 }
 
 .photo-moment {
   margin: 0;
   overflow: hidden;
-  border: 1px solid rgba(126, 40, 51, 0.26);
-  background: #fff8f4;
-  box-shadow: 0 8px 22px rgba(77, 24, 33, 0.13);
+  border: 1px solid rgba(232, 114, 58, 0.2);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
 }
 
 .photo-moment img {
@@ -2807,8 +2817,7 @@ body.scroll-layout {
 .photo-moment__caption {
   margin: 0;
   padding: 11px 8px 12px;
-  color: #7c3039 !important;
-  font: italic 500 1.05rem/1.4 "Cormorant Garamond", "Playfair Display", Georgia, serif !important;
+  font: italic 500 1.05rem/1.4 "Cormorant Garamond", "Playfair Display", 'Noto Serif', Georgia, serif !important;
   text-align: center;
 }
 
@@ -2818,75 +2827,51 @@ body.scroll-layout {
   gap: 9px;
 }
 
-.photo-moment__pair .photo-moment img {
-  aspect-ratio: 0.78 / 1;
-}
-
-.photo-moment__caption {
-  padding-bottom: 0;
-}
+.photo-moment__pair .photo-moment img { aspect-ratio: 0.78 / 1; }
+.photo-moment__caption { padding-bottom: 0; }
 
 @media (min-width: 600px) {
   .scroll-layout .page--photo-moment {
     padding-right: 28px !important;
     padding-left: 28px !important;
   }
-
-  .photo-moment img {
-    aspect-ratio: 1.5 / 1;
-  }
-
-  .photo-moment__pair .photo-moment img {
-    aspect-ratio: 0.9 / 1;
-  }
+  .photo-moment img { aspect-ratio: 1.5 / 1; }
+  .photo-moment__pair .photo-moment img { aspect-ratio: 0.9 / 1; }
 }
 
-/* ==========================================================================
-   Intro — ảnh nền hoàng hôn
-   ========================================================================== */
-
+/* Intro Ã¢â¬â trong suÃ¡Â»ât, liÃ¡Â»Ân mÃ¡ÂºÂ¡ch vÃ¡Â»âºi nÃ¡Â»Ân trang */
 .scroll-layout .page--intro {
-  position: relative !important;
-  overflow: hidden !important;
-  background: #7c202e !important;
+  position: relative;
+  overflow: visible;
+  min-height: auto;
+  background: transparent !important;
+  animation: none;
+  padding: 32px 22px 36px !important;
 }
 
-.page--intro__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
+.scroll-layout .page--intro::before,
+.scroll-layout .page--intro::after { display: none; }
 
-.page--intro__bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
-}
-
-.page--intro__shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    155deg,
-    rgba(155, 52, 64, 0.84) 0%,
-    rgba(124, 32, 46, 0.80) 50%,
-    rgba(82, 23, 32, 0.90) 100%
-  );
-}
-
+/* Card chÃ¡Â»Â©a chÃ¡Â»Â¯ Ã¢â¬â glassmorphism hoÃÂ ng hÃÂ´n */
 .scroll-layout .page--intro .announcement {
   position: relative;
   z-index: 1;
+  padding: 32px 24px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(240, 184, 122, 0.18);
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 110%, rgba(232, 114, 58, 0.22) 0%, transparent 60%),
+    rgba(255, 248, 240, 0.04);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgba(240, 184, 122, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 248, 240, 0.08);
 }
 
-/* ==========================================================================
-   Milestones — Hành trình cột mốc (tone hoàng hôn)
-   ========================================================================== */
-
+/* Milestones */
 .scroll-layout .page--milestones {
-  background: #1e0d0f !important;
   padding: 44px 22px 48px !important;
 }
 
@@ -2895,37 +2880,23 @@ body.scroll-layout {
   margin-bottom: 28px;
 }
 
-.scroll-layout .page--milestones .section-kicker {
-  color: #e8a96a !important;
-  font-size: clamp(0.78rem, 2.8vw, 0.9rem);
-  letter-spacing: 0.2em;
-}
-
-.scroll-layout .page--milestones .section-heading h2 {
-  color: #f5dfc0 !important;
-  font: 600 clamp(1.8rem, 6vw, 2.4rem)/1.2 "Playfair Display", Georgia, serif !important;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
-}
-
-.milestones-list {
-  display: grid;
-  gap: 20px;
-}
+.milestones-list { display: grid; gap: 32px; }
 
 .milestone-card {
   display: grid;
-  grid-template-columns: 110px 1fr;
-  overflow: hidden;
-  border-radius: 10px;
-  border: 1px solid rgba(232, 169, 106, 0.22);
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
 }
+
+.milestone-card--reverse { direction: rtl; }
+.milestone-card--reverse .milestone-card__body { direction: ltr; text-align: right; }
 
 .milestone-card__img {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 0.75;
+  border-radius: 8px;
+  aspect-ratio: 0.85;
 }
 
 .milestone-card__img img {
@@ -2937,55 +2908,29 @@ body.scroll-layout {
   transition: transform 0.6s ease;
 }
 
-.milestone-card:hover .milestone-card__img img {
-  transform: scale(1.05);
-}
-
-.milestone-card__img::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 60%, rgba(30, 13, 15, 0.55));
-  pointer-events: none;
-}
+.milestone-card:hover .milestone-card__img img { transform: scale(1.04); }
 
 .milestone-card__body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  padding: 16px 16px 16px 14px;
-}
-
-.milestone-card__date {
-  display: inline-block;
-  color: #e8a96a !important;
-  font: 700 0.68rem/1.4 "Be Vietnam Pro", Inter, sans-serif !important;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  gap: 8px;
+  direction: ltr;
 }
 
 .milestone-card__title {
   display: block;
-  color: #f5dfc0 !important;
-  font: 600 1.05rem/1.3 "Playfair Display", Georgia, serif !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+  color: #fff0d8 !important;
+  font: 600 clamp(1.1rem, 4vw, 1.4rem)/1.3 "Playfair Display", 'Noto Serif', Georgia, serif !important;
 }
 
 .milestone-card__desc {
   margin: 0;
-  color: rgba(245, 223, 192, 0.72) !important;
-  font: italic 400 0.82rem/1.55 "Cormorant Garamond", Georgia, serif !important;
+  color: rgba(240, 184, 122, 0.85) !important;
+  font: italic 400 clamp(0.9rem, 3.2vw, 1rem)/1.6 "Cormorant Garamond", 'Noto Serif', Georgia, serif !important;
 }
 
-.scroll-reveal-ready .milestone-card.reveal-on-scroll:not(.is-visible):nth-child(odd) {
-  transform: translate3d(-28px, 0, 0);
-}
-
-.scroll-reveal-ready .milestone-card.reveal-on-scroll:not(.is-visible):nth-child(even) {
-  transform: translate3d(28px, 0, 0);
-}
-
+.scroll-reveal-ready .milestone-card.reveal-on-scroll:not(.is-visible) { opacity: 0; transform: translateY(20px); }
 .scroll-reveal-ready .milestone-card:nth-child(2) { transition-delay: 80ms; }
 .scroll-reveal-ready .milestone-card:nth-child(3) { transition-delay: 160ms; }
 .scroll-reveal-ready .milestone-card:nth-child(4) { transition-delay: 240ms; }
+
