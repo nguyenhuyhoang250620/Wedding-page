@@ -2840,3 +2840,152 @@ body.scroll-layout {
     aspect-ratio: 0.9 / 1;
   }
 }
+
+/* ==========================================================================
+   Intro — ảnh nền hoàng hôn
+   ========================================================================== */
+
+.scroll-layout .page--intro {
+  position: relative !important;
+  overflow: hidden !important;
+  background: #7c202e !important;
+}
+
+.page--intro__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page--intro__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.page--intro__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    155deg,
+    rgba(155, 52, 64, 0.84) 0%,
+    rgba(124, 32, 46, 0.80) 50%,
+    rgba(82, 23, 32, 0.90) 100%
+  );
+}
+
+.scroll-layout .page--intro .announcement {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Milestones — Hành trình cột mốc (tone hoàng hôn)
+   ========================================================================== */
+
+.scroll-layout .page--milestones {
+  background: #1e0d0f !important;
+  padding: 44px 22px 48px !important;
+}
+
+.scroll-layout .page--milestones .section-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.scroll-layout .page--milestones .section-kicker {
+  color: #e8a96a !important;
+  font-size: clamp(0.78rem, 2.8vw, 0.9rem);
+  letter-spacing: 0.2em;
+}
+
+.scroll-layout .page--milestones .section-heading h2 {
+  color: #f5dfc0 !important;
+  font: 600 clamp(1.8rem, 6vw, 2.4rem)/1.2 "Playfair Display", Georgia, serif !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+.milestones-list {
+  display: grid;
+  gap: 20px;
+}
+
+.milestone-card {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 169, 106, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.milestone-card__img {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 0.75;
+}
+
+.milestone-card__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.milestone-card:hover .milestone-card__img img {
+  transform: scale(1.05);
+}
+
+.milestone-card__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(30, 13, 15, 0.55));
+  pointer-events: none;
+}
+
+.milestone-card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 16px 16px 16px 14px;
+}
+
+.milestone-card__date {
+  display: inline-block;
+  color: #e8a96a !important;
+  font: 700 0.68rem/1.4 "Be Vietnam Pro", Inter, sans-serif !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.milestone-card__title {
+  display: block;
+  color: #f5dfc0 !important;
+  font: 600 1.05rem/1.3 "Playfair Display", Georgia, serif !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.milestone-card__desc {
+  margin: 0;
+  color: rgba(245, 223, 192, 0.72) !important;
+  font: italic 400 0.82rem/1.55 "Cormorant Garamond", Georgia, serif !important;
+}
+
+.scroll-reveal-ready .milestone-card.reveal-on-scroll:not(.is-visible):nth-child(odd) {
+  transform: translate3d(-28px, 0, 0);
+}
+
+.scroll-reveal-ready .milestone-card.reveal-on-scroll:not(.is-visible):nth-child(even) {
+  transform: translate3d(28px, 0, 0);
+}
+
+.scroll-reveal-ready .milestone-card:nth-child(2) { transition-delay: 80ms; }
+.scroll-reveal-ready .milestone-card:nth-child(3) { transition-delay: 160ms; }
+.scroll-reveal-ready .milestone-card:nth-child(4) { transition-delay: 240ms; }

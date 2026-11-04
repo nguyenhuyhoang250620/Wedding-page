@@ -10,12 +10,12 @@
     "groom": {
       "name": "Thu Thảo",
       "role": "Cô Dâu",
-      "image": "assets/images/chure.jpeg"
+      "image": "assets/images/gallery-3.jpg"
     },
     "bride": {
       "name": "Huy Hoàng",
       "role": "Chú Rể",
-      "image": "assets/images/codau.jpeg"
+      "image": "assets/images/gallery-3.jpg"
     }
   },
 
@@ -67,5 +67,24 @@
   "music": {
     "src": "assets/music/wedding-instrumental.wav",
     "volume": 0.35
+  },
+
+  "images": {
+    "cover": "assets/images/anh-bia-1.jpg",
+    "hero": "assets/images/anh-top-2.jpg",
+    "introBg": "assets/images/anh-top-2.jpg",
+    "photoMoments": [
+      { "src": "assets/images/anh1.JPG", "caption": "Khoảnh khắc dịu dàng bên nhau" },
+      { "src": "assets/images/anh2.JPG", "caption": null },
+      { "src": "assets/images/anh3.jpg", "caption": null },
+      { "src": "assets/images/anh4.jpg", "caption": "Một ngày ngập tràn yêu thương" },
+      { "src": "assets/images/LVT04927.JPG", "caption": "Cùng nhau viết tiếp hành trình hạnh phúc" }
+    ],
+    "milestones": [
+      { "src": "assets/images/anh1.JPG", "date": "2022", "title": "Lần đầu gặp nhau", "desc": "Câu chuyện bắt đầu từ đây" },
+      { "src": "assets/images/anh2.JPG", "date": "2023", "title": "Hẹn hò đầu tiên", "desc": "Những kỷ niệm khó quên" },
+      { "src": "assets/images/anh3.jpg", "date": "2024", "title": "Cầu hôn", "desc": "Một câu hỏi thay đổi tất cả" },
+      { "src": "assets/images/LVT04927.JPG", "date": "2026", "title": "Ngày cưới", "desc": "Mãi mãi bên nhau" }
+    ]
   }
 }

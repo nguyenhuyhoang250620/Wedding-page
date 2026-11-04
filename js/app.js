@@ -176,6 +176,21 @@ function hydrate(data) {
     set('[data-family-parents="bride"]', families.bride?.parents || '');
   }
 
+  // Images
+  if (data.images) {
+    const { cover, hero, introBg, photoMoments, milestones } = data.images;
+    setImg('[data-img="cover"]', cover);
+    setImg('[data-img="hero"]', hero);
+    setImg('[data-img="intro-bg"]', introBg);
+    if (Array.isArray(photoMoments)) {
+      photoMoments.forEach((moment, i) => {
+        setImg(`[data-img="moment-${i}"]`, moment.src);
+        if (moment.caption !== null) set(`[data-img-caption="moment-${i}"]`, moment.caption || '');
+      });
+    }
+    if (Array.isArray(milestones)) renderMilestones(milestones);
+  }
+
   // Date hero
   if (wedding?.date) {
     const d = new Date(wedding.date);
@@ -282,6 +297,30 @@ function renderWeddingCalendar(date) {
 function set(sel, val) {
   const el = document.querySelector(sel);
   if (el) el.textContent = val;
+}
+
+function setImg(sel, src) {
+  const el = document.querySelector(sel);
+  if (el && src) el.src = src;
+}
+
+function renderMilestones(milestones) {
+  const container = document.querySelector('[data-milestones]');
+  if (!container) return;
+  container.replaceChildren(...milestones.map((m, i) => {
+    const article = document.createElement('article');
+    article.className = 'milestone-card reveal-on-scroll';
+    article.innerHTML = `
+      <div class="milestone-card__img">
+        <img src="${m.src}" alt="${m.title}" loading="lazy">
+      </div>
+      <div class="milestone-card__body">
+        <span class="milestone-card__date">${m.date}</span>
+        <strong class="milestone-card__title">${m.title}</strong>
+        <p class="milestone-card__desc">${m.desc}</p>
+      </div>`;
+    return article;
+  }));
 }
 
 function coverDisplayName(name) {

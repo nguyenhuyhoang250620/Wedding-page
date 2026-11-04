@@ -55,7 +55,7 @@
       <div class="cover-frame" aria-hidden="true"></div>
       <article class="cover-card">
         <div class="cover-photo">
-          <img src="assets/images/anh-bia-1.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
+          <img data-img="cover" src="assets/images/anh-bia-1.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
           <div class="cover-photo__shade" aria-hidden="true"></div>
           <div class="cover-glints" aria-hidden="true">
             <span>✦</span>
@@ -98,7 +98,7 @@
   <main class="book" id="book" role="main" aria-roledescription="Thiệp cưới">
     <section class="page page--story">
       <div class="interior-hero">
-        <img src="assets/images/anh-top-2.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
+        <img data-img="hero" src="assets/images/anh-top-2.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
         <div class="interior-hero__shade" aria-hidden="true"></div>
         <div class="interior-hero__content">
           <p class="interior-hero__eyebrow">Trân trọng kính mời</p>
@@ -118,6 +118,10 @@
     </section>
 
     <section class="page page--intro">
+      <div class="page--intro__bg" aria-hidden="true">
+        <img data-img="intro-bg" src="assets/images/anh-bia-1.jpg" alt="" loading="lazy">
+        <div class="page--intro__shade"></div>
+      </div>
       <div class="announcement">
         <span class="announcement__ornament" aria-hidden="true">✦</span>
         <p class="section-kicker">Trân trọng báo tin</p>
@@ -157,30 +161,18 @@
       </div>
     </section>
 
-    <section class="page page--family" aria-labelledby="family-heading">
-      <div class="family-heading">
-        <p class="section-kicker" id="family-heading">Gia đình hai bên</p>
-        <div class="family-divider" aria-hidden="true"><span></span><i>◆</i><span></span></div>
+    <section class="page page--milestones" aria-labelledby="milestones-heading">
+      <div class="section-heading">
+        <p class="section-kicker" id="milestones-heading">Hành trình của chúng mình</p>
+        <h2>Những khoảnh khắc</h2>
       </div>
-
-      <div class="family-grid">
-        <article class="family-card reveal-on-scroll">
-          <p class="family-card__side">Nhà trai</p>
-          <h2 class="family-card__name" data-couple-name="groom">Nguyễn Huy Hoàng</h2>
-          <p class="family-card__parents"><strong>Song thân:</strong> <span data-family-parents="groom">Nguyễn Thắng &amp; Vũ Thanh</span></p>
-        </article>
-        <article class="family-card reveal-on-scroll">
-          <p class="family-card__side">Nhà gái</p>
-          <h2 class="family-card__name" data-couple-name="bride">Nguyễn Thu Thảo</h2>
-          <p class="family-card__parents"><strong>Song thân:</strong> <span data-family-parents="bride">Nguyễn Lâm &amp; Nguyễn Thu</span></p>
-        </article>
-      </div>
+      <div class="milestones-list" data-milestones></div>
     </section>
 
     <section class="page page--photo-moment reveal-on-scroll" aria-label="Khoảnh khắc bên nhau">
       <figure class="photo-moment">
-        <img src="assets/images/anh1.JPG" alt="Cặp đôi lưu giữ khoảnh khắc trong ngày cưới" loading="lazy">
-        <figcaption>Khoảnh khắc dịu dàng bên nhau</figcaption>
+        <img data-img="moment-0" src="assets/images/anh1.JPG" alt="Cặp đôi lưu giữ khoảnh khắc trong ngày cưới" loading="lazy">
+        <figcaption data-img-caption="moment-0">Khoảnh khắc dịu dàng bên nhau</figcaption>
       </figure>
     </section>
 
@@ -267,37 +259,26 @@
     <section class="page page--photo-moment reveal-on-scroll" aria-label="Những khoảnh khắc ngày vui">
       <div class="photo-moment__pair">
         <figure class="photo-moment">
-          <img src="assets/images/anh2.JPG" alt="Cô dâu và chú rể trong khung cảnh ngoài trời" loading="lazy">
+          <img data-img="moment-1" src="assets/images/anh2.JPG" alt="Cô dâu và chú rể trong khung cảnh ngoài trời" loading="lazy">
         </figure>
         <figure class="photo-moment">
-          <img src="assets/images/anh3.jpg" alt="Cặp đôi trong trang phục cưới" loading="lazy">
+          <img data-img="moment-2" src="assets/images/anh3.jpg" alt="Cặp đôi trong trang phục cưới" loading="lazy">
         </figure>
       </div>
       <p class="photo-moment__caption">Từng khoảnh khắc đều là điều đáng nhớ</p>
     </section>
 
-    <section class="page page--dress">
-      <div class="dress-card reveal-on-scroll">
-        <p class="section-kicker">Dress code</p>
-        <h2>Trang phục</h2>
-        <p>Gia đình rất vui được đón tiếp bạn trong trang phục lịch sự, trang nhã.</p>
-        <div class="dress-card__swatches" aria-label="Gợi ý màu sắc">
-          <span></span><span></span><span></span><span></span>
-        </div>
-      </div>
-    </section>
-
     <section class="page page--photo-moment reveal-on-scroll" aria-label="Cô dâu và chú rể">
       <figure class="photo-moment">
-        <img src="assets/images/anh4.jpg" alt="Cô dâu và chú rể trong ngày trọng đại" loading="lazy">
-        <figcaption>Một ngày ngập tràn yêu thương</figcaption>
+        <img data-img="moment-3" src="assets/images/anh4.jpg" alt="Cô dâu và chú rể trong ngày trọng đại" loading="lazy">
+        <figcaption data-img-caption="moment-3">Một ngày ngập tràn yêu thương</figcaption>
       </figure>
     </section>
 
     <section class="page page--photo-moment reveal-on-scroll" aria-label="Kỷ niệm ngày cưới">
       <figure class="photo-moment">
-        <img src="assets/images/LVT04927.JPG" alt="Cặp đôi trong ánh hoàng hôn" loading="lazy">
-        <figcaption>Cùng nhau viết tiếp hành trình hạnh phúc</figcaption>
+        <img data-img="moment-4" src="assets/images/LVT04927.JPG" alt="Cặp đôi trong ánh hoàng hôn" loading="lazy">
+        <figcaption data-img-caption="moment-4">Cùng nhau viết tiếp hành trình hạnh phúc</figcaption>
       </figure>
     </section>
 
