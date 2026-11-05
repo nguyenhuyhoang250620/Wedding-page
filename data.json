@@ -10,12 +10,12 @@
     "groom": {
       "name": "Thu Thảo",
       "role": "Cô Dâu",
-      "image": "assets/images/gallery-3.jpg"
+      "image": "assets/images-web/codau.jpg"
     },
     "bride": {
       "name": "Huy Hoàng",
       "role": "Chú Rể",
-      "image": "assets/images/gallery-3.jpg"
+      "image": "assets/images-web/chure.jpg"
     }
   },
 
@@ -70,21 +70,21 @@
   },
 
   "images": {
-    "cover": "assets/images/anh-bia-1.jpg",
-    "hero": "assets/images/anh-top-2.jpg",
-    "introBg": "assets/images/anh-top-2.jpg",
+    "cover": "assets/images-web/anh-bia-1.jpg",
+    "hero": "assets/images-web/anh-2.jpg",
+    "introBg": "assets/images-web/anh-2.jpg",
     "photoMoments": [
-      { "src": "assets/images/anh1.JPG", "caption": "Khoảnh khắc dịu dàng bên nhau" },
-      { "src": "assets/images/anh2.JPG", "caption": null },
-      { "src": "assets/images/anh3.jpg", "caption": null },
-      { "src": "assets/images/anh4.jpg", "caption": "Một ngày ngập tràn yêu thương" },
-      { "src": "assets/images/LVT04927.JPG", "caption": "Cùng nhau viết tiếp hành trình hạnh phúc" }
+      { "src": "assets/images-web/anh-3.jpg", "caption": "Sánh bước bên nhau dưới ánh hoàng hôn" },
+      { "src": "assets/images-web/anh-6.jpg", "caption": null },
+      { "src": "assets/images-web/anh-7.jpg", "caption": null },
+      { "src": "assets/images-web/anh-8.jpg", "caption": "Nụ hôn đầu tiên trong ánh nắng cuối ngày" },
+      { "src": "assets/images-web/anh-9.jpg", "caption": "Cùng nhau viết tiếp hành trình hạnh phúc" }
     ],
     "milestones": [
-      { "src": "assets/images/anh1.JPG", "title": "Hai đứa mình", "desc": "Giữa muôn vàn người, chúng mình đã chọn nhau." },
-      { "src": "assets/images/anh2.JPG", "title": "Bên nhau mỗi ngày", "desc": "Những buổi sáng bình yên, những buổi tối đầy tiếng cười." },
-      { "src": "assets/images/anh3.jpg", "title": "Có nhau là đủ", "desc": "Không cần đi đâu xa, chỉ cần có nhau là đủ ấm." },
-      { "src": "assets/images/LVT04927.JPG", "title": "Mãi mãi từ hôm nay", "desc": "Một lời hứa, một đời bên nhau." }
+      { "src": "assets/images-web/anh-2.jpg", "title": "Hai đứa mình", "desc": "Giữa muôn vàn người, chúng mình đã chọn nhau." },
+      { "src": "assets/images-web/anh-4.jpg", "title": "Bên nhau mỗi ngày", "desc": "Những buổi sáng bình yên, những buổi tối đầy tiếng cười." },
+      { "src": "assets/images-web/anh-5.jpg", "title": "Có nhau là đủ", "desc": "Dù trời có tắt nắng, bên em vẫn luôn ấm áp." },
+      { "src": "assets/images-web/anh-9.jpg", "title": "Mãi mãi từ hôm nay", "desc": "Một lời hứa, một đời bên nhau." }
     ]
   }
 }
