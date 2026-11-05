@@ -31,6 +31,7 @@ export async function onRequestPost({ request, env }) {
 
   const name = typeof payload.name === 'string' ? payload.name.trim() : '';
   const attendance = payload.attendance;
+  const phone = typeof payload.phone === 'string' ? payload.phone.trim() : '';
 
   if (!name || name.length > 120) {
     return jsonResponse({ error: 'Vui lòng nhập họ tên không quá 120 ký tự.' }, 400);
@@ -38,6 +39,10 @@ export async function onRequestPost({ request, env }) {
 
   if (attendance !== 'yes' && attendance !== 'no') {
     return jsonResponse({ error: 'Vui lòng chọn trạng thái tham dự hợp lệ.' }, 400);
+  }
+
+  if (phone && !/^[0-9\s\+\-\(\)]{1,20}$/.test(phone)) {
+    return jsonResponse({ error: 'Số điện thoại không hợp lệ.' }, 400);
   }
 
   let guests = 0;
@@ -51,9 +56,9 @@ export async function onRequestPost({ request, env }) {
   try {
     await env.RSVP_DB
       .prepare(
-        'INSERT INTO rsvps (name, attendance, guests) VALUES (?, ?, ?)'
+        'INSERT INTO rsvps (name, attendance, guests, phone) VALUES (?, ?, ?, ?)'
       )
-      .bind(name, attendance, guests)
+      .bind(name, attendance, guests, phone)
       .run();
 
     return jsonResponse({ ok: true, message: 'Đã lưu xác nhận của bạn.' }, 201);

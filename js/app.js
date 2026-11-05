@@ -53,6 +53,7 @@ function initRsvpForm() {
       name: formData.get('name'),
       attendance,
       guests: attendance === 'yes' ? Number(formData.get('guests')) : 0,
+      phone: formData.get('phone') || '',
     };
 
     status.textContent = 'Đang gửi xác nhận…';

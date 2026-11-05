@@ -775,6 +775,7 @@ html.cover-locked {
 }
 
 .rsvp-field input[type="text"],
+.rsvp-field input[type="tel"],
 .rsvp-field select {
   width: 100%;
   min-height: 42px;
@@ -788,6 +789,7 @@ html.cover-locked {
 }
 
 .rsvp-field input[type="text"]:focus,
+.rsvp-field input[type="tel"]:focus,
 .rsvp-field select:focus {
   border-color: #b47a3a;
   box-shadow: 0 0 0 3px rgba(180, 122, 58, 0.14);
@@ -2759,7 +2761,7 @@ html, body, body.scroll-layout {
 }
 
 .rsvp-field > label, .rsvp-field legend { color: #f0b87a !important; }
-.rsvp-field input[type="text"], .rsvp-field select {
+.rsvp-field input[type="text"], .rsvp-field input[type="tel"], .rsvp-field select {
   background: rgba(255, 248, 240, 0.08) !important;
   border-color: rgba(240, 184, 122, 0.25) !important;
   color: #fff0d8 !important;
