@@ -8,12 +8,12 @@
 
   "couple": {
     "groom": {
-      "name": "HUY HOÀNG",
+      "name": "Huy Hoàng",
       "role": "Chú Rể",
       "image": "assets/images-web/codauavt.jpg"
     },
     "bride": {
-      "name": "THU THẢO",
+      "name": "Thu Thảo",
       "role": "Cô Dâu",
       "image": "assets/images-web/chureavt.jpg"
     }

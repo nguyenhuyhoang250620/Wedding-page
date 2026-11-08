@@ -109,14 +109,22 @@ function hydrate(data) {
   const { couple, wedding, events, families } = data;
 
   if (couple) {
+    const formatDisplayName = (name = '') =>
+      name.toLocaleLowerCase('vi').replace(/(^|[\s-])\p{L}/gu, character =>
+        character.toLocaleUpperCase('vi')
+      );
     const initials = `${(couple.groom?.name || 'H')[0]}|${(couple.bride?.name || 'T')[0]}`.toUpperCase();
     document.querySelectorAll('[data-monogram]').forEach(el => el.textContent = initials);
 
     document.querySelectorAll('[data-couple-name="groom"]').forEach(el => {
-      el.textContent = couple.groom?.name || '';
+      el.textContent = el.closest('.interior-hero__names')
+        ? formatDisplayName(couple.groom?.name)
+        : couple.groom?.name || '';
     });
     document.querySelectorAll('[data-couple-name="bride"]').forEach(el => {
-      el.textContent = couple.bride?.name || '';
+      el.textContent = el.closest('.interior-hero__names')
+        ? formatDisplayName(couple.bride?.name)
+        : couple.bride?.name || '';
     });
     document.querySelectorAll('[data-couple-fullnames]').forEach(el => {
       el.textContent = `${couple.groom?.name || ''} & ${couple.bride?.name || ''}`;
