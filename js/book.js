@@ -159,6 +159,7 @@ const Book = (() => {
       coverScreen.classList.add('is-hidden');
       document.documentElement.classList.remove('cover-locked');
       document.body.classList.add('invitation-open');
+      document.dispatchEvent(new Event('invitation:opened'));
       state.opening = false;
       scrollToPage(0);
       updateNavigation();

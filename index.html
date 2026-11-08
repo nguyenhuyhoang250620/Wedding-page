@@ -1,286 +1,433 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Uông Bí, Quảng Ninh.">
-  <meta name="theme-color" content="#4d0f12">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Uông Bí, Quảng Ninh."
+    />
+    <meta name="theme-color" content="#4d0f12" />
 
-  <meta property="og:title" content="Nguyễn Huy Hoàng & Nguyễn Thu Thảo — Thiệp Cưới">
-  <meta property="og:description" content="Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Uông Bí, Quảng Ninh.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta
+      property="og:title"
+      content="Nguyễn Huy Hoàng & Nguyễn Thu Thảo — Thiệp Cưới"
+    />
+    <meta
+      property="og:description"
+      content="Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Uông Bí, Quảng Ninh."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/og-image.jpg" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-  <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link rel="manifest" href="manifest.json" />
 
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/typography.css">
-  <link rel="stylesheet" href="css/layout.css?v=20261102-wine-photo-layout">
-  <link rel="stylesheet" href="css/animation.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/layout.css?v=20261102-wine-photo-layout" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 
-  <title>Huy Hoàng & Thu Thảo — Thiệp Cưới</title>
-</head>
-<body>
-
-  <!-- Loader — envelope + wax seal -->
-  <div class="loader" role="status" aria-live="polite" aria-label="Đang mở thiệp">
-    <div class="loader__stage" aria-hidden="true">
-      <div class="loader__envelope"></div>
-      <div class="loader__flap"></div>
-      <div class="loader__seal" data-monogram>H|T</div>
-    </div>
-    <p class="loader__title">Huy Hoàng &amp; Thu Thảo</p>
-    <div class="loader__progress" aria-hidden="true">
-      <div class="loader__bar"></div>
-    </div>
-  </div>
-
-  <section class="cover-screen" aria-label="Bìa thiệp cưới">
-      <div class="page page--cover" id="book-cover">
-      <div class="cover-frame" aria-hidden="true"></div>
-      <article class="cover-card">
-        <div class="cover-photo">
-          <img data-img="cover" src="assets/images-web/anh-bia-1.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
-          <div class="cover-photo__shade" aria-hidden="true"></div>
-          <div class="cover-glints" aria-hidden="true">
-            <span>✦</span>
-            <span>✧</span>
-            <span>✦</span>
-            <span>✧</span>
-            <span>✧</span>
-            <span>✧</span>
-            <span>✧</span>
-          </div>
-          <div class="cover-copy">
-            <p class="cover-eyebrow">Thiệp mời</p>
-            <span class="cover-flourish" aria-hidden="true">❧</span>
-            <h1 class="book-cover__names">
-              <span class="book-cover__groom">Thảo Nguyễn</span>
-              <span class="cover-names__amp" aria-hidden="true"></span>
-              <span class="book-cover__bride">Hoàng Nguyên</span>
-            </h1>
-            <p class="book-cover__date">28/11/2026</p>
-            <div class="cover-note">
-              <span>Trân trọng kính mời</span>
-              <strong>Quý khách</strong>
-            </div>
-            <div class="cover-event">
-              <strong class="cover-event__time">11:00</strong>
-              <span class="cover-event__venue">Uông Bí, Quảng Ninh</span>
-            </div>
-          </div>
-        </div>
-        <button class="book-cover__cta" type="button" aria-label="Mở thiệp cưới">
-          <span>✦</span>
-          <strong>Mở thiệp</strong>
-          <span>✦</span>
-        </button>
-      </article>
+    <title>Huy Hoàng & Thu Thảo — Thiệp Cưới</title>
+  </head>
+  <body>
+    <!-- Loader — envelope + wax seal -->
+    <div
+      class="loader"
+      role="status"
+      aria-live="polite"
+      aria-label="Đang mở thiệp"
+    >
+      <div class="loader__stage" aria-hidden="true">
+        <div class="loader__envelope"></div>
+        <div class="loader__flap"></div>
+        <div class="loader__seal" data-monogram>H|T</div>
       </div>
-  </section>
+      <p class="loader__title">Huy Hoàng &amp; Thu Thảo</p>
+      <div class="loader__progress" aria-hidden="true">
+        <div class="loader__bar"></div>
+      </div>
+    </div>
 
-  <!-- The Book -->
-  <main class="book" id="book" role="main" aria-roledescription="Thiệp cưới">
-    <section class="page page--story">
-      <div class="interior-hero">
-        <img data-img="hero" src="assets/images-web/anh-2.jpg" alt="Cặp đôi trong ngày cưới" loading="eager">
-        <div class="interior-hero__shade" aria-hidden="true"></div>
-        <div class="interior-hero__content">
-          <p class="interior-hero__eyebrow">Trân trọng kính mời</p>
-          <h1 class="interior-hero__names">
-            <span data-couple-name="groom">Nguyễn Huy Hoàng</span>
-            <span class="interior-hero__amp" aria-hidden="true">&amp;</span>
-            <span data-couple-name="bride">Nguyễn Thu Thảo</span>
-          </h1>
-          <div class="interior-hero__invite">
+    <section class="cover-screen" aria-label="Bìa thiệp cưới">
+      <div class="page page--cover" id="book-cover">
+        <div class="cover-frame" aria-hidden="true"></div>
+        <article class="cover-card">
+          <div class="cover-photo">
+            <img
+              data-img="cover"
+              src="assets/images-web/anh-bia-1.jpg"
+              alt="Cặp đôi trong ngày cưới"
+              loading="eager"
+            />
+            <div class="cover-photo__shade" aria-hidden="true"></div>
+            <div class="cover-glints" aria-hidden="true">
+              <span>✦</span>
+              <span>✧</span>
+              <span>✦</span>
+              <span>✧</span>
+              <span>✧</span>
+              <span>✧</span>
+              <span>✧</span>
+            </div>
+            <div class="cover-copy">
+              <p class="cover-eyebrow">Thiệp mời</p>
+              <span class="cover-flourish" aria-hidden="true">❧</span>
+              <h1 class="book-cover__names">
+                <span class="book-cover__groom">Thảo Nguyễn</span>
+                <span class="cover-names__amp" aria-hidden="true"></span>
+                <span class="book-cover__bride">Hoàng Nguyên</span>
+              </h1>
+              <p class="book-cover__date">28/11/2026</p>
+              <div class="cover-note">
+                <span>Trân trọng kính mời</span>
+                <strong>Quý khách</strong>
+              </div>
+              <div class="cover-event">
+                <strong class="cover-event__time">11:00</strong>
+                <span class="cover-event__venue">Uông Bí, Quảng Ninh</span>
+              </div>
+            </div>
+          </div>
+          <button
+            class="book-cover__cta"
+            type="button"
+            aria-label="Mở thiệp cưới"
+          >
+            <span>✦</span>
+            <strong>Mở thiệp</strong>
+            <span>✦</span>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- The Book -->
+    <main class="book" id="book" role="main" aria-roledescription="Thiệp cưới">
+      <section class="page page--story">
+        <div class="interior-hero">
+          <img
+            data-img="hero"
+            src="assets/images-web/anh-bia-thiep.jpg"
+            alt="Cặp đôi trong ngày cưới"
+            loading="eager"
+          />
+          <div class="interior-hero__shade" aria-hidden="true"></div>
+          <div class="interior-hero__content">
+            <p class="interior-hero__eyebrow">Trân trọng kính mời</p>
+            <h1 class="interior-hero__names">
+              <span data-couple-name="groom" style="font-size: 24px"
+                >Nguyễn Huy Hoàng</span
+              >
+              <span class="interior-hero__amp" aria-hidden="true">&amp;</span>
+              <span data-couple-name="bride" style="font-size: 24px"
+                >Nguyễn Thu Thảo</span
+              >
+            </h1>
+            <!-- <div class="interior-hero__invite">
             <span>Trân trọng kính mời</span>
             <strong>Quý khách</strong>
             <em>Đến dự buổi tiệc chung vui cùng gia đình</em>
-          </div>
-          <p class="interior-hero__date">28/11/2026</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="page page--intro">
-      <div class="announcement">
-        <span class="announcement__ornament" aria-hidden="true">✦</span>
-        <p class="section-kicker">Trân trọng báo tin</p>
-        <h2>Lễ thành hôn</h2>
-        <p class="announcement__subtitle">của con chúng tôi</p>
-        <div class="announcement__rule" aria-hidden="true"><span>✦</span></div>
-        <p class="announcement__names">
-          <span data-couple-name="groom">Nguyễn Huy Hoàng</span>
-          <span aria-hidden="true">&amp;</span>
-          <span data-couple-name="bride">Nguyễn Thu Thảo</span>
-        </p>
-      </div>
-    </section>
-
-    <section class="page page--couple">
-      <div class="section-heading">
-        <p class="section-kicker">Nhân vật chính</p>
-        <h2>Cô dâu &amp; Chú rể</h2>
-      </div>
-
-      <div class="couple-grid">
-        <article class="person-card reveal-on-scroll">
-          <div class="person-card__image">
-            <img src="assets/images-web/chure.jpg" alt="Chú rể Nguyễn Huy Hoàng" loading="lazy">
-          </div>
-          <h3>Trưởng nam</h3>
-          <p data-person-name="groom">Nguyễn Huy Hoàng</p>
-        </article>
-
-        <article class="person-card reveal-on-scroll">
-          <div class="person-card__image">
-            <img src="assets/images-web/codau.jpg" alt="Cô dâu Nguyễn Thu Thảo" loading="lazy">
-          </div>
-          <h3>Út nữ</h3>
-          <p data-person-name="bride">Nguyễn Thu Thảo</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="page page--milestones" aria-labelledby="milestones-heading">
-      <div class="section-heading">
-        <p class="section-kicker" id="milestones-heading">Hành trình của chúng mình</p>
-        <h2>Những khoảnh khắc</h2>
-      </div>
-      <div class="milestones-list" data-milestones></div>
-    </section>
-
-    <section class="page page--photo-moment reveal-on-scroll" aria-label="Khoảnh khắc bên nhau">
-      <figure class="photo-moment">
-        <img data-img="moment-0" src="assets/images-web/anh-3.jpg" alt="Cặp đôi sánh bước dưới ánh hoàng hôn" loading="lazy">
-        <figcaption data-img-caption="moment-0">Sánh bước bên nhau dưới ánh hoàng hôn</figcaption>
-      </figure>
-    </section>
-
-    <section class="page page--details">
-      <div class="section-heading">
-        <p class="section-kicker">Ngày vui của chúng mình</p>
-        <h2>Thông tin hôn lễ</h2>
-      </div>
-
-      <div class="date-card reveal-on-scroll">
-        <div class="date-card__headline" data-wedding-date>28.11.2026</div>
-        <div class="date-card__row">
-          <span data-wedding-weekday>Chủ Nhật</span>
-          <span data-wedding-year>2026</span>
-        </div>
-      </div>
-
-      <div class="event-cards">
-        <article class="event-card reveal-on-scroll" data-event-card="ceremony">
-          <span class="event-card__eyebrow">Lễ thành hôn</span>
-          <h3 data-event-title>Lễ Cưới</h3>
-          <p class="event-card__time" data-event-time>11:00</p>
-          <p class="event-card__venue" data-event-venue>Uông Bí, Quảng Ninh</p>
-          <a class="event-card__map" data-event-map href="https://www.google.com/maps/search/?api=1&amp;query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh" target="_blank" rel="noreferrer">Xem bản đồ</a>
-        </article>
-        <article class="event-card reveal-on-scroll" data-event-card="reception">
-          <span class="event-card__eyebrow">Tiệc mừng</span>
-          <h3 data-event-title>Tiệc Cưới</h3>
-          <p class="event-card__time" data-event-time>11:00</p>
-          <p class="event-card__venue" data-event-venue>Uông Bí, Quảng Ninh</p>
-          <a class="event-card__map" data-event-map href="https://www.google.com/maps/search/?api=1&amp;query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh" target="_blank" rel="noreferrer">Xem bản đồ</a>
-        </article>
-      </div>
-
-      <div class="event-schedule reveal-on-scroll">
-        <p class="section-kicker">Lịch trình ngày cưới</p>
-        <div class="event-schedule__rows">
-          <div class="event-schedule__row">
-            <span data-schedule-title="ceremony">Lễ thành hôn</span>
-            <strong data-schedule-time="ceremony">11:00</strong>
-          </div>
-          <div class="event-schedule__row">
-            <span data-schedule-title="reception">Tiệc cưới</span>
-            <strong data-schedule-time="reception">11:00</strong>
+          </div> -->
+            <p class="interior-hero__date">28/11/2026</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="countdown countdown--details reveal-on-scroll" role="timer" aria-live="off">
-        <div class="countdown__item"><span id="cd-days">0</span><small>Ngày</small></div>
-        <div class="countdown__item"><span id="cd-hours">0</span><small>Giờ</small></div>
-        <div class="countdown__item"><span id="cd-minutes">0</span><small>Phút</small></div>
-        <div class="countdown__item"><span id="cd-seconds">0</span><small>Giây</small></div>
-      </div>
-
-      <div class="wedding-calendar reveal-on-scroll">
-        <div class="wedding-calendar__header">
-          <strong data-calendar-month>Tháng 11</strong>
-          <strong data-calendar-year>2026</strong>
+      <section class="page page--intro">
+        <div class="announcement">
+          <span class="announcement__ornament" aria-hidden="true">✦</span>
+          <p class="section-kicker">Trân trọng báo tin</p>
+          <h2>Lễ thành hôn</h2>
+          <p class="announcement__subtitle">của con chúng tôi</p>
+          <div class="announcement__rule" aria-hidden="true">
+            <span>✦</span>
+          </div>
+          <p class="announcement__names">
+            <span data-couple-name="groom">Nguyễn Huy Hoàng</span>
+            <span aria-hidden="true">&amp;</span>
+            <span data-couple-name="bride">Nguyễn Thu Thảo</span>
+          </p>
         </div>
-        <div class="wedding-calendar__weekdays" aria-hidden="true">
-          <span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
-        </div>
-        <div class="wedding-calendar__days" data-calendar-days role="grid" aria-label="Lịch ngày cưới"></div>
-      </div>
+      </section>
 
-      <div class="wedding-venue reveal-on-scroll">
-        <h3 data-venue-title>Uông Bí, Quảng Ninh</h3>
-        <p data-venue-address>Uông Bí, Quảng Ninh</p>
-        <div class="wedding-map">
-          <iframe
-            data-wedding-map
-            title="Bản đồ địa điểm cưới tại Uông Bí, Quảng Ninh"
-            src="https://maps.google.com/maps?q=U%C3%B4ng+B%C3%AD%2C%20Qu%E1%BA%A3ng%20Ninh&amp;output=embed"
+      <section class="page page--couple">
+        <div class="section-heading">
+          <p class="section-kicker">Nhân vật chính</p>
+          <h2>Cô dâu &amp; Chú rể</h2>
+        </div>
+
+        <div class="couple-grid">
+          <article class="person-card reveal-on-scroll">
+            <div class="person-card__image">
+              <img
+                src="assets/images-web/chure.jpg"
+                alt="Chú rể Nguyễn Huy Hoàng"
+                loading="lazy"
+              />
+            </div>
+            <h3>Trưởng nam</h3>
+            <p data-person-name="groom">Nguyễn Huy Hoàng</p>
+          </article>
+
+          <article class="person-card reveal-on-scroll">
+            <div class="person-card__image">
+              <img
+                src="assets/images-web/codau.jpg"
+                alt="Cô dâu Nguyễn Thu Thảo"
+                loading="lazy"
+              />
+            </div>
+            <h3>Út nữ</h3>
+            <p data-person-name="bride">Nguyễn Thu Thảo</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page page--details">
+        <div class="section-heading">
+          <p class="section-kicker">Ngày vui của chúng mình</p>
+          <h2>Thông tin hôn lễ</h2>
+        </div>
+
+        <div class="date-card reveal-on-scroll">
+          <div class="date-card__headline" data-wedding-date>28.11.2026</div>
+          <div class="date-card__row">
+            <span data-wedding-weekday>Chủ Nhật</span>
+            <span data-wedding-year>2026</span>
+          </div>
+        </div>
+
+        <div class="event-cards">
+          <article
+            class="event-card reveal-on-scroll"
+            data-event-card="ceremony"
+          >
+            <span class="event-card__eyebrow">Lễ thành hôn</span>
+            <h3 data-event-title>Lễ Cưới</h3>
+            <p class="event-card__time" data-event-time>11:00</p>
+            <p class="event-card__venue" data-event-venue>
+              Uông Bí, Quảng Ninh
+            </p>
+            <a
+              class="event-card__map"
+              data-event-map
+              href="https://www.google.com/maps/search/?api=1&amp;query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh"
+              target="_blank"
+              rel="noreferrer"
+              >Xem bản đồ</a
+            >
+          </article>
+          <article
+            class="event-card reveal-on-scroll"
+            data-event-card="reception"
+          >
+            <span class="event-card__eyebrow">Tiệc mừng</span>
+            <h3 data-event-title>Tiệc Cưới</h3>
+            <p class="event-card__time" data-event-time>11:00</p>
+            <p class="event-card__venue" data-event-venue>
+              Uông Bí, Quảng Ninh
+            </p>
+            <a
+              class="event-card__map"
+              data-event-map
+              href="https://www.google.com/maps/search/?api=1&amp;query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh"
+              target="_blank"
+              rel="noreferrer"
+              >Xem bản đồ</a
+            >
+          </article>
+        </div>
+
+        <div class="event-schedule reveal-on-scroll">
+          <p class="section-kicker">Lịch trình ngày cưới</p>
+          <div class="event-schedule__rows">
+            <div class="event-schedule__row">
+              <span data-schedule-title="ceremony">Lễ thành hôn</span>
+              <strong data-schedule-time="ceremony">11:00</strong>
+            </div>
+            <div class="event-schedule__row">
+              <span data-schedule-title="reception">Tiệc cưới</span>
+              <strong data-schedule-time="reception">11:00</strong>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="countdown countdown--details reveal-on-scroll"
+          role="timer"
+          aria-live="off"
+        >
+          <div class="countdown__item">
+            <span id="cd-days">0</span><small>Ngày</small>
+          </div>
+          <div class="countdown__item">
+            <span id="cd-hours">0</span><small>Giờ</small>
+          </div>
+          <div class="countdown__item">
+            <span id="cd-minutes">0</span><small>Phút</small>
+          </div>
+          <div class="countdown__item">
+            <span id="cd-seconds">0</span><small>Giây</small>
+          </div>
+        </div>
+
+        <div class="wedding-calendar reveal-on-scroll">
+          <div class="wedding-calendar__header">
+            <strong data-calendar-month>Tháng 11</strong>
+            <strong data-calendar-year>2026</strong>
+          </div>
+          <div class="wedding-calendar__weekdays" aria-hidden="true">
+            <span>T2</span><span>T3</span><span>T4</span><span>T5</span
+            ><span>T6</span><span>T7</span><span>CN</span>
+          </div>
+          <div
+            class="wedding-calendar__days"
+            data-calendar-days
+            role="grid"
+            aria-label="Lịch ngày cưới"
+          ></div>
+        </div>
+
+        <div class="wedding-venue reveal-on-scroll">
+          <h3 data-venue-title>Uông Bí, Quảng Ninh</h3>
+          <p data-venue-address>Uông Bí, Quảng Ninh</p>
+          <div class="wedding-map">
+            <iframe
+              data-wedding-map
+              title="Bản đồ địa điểm cưới tại Uông Bí, Quảng Ninh"
+              src="https://maps.google.com/maps?q=U%C3%B4ng+B%C3%AD%2C%20Qu%E1%BA%A3ng%20Ninh&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+          <a
+            class="wedding-venue__directions"
+            data-wedding-directions
+            href="https://www.google.com/maps/search/?api=1&amp;query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh"
+            target="_blank"
+            rel="noreferrer"
+            >Chỉ đường</a
+          >
+        </div>
+      </section>
+
+      <section
+        class="page page--milestones"
+        aria-labelledby="milestones-heading"
+      >
+        <div class="section-heading">
+          <p class="section-kicker" id="milestones-heading">
+            Hành trình của chúng mình
+          </p>
+          <h2>Những khoảnh khắc</h2>
+        </div>
+        <div class="milestones-list" data-milestones></div>
+      </section>
+
+      <section
+        class="page page--photo-moment reveal-on-scroll"
+        aria-label="Khoảnh khắc bên nhau"
+      >
+        <figure class="photo-moment">
+          <img
+            data-img="moment-0"
+            src="assets/images-web/anh-3.jpg"
+            alt="Cặp đôi sánh bước dưới ánh hoàng hôn"
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
+          />
+          <figcaption data-img-caption="moment-0">
+            Sánh bước bên nhau dưới ánh hoàng hôn
+          </figcaption>
+        </figure>
+      </section>
+
+      <section
+        class="page page--photo-moment reveal-on-scroll"
+        aria-label="Những khoảnh khắc ngày vui"
+      >
+        <div class="photo-moment__pair">
+          <figure class="photo-moment">
+            <img
+              data-img="moment-1"
+              src="assets/images-web/anh-6.jpg"
+              alt="Cô dâu chú rể dưới ánh nắng hoàng hôn"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="photo-moment">
+            <img
+              data-img="moment-2"
+              src="assets/images-web/anh-7.jpg"
+              alt="Cặp đôi ôm nhau dưới mặt trời lặn"
+              loading="lazy"
+            />
+          </figure>
         </div>
-        <a class="wedding-venue__directions" data-wedding-directions href="https://www.google.com/maps/search/?api=1&amp;query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh" target="_blank" rel="noreferrer">Chỉ đường</a>
-      </div>
-    </section>
+        <p class="photo-moment__caption">
+          Từng khoảnh khắc đều là điều đáng nhớ
+        </p>
+      </section>
 
-    <section class="page page--photo-moment reveal-on-scroll" aria-label="Những khoảnh khắc ngày vui">
-      <div class="photo-moment__pair">
+      <section
+        class="page page--photo-moment reveal-on-scroll"
+        aria-label="Cô dâu và chú rể"
+      >
         <figure class="photo-moment">
-          <img data-img="moment-1" src="assets/images-web/anh-6.jpg" alt="Cô dâu chú rể dưới ánh nắng hoàng hôn" loading="lazy">
+          <img
+            data-img="moment-3"
+            src="assets/images-web/anh-8.jpg"
+            alt="Nụ hôn dịu dàng trong ánh nắng cuối ngày"
+            loading="lazy"
+          />
+          <figcaption data-img-caption="moment-3">
+            Nụ hôn đầu tiên trong ánh nắng cuối ngày
+          </figcaption>
         </figure>
+      </section>
+
+      <section
+        class="page page--photo-moment reveal-on-scroll"
+        aria-label="Kỷ niệm ngày cưới"
+      >
         <figure class="photo-moment">
-          <img data-img="moment-2" src="assets/images-web/anh-7.jpg" alt="Cặp đôi ôm nhau dưới mặt trời lặn" loading="lazy">
+          <img
+            data-img="moment-4"
+            src="assets/images-web/anh-9.jpg"
+            alt="Chú rể nhẹ nhàng ôm vai cô dâu trong hoàng hôn"
+            loading="lazy"
+          />
+          <figcaption data-img-caption="moment-4">
+            Cùng nhau viết tiếp hành trình hạnh phúc
+          </figcaption>
         </figure>
-      </div>
-      <p class="photo-moment__caption">Từng khoảnh khắc đều là điều đáng nhớ</p>
-    </section>
+      </section>
 
-    <section class="page page--photo-moment reveal-on-scroll" aria-label="Cô dâu và chú rể">
-      <figure class="photo-moment">
-        <img data-img="moment-3" src="assets/images-web/anh-8.jpg" alt="Nụ hôn dịu dàng trong ánh nắng cuối ngày" loading="lazy">
-        <figcaption data-img-caption="moment-3">Nụ hôn đầu tiên trong ánh nắng cuối ngày</figcaption>
-      </figure>
-    </section>
-
-    <section class="page page--photo-moment reveal-on-scroll" aria-label="Kỷ niệm ngày cưới">
-      <figure class="photo-moment">
-        <img data-img="moment-4" src="assets/images-web/anh-9.jpg" alt="Chú rể nhẹ nhàng ôm vai cô dâu trong hoàng hôn" loading="lazy">
-        <figcaption data-img-caption="moment-4">Cùng nhau viết tiếp hành trình hạnh phúc</figcaption>
-      </figure>
-    </section>
-
-    <section class="page page--closing">
+      <!-- <section class="page page--closing">
       <div class="closing-card reveal-on-scroll">
         <span aria-hidden="true">✦</span>
         <p>Trân trọng báo tin</p>
         <h2><span data-couple-name="groom">Nguyễn Huy Hoàng</span> <em>&amp;</em> <span data-couple-name="bride">Nguyễn Thu Thảo</span></h2>
         <span aria-hidden="true">— ✦ —</span>
       </div>
-    </section>
+    </section> -->
 
-    <section class="page page--gift-scan">
+      <!-- <section class="page page--gift-scan">
       <div class="gift-envelope reveal-on-scroll">
         <div class="gift-envelope__ornament" aria-hidden="true"><span>✦</span><i></i><span>✦</span></div>
         <div class="gift-envelope__art" aria-hidden="true">
@@ -292,61 +439,108 @@
         <span class="gift-envelope__hint">Quét mã QR để gửi quà mừng cưới</span>
         <button type="button" class="gift-envelope__button" data-gift-open>✦ Mở phong bao ✦</button>
       </div>
-    </section>
+    </section> -->
 
-    <section class="page page--rsvp">
-      <div class="section-heading small">
-        <p class="section-kicker">Xác nhận</p>
-      </div>
-
-      <form class="rsvp-form reveal-on-scroll">
-        <div class="rsvp-field">
-          <label for="rsvp-name">Họ và tên</label>
-          <input id="rsvp-name" name="name" type="text" placeholder="Nhập tên của bạn" maxlength="120" required>
+      <section class="page page--rsvp">
+        <div class="section-heading small">
+          <p class="section-kicker">Xác nhận</p>
         </div>
-        <fieldset class="rsvp-field">
-          <legend>Bạn sẽ tham dự chứ?</legend>
-          <div class="radio-row">
-            <label><input type="radio" name="attendance" value="yes" checked> Có, tôi sẽ tham dự</label>
-            <label><input type="radio" name="attendance" value="no"> Tôi rất tiếc, tôi không thể tham dự</label>
+
+        <form class="rsvp-form reveal-on-scroll">
+          <div class="rsvp-field">
+            <label for="rsvp-name">Họ và tên</label>
+            <input
+              id="rsvp-name"
+              name="name"
+              type="text"
+              placeholder="Nhập tên của bạn"
+              maxlength="120"
+              required
+            />
           </div>
-        </fieldset>
-        <div class="rsvp-field">
-          <label for="rsvp-phone">Số điện thoại</label>
-          <input id="rsvp-phone" name="phone" type="tel" placeholder="Nhập số điện thoại của bạn" maxlength="20">
+          <fieldset class="rsvp-field">
+            <legend>Bạn sẽ tham dự chứ?</legend>
+            <div class="radio-row">
+              <label
+                ><input type="radio" name="attendance" value="yes" checked />
+                Có, tôi sẽ tham dự</label
+              >
+              <label
+                ><input type="radio" name="attendance" value="no" /> Tôi rất
+                tiếc, tôi không thể tham dự</label
+              >
+            </div>
+          </fieldset>
+          <div class="rsvp-field">
+            <label for="rsvp-phone">Số điện thoại</label>
+            <input
+              id="rsvp-phone"
+              name="phone"
+              type="tel"
+              placeholder="Nhập số điện thoại của bạn"
+              maxlength="20"
+            />
+          </div>
+          <div class="rsvp-field">
+            <label for="rsvp-guests">Số người tham dự</label>
+            <select id="rsvp-guests" name="guests">
+              <option value="1">1 người</option>
+              <option value="2">2 người</option>
+              <option value="3">3 người</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn">Gửi xác nhận</button>
+          <p class="rsvp-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="page page--thanks">
+        <div class="thank-you reveal-on-scroll">
+          <p class="section-kicker">Cảm ơn</p>
+          <h2>Hẹn gặp bạn trong ngày vui</h2>
+          <p>
+            Thật tuyệt vời khi bạn ở đây cùng chúng mình trong ngày trọng đại
+            này.
+          </p>
         </div>
-        <div class="rsvp-field">
-          <label for="rsvp-guests">Số người tham dự</label>
-          <select id="rsvp-guests" name="guests">
-            <option value="1">1 người</option>
-            <option value="2">2 người</option>
-            <option value="3">3 người</option>
-          </select>
-        </div>
-        <button type="submit" class="submit-btn">Gửi xác nhận</button>
-        <p class="rsvp-status" role="status" aria-live="polite"></p>
-      </form>
-    </section>
+      </section>
+    </main>
 
-    <section class="page page--thanks">
-      <div class="thank-you reveal-on-scroll">
-        <p class="section-kicker">Cảm ơn</p>
-        <h2>Hẹn gặp bạn trong ngày vui</h2>
-        <p>Thật tuyệt vời khi bạn ở đây cùng chúng mình trong ngày trọng đại này.</p>
-      </div>
-    </section>
-  </main>
+    <div class="floating-tools" aria-label="Tùy chọn">
+      <button
+        class="floating-tools__button music-toggle-button"
+        type="button"
+        aria-label="Bật/tắt nhạc nền"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M9 18V5l10-2v13M9 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm10-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button
+        class="floating-tools__button menu-button"
+        type="button"
+        aria-label="Menu"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M4 7h16M4 12h16M4 17h16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
 
-  <div class="floating-tools" aria-label="Tùy chọn">
-    <button class="floating-tools__button music-toggle-button" type="button" aria-label="Bật/tắt nhạc nền">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l10-2v13M9 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm10-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <button class="floating-tools__button menu-button" type="button" aria-label="Menu">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-
-  <!-- <nav class="book-nav" aria-label="Điều hướng thiệp">
+    <!-- <nav class="book-nav" aria-label="Điều hướng thiệp">
     <button class="book-nav__arrow book-nav__arrow--prev" type="button" aria-label="Trang trước" disabled>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
@@ -358,14 +552,24 @@
     </button>
   </nav> -->
 
-  <div class="swipe-hint" aria-hidden="true">
-    <div class="swipe-hint__icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16"/><polyline points="14 6 20 12 14 18"/></svg>
+    <div class="swipe-hint" aria-hidden="true">
+      <div class="swipe-hint__icon">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+        >
+          <path d="M4 12h16" />
+          <polyline points="14 6 20 12 14 18" />
+        </svg>
+      </div>
+      <p>Cuộn xuống để xem tiếp</p>
     </div>
-    <p>Cuộn xuống để xem tiếp</p>
-  </div>
 
-  <div class="gift-modal" id="gift-modal" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title" aria-hidden="true">
+    <!-- <div class="gift-modal" id="gift-modal" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title" aria-hidden="true">
     <div class="gift-modal__backdrop" data-close></div>
     <div class="gift-modal__card">
       <button class="gift-modal__close" type="button" aria-label="Đóng" data-close>Đóng</button>
@@ -373,22 +577,43 @@
       <p class="gift-modal__subtitle">Quét mã QR để gửi quà mừng cưới</p>
       <div class="gift-modal__accounts" data-gift-accounts></div>
     </div>
-  </div>
+  </div> -->
 
-  <button class="music-toggle" type="button" aria-label="Bật/tắt nhạc nền" aria-pressed="false" tabindex="-1">Music</button>
-  <audio id="bg-music" loop preload="auto">
-    <source src="assets/music/wedding-instrumental.wav" type="audio/wav">
-  </audio>
+    <button
+      class="music-toggle"
+      type="button"
+      aria-label="Bật/tắt nhạc nền"
+      aria-pressed="false"
+      tabindex="-1"
+    >
+      Music
+    </button>
+    <audio id="bg-music" loop preload="auto">
+      <source src="assets/music/wedding-instrumental.wav" type="audio/wav" />
+    </audio>
 
-  <noscript>
-    <style>
-      .loader, .book-cover { display: none; }
-      .page { position: static; opacity: 1; visibility: visible; }
-      .book { position: static; perspective: none; }
-      .book-nav, .swipe-hint { display: none; }
-    </style>
-  </noscript>
+    <noscript>
+      <style>
+        .loader,
+        .book-cover {
+          display: none;
+        }
+        .page {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+        }
+        .book {
+          position: static;
+          perspective: none;
+        }
+        .book-nav,
+        .swipe-hint {
+          display: none;
+        }
+      </style>
+    </noscript>
 
-  <script type="module" src="js/app.js?v=20261102-wine-photo-layout"></script>
-</body>
+    <script type="module" src="js/app.js?v=20261102-wine-photo-layout"></script>
+  </body>
 </html>

@@ -1,4 +1,4 @@
-ï»¿/* ==========================================================================
+﻿ï»¿/* ==========================================================================
    Layout Ã¢â¬â The Book, full-screen edition
    ToÃÂ n mÃÂ n hÃÂ¬nh lÃÂ  tÃ¡ÂºÂ¥m thiÃ¡Â»â¡p. CÃÂ³ bÃÂ¬a 3D lÃ¡ÂºÂ­t lÃÂªn ÃâÃ¡Â»Æ "mÃ¡Â»Å¸ sÃÂ¡ch".
    ========================================================================== */
@@ -382,10 +382,10 @@ html.cover-locked {
 .book-cover__names {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0;
-  width: 100%;
+  gap: 12px;
+  /* width: 100%; */
   margin-top: 0;
   color: #fff9f0;
   font: 700 clamp(2.4rem, 10vw, 3.8rem)/1.05 var(--font-display);
@@ -419,7 +419,7 @@ html.cover-locked {
 }
 
 .book-cover__date {
-  margin-top: 12px;
+  margin-top: auto;
   color: #ffe083 !important;
   font: 600 1rem/1.3 var(--font-sans);
   letter-spacing: 0.2em;
@@ -934,6 +934,7 @@ body.invitation-open {
   letter-spacing: 0.32em;
   text-transform: uppercase;
   text-shadow: 0 0 12px rgba(0,0,0,1), 0 2px 16px rgba(0,0,0,0.95), 1px 1px 0 rgba(0,0,0,0.8);
+  font-size: 16px !important;
 }
 
 .interior-hero__names {
@@ -942,7 +943,7 @@ body.invitation-open {
   gap: 2px;
   margin: 0;
   color: #fffaf0 !important;
-  font: 700 clamp(1.9rem, 8vw, 3rem)/1.05 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font: 400 clamp(1.9rem, 8vw, 3rem)/1.05 "Playfair Display", 'Noto Serif', Georgia, serif;
   letter-spacing: -0.01em;
   text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 50px rgba(0,0,0,0.6);
 }
@@ -2936,4 +2937,3 @@ html, body, body.scroll-layout {
 .scroll-reveal-ready .milestone-card:nth-child(2) { transition-delay: 80ms; }
 .scroll-reveal-ready .milestone-card:nth-child(3) { transition-delay: 160ms; }
 .scroll-reveal-ready .milestone-card:nth-child(4) { transition-delay: 240ms; }
-

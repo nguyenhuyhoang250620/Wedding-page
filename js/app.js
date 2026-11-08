@@ -374,6 +374,34 @@ function initRevealOnScroll() {
   const items = [...sections, ...document.querySelectorAll('.reveal-on-scroll')];
   items.forEach(item => item.classList.add('reveal-on-scroll'));
 
+  const introPage = document.querySelector('.page--intro');
+  if (introPage) {
+    const revealAnnouncement = () => {
+      if (!('IntersectionObserver' in window)) {
+        introPage.classList.add('announcement-revealed');
+        return;
+      }
+
+      const announcementObserver = new IntersectionObserver((entries) => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          introPage.classList.add('announcement-revealed');
+          announcementObserver.disconnect();
+        }
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -70px 0px'
+      });
+
+      announcementObserver.observe(introPage);
+    };
+
+    if (document.body.classList.contains('invitation-open')) {
+      revealAnnouncement();
+    } else {
+      document.addEventListener('invitation:opened', revealAnnouncement, { once: true });
+    }
+  }
+
   const sideRevealItems = document.querySelectorAll(
     '.reveal-on-scroll:not(.page):not(.gallery-photo):not(.person-card):not(.family-card):not(.event-card)'
   );

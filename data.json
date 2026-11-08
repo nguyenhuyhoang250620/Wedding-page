@@ -8,14 +8,14 @@
 
   "couple": {
     "groom": {
-      "name": "Thu Thảo",
-      "role": "Cô Dâu",
-      "image": "assets/images-web/codau.jpg"
+      "name": "HUY HOÀNG",
+      "role": "Chú Rể",
+      "image": "assets/images-web/codauavt.jpg"
     },
     "bride": {
-      "name": "Huy Hoàng",
-      "role": "Chú Rể",
-      "image": "assets/images-web/chure.jpg"
+      "name": "THU THẢO",
+      "role": "Cô Dâu",
+      "image": "assets/images-web/chureavt.jpg"
     }
   },
 
@@ -71,7 +71,7 @@
 
   "images": {
     "cover": "assets/images-web/anh-bia-1.jpg",
-    "hero": "assets/images-web/anh-2.jpg",
+    "hero": "assets/images-web/anh-5.jpg",
     "introBg": "assets/images-web/anh-2.jpg",
     "photoMoments": [
       { "src": "assets/images-web/anh-3.jpg", "caption": "Sánh bước bên nhau dưới ánh hoàng hôn" },
