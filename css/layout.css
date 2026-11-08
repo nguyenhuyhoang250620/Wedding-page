@@ -3081,6 +3081,34 @@ body.scroll-layout {
   color: #b83020 !important;
 }
 
+.scroll-layout .page--milestones .section-kicker,
+.scroll-layout .page--couple .section-kicker,
+.scroll-layout .page--details .section-kicker {
+  color: #f0b87a !important;
+  font-size: clamp(0.82rem, 3.8vw, 1rem) !important;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.scroll-layout .page--milestones .section-heading h2,
+.scroll-layout .page--couple .section-heading h2,
+.scroll-layout .page--details .section-heading h2 {
+  color: #fff0d8 !important;
+  font-size: clamp(2rem, 7vw, 2.6rem) !important;
+  font-weight: 700;
+  text-shadow: 0 2px 18px rgba(240, 184, 122, 0.24);
+}
+
+.scroll-layout .page--couple .section-heading h2::after {
+  display: block;
+  width: clamp(72px, 24vw, 110px);
+  height: 2px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #f0b87a, transparent);
+  content: "";
+}
+
 /* Kicker trÃÂªn nÃ¡Â»Ân sÃÂ¡ng */
 .scroll-layout .page .section-kicker,
 .scroll-layout .page--details .event-card__eyebrow {
@@ -3163,6 +3191,9 @@ body.scroll-layout {
 .scroll-layout .page--details .wedding-calendar__header {
   background: rgba(240, 184, 122, 0.15) !important;
   color: #f0b87a !important;
+}
+.scroll-layout .page--details .wedding-calendar__header strong {
+  color: #fff0d8 !important;
 }
 .scroll-layout .page--details .wedding-calendar__weekdays {
   color: rgba(255, 240, 216, 0.5) !important;
