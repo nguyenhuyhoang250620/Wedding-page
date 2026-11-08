@@ -34,8 +34,14 @@ body {
   z-index: 200;
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, rgba(25, 8, 9, 0.9), rgba(90, 18, 18, 0.82));
-  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+  background: linear-gradient(
+    180deg,
+    rgba(25, 8, 9, 0.9),
+    rgba(90, 18, 18, 0.82)
+  );
+  transition:
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
 }
 
 .entry-veil.hidden {
@@ -66,7 +72,7 @@ body {
   margin: 0;
   font-size: clamp(2rem, 7vw, 3.2rem);
   line-height: 1.1;
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: "Noto Serif", Georgia, serif;
   color: #f3d7d1;
 }
 
@@ -154,8 +160,16 @@ body {
   overflow: hidden;
   color: #f8efe2;
   background:
-    radial-gradient(ellipse at 20% 45%, rgba(116, 49, 27, 0.32), transparent 42%),
-    radial-gradient(ellipse at 82% 65%, rgba(90, 19, 25, 0.44), transparent 46%),
+    radial-gradient(
+      ellipse at 20% 45%,
+      rgba(116, 49, 27, 0.32),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 82% 65%,
+      rgba(90, 19, 25, 0.44),
+      transparent 46%
+    ),
     linear-gradient(130deg, #281116 0%, #390e16 52%, #241016 100%);
 }
 
@@ -254,7 +268,9 @@ body {
   background: #281116;
   opacity: 1;
   visibility: visible;
-  transition: opacity 450ms ease, visibility 0s linear 450ms;
+  transition:
+    opacity 450ms ease,
+    visibility 0s linear 450ms;
 }
 
 .cover-screen .page--cover {
@@ -281,14 +297,28 @@ html.cover-locked {
 }
 
 @keyframes coverMirrorShimmer {
-  0%, 12% { left: -75%; opacity: 0; }
-  18% { opacity: 0.95; }
-  48% { left: 125%; opacity: 0.72; }
-  58%, 100% { left: 125%; opacity: 0; }
+  0%,
+  12% {
+    left: -75%;
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.95;
+  }
+  48% {
+    left: 125%;
+    opacity: 0.72;
+  }
+  58%,
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
 }
 
 @keyframes coverCardFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) rotateX(0.25deg) rotateY(-0.3deg);
   }
   50% {
@@ -297,8 +327,15 @@ html.cover-locked {
 }
 
 @keyframes coverGlint {
-  0%, 100% { opacity: 0.16; transform: scale(0.72) rotate(0deg); }
-  50% { opacity: 0.95; transform: scale(1.08) rotate(45deg); }
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: scale(0.72) rotate(0deg);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.08) rotate(45deg);
+  }
 }
 
 .cover-photo {
@@ -313,14 +350,19 @@ html.cover-locked {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 48%;
+  object-position: 28% 48%;
   transform: none;
 }
 
 .cover-photo__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(22, 12, 12, 0.62), rgba(27, 13, 12, 0.5) 42%, rgba(23, 12, 10, 0.78));
+  background: linear-gradient(
+    180deg,
+    rgba(35, 23, 24, 0.48),
+    rgba(42, 24, 24, 0.2) 42%,
+    rgba(32, 20, 19, 0.2)
+  );
   pointer-events: none;
 }
 
@@ -335,15 +377,39 @@ html.cover-locked {
 .cover-glints span {
   position: absolute;
   color: #fff3ce;
-  font: 500 15px/1 'Noto Serif', Georgia, serif;
-  text-shadow: 0 0 8px rgba(255, 242, 194, 0.95), 0 0 18px rgba(255, 228, 147, 0.72);
+  font:
+    500 15px/1 "Noto Serif",
+    Georgia,
+    serif;
+  text-shadow:
+    0 0 8px rgba(255, 242, 194, 0.95),
+    0 0 18px rgba(255, 228, 147, 0.72);
   animation: coverGlint 1.9s ease-in-out infinite;
 }
 
-.cover-glints span:nth-child(1) { top: 17%; left: 19%; animation-delay: -0.3s; }
-.cover-glints span:nth-child(2) { top: 34%; right: 15%; font-size: 11px; animation-delay: -1.1s; }
-.cover-glints span:nth-child(3) { right: 25%; bottom: 24%; font-size: 13px; animation-delay: -0.7s; }
-.cover-glints span:nth-child(4) { bottom: 17%; left: 14%; font-size: 10px; animation-delay: -1.5s; }
+.cover-glints span:nth-child(1) {
+  top: 17%;
+  left: 19%;
+  animation-delay: -0.3s;
+}
+.cover-glints span:nth-child(2) {
+  top: 34%;
+  right: 15%;
+  font-size: 11px;
+  animation-delay: -1.1s;
+}
+.cover-glints span:nth-child(3) {
+  right: 25%;
+  bottom: 24%;
+  font-size: 13px;
+  animation-delay: -0.7s;
+}
+.cover-glints span:nth-child(4) {
+  bottom: 17%;
+  left: 14%;
+  font-size: 10px;
+  animation-delay: -1.5s;
+}
 
 .cover-screen.is-opening .cover-photo > img {
   animation: none;
@@ -409,7 +475,10 @@ html.cover-locked {
   left: unset;
   transform: none;
   color: #ffd97a;
-  font: 400 clamp(1.8rem, 7vw, 2.8rem)/1 'Noto Serif', Georgia, serif;
+  font:
+    400 clamp(1.8rem, 7vw, 2.8rem)/1 "Noto Serif",
+    Georgia,
+    serif;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
   margin: 2px 0;
 }
@@ -423,7 +492,7 @@ html.cover-locked {
   color: #ffe083 !important;
   font: 600 1rem/1.3 var(--font-sans);
   letter-spacing: 0.2em;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 
 .cover-note,
@@ -456,7 +525,7 @@ html.cover-locked {
   color: #fff6eb;
   font: 600 1.4rem/1.2 var(--font-display);
   letter-spacing: 0.01em;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 .cover-event {
@@ -474,7 +543,7 @@ html.cover-locked {
 .cover-event__venue {
   color: rgba(255, 246, 232, 0.95);
   font: italic 1rem/1.3 var(--font-display);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .book-cover__cta {
@@ -512,7 +581,12 @@ html.cover-locked {
   width: 90%;
   height: 1px;
   transform: translateX(-50%);
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
 }
 
 .page--story .section-kicker {
@@ -533,7 +607,7 @@ html.cover-locked {
   font-size: clamp(2.2rem, 5vw, 3.1rem);
   margin: 8px 0 10px;
   line-height: 1.1;
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: "Noto Serif", Georgia, serif;
   letter-spacing: 0.02em;
 }
 
@@ -555,7 +629,7 @@ html.cover-locked {
 
 .page--couple .section-heading h2 {
   font-size: clamp(1.9rem, 5vw, 2.7rem);
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: "Noto Serif", Georgia, serif;
   color: #4e302e;
 }
 
@@ -569,7 +643,7 @@ html.cover-locked {
   padding: 10px 10px 12px;
   border-radius: 14px;
   border: 1px solid rgba(137, 94, 72, 0.18);
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .page--couple .person-card__image {
@@ -600,7 +674,7 @@ html.cover-locked {
 .page--details .section-heading h2 {
   color: #511e20;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: "Noto Serif", Georgia, serif;
 }
 
 .page--details .date-card,
@@ -616,7 +690,7 @@ html.cover-locked {
 }
 
 .page--details .date-card {
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .page--details .date-card__headline {
@@ -625,7 +699,7 @@ html.cover-locked {
 }
 
 .page--details .info-box {
-  background: rgba(255,255,255,0.14);
+  background: rgba(255, 255, 255, 0.14);
   margin-top: 12px;
 }
 
@@ -662,7 +736,7 @@ html.cover-locked {
 .page--gift-scan .gift-qr {
   max-width: 390px;
   margin: 0 auto;
-  background: rgba(255,255,255,0.16);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .page--countdown {
@@ -673,7 +747,7 @@ html.cover-locked {
 .page--countdown .countdown {
   max-width: 390px;
   margin: 8px auto 0;
-  background: rgba(255,255,255,0.16);
+  background: rgba(255, 255, 255, 0.16);
   padding: 10px 8px;
 }
 
@@ -690,7 +764,7 @@ html.cover-locked {
 .page--rsvp .rsvp-form {
   max-width: 390px;
   margin: 0 auto;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .page--thanks {
@@ -701,13 +775,13 @@ html.cover-locked {
 .page--thanks .thank-you {
   max-width: 390px;
   margin: 0 auto;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .page--thanks .thank-you h2 {
   font-size: clamp(1.65rem, 4vw, 2.1rem);
   color: #4a2326;
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: "Noto Serif", Georgia, serif;
 }
 
 @media (max-width: 420px) {
@@ -854,7 +928,7 @@ body.invitation-open {
 .scroll-layout .page h2,
 .scroll-layout .page h3 {
   color: #503c32;
-  font-family: "Playfair Display", 'Noto Serif', Georgia, serif;
+  font-family: "Playfair Display", "Noto Serif", Georgia, serif;
   font-weight: 500;
 }
 
@@ -876,7 +950,9 @@ body.invitation-open {
 .scroll-layout .page .section-kicker {
   margin: 0;
   color: #a17d51;
-  font: 500 0.62rem/1.5 "Be Vietnam Pro", sans-serif;
+  font:
+    500 0.62rem/1.5 "Be Vietnam Pro",
+    sans-serif;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -909,7 +985,13 @@ body.invitation-open {
 .interior-hero__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35%, rgba(10,5,4,0.45) 60%, rgba(10,5,4,0.78) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(10, 5, 4, 0.45) 60%,
+    rgba(10, 5, 4, 0.78) 100%
+  );
 }
 
 .interior-hero__content {
@@ -930,10 +1012,15 @@ body.invitation-open {
 .interior-hero__eyebrow {
   margin: 0 0 12px;
   color: #fff5cc !important;
-  font: 700 0.78rem/1.5 "Be Vietnam Pro", sans-serif !important;
+  font:
+    700 0.78rem/1.5 "Be Vietnam Pro",
+    sans-serif !important;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(0,0,0,1), 0 2px 16px rgba(0,0,0,0.95), 1px 1px 0 rgba(0,0,0,0.8);
+  text-shadow:
+    0 0 12px rgba(0, 0, 0, 1),
+    0 2px 16px rgba(0, 0, 0, 0.95),
+    1px 1px 0 rgba(0, 0, 0, 0.8);
   font-size: 16px !important;
 }
 
@@ -943,9 +1030,15 @@ body.invitation-open {
   gap: 2px;
   margin: 0;
   color: #fffaf0 !important;
-  font: 400 clamp(1.9rem, 8vw, 3rem)/1.05 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    400 clamp(1.9rem, 8vw, 3rem)/1.05 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
   letter-spacing: -0.01em;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 50px rgba(0,0,0,0.6);
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(0, 0, 0, 0.6);
 }
 
 .interior-hero__amp {
@@ -960,7 +1053,9 @@ body.invitation-open {
   margin-top: 22px;
   padding: 0;
   color: #fffaf0;
-  font: 400 0.78rem/1.5 "Be Vietnam Pro", sans-serif;
+  font:
+    400 0.78rem/1.5 "Be Vietnam Pro",
+    sans-serif;
   background: none;
   border: none;
   border-radius: 0;
@@ -970,23 +1065,33 @@ body.invitation-open {
 
 .interior-hero__invite strong {
   color: #fffaf0;
-  font: 600 1.35rem/1.3 "Playfair Display", 'Noto Serif', Georgia, serif;
-  text-shadow: 0 1px 10px rgba(0,0,0,0.8), 0 2px 20px rgba(0,0,0,0.6);
+  font:
+    600 1.35rem/1.3 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
+  text-shadow:
+    0 1px 10px rgba(0, 0, 0, 0.8),
+    0 2px 20px rgba(0, 0, 0, 0.6);
 }
 
 .interior-hero__invite em {
   margin-top: 2px;
   color: rgba(255, 250, 240, 0.95);
-  font: italic 0.78rem/1.5 "Be Vietnam Pro", sans-serif;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  font:
+    italic 0.78rem/1.5 "Be Vietnam Pro",
+    sans-serif;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
 }
 
 .interior-hero__date {
   margin: 16px 0 0;
   color: #e8c97a !important;
-  font: 600 0.9rem/1.5 "Be Vietnam Pro", sans-serif !important;
+  font:
+    600 0.9rem/1.5 "Be Vietnam Pro",
+    sans-serif !important;
   letter-spacing: 0.28em;
-  text-shadow: 0 1px 10px rgba(0,0,0,0.8);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
 }
 
 .page--intro {
@@ -1015,7 +1120,7 @@ body.invitation-open {
 
 .announcement__subtitle {
   margin: 2px 0 0;
-  font-family: "Playfair Display", 'Noto Serif', Georgia, serif !important;
+  font-family: "Playfair Display", "Noto Serif", Georgia, serif !important;
   font-size: 0.84rem;
   font-style: italic;
 }
@@ -1044,7 +1149,11 @@ body.invitation-open {
   gap: 9px;
   margin: 0;
   color: #503c32 !important;
-  font: 500 0.85rem/1.5 "Playfair Display", 'Noto Serif', Georgia, serif !important;
+  font:
+    500 0.85rem/1.5 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif !important;
 }
 
 .announcement__names span:nth-child(2) {
@@ -1088,7 +1197,9 @@ body.invitation-open {
 .page--couple .person-card h3 {
   margin: 14px 0 4px;
   color: #a17d51;
-  font: 500 0.58rem/1.5 "Be Vietnam Pro", sans-serif;
+  font:
+    500 0.58rem/1.5 "Be Vietnam Pro",
+    sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -1096,7 +1207,11 @@ body.invitation-open {
 .page--couple .person-card p {
   margin: 0;
   color: #503c32;
-  font: 500 0.96rem/1.5 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    500 0.96rem/1.5 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
 }
 
 .page--details {
@@ -1115,7 +1230,11 @@ body.invitation-open {
 
 .page--details .date-card__headline {
   color: #7a5543;
-  font: 500 clamp(1.8rem, 7vw, 2.5rem)/1.2 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    500 clamp(1.8rem, 7vw, 2.5rem)/1.2 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
   letter-spacing: 0.06em;
 }
 
@@ -1125,7 +1244,9 @@ body.invitation-open {
   gap: 18px;
   margin-top: 7px;
   color: #806b5b;
-  font: 400 0.68rem/1.5 "Be Vietnam Pro", sans-serif;
+  font:
+    400 0.68rem/1.5 "Be Vietnam Pro",
+    sans-serif;
   letter-spacing: 0.1em;
 }
 
@@ -1143,7 +1264,9 @@ body.invitation-open {
 
 .event-card__eyebrow {
   color: #a17d51;
-  font: 500 0.58rem/1.5 "Be Vietnam Pro", sans-serif;
+  font:
+    500 0.58rem/1.5 "Be Vietnam Pro",
+    sans-serif;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -1156,7 +1279,11 @@ body.invitation-open {
 .event-card__time {
   margin: 0;
   color: #8c6448 !important;
-  font: 500 1.05rem/1.5 "Playfair Display", 'Noto Serif', Georgia, serif !important;
+  font:
+    500 1.05rem/1.5 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif !important;
 }
 
 .event-card__venue {
@@ -1166,7 +1293,9 @@ body.invitation-open {
 
 .event-card__map {
   color: #8c6448;
-  font: 500 0.62rem/1.5 "Be Vietnam Pro", sans-serif;
+  font:
+    500 0.62rem/1.5 "Be Vietnam Pro",
+    sans-serif;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -1210,7 +1339,9 @@ body.invitation-open {
 
 .timeline__item time {
   color: #9a714c;
-  font: 500 0.76rem/1.6 "Be Vietnam Pro", sans-serif;
+  font:
+    500 0.76rem/1.6 "Be Vietnam Pro",
+    sans-serif;
 }
 
 .timeline__item div {
@@ -1220,12 +1351,18 @@ body.invitation-open {
 
 .timeline__item strong {
   color: #503c32;
-  font: 500 0.9rem/1.4 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    500 0.9rem/1.4 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
 }
 
 .timeline__item span {
   color: #806b5b;
-  font: 400 0.67rem/1.5 "Be Vietnam Pro", sans-serif;
+  font:
+    400 0.67rem/1.5 "Be Vietnam Pro",
+    sans-serif;
 }
 
 .page--dress {
@@ -1262,9 +1399,15 @@ body.invitation-open {
   background: #f7f1e7;
 }
 
-.dress-card__swatches span:nth-child(2) { background: #d9cbb5; }
-.dress-card__swatches span:nth-child(3) { background: #9a8270; }
-.dress-card__swatches span:nth-child(4) { background: #4a3b33; }
+.dress-card__swatches span:nth-child(2) {
+  background: #d9cbb5;
+}
+.dress-card__swatches span:nth-child(3) {
+  background: #9a8270;
+}
+.dress-card__swatches span:nth-child(4) {
+  background: #4a3b33;
+}
 
 .page--gallery {
   background: #fbf8f2 !important;
@@ -1345,7 +1488,7 @@ body.invitation-open {
 }
 
 .scroll-layout .page--gift-scan .gift-qr__title {
-  font-family: "Playfair Display", 'Noto Serif', Georgia, serif;
+  font-family: "Playfair Display", "Noto Serif", Georgia, serif;
 }
 
 .scroll-layout .page--countdown .countdown {
@@ -1364,7 +1507,7 @@ body.invitation-open {
 
 .scroll-layout .page--thanks .thank-you h2 {
   color: #503c32;
-  font-family: "Playfair Display", 'Noto Serif', Georgia, serif;
+  font-family: "Playfair Display", "Noto Serif", Georgia, serif;
 }
 
 .page--gallery {
@@ -1418,7 +1561,8 @@ body.invitation-open {
   background: #fffdf9;
   box-shadow: 0 16px 34px rgba(77, 47, 35, 0.2);
   cursor: zoom-in;
-  transform: translate3d(calc(-50% + var(--album-x)), var(--album-y), 0) rotate(var(--album-rotate)) scale(var(--album-scale));
+  transform: translate3d(calc(-50% + var(--album-x)), var(--album-y), 0)
+    rotate(var(--album-rotate)) scale(var(--album-scale));
 }
 
 .page--gallery .gallery-grid .gallery-photo img {
@@ -1489,32 +1633,84 @@ body.invitation-open {
 .page--gallery .gallery-caption {
   margin: 12px 0 0;
   color: #8e6c5e;
-  font: 400 clamp(0.9rem, 3.5vw, 1.05rem)/1.5 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 clamp(0.9rem, 3.5vw, 1.05rem)/1.5 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   text-align: center;
 }
 
-.scroll-reveal-ready .page--gallery .gallery-grid .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(1) {
-  transform: translate3d(calc(-50% + var(--album-x)), calc(var(--album-y) + 22px), 0) rotate(var(--album-rotate)) scale(var(--album-scale));
+.scroll-reveal-ready
+  .page--gallery
+  .gallery-grid
+  .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(1) {
+  transform: translate3d(
+      calc(-50% + var(--album-x)),
+      calc(var(--album-y) + 22px),
+      0
+    )
+    rotate(var(--album-rotate)) scale(var(--album-scale));
 }
 
-.scroll-reveal-ready .page--gallery .gallery-grid .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(2) {
-  transform: translate3d(calc(-50% + var(--album-x)), calc(var(--album-y) + 22px), 0) rotate(var(--album-rotate)) scale(var(--album-scale));
+.scroll-reveal-ready
+  .page--gallery
+  .gallery-grid
+  .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(2) {
+  transform: translate3d(
+      calc(-50% + var(--album-x)),
+      calc(var(--album-y) + 22px),
+      0
+    )
+    rotate(var(--album-rotate)) scale(var(--album-scale));
 }
 
-.scroll-reveal-ready .page--gallery .gallery-grid .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(3) {
-  transform: translate3d(calc(-50% + var(--album-x)), calc(var(--album-y) + 22px), 0) rotate(var(--album-rotate)) scale(var(--album-scale));
+.scroll-reveal-ready
+  .page--gallery
+  .gallery-grid
+  .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(3) {
+  transform: translate3d(
+      calc(-50% + var(--album-x)),
+      calc(var(--album-y) + 22px),
+      0
+    )
+    rotate(var(--album-rotate)) scale(var(--album-scale));
 }
 
-.scroll-reveal-ready .page--gallery .gallery-grid .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(4) {
-  transform: translate3d(calc(-50% + var(--album-x)), calc(var(--album-y) + 22px), 0) rotate(var(--album-rotate)) scale(var(--album-scale));
+.scroll-reveal-ready
+  .page--gallery
+  .gallery-grid
+  .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(4) {
+  transform: translate3d(
+      calc(-50% + var(--album-x)),
+      calc(var(--album-y) + 22px),
+      0
+    )
+    rotate(var(--album-rotate)) scale(var(--album-scale));
 }
 
-.scroll-reveal-ready .page--gallery .gallery-grid .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(5) {
-  transform: translate3d(calc(-50% + var(--album-x)), calc(var(--album-y) + 22px), 0) rotate(var(--album-rotate)) scale(var(--album-scale));
+.scroll-reveal-ready
+  .page--gallery
+  .gallery-grid
+  .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(5) {
+  transform: translate3d(
+      calc(-50% + var(--album-x)),
+      calc(var(--album-y) + 22px),
+      0
+    )
+    rotate(var(--album-rotate)) scale(var(--album-scale));
 }
 
-.scroll-reveal-ready .page--gallery .gallery-grid .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(6) {
-  transform: translate3d(calc(-50% + var(--album-x)), calc(var(--album-y) + 22px), 0) rotate(var(--album-rotate)) scale(var(--album-scale));
+.scroll-reveal-ready
+  .page--gallery
+  .gallery-grid
+  .gallery-photo.reveal-on-scroll:not(.is-visible):nth-child(6) {
+  transform: translate3d(
+      calc(-50% + var(--album-x)),
+      calc(var(--album-y) + 22px),
+      0
+    )
+    rotate(var(--album-rotate)) scale(var(--album-scale));
 }
 
 .gallery-lightbox {
@@ -1524,12 +1720,15 @@ body.invitation-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: max(64px, env(safe-area-inset-top)) 20px max(54px, env(safe-area-inset-bottom));
+  padding: max(64px, env(safe-area-inset-top)) 20px
+    max(54px, env(safe-area-inset-bottom));
   color: #fff;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 220ms ease, visibility 0s linear 220ms;
+  transition:
+    opacity 220ms ease,
+    visibility 0s linear 220ms;
 }
 
 .gallery-lightbox.is-open {
@@ -1579,7 +1778,11 @@ body.invitation-open {
 .gallery-lightbox__counter {
   flex: 0 0 auto;
   color: rgba(255, 255, 255, 0.82);
-  font: 500 0.8rem/1.2 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    500 0.8rem/1.2 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   letter-spacing: 0.12em;
 }
 
@@ -1595,7 +1798,9 @@ body.invitation-open {
   color: #fff;
   cursor: pointer;
   backdrop-filter: blur(8px);
-  transition: background 160ms ease, transform 160ms ease;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
 }
 
 .gallery-lightbox__close:hover,
@@ -1609,14 +1814,18 @@ body.invitation-open {
   right: max(18px, env(safe-area-inset-right));
   width: 42px;
   height: 42px;
-  font: 300 1.8rem/1 Arial, sans-serif;
+  font:
+    300 1.8rem/1 Arial,
+    sans-serif;
 }
 
 .gallery-lightbox__arrow {
   top: 50%;
   width: 46px;
   height: 46px;
-  font: 300 2rem/1 Arial, sans-serif;
+  font:
+    300 2rem/1 Arial,
+    sans-serif;
   transform: translateY(-50%);
 }
 
@@ -1624,8 +1833,12 @@ body.invitation-open {
   transform: translateY(-50%) scale(1.06);
 }
 
-.gallery-lightbox__arrow--prev { left: max(16px, env(safe-area-inset-left)); }
-.gallery-lightbox__arrow--next { right: max(16px, env(safe-area-inset-right)); }
+.gallery-lightbox__arrow--prev {
+  left: max(16px, env(safe-area-inset-left));
+}
+.gallery-lightbox__arrow--next {
+  right: max(16px, env(safe-area-inset-right));
+}
 
 @media (max-height: 500px) {
   .page--gallery .gallery-grid {
@@ -1693,15 +1906,21 @@ html.gallery-open body {
   transition-delay: 140ms;
 }
 
-.scroll-reveal-ready .person-card.reveal-on-scroll:not(.is-visible):nth-child(odd),
-.scroll-reveal-ready .family-card.reveal-on-scroll:not(.is-visible):nth-child(odd),
-.scroll-reveal-ready .event-card.reveal-on-scroll:not(.is-visible):nth-child(odd) {
+.scroll-reveal-ready
+  .person-card.reveal-on-scroll:not(.is-visible):nth-child(odd),
+.scroll-reveal-ready
+  .family-card.reveal-on-scroll:not(.is-visible):nth-child(odd),
+.scroll-reveal-ready
+  .event-card.reveal-on-scroll:not(.is-visible):nth-child(odd) {
   transform: translate3d(-28px, 0, 0);
 }
 
-.scroll-reveal-ready .person-card.reveal-on-scroll:not(.is-visible):nth-child(even),
-.scroll-reveal-ready .family-card.reveal-on-scroll:not(.is-visible):nth-child(even),
-.scroll-reveal-ready .event-card.reveal-on-scroll:not(.is-visible):nth-child(even) {
+.scroll-reveal-ready
+  .person-card.reveal-on-scroll:not(.is-visible):nth-child(even),
+.scroll-reveal-ready
+  .family-card.reveal-on-scroll:not(.is-visible):nth-child(even),
+.scroll-reveal-ready
+  .event-card.reveal-on-scroll:not(.is-visible):nth-child(even) {
   transform: translate3d(28px, 0, 0);
 }
 
@@ -1801,7 +2020,9 @@ html.gallery-open body {
   color: #fff4e8;
   font-size: 0.75rem;
   transform: translateX(-50%);
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
   pointer-events: none;
 }
 
@@ -1866,7 +2087,9 @@ html.gallery-open body {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 }
 
 .gift-modal.is-open {
@@ -2096,7 +2319,7 @@ body.invitation-open {
 .scroll-layout .page h2,
 .scroll-layout .page h3 {
   color: #2c1810;
-  font-family: "Playfair Display", "Noto Serif", 'Noto Serif', Georgia, serif;
+  font-family: "Playfair Display", "Noto Serif", "Noto Serif", Georgia, serif;
 }
 
 .scroll-layout .page p {
@@ -2106,7 +2329,11 @@ body.invitation-open {
 
 .scroll-layout .page .section-kicker {
   color: #d4622a;
-  font: 700 0.6875rem/1.6 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    700 0.6875rem/1.6 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -2117,7 +2344,12 @@ body.invitation-open {
 
 .scroll-layout .page .section-heading h2 {
   color: #c03828;
-  font: 600 clamp(1.7rem, 5vw, 2.2rem)/1.2 "Playfair Display", "Noto Serif", 'Noto Serif', Georgia, serif;
+  font:
+    600 clamp(1.7rem, 5vw, 2.2rem)/1.2 "Playfair Display",
+    "Noto Serif",
+    "Noto Serif",
+    Georgia,
+    serif;
 }
 
 .scroll-layout .page--intro {
@@ -2178,7 +2410,11 @@ body.invitation-open {
 .scroll-layout .page .family-card__side {
   margin: 0 0 8px;
   color: #c9993e;
-  font: 700 0.7rem/1.5 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    700 0.7rem/1.5 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -2186,13 +2422,22 @@ body.invitation-open {
 .scroll-layout .page .family-card__name {
   margin: 0 0 10px;
   color: #9d1f1f;
-  font: 700 1.25rem/1.35 "Playfair Display", "Noto Serif", 'Noto Serif', Georgia, serif;
+  font:
+    700 1.25rem/1.35 "Playfair Display",
+    "Noto Serif",
+    "Noto Serif",
+    Georgia,
+    serif;
 }
 
 .scroll-layout .page .family-card__parents {
   margin: 0;
   color: #8e6c5e;
-  font: 400 0.8125rem/1.75 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 0.8125rem/1.75 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .scroll-layout .page .family-card__parents strong {
@@ -2228,8 +2473,6 @@ body.invitation-open {
   min-height: 320px;
 }
 
-
-
 @media (max-width: 420px) {
   .scroll-layout .page--family {
     padding: 42px 22px !important;
@@ -2263,7 +2506,11 @@ body.invitation-open {
   gap: 16px;
   padding: 9px 16px;
   color: #8e6c5e;
-  font: 400 0.8rem/1.5 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 0.8rem/1.5 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .event-schedule__row + .event-schedule__row {
@@ -2295,12 +2542,20 @@ body.invitation-open {
 }
 
 .scroll-layout .page--details .countdown--details .countdown__item span {
-  font: 700 clamp(1.25rem, 5vw, 1.8rem)/1.15 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    700 clamp(1.25rem, 5vw, 1.8rem)/1.15 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
 }
 
 .scroll-layout .page--details .countdown--details .countdown__item small {
   color: #8e6c5e;
-  font: 600 0.65rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    600 0.65rem/1.4 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .wedding-calendar {
@@ -2317,7 +2572,11 @@ body.invitation-open {
   padding: 10px 14px;
   background: linear-gradient(90deg, #c8385a, #6b2060);
   color: #fff0d8;
-  font: 600 0.82rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    600 0.82rem/1.4 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .wedding-calendar__weekdays,
@@ -2330,7 +2589,11 @@ body.invitation-open {
 .wedding-calendar__weekdays {
   padding: 11px 8px 3px;
   color: #8e6c5e;
-  font: 700 0.62rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    700 0.62rem/1.4 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .wedding-calendar__days {
@@ -2349,7 +2612,11 @@ body.invitation-open {
 .wedding-calendar__day {
   border-radius: 50%;
   color: #493c34;
-  font: 400 0.75rem/1 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 0.75rem/1 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .wedding-calendar__day.is-wedding-day {
@@ -2367,13 +2634,21 @@ body.invitation-open {
 .scroll-layout .page .wedding-venue h3 {
   margin: 0 0 4px;
   color: #c9993e;
-  font: 700 1rem/1.45 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    700 1rem/1.45 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
 }
 
 .scroll-layout .page .wedding-venue p {
   margin: 0 0 12px;
   color: #8e6c5e;
-  font: 400 0.75rem/1.5 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 0.75rem/1.5 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .wedding-map {
@@ -2400,7 +2675,11 @@ body.invitation-open {
   background: linear-gradient(110deg, #e8623a, #c8385a);
   box-shadow: 0 4px 14px rgba(200, 56, 90, 0.35);
   color: #fff0d8;
-  font: 600 0.72rem/1.3 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    600 0.72rem/1.3 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   text-decoration: none;
 }
 
@@ -2420,7 +2699,11 @@ body.invitation-open {
   border: 1px solid rgba(240, 184, 122, 0.2);
   border-radius: 12px;
   background:
-    radial-gradient(ellipse at 82% 18%, rgba(201, 153, 62, 0.12), transparent 42%),
+    radial-gradient(
+      ellipse at 82% 18%,
+      rgba(201, 153, 62, 0.12),
+      transparent 42%
+    ),
     linear-gradient(145deg, #2a1018, #3a1820 55%, #2a1018);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
   color: #fff8f0;
@@ -2440,7 +2723,12 @@ body.invitation-open {
 .gift-envelope__ornament i {
   height: 1px;
   flex: 1;
-  background: linear-gradient(90deg, transparent, rgba(226, 189, 120, 0.65), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(226, 189, 120, 0.65),
+    transparent
+  );
 }
 
 .gift-envelope__art {
@@ -2471,19 +2759,31 @@ body.invitation-open {
 .scroll-layout .page .gift-envelope h2 {
   margin: 0;
   color: #fff8f0;
-  font: 600 clamp(1.2rem, 4vw, 1.5rem)/1.25 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    600 clamp(1.2rem, 4vw, 1.5rem)/1.25 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
 }
 
 .scroll-layout .page .gift-envelope > p {
   max-width: 320px;
   margin: 0;
   color: rgba(255, 248, 240, 0.75);
-  font: italic 400 0.78rem/1.55 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    italic 400 0.78rem/1.55 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .gift-envelope__hint {
   color: rgba(255, 248, 240, 0.65);
-  font: 400 0.65rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 0.65rem/1.4 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .gift-envelope__button {
@@ -2491,7 +2791,11 @@ body.invitation-open {
   border: 1px solid rgba(226, 189, 120, 0.55);
   border-radius: 999px;
   color: #f1d17f;
-  font: 600 0.65rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    600 0.65rem/1.4 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   letter-spacing: 0.06em;
 }
 
@@ -2514,20 +2818,32 @@ body.invitation-open {
   border-radius: 999px;
   background: transparent;
   color: #8e6c5e;
-  font: 500 0.72rem/1 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    500 0.72rem/1 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .gift-modal__title {
   margin: 0 0 6px;
   color: #c03828;
-  font: 700 1.4rem/1.3 "Playfair Display", 'Noto Serif', Georgia, serif;
+  font:
+    700 1.4rem/1.3 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif;
   text-align: center;
 }
 
 .gift-modal__subtitle {
   margin: 0 0 20px;
   color: #8e6c5e;
-  font: 400 0.78rem/1.5 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 0.78rem/1.5 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   text-align: center;
 }
 
@@ -2564,7 +2880,11 @@ body.invitation-open {
 
 .gift-account__label {
   color: #c9993e;
-  font: 700 0.65rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    700 0.65rem/1.4 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -2572,13 +2892,21 @@ body.invitation-open {
 .gift-account__name {
   overflow-wrap: anywhere;
   color: #2c1810;
-  font: 700 0.78rem/1.35 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    700 0.78rem/1.35 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .gift-account__bank,
 .gift-account__number {
   color: #8e6c5e;
-  font: 400 0.68rem/1.4 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    400 0.68rem/1.4 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
 }
 
 .gift-account__number {
@@ -2600,7 +2928,11 @@ body.invitation-open {
   background: #fff;
   box-shadow: 0 4px 12px rgba(200, 56, 90, 0.14);
   color: #c03828;
-  font: 600 0.68rem/1.25 "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  font:
+    600 0.68rem/1.25 "Be Vietnam Pro",
+    Inter,
+    system-ui,
+    sans-serif;
   text-align: center;
   text-decoration: none;
 }
@@ -2618,15 +2950,31 @@ body.invitation-open {
 }
 
 /* Wedding invitation typography and sunset palette */
-body.scroll-layout :is(
-  p, span, label, button, input, select, legend, strong, small, a, time,
-  .section-kicker
-) {
-  font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+body.scroll-layout
+  :is(
+    p,
+    span,
+    label,
+    button,
+    input,
+    select,
+    legend,
+    strong,
+    small,
+    a,
+    time,
+    .section-kicker
+  ) {
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    Arial,
+    sans-serif !important;
 }
 
 body.scroll-layout :is(h1, h2, h3, h4, h5, h6) {
-  font-family: 'Noto Serif', Georgia, 'Times New Roman', serif !important;
+  font-family: "Noto Serif", Georgia, "Times New Roman", serif !important;
 }
 
 /* ==========================================================================
@@ -2635,7 +2983,9 @@ body.scroll-layout :is(h1, h2, h3, h4, h5, h6) {
    Cam: #e8723a | HÃ¡Â»âng: #c8385a | VÃÂ ng: #f0b87a
    ========================================================================== */
 
-html, body, body.scroll-layout {
+html,
+body,
+body.scroll-layout {
   background: #1a0c10;
 }
 
@@ -2668,30 +3018,49 @@ html, body, body.scroll-layout {
 
 /* Closing Ã¢â¬â gradient tÃ¡Â»Â« tÃ¡Â»âi ra cam nhÃ¡ÂºÂ¹ */
 .scroll-layout .page--closing {
-  background: linear-gradient(180deg, #1a0c10 0%, #2e1018 60%, #1a0c10 100%) !important;
+  background: linear-gradient(
+    180deg,
+    #1a0c10 0%,
+    #2e1018 60%,
+    #1a0c10 100%
+  ) !important;
 }
 
 .scroll-layout .page--closing .closing-card,
 .scroll-layout .page--closing .closing-card p,
-.scroll-layout .page--closing .closing-card h2 { color: #fff0d8 !important; }
+.scroll-layout .page--closing .closing-card h2 {
+  color: #fff0d8 !important;
+}
 .scroll-layout .page--closing .closing-card > span,
-.scroll-layout .page--closing .closing-card h2 em { color: #f0b87a !important; }
+.scroll-layout .page--closing .closing-card h2 em {
+  color: #f0b87a !important;
+}
 
 /* ChÃ¡Â»Â¯ trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
 .scroll-layout .page--milestones .section-kicker,
 .scroll-layout .page--photo-moment .photo-moment figcaption,
-.scroll-layout .page--photo-moment .photo-moment__caption { color: #f0b87a !important; }
+.scroll-layout .page--photo-moment .photo-moment__caption {
+  color: #f0b87a !important;
+}
 
 .scroll-layout .page--milestones .section-heading h2 {
   color: #fff0d8 !important;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
 
 /* Couple section Ã¢â¬â chÃ¡Â»Â¯ trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
-.scroll-layout .page--couple .section-kicker { color: #f0b87a !important; }
-.scroll-layout .page--couple .section-heading h2 { color: #fff0d8 !important; }
-.scroll-layout .page--couple .person-card h3 { color: #f0b87a !important; }
-.scroll-layout .page--couple .person-card p { color: #fff0d8 !important; }
+.scroll-layout .page--couple .section-kicker {
+  color: #f0b87a !important;
+}
+.scroll-layout .page--couple .section-heading h2 {
+  color: #fff0d8 !important;
+}
+.scroll-layout .page--couple .person-card h3 {
+  color: #f0b87a !important;
+}
+.scroll-layout .page--couple .person-card p {
+  color: #fff0d8 !important;
+}
 .scroll-layout .page--couple .person-card__image {
   border-color: rgba(240, 184, 122, 0.25);
   background: #2a1410;
@@ -2700,30 +3069,44 @@ html, body, body.scroll-layout {
 /* Headings trÃÂªn nÃ¡Â»Ân sÃÂ¡ng */
 .scroll-layout .page .section-heading h2,
 .scroll-layout .page--details .date-card__headline,
-.scroll-layout .page--details .event-card h3 { color: #b83020 !important; }
+.scroll-layout .page--details .event-card h3 {
+  color: #b83020 !important;
+}
 
 /* Kicker trÃÂªn nÃ¡Â»Ân sÃÂ¡ng */
 .scroll-layout .page .section-kicker,
-.scroll-layout .page--details .event-card__eyebrow { color: #c85830 !important; }
+.scroll-layout .page--details .event-card__eyebrow {
+  color: #c85830 !important;
+}
 
 /* Body text trÃÂªn nÃ¡Â»Ân sÃÂ¡ng */
-.scroll-layout .page p { color: #5a2c18; font-size: clamp(1rem, 3.8vw, 1.15rem); line-height: 1.7; }
+.scroll-layout .page p {
+  color: #5a2c18;
+  font-size: clamp(1rem, 3.8vw, 1.15rem);
+  line-height: 1.7;
+}
 
 /* Headings / kicker / text trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
 .scroll-layout .page--details .section-heading h2,
 .scroll-layout .page--gift-scan .section-heading h2,
 .scroll-layout .page--rsvp .section-heading h2,
-.scroll-layout .page--thanks .section-heading h2 { color: #fff0d8 !important; }
+.scroll-layout .page--thanks .section-heading h2 {
+  color: #fff0d8 !important;
+}
 
 .scroll-layout .page--details .section-kicker,
 .scroll-layout .page--gift-scan .section-kicker,
 .scroll-layout .page--rsvp .section-kicker,
-.scroll-layout .page--thanks .section-kicker { color: #f0b87a !important; }
+.scroll-layout .page--thanks .section-kicker {
+  color: #f0b87a !important;
+}
 
 .scroll-layout .page--details p,
 .scroll-layout .page--gift-scan p,
 .scroll-layout .page--rsvp p,
-.scroll-layout .page--thanks p { color: rgba(255, 240, 216, 0.8) !important; }
+.scroll-layout .page--thanks p {
+  color: rgba(255, 240, 216, 0.8) !important;
+}
 
 /* Details Ã¢â¬â cards trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
 .scroll-layout .page--details .date-card,
@@ -2738,22 +3121,53 @@ html, body, body.scroll-layout {
   color: #fff0d8;
 }
 
-.scroll-layout .page--details .date-card__headline { color: #f0b87a !important; }
-.scroll-layout .page--details .event-card h3 { color: #fff0d8 !important; }
-.scroll-layout .page--details .event-card__eyebrow { color: #f0b87a !important; }
-.scroll-layout .page--details .event-card__time { color: #f0b87a !important; }
+.scroll-layout .page--details .date-card__headline {
+  color: #f0b87a !important;
+}
+.scroll-layout .page--details .event-card h3 {
+  color: #fff0d8 !important;
+}
+.scroll-layout .page--details .event-card__eyebrow {
+  color: #f0b87a !important;
+}
+.scroll-layout .page--details .event-card__time {
+  color: #f0b87a !important;
+}
 .scroll-layout .page--details .event-card__venue,
-.scroll-layout .page--details .event-card__map { color: rgba(255, 240, 216, 0.7) !important; }
-.scroll-layout .page--details .date-card__row { color: rgba(255, 240, 216, 0.7) !important; }
-.scroll-layout .page--details .event-schedule__row { color: rgba(255, 240, 216, 0.8) !important; }
-.scroll-layout .page--details .event-schedule__row strong { color: #fff0d8 !important; }
-.scroll-layout .page--details .countdown__item span { color: #f0b87a !important; }
-.scroll-layout .page--details .countdown__item small { color: rgba(255, 240, 216, 0.6) !important; }
-.scroll-layout .page--details .wedding-calendar__header { background: rgba(240, 184, 122, 0.15) !important; color: #f0b87a !important; }
-.scroll-layout .page--details .wedding-calendar__weekdays { color: rgba(255, 240, 216, 0.5) !important; }
-.scroll-layout .page--details .wedding-calendar__day { color: rgba(255, 240, 216, 0.8) !important; }
-.scroll-layout .page--details .wedding-venue h3 { color: #f0b87a !important; }
-.scroll-layout .page--details .wedding-venue p { color: rgba(255, 240, 216, 0.7) !important; }
+.scroll-layout .page--details .event-card__map {
+  color: rgba(255, 240, 216, 0.7) !important;
+}
+.scroll-layout .page--details .date-card__row {
+  color: rgba(255, 240, 216, 0.7) !important;
+}
+.scroll-layout .page--details .event-schedule__row {
+  color: rgba(255, 240, 216, 0.8) !important;
+}
+.scroll-layout .page--details .event-schedule__row strong {
+  color: #fff0d8 !important;
+}
+.scroll-layout .page--details .countdown__item span {
+  color: #f0b87a !important;
+}
+.scroll-layout .page--details .countdown__item small {
+  color: rgba(255, 240, 216, 0.6) !important;
+}
+.scroll-layout .page--details .wedding-calendar__header {
+  background: rgba(240, 184, 122, 0.15) !important;
+  color: #f0b87a !important;
+}
+.scroll-layout .page--details .wedding-calendar__weekdays {
+  color: rgba(255, 240, 216, 0.5) !important;
+}
+.scroll-layout .page--details .wedding-calendar__day {
+  color: rgba(255, 240, 216, 0.8) !important;
+}
+.scroll-layout .page--details .wedding-venue h3 {
+  color: #f0b87a !important;
+}
+.scroll-layout .page--details .wedding-venue p {
+  color: rgba(255, 240, 216, 0.7) !important;
+}
 
 /* RSVP Ã¢â¬â form trÃÂªn nÃ¡Â»Ân tÃ¡Â»âi */
 .scroll-layout .page--rsvp .rsvp-form {
@@ -2761,36 +3175,49 @@ html, body, body.scroll-layout {
   border-color: rgba(240, 184, 122, 0.18) !important;
 }
 
-.rsvp-field > label, .rsvp-field legend { color: #f0b87a !important; }
-.rsvp-field input[type="text"], .rsvp-field input[type="tel"], .rsvp-field select {
+.rsvp-field > label,
+.rsvp-field legend {
+  color: #f0b87a !important;
+}
+.rsvp-field input[type="text"],
+.rsvp-field input[type="tel"],
+.rsvp-field select {
   background: rgba(255, 248, 240, 0.08) !important;
   border-color: rgba(240, 184, 122, 0.25) !important;
   color: #fff0d8 !important;
 }
-.radio-row label { color: rgba(255, 240, 216, 0.85) !important; }
+.radio-row label {
+  color: rgba(255, 240, 216, 0.85) !important;
+}
 
 /* Thanks */
 .scroll-layout .page--thanks .thank-you {
   background: transparent !important;
   border: none !important;
 }
-.scroll-layout .page--thanks h2 { color: #fff0d8 !important; }
+.scroll-layout .page--thanks h2 {
+  color: #fff0d8 !important;
+}
 
 /* Intro text Ã¢â¬â trÃ¡ÂºÂ¯ng kem nÃ¡Â»â¢i trÃÂªn Ã¡ÂºÂ£nh */
 .scroll-layout .page--intro .section-kicker,
 .scroll-layout .page--intro h2,
 .scroll-layout .page--intro .announcement__subtitle,
 .scroll-layout .page--intro .announcement__names,
-.scroll-layout .page--intro .announcement__names span { color: #fff0d8 !important; }
+.scroll-layout .page--intro .announcement__names span {
+  color: #fff0d8 !important;
+}
 
 .scroll-layout .page--intro .announcement h2 {
   font-size: clamp(2.15rem, 8vw, 2.8rem);
-  text-shadow: 0 2px 18px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
 }
 
 .scroll-layout .page--intro .announcement__names span:nth-child(2),
 .scroll-layout .page--intro .announcement__ornament,
-.scroll-layout .page--intro .announcement__rule { color: #f0b87a !important; }
+.scroll-layout .page--intro .announcement__rule {
+  color: #f0b87a !important;
+}
 
 .scroll-layout .page--intro .announcement {
   position: relative;
@@ -2806,7 +3233,7 @@ html, body, body.scroll-layout {
   margin: 0;
   overflow: hidden;
   border: 1px solid rgba(232, 114, 58, 0.2);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
 }
 
 .photo-moment img {
@@ -2820,7 +3247,12 @@ html, body, body.scroll-layout {
 .photo-moment__caption {
   margin: 0;
   padding: 11px 8px 12px;
-  font: italic 500 1.05rem/1.4 "Cormorant Garamond", "Playfair Display", 'Noto Serif', Georgia, serif !important;
+  font:
+    italic 500 1.05rem/1.4 "Cormorant Garamond",
+    "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif !important;
   text-align: center;
 }
 
@@ -2830,16 +3262,24 @@ html, body, body.scroll-layout {
   gap: 9px;
 }
 
-.photo-moment__pair .photo-moment img { aspect-ratio: 0.78 / 1; }
-.photo-moment__caption { padding-bottom: 0; }
+.photo-moment__pair .photo-moment img {
+  aspect-ratio: 0.78 / 1;
+}
+.photo-moment__caption {
+  padding-bottom: 0;
+}
 
 @media (min-width: 600px) {
   .scroll-layout .page--photo-moment {
     padding-right: 28px !important;
     padding-left: 28px !important;
   }
-  .photo-moment img { aspect-ratio: 1.5 / 1; }
-  .photo-moment__pair .photo-moment img { aspect-ratio: 0.9 / 1; }
+  .photo-moment img {
+    aspect-ratio: 1.5 / 1;
+  }
+  .photo-moment__pair .photo-moment img {
+    aspect-ratio: 0.9 / 1;
+  }
 }
 
 /* Intro Ã¢â¬â trong suÃ¡Â»ât, liÃ¡Â»Ân mÃ¡ÂºÂ¡ch vÃ¡Â»âºi nÃ¡Â»Ân trang */
@@ -2853,7 +3293,9 @@ html, body, body.scroll-layout {
 }
 
 .scroll-layout .page--intro::before,
-.scroll-layout .page--intro::after { display: none; }
+.scroll-layout .page--intro::after {
+  display: none;
+}
 
 /* Card chÃ¡Â»Â©a chÃ¡Â»Â¯ Ã¢â¬â glassmorphism hoÃÂ ng hÃÂ´n */
 .scroll-layout .page--intro .announcement {
@@ -2863,7 +3305,11 @@ html, body, body.scroll-layout {
   border-radius: 16px;
   border: 1px solid rgba(240, 184, 122, 0.18);
   background:
-    radial-gradient(ellipse 120% 80% at 50% 110%, rgba(232, 114, 58, 0.22) 0%, transparent 60%),
+    radial-gradient(
+      ellipse 120% 80% at 50% 110%,
+      rgba(232, 114, 58, 0.22) 0%,
+      transparent 60%
+    ),
     rgba(255, 248, 240, 0.04);
   backdrop-filter: blur(18px) saturate(1.4);
   -webkit-backdrop-filter: blur(18px) saturate(1.4);
@@ -2883,7 +3329,10 @@ html, body, body.scroll-layout {
   margin-bottom: 28px;
 }
 
-.milestones-list { display: grid; gap: 32px; }
+.milestones-list {
+  display: grid;
+  gap: 32px;
+}
 
 .milestone-card {
   display: grid;
@@ -2892,8 +3341,13 @@ html, body, body.scroll-layout {
   gap: 20px;
 }
 
-.milestone-card--reverse { direction: rtl; }
-.milestone-card--reverse .milestone-card__body { direction: ltr; text-align: right; }
+.milestone-card--reverse {
+  direction: rtl;
+}
+.milestone-card--reverse .milestone-card__body {
+  direction: ltr;
+  text-align: right;
+}
 
 .milestone-card__img {
   position: relative;
@@ -2912,7 +3366,9 @@ html, body, body.scroll-layout {
   transition: transform 0.6s ease;
 }
 
-.milestone-card:hover .milestone-card__img img { transform: scale(1.3); }
+.milestone-card:hover .milestone-card__img img {
+  transform: scale(1.3);
+}
 
 .milestone-card__body {
   display: flex;
@@ -2924,16 +3380,33 @@ html, body, body.scroll-layout {
 .milestone-card__title {
   display: block;
   color: #fff0d8 !important;
-  font: 600 clamp(1.1rem, 4vw, 1.4rem)/1.3 "Playfair Display", 'Noto Serif', Georgia, serif !important;
+  font:
+    600 clamp(1.1rem, 4vw, 1.4rem)/1.3 "Playfair Display",
+    "Noto Serif",
+    Georgia,
+    serif !important;
 }
 
 .milestone-card__desc {
   margin: 0;
   color: rgba(240, 184, 122, 0.85) !important;
-  font: italic 400 clamp(0.9rem, 3.2vw, 1rem)/1.6 "Cormorant Garamond", 'Noto Serif', Georgia, serif !important;
+  font:
+    italic 400 clamp(0.9rem, 3.2vw, 1rem)/1.6 "Cormorant Garamond",
+    "Noto Serif",
+    Georgia,
+    serif !important;
 }
 
-.scroll-reveal-ready .milestone-card.reveal-on-scroll:not(.is-visible) { opacity: 0; transform: translateY(20px); }
-.scroll-reveal-ready .milestone-card:nth-child(2) { transition-delay: 80ms; }
-.scroll-reveal-ready .milestone-card:nth-child(3) { transition-delay: 160ms; }
-.scroll-reveal-ready .milestone-card:nth-child(4) { transition-delay: 240ms; }
+.scroll-reveal-ready .milestone-card.reveal-on-scroll:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.scroll-reveal-ready .milestone-card:nth-child(2) {
+  transition-delay: 80ms;
+}
+.scroll-reveal-ready .milestone-card:nth-child(3) {
+  transition-delay: 160ms;
+}
+.scroll-reveal-ready .milestone-card:nth-child(4) {
+  transition-delay: 240ms;
+}
