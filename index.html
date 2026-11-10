@@ -21,12 +21,21 @@
       content="Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Uông Bí, Quảng Ninh."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/images/og-image.jpg" />
+    <meta property="og:url" content="https://huyhoang-thuthao.pages.dev/" />
+    <meta
+      property="og:image"
+      content="https://huyhoang-thuthao.pages.dev/assets/images-web/og-image.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Thiệp cưới Huy Hoàng &amp; Thu Thảo" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -36,7 +45,7 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/typography.css" />
-    <link rel="stylesheet" href="css/layout.css?v=20261102-wine-photo-layout" />
+    <link rel="stylesheet" href="css/layout.css?v=20261111-thanks-compact" />
     <link rel="stylesheet" href="css/animation.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/responsive.css" />
@@ -94,7 +103,7 @@
               <p class="book-cover__date">28/11/2026</p>
               <div class="cover-note">
                 <span>Trân trọng kính mời</span>
-                <strong>Quý khách</strong>
+                <strong data-guest-name>Quý khách</strong>
               </div>
               <div class="cover-event">
                 <strong class="cover-event__time">11:00</strong>
@@ -139,7 +148,7 @@
             </h1>
             <!-- <div class="interior-hero__invite">
             <span>Trân trọng kính mời</span>
-            <strong>Quý khách</strong>
+            <strong data-guest-name>Quý khách</strong>
             <em>Đến dự buổi tiệc chung vui cùng gia đình</em>
           </div> -->
             <p class="interior-hero__date">28/11/2026</p>
@@ -167,7 +176,7 @@
       <section class="page page--couple">
         <div class="section-heading">
           <p class="section-kicker">Nhân vật chính</p>
-          <h2>Cô dâu &amp; Chú rể</h2>
+          <h2>Chú rể &amp; Cô dâu</h2>
         </div>
 
         <div class="couple-grid">
@@ -253,7 +262,10 @@
         </div>
 
         <div class="event-schedule reveal-on-scroll">
-          <p class="section-kicker">Lịch trình ngày cưới</p>
+          <div class="section-heading">
+            <p class="section-kicker">Trong ngày cưới</p>
+            <h2>Lịch trình</h2>
+          </div>
           <div class="event-schedule__rows">
             <div class="event-schedule__row">
               <span data-schedule-title="ceremony">Lễ thành hôn</span>
@@ -333,9 +345,9 @@
       >
         <div class="section-heading">
           <p class="section-kicker" id="milestones-heading">
-            Hành trình của chúng mình
+            Chuyện tình của mình
           </p>
-          <h2>Những khoảnh khắc</h2>
+          <h2>Hành trình yêu thương</h2>
         </div>
         <div class="milestones-list" data-milestones></div>
       </section>
@@ -383,24 +395,42 @@
           Từng khoảnh khắc đều là điều đáng nhớ
         </p>
       </section>
-
       <section
-        class="page page--photo-moment reveal-on-scroll"
-        aria-label="Cô dâu và chú rể"
+        class="page page--photo-moment page--moments reveal-on-scroll"
+        aria-label="Khoảnh khắc hoàng hôn"
       >
-        <figure class="photo-moment">
-          <img
-            data-img="moment-3"
-            src="assets/images-web/anh-8.jpg"
-            alt="Nụ hôn dịu dàng trong ánh nắng cuối ngày"
-            loading="lazy"
-          />
-          <figcaption data-img-caption="moment-3">
-            Nụ hôn đầu tiên trong ánh nắng cuối ngày
-          </figcaption>
-        </figure>
-      </section>
+        <p class="moments__kicker">Hoàng hôn</p>
+        <h2 class="moments__title">Khoảnh khắc bên nhau</h2>
 
+        <div class="moments-stagger">
+          <figure class="moment moment--a">
+            <img
+              data-img="moment-3"
+              src="assets/images-web/anh-8.jpg"
+              alt="Nụ hôn dịu dàng trong ánh nắng cuối ngày"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="moment moment--b">
+            <img
+              src="assets/images-web/anh-6.jpg"
+              alt="Cô dâu chú rể dưới ánh nắng hoàng hôn"
+              loading="lazy"
+            />
+          </figure>
+          <figure class="moment moment--c">
+            <img
+              src="assets/images-web/anh-7.jpg"
+              alt="Cặp đôi ôm nhau dưới mặt trời lặn"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+
+        <p class="photo-moment__caption">
+          Hoàng hôn đẹp nhất là khi có nhau
+        </p>
+      </section>
       <section
         class="page page--photo-moment reveal-on-scroll"
         aria-label="Kỷ niệm ngày cưới"
@@ -443,7 +473,8 @@
 
       <section class="page page--rsvp">
         <div class="section-heading small">
-          <p class="section-kicker">Xác nhận</p>
+          <p class="section-kicker">Lời hồi đáp</p>
+          <h2>Xác nhận tham dự</h2>
         </div>
 
         <form class="rsvp-form reveal-on-scroll">
@@ -496,14 +527,17 @@
 
       <section class="page page--thanks">
         <div class="thank-you reveal-on-scroll">
-          <p class="section-kicker">Cảm ơn</p>
-          <h2>Hẹn gặp bạn trong ngày vui</h2>
-          <p>
+          <span class="thanks__ornament" aria-hidden="true">✦ ♥ ✦</span>
+          <p class="thanks__kicker">Chân thành</p>
+          <h2 class="thanks__title">Cảm ơn</h2>
+          <p class="thanks__lead">Hẹn gặp bạn trong ngày vui</p>
+          <span class="thanks__divider" aria-hidden="true"></span>
+          <p class="thanks__text">
             Thật tuyệt vời khi bạn ở đây cùng chúng mình trong ngày trọng đại
             này.
           </p>
-        </div>
-      </section>
+          <p class="thanks__signature">Huy Hoàng &amp; Thu Thảo</p>
+        </div>      </section>
     </main>
 
     <div class="floating-tools" aria-label="Tùy chọn">
