@@ -130,6 +130,18 @@ function applyGuestName(guests) {
     ? Object.keys(list).find(key => key.toLowerCase() === code)
     : undefined;
   el.textContent = (match && list[match]) || guests?.default || 'Quý khách';
+
+  // Known guest: prefill the RSVP name so they do not have to type it.
+  if (match && list[match]) fillRsvpName(String(list[match]));
+}
+
+function fillRsvpName(name) {
+  const input = document.querySelector('#rsvp-name');
+  if (!input) return;
+  input.value = name.slice(0, Number(input.maxLength) > 0 ? input.maxLength : 120);
+  input.readOnly = true;
+  input.classList.add('is-prefilled');
+  input.title = 'Tên được điền sẵn theo lời mời của bạn';
 }
 /* ---------- Hydrate DOM from data.json ---------- */
 function hydrate(data) {
@@ -282,9 +294,14 @@ function hydrate(data) {
       set(`[data-schedule-time="${key}"]`, event.time || '');
     });
 
-    const venue = events.reception?.venue || events.ceremony?.venue;
+    const venueEvent = events.reception?.venue ? events.reception : events.ceremony;
+    const venue = venueEvent?.venue;
     if (venue) {
-      const location = encodeURIComponent(venue);
+      // Prefer exact coordinates ("lat,lng") so the pin lands on the right spot.
+      const coords = /^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/.test(venueEvent.coords || '')
+        ? venueEvent.coords.replace(/\s+/g, '')
+        : '';
+      const location = coords || encodeURIComponent(venue);
       set('[data-venue-title]', venue);
       set('[data-venue-address]', venue);
       const map = document.querySelector('[data-wedding-map]');

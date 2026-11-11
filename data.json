@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Nguyễn Huy Hoàng & Nguyễn Thu Thảo — Thiệp Cưới",
-    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Uông Bí, Quảng Ninh.",
+    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Nhà hàng Lan Khoa, Phường Vàng Danh, Thành phố Quảng Ninh.",
     "themeColor": "#4d0f12",
     "lang": "vi"
   },
@@ -36,14 +36,16 @@
     "ceremony": {
       "title": "Lễ Cưới",
       "time": "11:00",
-      "venue": "Uông Bí, Quảng Ninh",
-      "mapUrl": "https://www.google.com/maps/search/?api=1&query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh"
+      "venue": "Nhà hàng Lan Khoa, Phường Vàng Danh, Thành phố Quảng Ninh",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=21.10323,106.80127",
+      "coords": "21.10323,106.80127"
     },
     "reception": {
       "title": "Tiệc Cưới",
       "time": "11:00",
-      "venue": "Uông Bí, Quảng Ninh",
-      "mapUrl": "https://www.google.com/maps/search/?api=1&query=U%C3%B4ng+B%C3%AD%2C+Qu%E1%BA%A3ng+Ninh"
+      "venue": "Nhà hàng Lan Khoa, Phường Vàng Danh, Thành phố Quảng Ninh",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=21.10323,106.80127",
+      "coords": "21.10323,106.80127"
     }
   },
 
@@ -65,7 +67,8 @@
   },
 
   "music": {
-    "src": "assets/music/wedding-instrumental.wav",
+    "src": "assets/music/paulyudin-wedding.mp3",
+    "fallbackSrc": "assets/music/wedding-instrumental.wav",
     "volume": 0.35
   },
 

@@ -3762,3 +3762,11 @@ body.scroll-layout .page .event-schedule .section-heading {
 body.scroll-layout .page .event-schedule .section-heading h2 {
   font-size: clamp(2rem, 9vw, 2.6rem);
 }
+/* RSVP name prefilled from the invitation link */
+.rsvp-form input.is-prefilled {
+  cursor: default;
+  color: #fff0d8;
+  font-weight: 600;
+  border-color: rgba(240, 184, 122, 0.55);
+  background: rgba(240, 184, 122, 0.1);
+}
