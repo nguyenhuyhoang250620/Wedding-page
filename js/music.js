@@ -19,6 +19,17 @@ const Music = (() => {
     if (config?.src) {
       const source = audio.querySelector('source');
       if (source && source.getAttribute('src') !== config.src) {
+        // A failed <source> fires "error" on the <source>, not on <audio>.
+        // If the main track is missing, fall back to the bundled instrumental.
+        if (config.fallbackSrc) {
+          source.addEventListener('error', () => {
+            if (source.getAttribute('src') === config.fallbackSrc) return;
+            console.warn(`Music file "${config.src}" not found, using fallback.`);
+            source.src = config.fallbackSrc;
+            audio.load();
+          });
+        }
+        source.removeAttribute('type'); // let the browser sniff mp3/wav/m4a
         source.src = config.src;
         audio.load();
       }

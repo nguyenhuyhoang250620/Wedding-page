@@ -1,0 +1,10 @@
+{
+  "default": "Quý khách",
+  "guests": {
+    "a01": "Anh Minh & Chị Lan",
+    "a02": "Gia đình Cô Hoa",
+    "a03": "Bạn Hùng",
+    "a04": "Chú Dũng & Thím Mai",
+    "a05": "Bạn Linh"
+  }
+}

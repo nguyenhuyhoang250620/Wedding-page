@@ -1,4 +1,4 @@
-﻿ï»¿/* ==========================================================================
+ï»¿/* ==========================================================================
    Layout Ã¢â¬â The Book, full-screen edition
    ToÃÂ n mÃÂ n hÃÂ¬nh lÃÂ  tÃ¡ÂºÂ¥m thiÃ¡Â»â¡p. CÃÂ³ bÃÂ¬a 3D lÃ¡ÂºÂ­t lÃÂªn ÃâÃ¡Â»Æ "mÃ¡Â»Å¸ sÃÂ¡ch".
    ========================================================================== */
@@ -350,7 +350,7 @@ html.cover-locked {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 37% 48%;
+  object-position: 42% 48%;
   transform: none;
 }
 
@@ -3448,4 +3448,325 @@ body.scroll-layout {
 }
 .scroll-reveal-ready .milestone-card:nth-child(4) {
   transition-delay: 240ms;
+}
+
+/* ---- Cover names: script font, one line each, staggered ---- */
+body.scroll-layout .book-cover__names {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  font-family: "Dancing Script", "Great Vibes", cursive !important;
+  font-size: clamp(2.2rem, 10.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+body.scroll-layout .book-cover__groom,
+body.scroll-layout .book-cover__bride {
+  font-family: inherit !important;
+  white-space: nowrap;
+}
+
+body.scroll-layout .book-cover__groom {
+  align-self: flex-start;
+  margin-left: 4%;
+}
+
+body.scroll-layout .book-cover__bride {
+  align-self: flex-end;
+  margin-right: 4%;
+}
+
+body.scroll-layout .cover-names__amp {
+  align-self: center;
+  margin: 0;
+  font-size: clamp(1.4rem, 6vw, 1.9rem);
+}
+
+.cover-note strong {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+/* ---- Cover title "Thiệp mời": larger and brighter ---- */
+body.scroll-layout .cover-eyebrow {
+  margin-bottom: 8px;
+  color: #ffe9a8 !important;
+  font: 700 1.15rem/1.2 var(--font-sans);
+  letter-spacing: 0.34em;
+  text-shadow:
+    0 0 14px rgba(255, 214, 120, 0.55),
+    0 2px 10px rgba(20, 8, 6, 0.95),
+    0 0 2px rgba(20, 8, 6, 0.9);
+}
+
+body.scroll-layout .cover-flourish {
+  font-size: 1.9rem;
+  text-shadow: 0 2px 8px rgba(20, 8, 6, 0.8);
+}
+/* ---- Couple portraits: square photo with gold border + script names ---- */
+.scroll-layout .page--couple .couple-grid {
+  gap: 24px 16px;
+  padding: 6px 4px 0;
+}
+
+.scroll-layout .page--couple .person-card__image {
+  position: relative;
+  aspect-ratio: 1 / 1.12;
+  padding: 9px;
+  overflow: hidden;
+  border: 1px solid #f4efe7;
+  border-radius: 2px;
+  background: linear-gradient(145deg, #ffffff 0%, #f1ece3 55%, #e4ddd1 100%);
+  box-shadow:
+    0 14px 26px rgba(0, 0, 0, 0.5),
+    0 3px 6px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 #ffffff,
+    inset 0 -2px 3px rgba(120, 105, 85, 0.25);
+}
+
+/* recessed bevel around the photo */
+.scroll-layout .page--couple .person-card__image::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  pointer-events: none;
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(110, 98, 82, 0.55);
+}
+
+.scroll-layout .page--couple .person-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.scroll-layout .page--couple .person-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 2px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.scroll-layout .page--couple .person-card h3::before,
+.scroll-layout .page--couple .person-card h3::after {
+  content: "";
+  width: 18px;
+  border-top: 1px solid rgba(240, 184, 122, 0.7);
+}
+
+.scroll-layout .page--couple .person-card p {
+  font-family: "Dancing Script", "Great Vibes", cursive !important;
+  white-space: nowrap;
+  font-size: clamp(1.8rem, 7.6vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+/* ---- Thanks: closing section ---- */
+.scroll-layout .page--thanks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 8px 22px 72px;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(176, 90, 60, 0.28), transparent 60%),
+    #1a0c10 !important;
+}
+
+.scroll-layout .page--thanks .thank-you {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 22px 20px 20px;
+  text-align: center;
+  border: 1px solid rgba(240, 184, 122, 0.35) !important;
+  outline: 1px solid rgba(240, 184, 122, 0.18);
+  outline-offset: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(60, 24, 28, 0.55), rgba(26, 12, 16, 0.2)) !important;
+}
+
+.scroll-layout .page--thanks .thanks__ornament {
+  color: #f0b87a;
+  font-size: 0.8rem;
+  letter-spacing: 0.7em;
+  padding-left: 0.7em;
+}
+
+.scroll-layout .page--thanks p.thanks__kicker {
+  margin: 8px 0 0;
+  color: #f0b87a !important;
+  font: 600 0.72rem/1.2 var(--font-sans);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+body.scroll-layout .page--thanks h2.thanks__title {
+  margin: 4px 0 0;
+  font-family: "Dancing Script", "Great Vibes", cursive !important;
+  font-size: clamp(3.6rem, 18vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0;
+  background: linear-gradient(180deg, #fff3cf 0%, #f0b87a 55%, #c98a4b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.5));
+}
+
+.scroll-layout .page--thanks p.thanks__lead {
+  margin: 6px 0 0;
+  color: #fff0d8 !important;
+  font: italic 400 clamp(1.45rem, 6.4vw, 1.8rem) / 1.3 "Cormorant Garamond", "Noto Serif", Georgia, serif !important;
+}
+
+.scroll-layout .page--thanks .thanks__divider {
+  display: block;
+  width: 90px;
+  height: 1px;
+  margin: 12px 0;
+  background: linear-gradient(90deg, transparent, #f0b87a, transparent);
+}
+
+.scroll-layout .page--thanks p.thanks__text {
+  max-width: 300px;
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.scroll-layout .page--thanks p.thanks__signature {
+  margin: 14px 0 0;
+  color: #f0b87a !important;
+  font-family: "Dancing Script", "Great Vibes", cursive !important;
+  white-space: nowrap;
+  font-size: clamp(1.7rem, 7.6vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+/* ---- Sunset moments: 3 staggered photos ---- */
+.scroll-layout .page--moments {
+  padding: 44px 18px 26px !important;
+  text-align: center;
+}
+
+.scroll-layout .page--moments p.moments__kicker {
+  margin: 0;
+  color: #f0b87a !important;
+  font: 600 0.72rem/1.2 var(--font-sans);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+body.scroll-layout .page--moments h2.moments__title {
+  margin: 6px 0 26px;
+  color: #fff0d8 !important;
+  font-family: "Dancing Script", "Great Vibes", cursive !important;
+  font-size: clamp(2.2rem, 10vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.moments-stagger {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4px;
+}
+
+.moment {
+  position: relative;
+  margin: 0;
+  padding: 6px;
+  background: linear-gradient(145deg, #ffffff, #efe8dc);
+  box-shadow:
+    0 14px 26px rgba(0, 0, 0, 0.5),
+    0 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.moment img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.moment--a {
+  z-index: 1;
+  align-self: flex-start;
+  width: 66%;
+}
+
+.moment--b {
+  z-index: 2;
+  align-self: flex-end;
+  width: 60%;
+  margin-top: -44px;
+}
+
+.moment--c {
+  z-index: 3;
+  align-self: flex-start;
+  width: 62%;
+  margin-top: -44px;
+  margin-left: 8%;
+}
+
+.scroll-layout .page--moments .photo-moment__caption {
+  margin-top: 26px;
+}
+/* ---- Unified section headings: kicker + script title ---- */
+body.scroll-layout .page .section-heading .section-kicker,
+body.scroll-layout .page .announcement .section-kicker {
+  margin: 0;
+  color: #f0b87a !important;
+  font: 600 0.72rem/1.2 var(--font-sans);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+body.scroll-layout .page .section-heading h2,
+body.scroll-layout .page .announcement h2 {
+  margin: 6px 0 0;
+  color: #fff0d8 !important;
+  font-family: "Dancing Script", "Great Vibes", cursive !important;
+  font-size: clamp(2.4rem, 11vw, 3.3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+body.scroll-layout .page .section-heading {
+  margin-bottom: 26px;
+}
+
+body.scroll-layout .page .event-schedule .section-heading {
+  margin-bottom: 16px;
+}
+
+body.scroll-layout .page .event-schedule .section-heading h2 {
+  font-size: clamp(2rem, 9vw, 2.6rem);
+}
+/* RSVP name prefilled from the invitation link */
+.rsvp-form input.is-prefilled {
+  cursor: default;
+  color: #fff0d8;
+  font-weight: 600;
+  border-color: rgba(240, 184, 122, 0.55);
+  background: rgba(240, 184, 122, 0.1);
 }
