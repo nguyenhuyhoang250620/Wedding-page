@@ -350,8 +350,8 @@ html.cover-locked {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 42% 48%;
-  transform: none;
+  object-position: 50% 48%;
+  transform: translateY(5%) scale(1.1);
 }
 
 .cover-photo__shade {

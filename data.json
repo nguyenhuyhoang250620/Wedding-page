@@ -73,21 +73,21 @@
   },
 
   "images": {
-    "cover": "assets/images-web/anh-bia-1.jpg",
+    "cover": "assets/images-final/anh-bia-thiep.jpg",
     "hero": "assets/images-web/anh-5.jpg",
     "introBg": "assets/images-web/anh-2.jpg",
     "photoMoments": [
-      { "src": "assets/images-web/anh-nam-tay.jpg", "caption": "Một ngày thật đẹp để bắt đầu những ngày bình thường bên nhau" },
-      { "src": "assets/images-web/anh-dep-2.jpg", "caption": null },
-      { "src": "assets/images-web/anh-vien-linh.jpg", "caption": null },
-      { "src": "assets/images-web/anh-8.jpg", "caption": "Nụ hôn đầu tiên trong ánh nắng cuối ngày" },
-      { "src": "assets/images-web/cung-nhau.jpg", "caption": "Cùng nhau viết tiếp hành trình hạnh phúc" }
+      { "src": "assets/images-final/anh-s-1.jpg", "caption": "Một ngày thật đẹp để bắt đầu những ngày bình thường bên nhau" },
+      { "src": "assets/images-final/anh-v-1.jpg", "caption": null },
+      { "src": "assets/images-final/anh-v-2.jpg", "caption": null },
+      { "src": "assets/images-final/anh-h-1.jpg", "caption": "Nụ hôn đầu tiên trong ánh nắng cuối ngày" },
+      { "src": "assets/images-final/cung-nhau.jpg", "caption": "Cùng nhau viết tiếp hành trình hạnh phúc" }
     ],
     "milestones": [
-      { "src": "assets/images-web/anh-dep-1.jpg", "title": "Hai đứa mình", "desc": "Giữa muôn vàn người, chúng mình đã chọn nhau." },
-      { "src": "assets/images-web/anh-h-7.jpg", "title": "Bên nhau mỗi ngày", "desc": "Những buổi sáng bình yên, những buổi tối đầy tiếng cười." },
-      { "src": "assets/images-web/an.jpg", "title": "Có nhau là đủ", "desc": "Dù trời có tắt nắng, bên em vẫn luôn ấm áp." },
-      { "src": "assets/images-web/anh-h-5.jpg", "title": "Mãi mãi từ hôm nay", "desc": "Một lời hứa, một đời bên nhau." }
+      { "src": "assets/images-final/anh-1.jpg", "title": "Hai đứa mình", "desc": "Giữa muôn vàn người, chúng mình đã chọn nhau." },
+      { "src": "assets/images-final/anh-2.jpg", "title": "Bên nhau mỗi ngày", "desc": "Những buổi sáng bình yên, những buổi tối đầy tiếng cười." },
+      { "src": "assets/images-final/anh-3.jpg", "title": "Có nhau là đủ", "desc": "Dù trời có tắt nắng, bên em vẫn luôn ấm áp." },
+      { "src": "assets/images-final/anh-4.jpg", "title": "Mãi mãi từ hôm nay", "desc": "Một lời hứa, một đời bên nhau." }
     ]
   }
 }
