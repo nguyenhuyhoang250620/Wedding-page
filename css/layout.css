@@ -546,6 +546,14 @@ html.cover-locked {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
+/* Venue names may contain "\n" (from data.json) for a manual line break. */
+.cover-event__venue,
+.event-card__venue,
+.wedding-venue h3,
+.event-line__value {
+  white-space: pre-line;
+}
+
 .book-cover__cta {
   position: relative;
   z-index: 4;

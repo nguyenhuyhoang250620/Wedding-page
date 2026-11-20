@@ -301,9 +301,10 @@ function hydrate(data) {
       const coords = /^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/.test(venueEvent.coords || '')
         ? venueEvent.coords.replace(/\s+/g, '')
         : '';
-      const location = coords || encodeURIComponent(venue);
+      // Fall back to the street address (if given) so the map pin is exact.
+      const location = coords || encodeURIComponent(venueEvent.address || venue);
       set('[data-venue-title]', venue);
-      set('[data-venue-address]', venue);
+      set('[data-venue-address]', venueEvent.address || venue);
       const map = document.querySelector('[data-wedding-map]');
       const directions = document.querySelector('[data-wedding-directions]');
       if (map) map.src = `https://maps.google.com/maps?q=${location}&output=embed`;

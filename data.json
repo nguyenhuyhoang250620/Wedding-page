@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Nguyễn Huy Hoàng & Nguyễn Thu Thảo — Thiệp Cưới",
-    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 28 tháng 11, 2026 lúc 11:00 tại Nhà hàng Lan Khoa, Phường Vàng Danh, Thành phố Quảng Ninh.",
+    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Nguyễn Huy Hoàng & Nguyễn Thu Thảo — 5 tháng 12, 2026 lúc 11:00 tại Trống Đồng Place Cảnh Hồ Trường Chinh, Hà Nội.",
     "themeColor": "#4d0f12",
     "lang": "vi"
   },
@@ -29,23 +29,23 @@
   },
 
   "wedding": {
-    "date": "2026-11-28T11:00:00"
+    "date": "2026-12-05T11:00:00"
   },
 
   "events": {
     "ceremony": {
       "title": "Lễ Cưới",
       "time": "11:00",
-      "venue": "Nhà hàng Lan Khoa, Phường Vàng Danh, Thành phố Quảng Ninh",
-      "mapUrl": "https://www.google.com/maps/search/?api=1&query=21.10323,106.80127",
-      "coords": "21.10323,106.80127"
+      "venue": "TRỐNG ĐỒNG PLACE CẢNH HỒ\nTrường Chinh, Hà Nội",
+      "address": "173B Đ. Trường Chinh, Phương Liệt, Hà Nội, Vietnam",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=173B%20%C4%90.%20Tr%C6%B0%E1%BB%9Dng%20Chinh%2C%20Ph%C6%B0%C6%A1ng%20Li%E1%BB%87t%2C%20H%C3%A0%20N%E1%BB%99i%2C%20Vietnam"
     },
     "reception": {
       "title": "Tiệc Cưới",
       "time": "11:00",
-      "venue": "Nhà hàng Lan Khoa, Phường Vàng Danh, Thành phố Quảng Ninh",
-      "mapUrl": "https://www.google.com/maps/search/?api=1&query=21.10323,106.80127",
-      "coords": "21.10323,106.80127"
+      "venue": "TRỐNG ĐỒNG PLACE CẢNH HỒ\nTrường Chinh, Hà Nội",
+      "address": "173B Đ. Trường Chinh, Phương Liệt, Hà Nội, Vietnam",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=173B%20%C4%90.%20Tr%C6%B0%E1%BB%9Dng%20Chinh%2C%20Ph%C6%B0%C6%A1ng%20Li%E1%BB%87t%2C%20H%C3%A0%20N%E1%BB%99i%2C%20Vietnam"
     }
   },
 
