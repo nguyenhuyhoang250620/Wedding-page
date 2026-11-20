@@ -383,7 +383,7 @@ function coverDisplayName(name) {
 
 /* ---------- Countdown ---------- */
 function initCountdown(dateStr) {
-  const target = new Date(dateStr || '2026-11-28T11:00:00');
+  const target = new Date(dateStr || '2026-12-05T17:30:00');
   const els = {
     days: document.getElementById('cd-days'),
     hours: document.getElementById('cd-hours'),
