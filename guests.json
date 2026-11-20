@@ -36,6 +36,17 @@
     "hg": "Hương Giang",
     "ph": "Phạm Hoàn",
     "pl": "Phùng Linh",
-    "tc": "Thu Cúc"
+    "tc": "Thu Cúc",
+
+    "banan":"Bạn An cùng gia đình",
+    "banthanhthu":"Bạn Thư",
+    "banngoc":"Bạn Ngọc cùng gia đình",
+    "banphuong":"Bạn Phương cùng gia đình",
+
+    "banphuonglinh":"Bạn Linh",
+    "banhongthuong":"Bạn Hồng Thương",
+    "banduyen":"Bạn Duyên cùng gia đình",
+    "banmaiminh":"Bạn Minh",
+    "banthanhbeo":"Bạn Thành"
   }
 }
